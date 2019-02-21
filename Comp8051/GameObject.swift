@@ -9,10 +9,13 @@
 class GameObject {
     
     // Unique identifier tag string
-    var tag : String
+    private var tag : String
     
     // reference to parent game object, if it exists
     var parent : GameObject?
+    
+    // whether the game object is activated
+    var active : Bool = true
     
     // The collection of Component objects attached to us
     var components : [Component] = []
@@ -33,11 +36,15 @@ class GameObject {
     func update(deltaTime : Float) {
         
         for component in self.components {
-            component.update(deltaTime: deltaTime)
+            if component.active {
+                component.update(deltaTime: deltaTime)
+            }
         }
         
         for child in self.children {
-            child.update(deltaTime: deltaTime)
+            if child.active {
+                child.update(deltaTime: deltaTime)
+            }
         }
     }
     
