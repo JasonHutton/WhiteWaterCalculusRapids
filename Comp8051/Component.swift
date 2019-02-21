@@ -9,7 +9,7 @@
 class Component {
     
     // The game object this component is attached to
-    weak var gameObject : GameObject
+    weak var gameObject : GameObject?
     
     // To be implemented in subclasses
     func update(deltaTime : Float) {
