@@ -11,17 +11,38 @@ class GameObject {
     // Unique identifier tag string
     var tag : String
     
+    // reference to parent game object, if it exists
+    var parent : GameObject?
+    
     // The collection of Component objects attached to us
     var components : [Component] = []
     
     // The collection of child game objects
-    var gameObjects : [GameObject] = []
+    var children : [GameObject] = []
     
-    // Initialization
-    init (tag : String) {
+    // Initialization, adds itself to parent's collection
+    init (tag : String, parent: GameObject?) {
         
         self.tag = tag
+        self.parent = parent
+        
+        parent!.addChild(component: self)
     }
+    
+    // Update this object by updating all components
+    func update(deltaTime : Float) {
+        
+        for component in self.components {
+            component.update(deltaTime: deltaTime)
+        }
+        
+        for child in self.children {
+            child.update(deltaTime: deltaTime)
+        }
+    }
+    
+    
+    /* Component Functions */
     
     // Add a component to this gameobject
     func addComponent(component : Component) {
@@ -32,50 +53,8 @@ class GameObject {
     // Remove a component from this game object, if we have it
     func removeComponent(component : Component) {
         
-        // Figure out the index at which this component exists
-        
-        // Note the use of the === (three equals) operator,
-        // which checks to see if two variables refer to the same object
-        // (as opposed to "==", which checks to see if two variables
-        // have the same value, which means different things for
-        // different types of data)
-        
         if let index = components.index(where: { $0 === component}) {
             components.remove(at: index)
-        }
-    }
-    
-    // Add a game object to the list of game objects to be updated
-    func addGameObject(component : GameObject) {
-        
-        gameObjects.append(component)
-    }
-    
-    // Remove a game object, if it exists
-    func removeGameObject(gameObject : GameObject) {
-        
-        // Figure out the index at which this game object exists
-        
-        // Note the use of the === (three equals) operator,
-        // which checks to see if two variables refer to the same object
-        // (as opposed to "==", which checks to see if two variables
-        // have the same value, which means different things for
-        // different types of data)
-        
-        if let index = gameObjects.index(where: { $0 === gameObject}) {
-            gameObjects.remove(at: index)
-        }
-    }
-    
-    // Update this object by updating all components
-    func update(deltaTime : Float) {
-        
-        for component in self.components {
-            component.update(deltaTime: deltaTime)
-        }
-        
-        for gameObject in self.gameObjects {
-            gameObject.update(deltaTime: deltaTime)
         }
     }
     
@@ -106,13 +85,30 @@ class GameObject {
         
         return foundComponents
     }
+
+    
+    /* Children Functions */
+    
+    // Add a game object to the list of game objects to be updated
+    func addChild(component : GameObject) {
+        
+        children.append(component)
+    }
+    
+    // Remove a game object, if it exists
+    func removeChild(gameObject : GameObject) {
+        
+        if let index = children.index(where: { $0 === gameObject}) {
+            children.remove(at: index)
+        }
+    }
     
     // Returns the game object with the given tag
-    func find (tag : String) -> GameObject? {
+    func getChild (tag : String) -> GameObject? {
         
-        for gameObject in gameObjects {
-            if gameObject.tag == tag {
-                return gameObject
+        for child in children {
+            if child.tag == tag {
+                return child
             }
         }
         
