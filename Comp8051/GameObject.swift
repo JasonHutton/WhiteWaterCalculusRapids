@@ -9,7 +9,7 @@
 class GameObject {
     
     // Unique identifier tag string
-    private var tag : String
+    private(set) var tag : String
     
     // reference to parent game object, if it exists
     var parent : GameObject?
@@ -33,7 +33,7 @@ class GameObject {
     }
     
     // Update this object by updating all components
-    func update(deltaTime : Float) {
+    func update (deltaTime : Float) {
         
         for component in self.components {
             if component.active {
@@ -45,6 +45,15 @@ class GameObject {
             if child.active {
                 child.update(deltaTime: deltaTime)
             }
+        }
+    }
+    
+    // remove references to this gameobject and allow components to clean up
+    func destroy () {
+        
+        parent!.removeChild(gameObject: self)
+        for component in components {
+            component.onDestroy()
         }
     }
     

@@ -27,18 +27,19 @@ class Component {
         }
     }
     
+    
+    /* Functions to be implemented by subclasses */
+    
     // called every frame
-    func update(deltaTime : Float) {
-        // does nothing by default, to be implemented by subclasses
-    }
+    func update(deltaTime : Float) {}
     
     // called when active is set to true
-    func onEnable () {
-        // does nothing by default, to be implemented by subclasses
-    }
+    func onEnable () {}
     
     // called when active is set to false
-    func onDisable () {
-        // does nothing by default, to be implemented by subclasses
-    }
+    func onDisable () {}
+    
+    // called when component is destroyed
+    func onDestroy () {}
+    
 }

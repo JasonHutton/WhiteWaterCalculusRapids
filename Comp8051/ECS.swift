@@ -14,13 +14,13 @@ public class ECS {
     var gameObjects : [GameObject] = []
     
     // Add a game object to the list of game objects to be updated
-    func addRootGameObject(gameObject : GameObject) {
+    func addParentGameObject(gameObject : GameObject) {
         
         gameObjects.append(gameObject)
     }
     
     // Remove a game object, if it exists
-    func removeRootGameObject(gameObject : GameObject) {
+    func removeParentGameObject(gameObject : GameObject) {
         
         if let index = gameObjects.index(where: { $0 === gameObject}) {
             gameObjects.remove(at: index)
@@ -28,7 +28,7 @@ public class ECS {
     }
     
     // Returns the game object with the given tag
-    func getRootGameObject (tag : String) -> GameObject? {
+    func getParentGameObject (tag : String) -> GameObject? {
         
         for gameObject in gameObjects {
             if gameObject.tag == tag {
