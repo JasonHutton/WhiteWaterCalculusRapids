@@ -159,7 +159,7 @@ extension ViewController: GLKViewControllerDelegate {
         effect.transform.modelviewMatrix = modelViewMatrix
         
         // update entity component system
-        ECS.instance.update(deltaTime: 1/60)
+        GameObject.root.update(deltaTime: 1/30)
         // TODO: if this is going to always be the same amount, maybe just make it a constant somewhere
     }
 }

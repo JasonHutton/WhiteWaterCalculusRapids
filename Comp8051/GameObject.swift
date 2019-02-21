@@ -8,6 +8,9 @@
 
 class GameObject {
     
+    // root game object in hierarchy
+    static let root = GameObject(tag: "Root", parent: nil)
+    
     // Unique identifier tag string
     private(set) var tag : String
     
@@ -17,11 +20,11 @@ class GameObject {
     // whether the game object is activated
     var active : Bool = true
     
-    // The collection of Component objects attached to us
-    var components : [Component] = []
+    // collection of components
+    private var components : [Component] = []
     
-    // The collection of child game objects
-    var children : [GameObject] = []
+    // collection of child game objects
+    private var children : [GameObject] = []
     
     // Initialization, adds itself to parent's collection
     init (tag : String, parent: GameObject?) {
@@ -33,6 +36,7 @@ class GameObject {
     }
     
     // Update this object by updating all components
+    // Should ONLY be called by the view controller
     func update (deltaTime : Float) {
         
         for component in self.components {

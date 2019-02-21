@@ -28,7 +28,11 @@ class Component {
     }
     
     
-    /* Functions to be implemented by subclasses */
+    /*
+        Following are functions to be implemented by subclasses.
+        None of these functions should ever be called explicitly
+        outside of the GameObject or Component base classes!
+    */
     
     // called every frame
     func update(deltaTime : Float) {}
