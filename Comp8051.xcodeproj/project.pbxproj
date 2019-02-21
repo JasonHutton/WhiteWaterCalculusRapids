@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83083A9E221E75A3003931A2 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83083A9D221E75A3003931A2 /* Component.swift */; };
+		83083AA0221E75A7003931A2 /* ECS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83083A9F221E75A7003931A2 /* ECS.swift */; };
+		83083AA2221E75AA003931A2 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83083AA1221E75AA003931A2 /* GameObject.swift */; };
 		DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570C22151F0F002315D0 /* AppDelegate.swift */; };
 		DA99570F22151F0F002315D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570E22151F0F002315D0 /* ViewController.swift */; };
 		DA99571222151F0F002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA99571022151F0F002315D0 /* Main.storyboard */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83083A9D221E75A3003931A2 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		83083A9F221E75A7003931A2 /* ECS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECS.swift; sourceTree = "<group>"; };
+		83083AA1221E75AA003931A2 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		DA99570922151F0F002315D0 /* Comp8051.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA99570C22151F0F002315D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA99570E22151F0F002315D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +88,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83083AA5221E7634003931A2 /* Entity Component System */ = {
+			isa = PBXGroup;
+			children = (
+				83083A9D221E75A3003931A2 /* Component.swift */,
+				83083A9F221E75A7003931A2 /* ECS.swift */,
+				83083AA1221E75AA003931A2 /* GameObject.swift */,
+			);
+			name = "Entity Component System";
+			sourceTree = "<group>";
+		};
 		DA99570022151F0F002315D0 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +131,7 @@
 				DA99571822151F11002315D0 /* Info.plist */,
 				DA99573A2215335C002315D0 /* Vertex.swift */,
 				DA99573C2217A53F002315D0 /* Model.swift */,
+				83083AA5221E7634003931A2 /* Entity Component System */,
 			);
 			path = Comp8051;
 			sourceTree = "<group>";
@@ -271,9 +288,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA99570F22151F0F002315D0 /* ViewController.swift in Sources */,
+				83083AA0221E75A7003931A2 /* ECS.swift in Sources */,
+				83083AA2221E75AA003931A2 /* GameObject.swift in Sources */,
 				DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */,
 				DA99573B2215335C002315D0 /* Vertex.swift in Sources */,
 				DA99573D2217A53F002315D0 /* Model.swift in Sources */,
+				83083A9E221E75A3003931A2 /* Component.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,7 +469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H6MLZYGHNY;
+				DEVELOPMENT_TEAM = L45428QCUH;
 				INFOPLIST_FILE = Comp8051/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -468,7 +488,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H6MLZYGHNY;
+				DEVELOPMENT_TEAM = L45428QCUH;
 				INFOPLIST_FILE = Comp8051/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
