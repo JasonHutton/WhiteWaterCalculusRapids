@@ -18,10 +18,9 @@ class Component {
             return _active
         }
         set {
-            if !active && newValue {
+            if !active && newValue { // calls onEnable if being set from false to true
                 onEnable()
-            }
-            else if active && !newValue {
+            } else if active && !newValue { // calls onDisable if being set from true to false
                 onDisable()
             }
             _active = newValue
