@@ -29,8 +29,10 @@ class ViewController: GLKViewController {
     
     private var ebo = GLuint()
     private var vbo = GLuint()
-    private var vao = GLuint()
-    private var vao2 = GLuint()
+    
+    private var vaoList: [GLuint] = []
+    //private var vao = GLuint()
+    //private var vao2 = GLuint()
     
     /*var Indices: [GLubyte] = [
         0, 1, 2,
@@ -68,95 +70,56 @@ class ViewController: GLKViewController {
         let colorOffsetPointer = UnsafeRawPointer(bitPattern: colorOffset)
         
         models = [sphere, surface]
-        // 1
-        glGenVertexArraysOES(1, &vao)
-        // 2
-        glBindVertexArrayOES(vao)
         
-        glGenBuffers(1, &vbo)
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), vbo)
-        
-        //for model in models {
-            glBufferData(GLenum(GL_ARRAY_BUFFER), // 1
-                sphere.vertices.size(),         // 2
-                sphere.vertices,                // 3
-                GLenum(GL_STATIC_DRAW))  // 4
-        //}
+        for model in models {
+            var vao = GLuint()
 
-        glEnableVertexAttribArray(vertexAttribPosition)
-        glVertexAttribPointer(vertexAttribPosition,       // 1
-            3,                          // 2
-            GLenum(GL_FLOAT),           // 3
-            GLboolean(UInt8(GL_FALSE)), // 4
-            GLsizei(vertexSize),        // 5
-            nil)                        // 6
-        
-        glEnableVertexAttribArray(vertexAttribColor)
-        glVertexAttribPointer(vertexAttribColor,
-                              4,
-                              GLenum(GL_FLOAT),
-                              GLboolean(UInt8(GL_FALSE)),
-                              GLsizei(vertexSize),
-                              colorOffsetPointer)
-        
-        glGenBuffers(1, &ebo)
-        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), ebo)
-        
-        //for model in models {
-            glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER),
-                         sphere.indices.size(),
-                         sphere.indices,
-                         GLenum(GL_STATIC_DRAW))
-       // }
-        
-        glBindVertexArrayOES(0)
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
-        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
-        
-        
-        glGenVertexArraysOES(1, &vao2)
-        // 2
-        glBindVertexArrayOES(vao2)
-        
-        glGenBuffers(1, &vbo)
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), vbo)
-        
-        //for model in models {
-        glBufferData(GLenum(GL_ARRAY_BUFFER), // 1
-            surface.vertices.size(),         // 2
-            surface.vertices,                // 3
-            GLenum(GL_STATIC_DRAW))  // 4
-        //}
-        
-        glEnableVertexAttribArray(vertexAttribPosition)
-        glVertexAttribPointer(vertexAttribPosition,       // 1
-            3,                          // 2
-            GLenum(GL_FLOAT),           // 3
-            GLboolean(UInt8(GL_FALSE)), // 4
-            GLsizei(vertexSize),        // 5
-            nil)                        // 6
-        
-        glEnableVertexAttribArray(vertexAttribColor)
-        glVertexAttribPointer(vertexAttribColor,
-                              4,
-                              GLenum(GL_FLOAT),
-                              GLboolean(UInt8(GL_FALSE)),
-                              GLsizei(vertexSize),
-                              colorOffsetPointer)
-        
-        glGenBuffers(1, &ebo)
-        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), ebo)
-        
-        //for model in models {
-        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER),
-                     surface.indices.size(),
-                     surface.indices,
-                     GLenum(GL_STATIC_DRAW))
-        // }
-        
-        glBindVertexArrayOES(0)
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
-        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
+            // 1
+            glGenVertexArraysOES(1, &vao)
+            // 2
+            glBindVertexArrayOES(vao)
+            
+            glGenBuffers(1, &vbo)
+            glBindBuffer(GLenum(GL_ARRAY_BUFFER), vbo)
+            
+            //for model in models {
+                glBufferData(GLenum(GL_ARRAY_BUFFER), // 1
+                    model.vertices.size(),         // 2
+                    model.vertices,                // 3
+                    GLenum(GL_STATIC_DRAW))  // 4
+            //}
+
+            glEnableVertexAttribArray(vertexAttribPosition)
+            glVertexAttribPointer(vertexAttribPosition,       // 1
+                3,                          // 2
+                GLenum(GL_FLOAT),           // 3
+                GLboolean(UInt8(GL_FALSE)), // 4
+                GLsizei(vertexSize),        // 5
+                nil)                        // 6
+            
+            glEnableVertexAttribArray(vertexAttribColor)
+            glVertexAttribPointer(vertexAttribColor,
+                                  4,
+                                  GLenum(GL_FLOAT),
+                                  GLboolean(UInt8(GL_FALSE)),
+                                  GLsizei(vertexSize),
+                                  colorOffsetPointer)
+            
+            glGenBuffers(1, &ebo)
+            glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), ebo)
+            
+            //for model in models {
+                glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER),
+                             model.indices.size(),
+                             model.indices,
+                             GLenum(GL_STATIC_DRAW))
+           // }
+            
+            glBindVertexArrayOES(0)
+            glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
+            glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
+            vaoList.append(vao)
+        }
     }
     
     override func viewDidLoad() {
@@ -172,32 +135,33 @@ class ViewController: GLKViewController {
         
         effect.prepareToDraw()
         
-        glBindVertexArrayOES(vao);
-        
-        //for model in models {
+        //for i in 0 ..< models.count {
+            glBindVertexArrayOES(vaoList[0]);
+            //for model in models {
             glDrawElements(GLenum(GL_TRIANGLES),     // 1
-                GLsizei(sphere.indices.count),   // 2
+                GLsizei(models[0].indices.count),   // 2
                 GLenum(GL_UNSIGNED_BYTE), // 3
                 nil)                      // 4
-        //}
-        glBindVertexArrayOES(0)
+            //}
+            glBindVertexArrayOES(0)
         
-        glBindVertexArrayOES(vao2);
-        
+        glBindVertexArrayOES(vaoList[1]);
         //for model in models {
         glDrawElements(GLenum(GL_TRIANGLES),     // 1
-            GLsizei(surface.indices.count),   // 2
+            GLsizei(models[1].indices.count),   // 2
             GLenum(GL_UNSIGNED_BYTE), // 3
             nil)                      // 4
         //}
         glBindVertexArrayOES(0)
+        //}
     }
     
     private func tearDownGL() {
         EAGLContext.setCurrent(context)
         
-        glDeleteBuffers(1, &vao)
-        glDeleteBuffers(1, &vao2)
+        for var vao in vaoList {
+            glDeleteBuffers(1, &vao)
+        }
         glDeleteBuffers(1, &vbo)
         glDeleteBuffers(1, &ebo)
         
