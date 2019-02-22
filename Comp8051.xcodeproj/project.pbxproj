@@ -17,7 +17,7 @@
 		DA99573B2215335C002315D0 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99573A2215335C002315D0 /* Vertex.swift */; };
 		DA99573D2217A53F002315D0 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99573C2217A53F002315D0 /* Model.swift */; };
 		DA995740221BAD08002315D0 /* ICOSphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = DA99573E221BAD08002315D0 /* ICOSphere.obj */; };
-		DA995741221BAD08002315D0 /* ICOSphere.mtl in Resources */ = {isa = PBXBuildFile; fileRef = DA99573F221BAD08002315D0 /* ICOSphere.mtl */; };
+		DA995743221E275A002315D0 /* UnitSurface.obj in Resources */ = {isa = PBXBuildFile; fileRef = DA995742221E275A002315D0 /* UnitSurface.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 		DA99573A2215335C002315D0 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		DA99573C2217A53F002315D0 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DA99573E221BAD08002315D0 /* ICOSphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ICOSphere.obj; sourceTree = "<group>"; };
-		DA99573F221BAD08002315D0 /* ICOSphere.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ICOSphere.mtl; sourceTree = "<group>"; };
+		DA995742221E275A002315D0 /* UnitSurface.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitSurface.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +105,7 @@
 		DA99570B22151F0F002315D0 /* Comp8051 */ = {
 			isa = PBXGroup;
 			children = (
-				DA99573F221BAD08002315D0 /* ICOSphere.mtl */,
+				DA995742221E275A002315D0 /* UnitSurface.obj */,
 				DA99573E221BAD08002315D0 /* ICOSphere.obj */,
 				DA99570C22151F0F002315D0 /* AppDelegate.swift */,
 				DA99570E22151F0F002315D0 /* ViewController.swift */,
@@ -241,9 +241,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA995743221E275A002315D0 /* UnitSurface.obj in Resources */,
 				DA995740221BAD08002315D0 /* ICOSphere.obj in Resources */,
 				DA99571722151F11002315D0 /* LaunchScreen.storyboard in Resources */,
-				DA995741221BAD08002315D0 /* ICOSphere.mtl in Resources */,
 				DA99571422151F11002315D0 /* Assets.xcassets in Resources */,
 				DA99571222151F0F002315D0 /* Main.storyboard in Resources */,
 			);

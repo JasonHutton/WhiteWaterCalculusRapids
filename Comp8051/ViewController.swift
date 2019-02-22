@@ -38,7 +38,9 @@ class ViewController: GLKViewController {
 
     private var effect = GLKBaseEffect()
     
-    let sphere = Model(modelPath: "ICOSphere")
+    let sphere = Model(modelName: "ICOSphere")
+    let surface = Model(modelName: "UnitSurface")
+    var models : [Model] = []
     
     private func setupGL() {
         // 1
@@ -64,6 +66,7 @@ class ViewController: GLKViewController {
         // 5
         let colorOffsetPointer = UnsafeRawPointer(bitPattern: colorOffset)
         
+        models = [sphere, surface]
         // 1
         glGenVertexArraysOES(1, &vao)
         // 2
@@ -71,11 +74,14 @@ class ViewController: GLKViewController {
         
         glGenBuffers(1, &vbo)
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), vbo)
-        glBufferData(GLenum(GL_ARRAY_BUFFER), // 1
-            sphere.vertices.size(),         // 2
-            sphere.vertices,                // 3
-            GLenum(GL_STATIC_DRAW))  // 4
         
+        for model in models {
+            glBufferData(GLenum(GL_ARRAY_BUFFER), // 1
+                model.vertices.size(),         // 2
+                model.vertices,                // 3
+                GLenum(GL_STATIC_DRAW))  // 4
+        }
+
         glEnableVertexAttribArray(vertexAttribPosition)
         glVertexAttribPointer(vertexAttribPosition,       // 1
             3,                          // 2
@@ -94,10 +100,13 @@ class ViewController: GLKViewController {
         
         glGenBuffers(1, &ebo)
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), ebo)
-        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER),
-                     sphere.indices.size(),
-                     sphere.indices,
-                     GLenum(GL_STATIC_DRAW))
+        
+        for model in models {
+            glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER),
+                         model.indices.size(),
+                         model.indices,
+                         GLenum(GL_STATIC_DRAW))
+        }
         
         glBindVertexArrayOES(0)
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
@@ -118,10 +127,13 @@ class ViewController: GLKViewController {
         effect.prepareToDraw()
         
         glBindVertexArrayOES(vao);
-        glDrawElements(GLenum(GL_TRIANGLES),     // 1
-            GLsizei(sphere.indices.count),   // 2
-            GLenum(GL_UNSIGNED_BYTE), // 3
-            nil)                      // 4
+        
+        for model in models {
+            glDrawElements(GLenum(GL_TRIANGLES),     // 1
+                GLsizei(model.indices.count),   // 2
+                GLenum(GL_UNSIGNED_BYTE), // 3
+                nil)                      // 4
+        }
         glBindVertexArrayOES(0)
     }
     
@@ -145,7 +157,7 @@ class ViewController: GLKViewController {
 extension ViewController: GLKViewControllerDelegate {
     func glkViewControllerUpdate(_ controller: GLKViewController) {
         // 1
-        let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
+        /*let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
         // 2
         let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0), aspect, 4.0, 10.0)
         // 3
@@ -156,7 +168,7 @@ extension ViewController: GLKViewControllerDelegate {
         rotation += 90 * Float(timeSinceLastUpdate)
         modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(rotation), 0, 0, 1)
         // 3
-        effect.transform.modelviewMatrix = modelViewMatrix
+        effect.transform.modelviewMatrix = modelViewMatrix*/
     }
 }
 

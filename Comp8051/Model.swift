@@ -13,8 +13,8 @@ struct Model {
     public var vertices: [Vertex] = []
     public var indices: [GLubyte] = []
     
-    public init(modelPath: String){
-        let path = Bundle.main.path(forResource: modelPath, ofType: "obj")
+    public init(modelName: String){
+        let path = Bundle.main.path(forResource: modelName, ofType: "obj")
         
         let file: FileHandle? = FileHandle(forReadingAtPath: path!)
         
