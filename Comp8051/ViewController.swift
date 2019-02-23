@@ -31,6 +31,8 @@ class ViewController: GLKViewController {
     let surface = Model(modelName: "UnitSurface")
     var models : [Model] = []
     
+    private var modelViewMatrix : GLKMatrix4?
+    
     private func setupGL() {
         // 1
         context = EAGLContext(api: .openGLES3)
@@ -119,27 +121,25 @@ class ViewController: GLKViewController {
         // 2
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
         
-        effect.prepareToDraw()
-        
-        //for i in 0 ..< models.count {
-            glBindVertexArrayOES(vaoList[0]);
-            //for model in models {
+        modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, -6.0)
+        for i in 0 ..< models.count {
+            if(i == 0){
+                modelViewMatrix = GLKMatrix4Translate(modelViewMatrix!, 0.0, 2.0, 0.0)
+            } else if(i == 1){
+                modelViewMatrix = GLKMatrix4Translate(modelViewMatrix!, 0.0, -3.0, 0.0)
+            }
+            effect.transform.modelviewMatrix = modelViewMatrix!
+            
+            effect.prepareToDraw()
+            glBindVertexArrayOES(vaoList[i]);
+            //glUniformMatrix4fv(_uniformModelViewProjectionMatrix, 1, 0, _modelViewProjectionMatrix.m);
             glDrawElements(GLenum(GL_TRIANGLES),     // 1
-                GLsizei(models[0].indices.count),   // 2
+                GLsizei(models[i].indices.count),   // 2
                 GLenum(GL_UNSIGNED_BYTE), // 3
                 nil)                      // 4
-            //}
+
             glBindVertexArrayOES(0)
-        
-        glBindVertexArrayOES(vaoList[1]);
-        //for model in models {
-        glDrawElements(GLenum(GL_TRIANGLES),     // 1
-            GLsizei(models[1].indices.count),   // 2
-            GLenum(GL_UNSIGNED_BYTE), // 3
-            nil)                      // 4
-        //}
-        glBindVertexArrayOES(0)
-        //}
+        }
     }
     
     private func tearDownGL() {
@@ -170,15 +170,16 @@ extension ViewController: GLKViewControllerDelegate {
         // 3
         effect.transform.projectionMatrix = projectionMatrix
         // 1
-        var modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, -6.0)
+        //modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, -6.0)
         // 2
         rotation += 90 * Float(timeSinceLastUpdate)
-        modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(rotation), 0, 0, 1)
+        modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix!, GLKMathDegreesToRadians(rotation), 0, 0, 1)
         // 3
-        effect.transform.modelviewMatrix = modelViewMatrix
+        
+        //effect.transform.modelviewMatrix = modelViewMatrix!
         
         // update entity component system
-        //GameObject.root.update(deltaTime: 1/30)
+        // GameObject.root.update(deltaTime: 1/30)
         // TODO: if this is going to always be the same amount, maybe just make it a constant somewhere
     }
 }
