@@ -176,6 +176,9 @@ extension ViewController: GLKViewControllerDelegate {
         modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(rotation), 0, 0, 1)
         // 3
         effect.transform.modelviewMatrix = modelViewMatrix
+        
+        // update entity component system
+        GameObject.root.update(deltaTime: 1/30)
+        // TODO: if this is going to always be the same amount, maybe just make it a constant somewhere
     }
 }
-
