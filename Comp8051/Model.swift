@@ -12,8 +12,14 @@ import Foundation
 struct Model {
     public var vertices: [Vertex] = []
     public var indices: [GLubyte] = []
+    public var name : String
+    public var modelViewMatrix : GLKMatrix4
     
     public init(modelName: String){
+        name = modelName
+        
+        modelViewMatrix = GLKMatrix4Identity
+        
         let path = Bundle.main.path(forResource: modelName, ofType: "obj")
         
         let file: FileHandle? = FileHandle(forReadingAtPath: path!)

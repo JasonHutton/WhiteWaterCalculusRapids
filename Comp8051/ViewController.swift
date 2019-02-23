@@ -31,8 +31,6 @@ class ViewController: GLKViewController {
     let surface = Model(modelName: "UnitSurface")
     var models : [Model] = []
     
-    private var modelViewMatrix : GLKMatrix4?
-    
     private func setupGL() {
         // 1
         context = EAGLContext(api: .openGLES3)
@@ -120,15 +118,15 @@ class ViewController: GLKViewController {
         glClearColor(0.85, 0.85, 0.85, 1.0)
         // 2
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
-        
-        modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, -6.0)
+
         for i in 0 ..< models.count {
-            if(i == 0){
-                modelViewMatrix = GLKMatrix4Translate(modelViewMatrix!, 0.0, 2.0, 0.0)
-            } else if(i == 1){
-                modelViewMatrix = GLKMatrix4Translate(modelViewMatrix!, 0.0, -3.0, 0.0)
+            models[i].modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, -6.0)
+            if(models[i].name == "ICOSphere"){
+                models[i].modelViewMatrix = GLKMatrix4Translate(models[i].modelViewMatrix, 0.0, 2.0, 0.0)
+            } else if(models[i].name == "UnitSurface"){
+                models[i].modelViewMatrix = GLKMatrix4Translate(models[i].modelViewMatrix, 0.0, -2.0, 0.0)
             }
-            effect.transform.modelviewMatrix = modelViewMatrix!
+            effect.transform.modelviewMatrix = models[i].modelViewMatrix
             
             effect.prepareToDraw()
             glBindVertexArrayOES(vaoList[i]);
@@ -172,12 +170,13 @@ extension ViewController: GLKViewControllerDelegate {
         // 1
         //modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, -6.0)
         // 2
-        rotation += 90 * Float(timeSinceLastUpdate)
-        modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix!, GLKMathDegreesToRadians(rotation), 0, 0, 1)
-        // 3
-        
-        //effect.transform.modelviewMatrix = modelViewMatrix!
-        
+        for i in 0 ..< models.count {
+            rotation += 90 * Float(timeSinceLastUpdate)
+            //modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix!, GLKMathDegreesToRadians(rotation), 0, 0, 1)
+            // 3
+            
+            //effect.transform.modelviewMatrix = modelViewMatrix!
+        }
         // update entity component system
         // GameObject.root.update(deltaTime: 1/30)
         // TODO: if this is going to always be the same amount, maybe just make it a constant somewhere
