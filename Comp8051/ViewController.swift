@@ -20,24 +20,10 @@ class ViewController: GLKViewController {
     
     private var context: EAGLContext?
     
-   /* var Vertices = [
-        Vertex(x:  1, y: -1, z: 0, r: 1, g: 0, b: 0, a: 1),
-        Vertex(x:  1, y:  1, z: 0, r: 0, g: 1, b: 0, a: 1),
-        Vertex(x: -1, y:  1, z: 0, r: 0, g: 0, b: 1, a: 1),
-        Vertex(x: -1, y: -1, z: 0, r: 0, g: 0, b: 0, a: 1),
-        ]*/
-    
     private var ebo = GLuint()
     private var vbo = GLuint()
     
     private var vaoList: [GLuint] = []
-    //private var vao = GLuint()
-    //private var vao2 = GLuint()
-    
-    /*var Indices: [GLubyte] = [
-        0, 1, 2,
-        2, 3, 0
-    ]*/
 
     private var effect = GLKBaseEffect()
     
