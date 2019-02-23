@@ -130,7 +130,7 @@ class ViewController: GLKViewController {
             
             effect.prepareToDraw()
             glBindVertexArrayOES(vaoList[i]);
-            //glUniformMatrix4fv(_uniformModelViewProjectionMatrix, 1, 0, _modelViewProjectionMatrix.m);
+            
             glDrawElements(GLenum(GL_TRIANGLES),     // 1
                 GLsizei(models[i].indices.count),   // 2
                 GLenum(GL_UNSIGNED_BYTE), // 3
@@ -172,10 +172,13 @@ extension ViewController: GLKViewControllerDelegate {
         // 2
         for i in 0 ..< models.count {
             rotation += 90 * Float(timeSinceLastUpdate)
-            //modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix!, GLKMathDegreesToRadians(rotation), 0, 0, 1)
+            //print(rotation)
+            if(models[i].name == "ICOSphere"){
+                models[i].modelViewMatrix = GLKMatrix4Rotate(models[i].modelViewMatrix, GLKMathDegreesToRadians(rotation), 0, 0, 1)
             // 3
-            
-            //effect.transform.modelviewMatrix = modelViewMatrix!
+            }
+            effect.transform.modelviewMatrix = models[i].modelViewMatrix
+            print(effect.transform.modelviewMatrix)
         }
         // update entity component system
         // GameObject.root.update(deltaTime: 1/30)
