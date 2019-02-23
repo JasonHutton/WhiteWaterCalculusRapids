@@ -16,7 +16,11 @@ extension Array {
 
 class ViewController: GLKViewController {
     
-    private var rotation: Float = 0.0
+    private var rotation: Float = 0.0;
+    private var curLocationX: Float = 0.0;
+    private var curLocationY: Float = 0.0;
+    private var dirX: Float = 0.0;
+    private var dirY: Float = 0.0;
     
     private var context: EAGLContext?
     
@@ -147,14 +151,40 @@ extension ViewController: GLKViewControllerDelegate {
         // 1
         let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
         // 2
-        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0), aspect, 4.0, 10.0)
+        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 2.0, 30.0)
         // 3
         effect.transform.projectionMatrix = projectionMatrix
         // 1
-        var modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, -6.0)
+        if(true){// GOING IN A DIRECTION
+            // set direction
+            print(Float(view.bounds.size.height/2));
+            print(curLocationY*10);
+
+            curLocationX = curLocationX+0.05;
+            curLocationY = curLocationY+0.07;
+        }
+        // OUT OF BOUNDS WRAPAROUND
+        if(curLocationX*10 >= 118){
+            curLocationX = -117/10;
+            print("OUT OF BOUNDS WRAPAROUND +X");
+        }
+        if(curLocationX*10 <= -118){
+            curLocationX = 117/10;
+            print("OUT OF BOUNDS WRAPAROUND -X");
+        }
+        if(curLocationY*10 >= 201){
+            curLocationY = -200/10;
+            print("OUT OF BOUNDS WRAPAROUND +Y");
+        }
+        if(curLocationY*10 <= -201){
+            curLocationY = 200/10;
+            print("OUT OF BOUNDS WRAPAROUND -Y");
+        }
+        
+        var modelViewMatrix = GLKMatrix4MakeTranslation(curLocationX, curLocationY, -30)
         // 2
         rotation += 90 * Float(timeSinceLastUpdate)
-        modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(rotation), 0, 0, 1)
+        modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(rotation), 1, 1, 0)
         // 3
         effect.transform.modelviewMatrix = modelViewMatrix
     }
