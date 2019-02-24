@@ -16,6 +16,10 @@ extension Array {
 
 class ViewController: GLKViewController {
     
+    static var instance: ViewController?
+    
+    private var setupComplete = false
+    
     private var rotation: Float = 0.0
     
     private var context: EAGLContext?
@@ -27,11 +31,11 @@ class ViewController: GLKViewController {
 
     private var effect = GLKBaseEffect()
     
-    let sphere = Model(modelName: "ICOSphere")
-    let surface = Model(modelName: "UnitSurface")
     var models : [Model] = []
     
     private func setupGL() {
+        ViewController.instance = self
+        
         // 1
         context = EAGLContext(api: .openGLES2)
         // 2
@@ -44,6 +48,29 @@ class ViewController: GLKViewController {
             delegate = self
         }
         
+        // set up scene
+        // TODO: currently, component order DOES MATTER. modelrenderer should always occur last!
+        // for now, add a game object's model renderer last.
+        let sphereObj = GameObject(tag: "Sphere")
+        sphereObj.transform.position = Vector3(x: 0, y: 2, z: -6)
+        sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere"))
+        GameObject.root.addChild(gameObject: sphereObj)
+        
+        let surfaceObj = GameObject(tag: "Surface")
+        surfaceObj.transform.position = Vector3(x: 0, y: -2, z: -6)
+        sphereObj.addComponent(component: ModelRenderer(modelName: "UnitSurface"))
+        GameObject.root.addChild(gameObject: surfaceObj)
+    }
+    
+    
+    func addModel ( model: inout Model)
+    {
+        models.append(model)
+        setupModel(model: model)
+    }
+    
+    private func setupModel (model: Model) {
+        
         // 1
         let vertexAttribColor = GLuint(GLKVertexAttrib.color.rawValue)
         // 2
@@ -55,57 +82,53 @@ class ViewController: GLKViewController {
         // 5
         let colorOffsetPointer = UnsafeRawPointer(bitPattern: colorOffset)
         
-        models = [sphere, surface]
+        var vao = GLuint()
+
+        // 1
+        glGenVertexArraysOES(1, &vao)
+        // 2
+        glBindVertexArrayOES(vao)
         
-        for model in models {
-            var vao = GLuint()
+        glGenBuffers(1, &vbo)
+        glBindBuffer(GLenum(GL_ARRAY_BUFFER), vbo)
+        
+        //for model in models {
+            glBufferData(GLenum(GL_ARRAY_BUFFER), // 1
+                model.vertices.size(),         // 2
+                model.vertices,                // 3
+                GLenum(GL_STATIC_DRAW))  // 4
+        //}
 
-            // 1
-            glGenVertexArraysOES(1, &vao)
-            // 2
-            glBindVertexArrayOES(vao)
-            
-            glGenBuffers(1, &vbo)
-            glBindBuffer(GLenum(GL_ARRAY_BUFFER), vbo)
-            
-            //for model in models {
-                glBufferData(GLenum(GL_ARRAY_BUFFER), // 1
-                    model.vertices.size(),         // 2
-                    model.vertices,                // 3
-                    GLenum(GL_STATIC_DRAW))  // 4
-            //}
-
-            glEnableVertexAttribArray(vertexAttribPosition)
-            glVertexAttribPointer(vertexAttribPosition,       // 1
-                3,                          // 2
-                GLenum(GL_FLOAT),           // 3
-                GLboolean(UInt8(GL_FALSE)), // 4
-                GLsizei(vertexSize),        // 5
-                nil)                        // 6
-            
-            glEnableVertexAttribArray(vertexAttribColor)
-            glVertexAttribPointer(vertexAttribColor,
-                                  4,
-                                  GLenum(GL_FLOAT),
-                                  GLboolean(UInt8(GL_FALSE)),
-                                  GLsizei(vertexSize),
-                                  colorOffsetPointer)
-            
-            glGenBuffers(1, &ebo)
-            glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), ebo)
-            
-            //for model in models {
-                glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER),
-                             model.indices.size(),
-                             model.indices,
-                             GLenum(GL_STATIC_DRAW))
-           // }
-            
-            glBindVertexArrayOES(0)
-            glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
-            glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
-            vaoList.append(vao)
-        }
+        glEnableVertexAttribArray(vertexAttribPosition)
+        glVertexAttribPointer(vertexAttribPosition,       // 1
+            3,                          // 2
+            GLenum(GL_FLOAT),           // 3
+            GLboolean(UInt8(GL_FALSE)), // 4
+            GLsizei(vertexSize),        // 5
+            nil)                        // 6
+        
+        glEnableVertexAttribArray(vertexAttribColor)
+        glVertexAttribPointer(vertexAttribColor,
+                              4,
+                              GLenum(GL_FLOAT),
+                              GLboolean(UInt8(GL_FALSE)),
+                              GLsizei(vertexSize),
+                              colorOffsetPointer)
+        
+        glGenBuffers(1, &ebo)
+        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), ebo)
+        
+        //for model in models {
+            glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER),
+                         model.indices.size(),
+                         model.indices,
+                         GLenum(GL_STATIC_DRAW))
+       // }
+        
+        glBindVertexArrayOES(0)
+        glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
+        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
+        vaoList.append(vao)
     }
     
     override func viewDidLoad() {
@@ -163,27 +186,9 @@ class ViewController: GLKViewController {
 
 extension ViewController: GLKViewControllerDelegate {
     func glkViewControllerUpdate(_ controller: GLKViewController) {
-        
-        // update rotation for the sphere
-        // this behaviour should be handled in a component
-        rotation += 90 * 1/30
-        
-        for i in 0 ..< models.count {
-            
-            // this should be gotten from the entity component system, once it is ready...
-            // hardcoded for now, please please PLEASE fix this
-            var transformation = GLKMatrix4Identity
-            if(models[i].name == "ICOSphere"){
-                transformation = GLKMatrix4Translate(transformation, 0.0, 2.0, -6.0)
-                transformation = GLKMatrix4RotateZ(transformation, rotation)
-            } else if(models[i].name == "UnitSurface"){
-                transformation = GLKMatrix4Translate(transformation, 0.0, -2.0, -6.0)
-            }
-            
-            models[i].modelViewMatrix = transformation
-        }
+
         // update entity component system
-        // GameObject.root.update(deltaTime: 1/30)
+        GameObject.root.update(deltaTime: 1/30)
         // TODO: if this is going to always be the same amount, maybe just make it a constant somewhere
     }
 }

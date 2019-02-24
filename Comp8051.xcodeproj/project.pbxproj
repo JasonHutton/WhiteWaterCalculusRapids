@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83043626222231F10019F5BF /* ModelRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83043625222231F10019F5BF /* ModelRenderer.swift */; };
 		83083A9E221E75A3003931A2 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83083A9D221E75A3003931A2 /* Component.swift */; };
 		83083AA2221E75AA003931A2 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83083AA1221E75AA003931A2 /* GameObject.swift */; };
+		83D305BA22224517008D5CFC /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305B922224517008D5CFC /* Transform.swift */; };
+		83D305BC22224524008D5CFC /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305BB22224524008D5CFC /* Vector3.swift */; };
 		DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570C22151F0F002315D0 /* AppDelegate.swift */; };
 		DA99570F22151F0F002315D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570E22151F0F002315D0 /* ViewController.swift */; };
 		DA99571222151F0F002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA99571022151F0F002315D0 /* Main.storyboard */; };
@@ -40,8 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83043625222231F10019F5BF /* ModelRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRenderer.swift; sourceTree = "<group>"; };
 		83083A9D221E75A3003931A2 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		83083AA1221E75AA003931A2 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
+		83D305B922224517008D5CFC /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
+		83D305BB22224524008D5CFC /* Vector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 		DA99570922151F0F002315D0 /* Comp8051.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA99570C22151F0F002315D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA99570E22151F0F002315D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +92,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		830436232222310E0019F5BF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA995742221E275A002315D0 /* UnitSurface.obj */,
+				DA99573E221BAD08002315D0 /* ICOSphere.obj */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		83043624222231520019F5BF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				83043625222231F10019F5BF /* ModelRenderer.swift */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
 		83083AA5221E7634003931A2 /* Entity Component System */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +116,17 @@
 				83083AA1221E75AA003931A2 /* GameObject.swift */,
 			);
 			name = "Entity Component System";
+			sourceTree = "<group>";
+		};
+		83D305B822223DA2008D5CFC /* Data Types */ = {
+			isa = PBXGroup;
+			children = (
+				DA99573A2215335C002315D0 /* Vertex.swift */,
+				DA99573C2217A53F002315D0 /* Model.swift */,
+				83D305B922224517008D5CFC /* Transform.swift */,
+				83D305BB22224524008D5CFC /* Vector3.swift */,
+			);
+			name = "Data Types";
 			sourceTree = "<group>";
 		};
 		DA99570022151F0F002315D0 = {
@@ -118,17 +152,16 @@
 		DA99570B22151F0F002315D0 /* Comp8051 */ = {
 			isa = PBXGroup;
 			children = (
-				DA995742221E275A002315D0 /* UnitSurface.obj */,
-				DA99573E221BAD08002315D0 /* ICOSphere.obj */,
 				DA99570C22151F0F002315D0 /* AppDelegate.swift */,
 				DA99570E22151F0F002315D0 /* ViewController.swift */,
 				DA99571022151F0F002315D0 /* Main.storyboard */,
 				DA99571322151F11002315D0 /* Assets.xcassets */,
 				DA99571522151F11002315D0 /* LaunchScreen.storyboard */,
 				DA99571822151F11002315D0 /* Info.plist */,
-				DA99573A2215335C002315D0 /* Vertex.swift */,
-				DA99573C2217A53F002315D0 /* Model.swift */,
+				83D305B822223DA2008D5CFC /* Data Types */,
+				83043624222231520019F5BF /* Components */,
 				83083AA5221E7634003931A2 /* Entity Component System */,
+				830436232222310E0019F5BF /* Models */,
 			);
 			path = Comp8051;
 			sourceTree = "<group>";
@@ -287,8 +320,11 @@
 				DA99570F22151F0F002315D0 /* ViewController.swift in Sources */,
 				83083AA2221E75AA003931A2 /* GameObject.swift in Sources */,
 				DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */,
+				83043626222231F10019F5BF /* ModelRenderer.swift in Sources */,
 				DA99573B2215335C002315D0 /* Vertex.swift in Sources */,
 				DA99573D2217A53F002315D0 /* Model.swift in Sources */,
+				83D305BA22224517008D5CFC /* Transform.swift in Sources */,
+				83D305BC22224524008D5CFC /* Vector3.swift in Sources */,
 				83083A9E221E75A3003931A2 /* Component.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

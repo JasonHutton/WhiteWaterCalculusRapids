@@ -34,6 +34,7 @@ class Component {
         outside of the GameObject or Component base classes!
     */
     
+    
     // called every frame
     func update(deltaTime : Float) {}
     

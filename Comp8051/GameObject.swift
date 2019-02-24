@@ -9,7 +9,7 @@
 class GameObject {
     
     // root game object in hierarchy
-    static let root = GameObject(tag: "Root", parent: nil)
+    static let root = GameObject(tag: "Root")
     
     // Unique identifier tag string
     private(set) var tag : String
@@ -20,6 +20,8 @@ class GameObject {
     // whether the game object is activated
     var active : Bool = true
     
+    var transform = Transform()
+    
     // collection of components
     private var components : [Component] = []
     
@@ -27,12 +29,9 @@ class GameObject {
     private var children : [GameObject] = []
     
     // Initialization, adds itself to parent's collection
-    init (tag : String, parent: GameObject?) {
+    init (tag : String) {
         
         self.tag = tag
-        self.parent = parent
-        
-        parent?.addChild(component: self)
     }
     
     // Update this object by updating all components
@@ -110,9 +109,10 @@ class GameObject {
     /* Children Functions */
     
     // Add a game object to the list of game objects to be updated
-    func addChild(component : GameObject) {
+    func addChild(gameObject : GameObject) {
         
-        children.append(component)
+        children.append(gameObject)
+        gameObject.parent = self
     }
     
     // Remove a game object, if it exists
