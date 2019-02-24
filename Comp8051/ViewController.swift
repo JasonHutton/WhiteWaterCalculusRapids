@@ -20,8 +20,6 @@ class ViewController: GLKViewController {
     
     private var setupComplete = false
     
-    private var rotation: Float = 0.0
-    
     private var context: EAGLContext?
     
     private var ebo = GLuint()
@@ -53,6 +51,7 @@ class ViewController: GLKViewController {
         // for now, add a game object's model renderer last.
         let sphereObj = GameObject(tag: "Sphere")
         sphereObj.transform.position = Vector3(x: 0, y: 2, z: -6)
+        sphereObj.addComponent(component: SphereRotate())
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere"))
         GameObject.root.addChild(gameObject: sphereObj)
         

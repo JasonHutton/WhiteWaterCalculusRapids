@@ -21,21 +21,21 @@ class ModelRenderer : Component {
         
         if let gameObject = self.gameObject {
             var transformation = GLKMatrix4Identity
-            // scale
-            
-            transformation = GLKMatrix4Scale(transformation,
-                                             gameObject.transform.scale.x,
-                                             gameObject.transform.scale.y,
-                                             gameObject.transform.scale.z)
-            // rotation
-            transformation = GLKMatrix4RotateX(transformation, gameObject.transform.rotation.x)
-            transformation = GLKMatrix4RotateY(transformation, gameObject.transform.rotation.y)
-            transformation = GLKMatrix4RotateZ(transformation, gameObject.transform.rotation.z)
             // translation
             transformation = GLKMatrix4Translate(transformation,
                                                  gameObject.transform.position.x,
                                                  gameObject.transform.position.y,
                                                  gameObject.transform.position.z)
+            // rotation
+            transformation = GLKMatrix4RotateX(transformation, gameObject.transform.rotation.x)
+            transformation = GLKMatrix4RotateY(transformation, gameObject.transform.rotation.y)
+            transformation = GLKMatrix4RotateZ(transformation, gameObject.transform.rotation.z)
+            // scale
+            transformation = GLKMatrix4Scale(transformation,
+                                             gameObject.transform.scale.x,
+                                             gameObject.transform.scale.y,
+                                             gameObject.transform.scale.z)
+            
             
             model.modelViewMatrix = transformation
         }
