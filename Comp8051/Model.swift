@@ -36,8 +36,6 @@ class Model {
             
             switch separator[0] {
                 
-            case "#":
-                break // this is a comment, do nothing
             case "o":
                 break // does nothing for now
             case "v":
@@ -52,10 +50,13 @@ class Model {
                 indices.append(GLubyte(separator[1].components(separatedBy: "//")[0])!-1)
                 indices.append(GLubyte(separator[2].components(separatedBy: "//")[0])!-1)
                 indices.append(GLubyte(separator[3].components(separatedBy: "//")[0])!-1)
-            case "\n":
+            case "#":
+                break // this is a comment, do nothing
+            case "":
                 break // this is an empty line, do nothing
             default:
-                print(offset) // temp
+                // this is something weird, print it
+                print("Invalid separator '" + separator[0] + "' in model " + name + ", line " + (offset+1).description)
             }
         }
     }
