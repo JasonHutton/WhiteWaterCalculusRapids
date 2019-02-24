@@ -8,7 +8,12 @@
 
 class SphereRotate : Component {
     
+    var rotation: Float = 0
+    
     override func update(deltaTime: Float) {
+        rotation += Float.pi * deltaTime
+        rotation = rotation.truncatingRemainder(dividingBy: Float.pi * 2)
+        
         gameObject?.transform.rotation.z += 3.14 * deltaTime
     }
 }
