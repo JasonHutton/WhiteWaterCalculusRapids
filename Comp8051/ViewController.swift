@@ -114,20 +114,22 @@ class ViewController: GLKViewController {
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
-        // 1
+        // clear the scene
         glClearColor(0.85, 0.85, 0.85, 1.0)
-        // 2
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
 
+        // draw each model
         for i in 0 ..< models.count {
-            models[i].modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, -6.0)
-            if(models[i].name == "ICOSphere"){
-                models[i].modelViewMatrix = GLKMatrix4Translate(models[i].modelViewMatrix, 0.0, 2.0, 0.0)
-            } else if(models[i].name == "UnitSurface"){
-                models[i].modelViewMatrix = GLKMatrix4Translate(models[i].modelViewMatrix, 0.0, -2.0, 0.0)
-            }
+            
+            // add transformations to the effect
             effect.transform.modelviewMatrix = models[i].modelViewMatrix
             
+            // apply perspective transformation
+            let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
+            let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0), aspect, 4.0, 10.0)
+            effect.transform.projectionMatrix = projectionMatrix
+            
+            // draw the model on the scene
             effect.prepareToDraw()
             glBindVertexArrayOES(vaoList[i]);
             
@@ -161,24 +163,24 @@ class ViewController: GLKViewController {
 
 extension ViewController: GLKViewControllerDelegate {
     func glkViewControllerUpdate(_ controller: GLKViewController) {
-        // 1
-        let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
-        // 2
-        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0), aspect, 4.0, 10.0)
-        // 3
-        effect.transform.projectionMatrix = projectionMatrix
-        // 1
-        //modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, -6.0)
-        // 2
+        
+        // update rotation for the sphere
+        // this behaviour should be handled in a component
+        rotation += 90 * 1/30
+        
         for i in 0 ..< models.count {
-            rotation += 90 * Float(timeSinceLastUpdate)
-            //print(rotation)
+            
+            // this should be gotten from the entity component system, once it is ready...
+            // hardcoded for now, please please PLEASE fix this
+            var transformation = GLKMatrix4Identity
             if(models[i].name == "ICOSphere"){
-                models[i].modelViewMatrix = GLKMatrix4Rotate(models[i].modelViewMatrix, GLKMathDegreesToRadians(rotation), 0, 0, 1)
-            // 3
+                transformation = GLKMatrix4Translate(transformation, 0.0, 2.0, -6.0)
+                transformation = GLKMatrix4RotateZ(transformation, rotation)
+            } else if(models[i].name == "UnitSurface"){
+                transformation = GLKMatrix4Translate(transformation, 0.0, -2.0, -6.0)
             }
-            effect.transform.modelviewMatrix = models[i].modelViewMatrix
-            print(effect.transform.modelviewMatrix)
+            
+            models[i].modelViewMatrix = transformation
         }
         // update entity component system
         // GameObject.root.update(deltaTime: 1/30)

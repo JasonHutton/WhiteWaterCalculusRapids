@@ -32,7 +32,7 @@ class GameObject {
         self.tag = tag
         self.parent = parent
         
-        parent!.addChild(component: self)
+        parent?.addChild(component: self)
     }
     
     // Update this object by updating all components
