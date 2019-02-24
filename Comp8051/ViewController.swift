@@ -7,6 +7,7 @@
 //
 
 import GLKit
+import CoreMotion
 
 extension Array {
     func size() -> Int {
@@ -15,13 +16,16 @@ extension Array {
 }
 
 class ViewController: GLKViewController {
+    @IBOutlet weak var gravityImageView: UIImageView!
+    let motion = CMMotionManager();
     
-    private var rotation: Float = 0.0;
     private var curLocationX: Float = 0.0;
     private var curLocationY: Float = 0.0;
+    private var rotationDirection: CGFloat = 0.0;
     private var dirX: Float = 0.0;
     private var dirY: Float = 0.0;
     
+    private var rotation: Float = 0.0;
     private var context: EAGLContext?
     
    /* var Vertices = [
@@ -110,7 +114,28 @@ class ViewController: GLKViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.gravityImageView.isHidden = false;
         setupGL()
+        setupGravityDirection()
+    }
+    
+    func setupGravityDirection(){
+        if motion.isDeviceMotionAvailable {
+            motion.deviceMotionUpdateInterval = 0.01
+            motion.startDeviceMotionUpdates(to: .main) {
+                [weak self] (data, error) in
+                guard let data = data, error == nil else {
+                    return
+                }
+                
+                let rotation = atan2(data.gravity.x,
+                                     data.gravity.y) - .pi
+                
+                self?.rotationDirection = CGFloat(rotation);
+                self?.gravityImageView.transform =
+                    CGAffineTransform(rotationAngle: CGFloat(rotation));
+            }
+        }
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
@@ -156,9 +181,11 @@ extension ViewController: GLKViewControllerDelegate {
         effect.transform.projectionMatrix = projectionMatrix
         // 1
         if(true){// GOING IN A DIRECTION
-            // set direction
-            print(Float(view.bounds.size.height/2));
-            print(curLocationY*10);
+            // set direction and velocity
+            //print(Float(view.bounds.size.height/2));
+            //print(curLocationY*10);
+            
+            print(rotationDirection)
 
             curLocationX = curLocationX+0.05;
             curLocationY = curLocationY+0.07;
