@@ -33,7 +33,7 @@ class ViewController: GLKViewController {
     
     private func setupGL() {
         // 1
-        context = EAGLContext(api: .openGLES3)
+        context = EAGLContext(api: .openGLES2)
         // 2
         EAGLContext.setCurrent(context)
         
