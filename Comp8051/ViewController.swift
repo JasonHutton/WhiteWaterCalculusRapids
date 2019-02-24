@@ -50,13 +50,17 @@ class ViewController: GLKViewController {
         // TODO: currently, component order DOES MATTER. modelrenderer should always occur last!
         // for now, add a game object's model renderer last.
         let sphereObj = GameObject(tag: "Sphere")
+        // set initial position
         sphereObj.transform.position = Vector3(x: 0, y: 2, z: -6)
+        // add component to rotate the sphere (probably temporary)
         sphereObj.addComponent(component: SphereRotate())
+        // add component to translate the sphere downward (probably temporary)
         sphereObj.addComponent(component: SphereTranslate())
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere"))
         GameObject.root.addChild(gameObject: sphereObj)
         
         let surfaceObj = GameObject(tag: "Surface")
+        // set initial position
         surfaceObj.transform.position = Vector3(x: 0, y: -2, z: -6)
         surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitSurface"))
         GameObject.root.addChild(gameObject: surfaceObj)
