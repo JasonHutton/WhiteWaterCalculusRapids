@@ -52,6 +52,7 @@ class ViewController: GLKViewController {
         let sphereObj = GameObject(tag: "Sphere")
         sphereObj.transform.position = Vector3(x: 0, y: 2, z: -6)
         sphereObj.addComponent(component: SphereRotate())
+        sphereObj.addComponent(component: SphereTranslate())
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere"))
         GameObject.root.addChild(gameObject: sphereObj)
         
