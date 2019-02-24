@@ -35,16 +35,21 @@ struct Model {
             let separator = line.components(separatedBy: " ")
             
             switch separator[0] {
-                case "v":
-                    vertices.append(Vertex(x: Float(separator[1])!, y: Float(separator[2])!, z: Float(separator[3])!, r: 1, g: 1, b: 1, a: 1))
-                //case "vt":
-                //case "vn":
-                case "f":
-                    indices.append(GLubyte(separator[1].components(separatedBy: "//")[0])!-1)
-                    indices.append(GLubyte(separator[2].components(separatedBy: "//")[0])!-1)
-                    indices.append(GLubyte(separator[3].components(separatedBy: "//")[0])!-1)
-                default:
-                    print("wrong model format")
+                
+            case "#":
+                break // this is a comment, do nothing
+            case "v":
+                vertices.append(Vertex(x: Float(separator[1])!, y: Float(separator[2])!, z: Float(separator[3])!, r: 1, g: 1, b: 1, a: 1))
+            case "vt":
+                break // does nothing for now
+            case "vn":
+                break // does nothing for now
+            case "f":
+                indices.append(GLubyte(separator[1].components(separatedBy: "//")[0])!-1)
+                indices.append(GLubyte(separator[2].components(separatedBy: "//")[0])!-1)
+                indices.append(GLubyte(separator[3].components(separatedBy: "//")[0])!-1)
+            default:
+                print("wrong model format")
             }
         }
     }
