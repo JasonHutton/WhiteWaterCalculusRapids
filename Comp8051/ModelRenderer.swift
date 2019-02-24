@@ -41,4 +41,8 @@ class ModelRenderer : Component {
         }
         
     }
+    
+    override func onDestroy() {
+        // TODO: deallocate buffers or whatever, not sure how literally any part of opengl works lol
+    }
 }
