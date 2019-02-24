@@ -58,7 +58,7 @@ class ViewController: GLKViewController {
         
         let surfaceObj = GameObject(tag: "Surface")
         surfaceObj.transform.position = Vector3(x: 0, y: -2, z: -6)
-        sphereObj.addComponent(component: ModelRenderer(modelName: "UnitSurface"))
+        surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitSurface"))
         GameObject.root.addChild(gameObject: surfaceObj)
     }
     
