@@ -8,19 +8,13 @@
 
 class SphereRotate : Component {
     
-    var rotationx: Float = 0
-    var rotationy: Float = 0
-    var rotationz: Float = 0
+    var rotation: Vector3
     
     init(rotx: Float, roty: Float, rotz: Float) {
-        rotationx = rotx
-        rotationy = roty
-        rotationz = rotz
+        rotation = Vector3(x: rotz * 3.14 , y:roty * 3.14 , z:rotz * 3.14 )
     }
     
     override func update(deltaTime: Float) {
-        gameObject?.transform.rotation.x += rotationx * 3.14 * deltaTime
-        gameObject?.transform.rotation.y += rotationy * 3.14 * deltaTime
-        gameObject?.transform.rotation.z += rotationz * 3.14 * deltaTime
+        gameObject?.transform.rotation += rotation * Vector3(x: deltaTime, y: deltaTime, z: deltaTime)
     }
 }

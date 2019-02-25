@@ -175,7 +175,7 @@ class ViewController: GLKViewController {
             
             // apply perspective transformation
             let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
-            let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 2.0, 30.0)
+            let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 4.0, 10.0)
             effect.transform.projectionMatrix = projectionMatrix
             
             // draw the model on the scene
