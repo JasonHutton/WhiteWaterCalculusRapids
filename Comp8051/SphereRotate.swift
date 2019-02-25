@@ -15,6 +15,6 @@ class SphereRotate : Component {
     }
     
     override func update(deltaTime: Float) {
-        gameObject?.transform.rotation += rotation * Vector3(x: deltaTime, y: deltaTime, z: deltaTime)
+        gameObject?.transform.rotation += rotation * deltaTime
     }
 }

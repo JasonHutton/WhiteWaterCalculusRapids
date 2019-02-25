@@ -9,16 +9,13 @@
 class SphereTranslate : Component {
     
     var translation: Vector3
-    var translationx: Float = 0
-    var translationy: Float = 0
-    var translationz: Float = 0
     
     init(transx: Float, transy: Float, transz: Float) {
         translation = Vector3(x: transx, y: transy, z: transz)
     }
     
     override func update(deltaTime: Float) {
-        gameObject?.transform.position += translation * Vector3(x: deltaTime, y: deltaTime, z: deltaTime)
+        gameObject?.transform.position += translation * deltaTime
         
         // OUT OF BOUNDS WRAPAROUND
         if(gameObject!.transform.position.x*10 >= 118){
