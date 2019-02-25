@@ -15,12 +15,41 @@ class GameObject {
     private(set) var tag : String
     
     // reference to parent game object, if it exists
-    var parent : GameObject?
+    weak var parent : GameObject?
     
     // whether the game object is activated
     var active : Bool = true
     
     var transform = Transform()
+    
+    // the transform, relative to all the transforms above in the hierarchy
+    var worldTransform: Transform {
+        
+        get {
+            
+            var gameObject: GameObject? = self
+            var transform = Transform()
+            
+            while (gameObject != nil) {
+                
+                transform += gameObject!.transform
+                gameObject = gameObject!.parent
+            }
+            
+            return transform
+        }
+        
+        set {
+            
+            if let parentTransform = parent?.transform {
+                
+                self.transform = newValue - parentTransform
+            } else {
+                
+                self.transform = newValue
+            }
+        }
+    }
     
     // collection of components
     private var components : [Component] = []
@@ -51,13 +80,20 @@ class GameObject {
         }
     }
     
-    // remove references to this gameobject and allow components to clean up
+    // remove references to this gameobject and all children and allow components to clean up
     func destroy () {
         
-        parent!.removeChild(gameObject: self)
+        parent?.removeChild(gameObject: self)
+        
         for component in components {
             component.onDestroy()
         }
+        components.removeAll()
+        
+        for gameObject in children {
+            gameObject.destroy()
+        }
+        children.removeAll()
     }
     
     

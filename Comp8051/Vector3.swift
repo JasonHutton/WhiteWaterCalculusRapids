@@ -16,4 +16,49 @@ struct Vector3 {
         self.y = y
         self.z = z
     }
+    
+    // addition operator
+    static func +(left: Vector3, right: Vector3) -> Vector3 {
+        return Vector3(x: left.x + right.x, y: left.y + right.y, z: left.z + right.z)
+    }
+    
+    static func +=(left: inout Vector3, right: Vector3) {
+        left.x += right.x
+        left.y += right.y
+        left.z += right.z
+    }
+    
+    // subtraction operator
+    static func -(left: Vector3, right: Vector3) -> Vector3 {
+        return Vector3(x: left.x - right.x, y: left.y - right.y, z: left.z - right.z)
+    }
+    
+    static func -=(left: inout Vector3, right: Vector3) {
+        left.x -= right.x
+        left.y -= right.y
+        left.z -= right.z
+    }
+    
+    // multiplication operator
+    static func *(left: Vector3, right: Vector3) -> Vector3 {
+        return Vector3(x: left.x * right.x, y: left.y * right.y, z: left.z * right.z)
+    }
+    
+    static func *=(left: inout Vector3, right: Vector3) {
+        left.x *= right.x
+        left.y *= right.y
+        left.z *= right.z
+    }
+    
+    // division operator
+    static func /(left: Vector3, right: Vector3) -> Vector3 {
+        return Vector3(x: left.x / right.x, y: left.y / right.y, z: left.z / right.z)
+    }
+    
+    static func /=(left: inout Vector3, right: Vector3) {
+        left.x /= right.x
+        left.y /= right.y
+        left.z /= right.z
+    }
+    
 }

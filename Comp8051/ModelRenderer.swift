@@ -20,24 +20,26 @@ class ModelRenderer : Component {
     override func update(deltaTime: Float) {
         
         if let gameObject = self.gameObject {
-            var transformation = GLKMatrix4Identity
+            
+            let transform = gameObject.worldTransform
+            var transformationMatrix = GLKMatrix4Identity
             // translation
-            transformation = GLKMatrix4Translate(transformation,
-                                                 gameObject.transform.position.x,
-                                                 gameObject.transform.position.y,
-                                                 gameObject.transform.position.z)
-            // rotation
-            transformation = GLKMatrix4RotateX(transformation, gameObject.transform.rotation.x)
-            transformation = GLKMatrix4RotateY(transformation, gameObject.transform.rotation.y)
-            transformation = GLKMatrix4RotateZ(transformation, gameObject.transform.rotation.z)
+            transformationMatrix = GLKMatrix4Translate(transformationMatrix,
+                                                 transform.position.x,
+                                                 transform.position.y,
+                                                 transform.position.z)
+            // rotation, badly
+            transformationMatrix = GLKMatrix4RotateX(transformationMatrix, transform.rotation.x)
+            transformationMatrix = GLKMatrix4RotateY(transformationMatrix, transform.rotation.y)
+            transformationMatrix = GLKMatrix4RotateZ(transformationMatrix, transform.rotation.z)
             // scale
-            transformation = GLKMatrix4Scale(transformation,
-                                             gameObject.transform.scale.x,
-                                             gameObject.transform.scale.y,
-                                             gameObject.transform.scale.z)
+            transformationMatrix = GLKMatrix4Scale(transformationMatrix,
+                                             transform.scale.x,
+                                             transform.scale.y,
+                                             transform.scale.z)
             
             
-            model.modelViewMatrix = transformation
+            model.modelViewMatrix = transformationMatrix
         }
         
     }
@@ -45,4 +47,5 @@ class ModelRenderer : Component {
     override func onDestroy() {
         // TODO: deallocate buffers or whatever, not sure how literally any part of opengl works lol
     }
+    
 }
