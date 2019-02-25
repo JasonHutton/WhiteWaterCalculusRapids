@@ -8,12 +8,20 @@
 
 class SphereTranslate : Component {
     
-    var translation: Float = 0
+    var translationx: Float = 0
+    var translationy: Float = 0
+    var translationz: Float = 0
+    
+    init(transx: Float, transy: Float, transz: Float) {
+        translationx = transx
+        translationy = transy
+        translationz = transz
+    }
     
     override func update(deltaTime: Float) {
-        translation += deltaTime
-        
-        gameObject?.transform.position.y -= deltaTime
+        gameObject?.transform.position.x += translationx * deltaTime
+        gameObject?.transform.position.y += translationy * deltaTime
+        gameObject?.transform.position.z += translationz * deltaTime
     }
 }
 

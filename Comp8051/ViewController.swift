@@ -53,9 +53,9 @@ class ViewController: GLKViewController {
         // set initial position
         sphereObj.transform.position = Vector3(x: 0, y: 2, z: -6)
         // add component to rotate the sphere (probably temporary)
-        sphereObj.addComponent(component: SphereRotate())
+        sphereObj.addComponent(component: SphereRotate(rotx: 0.0, roty: 0.0, rotz: 1.0))
         // add component to translate the sphere downward (probably temporary)
-        sphereObj.addComponent(component: SphereTranslate())
+        sphereObj.addComponent(component: SphereTranslate(transx: 0.05, transy: 0.07, transz: 0))
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere"))
         GameObject.root.addChild(gameObject: sphereObj)
         
