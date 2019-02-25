@@ -7,6 +7,7 @@
 //
 
 import GLKit
+import CoreMotion
 
 extension Array {
     func size() -> Int {
@@ -15,6 +16,8 @@ extension Array {
 }
 
 class ViewController: GLKViewController {
+    @IBOutlet weak var gravityImageView: UIImageView!
+    let motion = CMMotionManager();
     
     static var instance: ViewController?
     
@@ -55,7 +58,7 @@ class ViewController: GLKViewController {
         // add component to rotate the sphere (probably temporary)
         sphereObj.addComponent(component: SphereRotate(rotx: 0.0, roty: 0.0, rotz: 1.0))
         // add component to translate the sphere downward (probably temporary)
-        sphereObj.addComponent(component: SphereTranslate(transx: 0.05, transy: 0.07, transz: 0))
+        sphereObj.addComponent(component: SphereTranslate(transx: 0.5, transy: 0.7, transz: 0))
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere"))
         GameObject.root.addChild(gameObject: sphereObj)
         
@@ -140,6 +143,25 @@ class ViewController: GLKViewController {
         setupGL()
     }
     
+    func setupGravityDirection(){
+        if motion.isDeviceMotionAvailable {
+            motion.deviceMotionUpdateInterval = 0.01
+            motion.startDeviceMotionUpdates(to: .main) {
+                [weak self] (data, error) in
+                guard let data = data, error == nil else {
+                    return
+                }
+                
+                let rotation = atan2(data.gravity.x,
+                                     data.gravity.y) - .pi
+                
+                //self?.rotationDirection = CGFloat(rotation);
+                self?.gravityImageView.transform =
+                    CGAffineTransform(rotationAngle: CGFloat(rotation));
+            }
+        }
+    }
+    
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         // clear the scene
         glClearColor(0.85, 0.85, 0.85, 1.0)
@@ -153,7 +175,7 @@ class ViewController: GLKViewController {
             
             // apply perspective transformation
             let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
-            let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0), aspect, 4.0, 10.0)
+            let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 2.0, 30.0)
             effect.transform.projectionMatrix = projectionMatrix
             
             // draw the model on the scene

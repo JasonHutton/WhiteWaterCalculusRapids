@@ -22,6 +22,24 @@ class SphereTranslate : Component {
         gameObject?.transform.position.x += translationx * deltaTime
         gameObject?.transform.position.y += translationy * deltaTime
         gameObject?.transform.position.z += translationz * deltaTime
+
+        // OUT OF BOUNDS WRAPAROUND
+        if(gameObject!.transform.position.x*10 >= 118){
+            gameObject!.transform.position.x = -117/10;
+            print("OUT OF BOUNDS WRAPAROUND +X");
+        }
+        if(gameObject!.transform.position.x*10 <= -118){
+            gameObject!.transform.position.x = 117/10;
+            print("OUT OF BOUNDS WRAPAROUND -X");
+        }
+        if(gameObject!.transform.position.y*10 >= 201){
+            gameObject!.transform.position.y = -200/10;
+            print("OUT OF BOUNDS WRAPAROUND +Y");
+        }
+        if(gameObject!.transform.position.y*10 <= -201){
+            gameObject!.transform.position.y = 200/10;
+            print("OUT OF BOUNDS WRAPAROUND -Y");
+        }
     }
 }
 
