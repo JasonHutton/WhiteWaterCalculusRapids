@@ -7,9 +7,16 @@
 //
 
 struct Vector3 {
+    
     var x: Float
     var y: Float
     var z: Float
+    
+    init () {
+        x = 0
+        y = 0
+        z = 0
+    }
     
     init(x: Float, y: Float, z: Float) {
         self.x = x
@@ -52,6 +59,10 @@ struct Vector3 {
     
     static func *(left: Vector3, right: Float) -> Vector3 {
         return Vector3(x: left.x * right, y: left.y * right, z: left.z * right)
+    }
+    
+    static func *(left: Float, right: Vector3) -> Vector3 {
+        return Vector3(x: right.x * left, y: right.y * left, z: right.z * left)
     }
     
     static func *=(left: inout Vector3, right: Float) {

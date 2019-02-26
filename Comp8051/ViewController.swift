@@ -57,15 +57,14 @@ class ViewController: GLKViewController {
         // set initial position
         sphereObj.transform.position = Vector3(x: 0, y: 2, z: -6)
         // add component to rotate the sphere (probably temporary)
-        sphereObj.addComponent(component: SphereRotate(rotx: 0.0, roty: 0.0, rotz: 1.0))
-        // add component to translate the sphere downward (probably temporary)
-        sphereObj.addComponent(component: SphereTranslate(transx: 0.5, transy: 0.7, transz: 0))
+        sphereObj.addComponent(component: SphereBehaviour())
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere"))
         GameObject.root.addChild(gameObject: sphereObj)
         
         let surfaceObj = GameObject(tag: "Surface")
         // set initial position
         surfaceObj.transform.position = Vector3(x: 0, y: -2, z: -6)
+        surfaceObj.transform.scale.x = 10
         surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitSurface"))
         GameObject.root.addChild(gameObject: surfaceObj)
     }
@@ -165,7 +164,7 @@ class ViewController: GLKViewController {
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         // clear the scene
-        glClearColor(0.85, 0.85, 0.85, 1.0)
+        glClearColor(0, 0, 0, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
 
         // draw each model
