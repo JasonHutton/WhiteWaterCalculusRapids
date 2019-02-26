@@ -16,6 +16,7 @@ extension Array {
 }
 
 class ViewController: GLKViewController {
+    
     @IBOutlet weak var gravityImageView: UIImageView!
     let motion = CMMotionManager();
     
