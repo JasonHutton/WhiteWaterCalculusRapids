@@ -51,11 +51,15 @@ class ViewController: GLKViewController {
         }
         
         // set up scene
+        // add camera before adding any model renderers
+        let cameraObj = GameObject(tag: "Camera")
+        cameraObj.transform.position = Vector3(x: 0, y: 0, z: 6)
+        GameObject.root.addChild(gameObject: cameraObj)
         // TODO: currently, component order DOES MATTER. modelrenderer should always occur last!
         // for now, add a game object's model renderer last.
         let sphereObj = GameObject(tag: "Sphere")
         // set initial position
-        sphereObj.transform.position = Vector3(x: 0, y: 2, z: -6)
+        sphereObj.transform.position = Vector3(x: 0, y: 2, z: 0)
         // add component to rotate the sphere (probably temporary)
         sphereObj.addComponent(component: SphereBehaviour())
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere"))
@@ -63,7 +67,7 @@ class ViewController: GLKViewController {
         
         let surfaceObj = GameObject(tag: "Surface")
         // set initial position
-        surfaceObj.transform.position = Vector3(x: 0, y: -2, z: -6)
+        surfaceObj.transform.position = Vector3(x: 0, y: -2, z: 0)
         surfaceObj.transform.scale.x = 10
         surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitSurface"))
         GameObject.root.addChild(gameObject: surfaceObj)
