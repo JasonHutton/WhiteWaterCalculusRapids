@@ -127,8 +127,8 @@ class ViewController: GLKViewController {
         
         //for model in models {
             glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER),
-                         model.indices.size(),
-                         model.indices,
+                         model.vertexIndices.size(),
+                         model.vertexIndices,
                          GLenum(GL_STATIC_DRAW))
        // }
         
@@ -164,7 +164,7 @@ class ViewController: GLKViewController {
             glBindVertexArrayOES(vaoList[i]);
             
             glDrawElements(GLenum(GL_TRIANGLES),     // 1
-                GLsizei(models[i].indices.count),   // 2
+                GLsizei(models[i].vertexIndices.count),   // 2
                 GLenum(GL_UNSIGNED_BYTE), // 3
                 nil)                      // 4
 

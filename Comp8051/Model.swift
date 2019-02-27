@@ -13,15 +13,22 @@ import Foundation
 
 class Model {
     public var vertices: [Vertex] = [] // Vertices data
-    public var indices: [GLubyte] = [] // Vertex indices for faces
+    public var faces: [Face] = [] // Faces
+    public var vertexIndices: [GLubyte] = []
+    public var vertexTextureIndices: [GLubyte] = []
+    public var vertexNormalIndices: [GLubyte] = []
     public var materials: [String] = [] // Material names
     private var currentMaterial: String // Current material name
+    private var currentGroup: String // Current group name
+    private var currentObject: String // Current object name
     public var name : String
     public var modelViewMatrix : GLKMatrix4
     
     public init(modelName: String){
         name = modelName
         currentMaterial = "" // Set to default material
+        currentGroup = "" // Set to default group
+        currentObject = "" // Set to default object
         
         // set mvm to 0 matrix
         modelViewMatrix = GLKMatrix4Identity
@@ -77,9 +84,23 @@ class Model {
                 break // does nothing for now
             case "f":
                 // for the 3 indices, grab the first charcter, e.g. for f 1//2//3 4//5//6 7//8//9, indices would be 1, 4, and 7
-                indices.append(GLubyte(separator[1].components(separatedBy: "//")[0])!-1) // Vertex Index
-                indices.append(GLubyte(separator[2].components(separatedBy: "//")[0])!-1) // Vertex Texture Coordinate Index
-                indices.append(GLubyte(separator[3].components(separatedBy: "//")[0])!-1) // Vertex Normal Index
+                var face : Face = Face(objectName: currentObject, groupName: currentGroup, materialName: currentMaterial)
+                
+                for vert in 1...3 {
+                    let vertexIndex = GLubyte(separator[vert].components(separatedBy: "//")[0])!-1
+                    let vertexTextureIndex = GLubyte(separator[vert].components(separatedBy: "//")[1])!-1
+                    let vertexNormalIndex = GLubyte(separator[vert].components(separatedBy: "//")[2])!-1
+                    
+                    vertexIndices.append(vertexIndex)
+                    vertexTextureIndices.append(vertexTextureIndex)
+                    vertexNormalIndices.append(vertexNormalIndex)
+                    
+                    // There's probably a better way to do this?
+                    //face.vertexIndices.append(vertexIndex)
+                    //face.rtexTextureIndices.append(vertexTextureIndex)
+                    //face.vertexNormalIndices.append(vertexNormalIndex)
+                }
+                break
             case "#":
                 break // this is a comment, do nothing
             case "":
@@ -89,5 +110,32 @@ class Model {
                 print("Invalid separator '" + separator[0] + "' in model " + name + ", line " + (offset+1).description)
             }
         }
+    }
+}
+
+class Face {
+    public var group: String
+    public var object: String
+    public var material: String
+    //public var vertexIndices: [GLubyte] = []
+    //public var vertexTextureIndices: [GLubyte] = []
+    //public var vertexNormalIndices: [GLubyte] = []
+    
+    init(objectName: String, groupName: String, materialName: String) {
+        object = objectName
+        group = groupName
+        material = materialName
+    }
+}
+
+class VertexIndexData {
+    public var index: GLubyte
+    public var textureIndex: GLubyte
+    public var normalIndex: GLubyte
+    
+    init(vertexIndex: GLubyte, vertexTextureIndex: GLubyte, vertexNormalIndex: GLubyte) {
+        index = vertexIndex
+        textureIndex = vertexTextureIndex
+        normalIndex = vertexNormalIndex
     }
 }
