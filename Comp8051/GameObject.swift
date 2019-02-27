@@ -41,7 +41,7 @@ class GameObject {
         
         set {
             
-            if let parentTransform = parent?.transform {
+            if let parentTransform = parent?.worldTransform {
                 
                 self.transform = newValue - parentTransform
             } else {
