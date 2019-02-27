@@ -90,7 +90,7 @@ class Material {
             case "":
                 break // this is an empty line, do nothing
             default:
-                // this is something that shouldn't be in an obj file, print it
+                // this is something that shouldn't be in an mtl file, print it
                 print("Invalid separator '" + separator[0] + "' in material " + name + ", line " + (offset+1).description)
             }
         }
