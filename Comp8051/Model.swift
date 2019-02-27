@@ -46,20 +46,26 @@ class Model {
             switch separator[0] {
                 
             case "o":
+                // Object name
+                break; // does nothing for now
+            case "g":
+                // Polygon group name
                 break // does nothing for now
             case "v":
                 vertices.append(Vertex(x: Float(separator[1])!, y: Float(separator[2])!, z: Float(separator[3])!, r: 1, g: 1, b: 1, a: 1))
             case "vt":
+                // Vertex Texture Coordinates (u, [v ,w])
                 break // does nothing for now
             case "vn":
+                // Vertex Normals (x, y, z) May not be unit vectors.
                 break // does nothing for now
             case "s":
                 break // does nothing for now
             case "f":
                 // for the 3 indices, grab the first charcter, e.g. for f 1//2//3 4//5//6 7//8//9, indices would be 1, 4, and 7
-                indices.append(GLubyte(separator[1].components(separatedBy: "//")[0])!-1)
-                indices.append(GLubyte(separator[2].components(separatedBy: "//")[0])!-1)
-                indices.append(GLubyte(separator[3].components(separatedBy: "//")[0])!-1)
+                indices.append(GLubyte(separator[1].components(separatedBy: "//")[0])!-1) // Vertex Index
+                indices.append(GLubyte(separator[2].components(separatedBy: "//")[0])!-1) // Vertex Texture Coordinate Index
+                indices.append(GLubyte(separator[3].components(separatedBy: "//")[0])!-1) // Vertex Normal Index
             case "#":
                 break // this is a comment, do nothing
             case "":
