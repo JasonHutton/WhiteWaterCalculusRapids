@@ -12,13 +12,16 @@ import GLKit
 import Foundation
 
 class Model {
-    public var vertices: [Vertex] = []
-    public var indices: [GLubyte] = []
+    public var vertices: [Vertex] = [] // Vertices data
+    public var indices: [GLubyte] = [] // Vertex indices for faces
+    public var materials: [String] = [] // Material names
+    private var currentMaterial: String // Current material name
     public var name : String
     public var modelViewMatrix : GLKMatrix4
     
     public init(modelName: String){
         name = modelName
+        currentMaterial = "" // Set to default material
         
         // set mvm to 0 matrix
         modelViewMatrix = GLKMatrix4Identity
@@ -55,10 +58,12 @@ class Model {
                 break // does nothing for now
             case "mtllib":
                 // External material file name
-                break // does nothing for now
+                materials.append(separator[1])
+                break
             case "usemtl":
                 // Specify material name to be used for following elements
-                break // does nothing for now
+                currentMaterial = separator[1]
+                break
             case "v":
                 vertices.append(Vertex(x: Float(separator[1])!, y: Float(separator[2])!, z: Float(separator[3])!, r: 1, g: 1, b: 1, a: 1))
             case "vt":
