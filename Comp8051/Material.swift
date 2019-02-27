@@ -1,30 +1,26 @@
 //
-//  Model.swift
+//  Material.swift
 //  Comp8051
 //
-//  Created by Paul on 2019-02-15.
+//  Created by Jason Hutton on 2019-02-27.
 //  Copyright © 2019 Paul. All rights reserved.
 //
 
-// Format specification: http://paulbourke.net/dataformats/obj/
+// Format specification: http://paulbourke.net/dataformats/mtl/
 
 import GLKit
 import Foundation
 
-class Model {
+class Material {
     public var vertices: [Vertex] = []
     public var indices: [GLubyte] = []
     public var name : String
-    public var modelViewMatrix : GLKMatrix4
     
-    public init(modelName: String){
-        name = modelName
-        
-        // set mvm to 0 matrix
-        modelViewMatrix = GLKMatrix4Identity
-        
+    public init(materialName: String){
+        name = materialName
+      
         // get the full path for the model file
-        let path = Bundle.main.path(forResource: modelName, ofType: "obj")
+        let path = Bundle.main.path(forResource: materialName, ofType: "mtl")
         
         // get the file using the path
         let file: FileHandle? = FileHandle(forReadingAtPath: path!)
@@ -47,42 +43,57 @@ class Model {
             // switch statement for the first charcter in the line
             switch separator[0] {
                 
-            case "o":
-                // Object name
+            case "newmtl":
+                // Name the material
                 break // does nothing for now
-            case "g":
-                // Polygon group name
+            case "Ka":
+                // Ambient Color 0.0-1.0
                 break // does nothing for now
-            case "mtllib":
-                // External material file name
+            case "Kd":
+                // Diffuse Color 0.0-1.0
                 break // does nothing for now
-            case "usemtl":
-                // Specify material name to be used for following elements
+            case "Ks":
+                // Specular Color 0.0-1.0
                 break // does nothing for now
-            case "v":
-                vertices.append(Vertex(x: Float(separator[1])!, y: Float(separator[2])!, z: Float(separator[3])!, r: 1, g: 1, b: 1, a: 1))
-            case "vt":
-                // Vertex Texture Coordinates (u, [v ,w])
+            case "Ns":
+                // Specular Highlight 0-1000
                 break // does nothing for now
-            case "vn":
-                // Vertex Normals (x, y, z) May not be unit vectors.
+            case "Tr":
+                // Transparency 0.0-1.0 (0=opaque, 1=clear)
                 break // does nothing for now
-            case "s":
-                // Smooth shading across polygons
+            case "d":
+                // "Dissolve" Just inverted transparency in some formats. 0=clear, 1=opaque
                 break // does nothing for now
-            case "f":
-                // for the 3 indices, grab the first charcter, e.g. for f 1//2//3 4//5//6 7//8//9, indices would be 1, 4, and 7
-                indices.append(GLubyte(separator[1].components(separatedBy: "//")[0])!-1) // Vertex Index
-                indices.append(GLubyte(separator[2].components(separatedBy: "//")[0])!-1) // Vertex Texture Coordinate Index
-                indices.append(GLubyte(separator[3].components(separatedBy: "//")[0])!-1) // Vertex Normal Index
+            case "map_Ka":
+                // Ambient texture map
+                break // does nothing for now
+            case "map_Kd":
+                // Diffuse texture map
+                break // does nothing for now
+            case "map_Ks":
+                // Specular texture map
+                break // does nothing for now
+            case "map_Ns":
+                // Specular Highlight texture map
+                break // does nothing for now
+            case "map_d":
+                // Alpha texture map
+                break // does nothing  for now
+            case "map_bump":
+                // Bump map
+                break // does nothing for now
+            case "illum":
+                // Illumination model
+                break
             case "#":
                 break // this is a comment, do nothing
             case "":
                 break // this is an empty line, do nothing
             default:
                 // this is something that shouldn't be in an obj file, print it
-                print("Invalid separator '" + separator[0] + "' in model " + name + ", line " + (offset+1).description)
+                print("Invalid separator '" + separator[0] + "' in material " + name + ", line " + (offset+1).description)
             }
         }
     }
 }
+
