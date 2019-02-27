@@ -11,9 +11,9 @@
 		83083A9E221E75A3003931A2 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83083A9D221E75A3003931A2 /* Component.swift */; };
 		83083AA2221E75AA003931A2 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83083AA1221E75AA003931A2 /* GameObject.swift */; };
 		830845A02224C40100B69A4C /* SphereBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8308459F2224C40100B69A4C /* SphereBehaviour.swift */; };
+		830A029022264B050028E531 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A028F22264B050028E531 /* Input.swift */; };
 		83D305BA22224517008D5CFC /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305B922224517008D5CFC /* Transform.swift */; };
 		83D305BC22224524008D5CFC /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305BB22224524008D5CFC /* Vector3.swift */; };
-		83D305BE22225683008D5CFC /* SphereRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305BD22225683008D5CFC /* SphereRotate.swift */; };
 		DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570C22151F0F002315D0 /* AppDelegate.swift */; };
 		DA99570F22151F0F002315D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570E22151F0F002315D0 /* ViewController.swift */; };
 		DA99571222151F0F002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA99571022151F0F002315D0 /* Main.storyboard */; };
@@ -25,7 +25,6 @@
 		DA99573D2217A53F002315D0 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99573C2217A53F002315D0 /* Model.swift */; };
 		DA995740221BAD08002315D0 /* ICOSphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = DA99573E221BAD08002315D0 /* ICOSphere.obj */; };
 		DA995743221E275A002315D0 /* UnitSurface.obj in Resources */ = {isa = PBXBuildFile; fileRef = DA995742221E275A002315D0 /* UnitSurface.obj */; };
-		DA99574522228102002315D0 /* SphereTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99574422228102002315D0 /* SphereTranslate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +49,9 @@
 		83083A9D221E75A3003931A2 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		83083AA1221E75AA003931A2 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		8308459F2224C40100B69A4C /* SphereBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereBehaviour.swift; sourceTree = "<group>"; };
+		830A028F22264B050028E531 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		83D305B922224517008D5CFC /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		83D305BB22224524008D5CFC /* Vector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
-		83D305BD22225683008D5CFC /* SphereRotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereRotate.swift; sourceTree = "<group>"; };
 		DA99570922151F0F002315D0 /* Comp8051.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA99570C22151F0F002315D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA99570E22151F0F002315D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +69,6 @@
 		DA99573C2217A53F002315D0 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DA99573E221BAD08002315D0 /* ICOSphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ICOSphere.obj; sourceTree = "<group>"; };
 		DA995742221E275A002315D0 /* UnitSurface.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitSurface.obj; sourceTree = "<group>"; };
-		DA99574422228102002315D0 /* SphereTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereTranslate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				83043625222231F10019F5BF /* ModelRenderer.swift */,
-				83D305BD22225683008D5CFC /* SphereRotate.swift */,
-				DA99574422228102002315D0 /* SphereTranslate.swift */,
 				8308459F2224C40100B69A4C /* SphereBehaviour.swift */,
 			);
 			name = Components;
@@ -125,6 +121,14 @@
 				83083AA1221E75AA003931A2 /* GameObject.swift */,
 			);
 			name = "Entity Component System";
+			sourceTree = "<group>";
+		};
+		830A028E22264AE50028E531 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				830A028F22264B050028E531 /* Input.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		83D305B822223DA2008D5CFC /* Data Types */ = {
@@ -167,6 +171,7 @@
 				DA99571322151F11002315D0 /* Assets.xcassets */,
 				DA99571522151F11002315D0 /* LaunchScreen.storyboard */,
 				DA99571822151F11002315D0 /* Info.plist */,
+				830A028E22264AE50028E531 /* Utilities */,
 				83D305B822223DA2008D5CFC /* Data Types */,
 				83043624222231520019F5BF /* Components */,
 				83083AA5221E7634003931A2 /* Entity Component System */,
@@ -332,11 +337,10 @@
 				83043626222231F10019F5BF /* ModelRenderer.swift in Sources */,
 				830845A02224C40100B69A4C /* SphereBehaviour.swift in Sources */,
 				DA99573B2215335C002315D0 /* Vertex.swift in Sources */,
-				DA99574522228102002315D0 /* SphereTranslate.swift in Sources */,
 				DA99573D2217A53F002315D0 /* Model.swift in Sources */,
 				83D305BA22224517008D5CFC /* Transform.swift in Sources */,
-				83D305BE22225683008D5CFC /* SphereRotate.swift in Sources */,
 				83D305BC22224524008D5CFC /* Vector3.swift in Sources */,
+				830A029022264B050028E531 /* Input.swift in Sources */,
 				83083A9E221E75A3003931A2 /* Component.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,21 +9,39 @@
 class SphereBehaviour : Component {
     
     var velocity = Vector3()
-    var gravity = Vector3(x: 0, y: -9.81, z: 0)
+    var g: Float = 9.81
     let stoppingPoint: Float = -2 + 0.5 + 0.05
+    // sort-of arbitrary value, based of radius of sphere and where edge of platform is
     
     override func update(deltaTime: Float) {
         
-        if var pos = gameObject?.worldTransform.position {
+        if var transform = gameObject?.worldTransform {
             
-            pos += velocity * deltaTime + 1/2 * gravity * deltaTime * deltaTime
+            // handle the ball's position
+            let gravity = g * Input.gravity
+            
+            transform.position += velocity * deltaTime + 1/2 * gravity * deltaTime * deltaTime
             velocity += gravity * deltaTime
             
-            if pos.y < stoppingPoint {
-                pos.y = stoppingPoint
+            // stop moving the ball down if it's at the point where it should collide with the platform
+            if transform.position.y <= stoppingPoint {
+                transform.position.y = stoppingPoint
+                velocity.y = 0
             }
             
-            gameObject!.transform.position = pos
+            // and let's also just clamp the ball's position to something somewhat reasonable, so it doesn't get lost :)
+            if transform.position.magnitude2D > 10 {
+                transform.position.clampMagnitude2D(max: 10)
+                velocity.x = 0
+                velocity.y = 0
+            }
+            
+            // handle the ball's rotation, in a dumb easy way
+            transform.rotation.z = -transform.position.x
+            
+            // assign
+            gameObject!.transform.position = transform.position
+            gameObject!.transform.rotation = transform.rotation
             
         }
     }

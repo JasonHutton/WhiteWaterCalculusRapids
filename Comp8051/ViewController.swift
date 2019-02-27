@@ -17,9 +17,6 @@ extension Array {
 
 class ViewController: GLKViewController {
     
-    @IBOutlet weak var gravityImageView: UIImageView!
-    let motion = CMMotionManager();
-    
     static var instance: ViewController?
     
     private var setupComplete = false
@@ -36,6 +33,9 @@ class ViewController: GLKViewController {
     var models : [Model] = []
     
     private func setupGL() {
+        
+        Input.start()
+        
         ViewController.instance = self
         
         // 1
@@ -141,25 +141,6 @@ class ViewController: GLKViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGL()
-    }
-    
-    func setupGravityDirection(){
-        if motion.isDeviceMotionAvailable {
-            motion.deviceMotionUpdateInterval = 0.01
-            motion.startDeviceMotionUpdates(to: .main) {
-                [weak self] (data, error) in
-                guard let data = data, error == nil else {
-                    return
-                }
-                
-                let rotation = atan2(data.gravity.x,
-                                     data.gravity.y) - .pi
-                
-                //self?.rotationDirection = CGFloat(rotation);
-                self?.gravityImageView.transform =
-                    CGAffineTransform(rotationAngle: CGFloat(rotation));
-            }
-        }
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {

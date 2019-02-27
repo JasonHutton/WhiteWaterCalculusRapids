@@ -12,6 +12,9 @@ struct Vector3 {
     var y: Float
     var z: Float
     
+    
+    /* INITIALIZERS */
+    
     init () {
         x = 0
         y = 0
@@ -24,7 +27,61 @@ struct Vector3 {
         self.z = z
     }
     
-    // addition operator
+    
+    /* PROPERTIES */
+    
+    var magnitude: Float {
+        get {
+            return (x * x + y * y + z * z).squareRoot()
+        }
+    }
+    
+    var magnitude2D: Float {
+        get {
+            return (x * x + y * y).squareRoot()
+        }
+    }
+    
+    var normalized: Vector3 {
+        get {
+            let m = magnitude
+            return Vector3(x: x / m, y: y / m, z: z / m)
+        }
+    }
+    
+    var normalized2D: Vector3 {
+        get {
+            let m = magnitude2D
+            return Vector3(x: x / m, y: y / m, z: z)
+        }
+    }
+    
+    var description: String {
+        get {
+            return "(" + x.description + ", " + y.description + ", " + z.description + ")"
+        }
+    }
+    
+    
+    /* FUNCTIONS */
+    
+    mutating func clampMagnitude (max: Float) {
+        let m = max / magnitude
+        x *= m
+        y *= m
+        z *= m
+    }
+    
+    mutating func clampMagnitude2D (max: Float) {
+        let m = max / magnitude2D
+        x *= m
+        y *= m
+    }
+    
+    
+    /* OPERATORS */
+    
+    // addition operators
     static func +(left: Vector3, right: Vector3) -> Vector3 {
         return Vector3(x: left.x + right.x, y: left.y + right.y, z: left.z + right.z)
     }
@@ -35,7 +92,7 @@ struct Vector3 {
         left.z += right.z
     }
     
-    // subtraction operator
+    // subtraction operators
     static func -(left: Vector3, right: Vector3) -> Vector3 {
         return Vector3(x: left.x - right.x, y: left.y - right.y, z: left.z - right.z)
     }
@@ -46,7 +103,7 @@ struct Vector3 {
         left.z -= right.z
     }
     
-    // multiplication operator
+    // multiplication operators
     static func *(left: Vector3, right: Vector3) -> Vector3 {
         return Vector3(x: left.x * right.x, y: left.y * right.y, z: left.z * right.z)
     }
@@ -71,7 +128,7 @@ struct Vector3 {
         left.z *= right
     }
     
-    // division operator
+    // division operators
     static func /(left: Vector3, right: Vector3) -> Vector3 {
         return Vector3(x: left.x / right.x, y: left.y / right.y, z: left.z / right.z)
     }
@@ -80,6 +137,16 @@ struct Vector3 {
         left.x /= right.x
         left.y /= right.y
         left.z /= right.z
+    }
+    
+    static func /(left: Vector3, right: Float) -> Vector3 {
+        return Vector3(x: left.x / right, y: left.y / right, z: left.z / right)
+    }
+    
+    static func /=(left: inout Vector3, right: Float) {
+        left.x /= right
+        left.y /= right
+        left.z /= right
     }
     
 }
