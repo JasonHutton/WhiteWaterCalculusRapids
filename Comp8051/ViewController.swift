@@ -16,39 +16,28 @@ extension Array {
 }
 
 class ViewController: GLKViewController {
-    @IBOutlet weak var gravityImageView: UIImageView!
-    let motion = CMMotionManager();
     
-    private var curLocationX: Float = 0.0;
-    private var curLocationY: Float = 0.0;
-    private var rotationDirection: CGFloat = 0.0;
-    private var dirX: Float = 0.0;
-    private var dirY: Float = 0.0;
+    static var instance: ViewController?
     
-    private var rotation: Float = 0.0;
+    private var setupComplete = false
+    
     private var context: EAGLContext?
-    
-   /* var Vertices = [
-        Vertex(x:  1, y: -1, z: 0, r: 1, g: 0, b: 0, a: 1),
-        Vertex(x:  1, y:  1, z: 0, r: 0, g: 1, b: 0, a: 1),
-        Vertex(x: -1, y:  1, z: 0, r: 0, g: 0, b: 1, a: 1),
-        Vertex(x: -1, y: -1, z: 0, r: 0, g: 0, b: 0, a: 1),
-        ]*/
     
     private var ebo = GLuint()
     private var vbo = GLuint()
-    private var vao = GLuint()
     
-    /*var Indices: [GLubyte] = [
-        0, 1, 2,
-        2, 3, 0
-    ]*/
+    private var vaoList: [GLuint] = []
 
     private var effect = GLKBaseEffect()
     
-    let sphere = Model(modelPath: "ICOSphere")
+    var models : [Model] = []
     
     private func setupGL() {
+        
+        Input.start()
+        
+        ViewController.instance = self
+        
         // 1
         context = EAGLContext(api: .openGLES2)
         // 2
@@ -61,6 +50,38 @@ class ViewController: GLKViewController {
             delegate = self
         }
         
+        // set up scene
+        // add camera before adding any model renderers
+        let cameraObj = GameObject(tag: "Camera")
+        cameraObj.transform.position = Vector3(x: 0, y: 0, z: 6)
+        GameObject.root.addChild(gameObject: cameraObj)
+        // TODO: currently, component order DOES MATTER. modelrenderer should always occur last!
+        // for now, add a game object's model renderer last.
+        let sphereObj = GameObject(tag: "Sphere")
+        // set initial position
+        sphereObj.transform.position = Vector3(x: 0, y: 2, z: 0)
+        // add component to rotate the sphere (probably temporary)
+        sphereObj.addComponent(component: SphereBehaviour())
+        sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere"))
+        GameObject.root.addChild(gameObject: sphereObj)
+        
+        let surfaceObj = GameObject(tag: "Surface")
+        // set initial position
+        surfaceObj.transform.position = Vector3(x: 0, y: -2, z: 0)
+        surfaceObj.transform.scale.x = 10
+        surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitSurface"))
+        GameObject.root.addChild(gameObject: surfaceObj)
+    }
+    
+    
+    func addModel ( model: inout Model)
+    {
+        models.append(model)
+        setupModel(model: model)
+    }
+    
+    private func setupModel (model: Model) {
+        
         // 1
         let vertexAttribColor = GLuint(GLKVertexAttrib.color.rawValue)
         // 2
@@ -72,6 +93,8 @@ class ViewController: GLKViewController {
         // 5
         let colorOffsetPointer = UnsafeRawPointer(bitPattern: colorOffset)
         
+        var vao = GLuint()
+
         // 1
         glGenVertexArraysOES(1, &vao)
         // 2
@@ -79,11 +102,14 @@ class ViewController: GLKViewController {
         
         glGenBuffers(1, &vbo)
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), vbo)
-        glBufferData(GLenum(GL_ARRAY_BUFFER), // 1
-            sphere.vertices.size(),         // 2
-            sphere.vertices,                // 3
-            GLenum(GL_STATIC_DRAW))  // 4
         
+        //for model in models {
+            glBufferData(GLenum(GL_ARRAY_BUFFER), // 1
+                model.vertices.size(),         // 2
+                model.vertices,                // 3
+                GLenum(GL_STATIC_DRAW))  // 4
+        //}
+
         glEnableVertexAttribArray(vertexAttribPosition)
         glVertexAttribPointer(vertexAttribPosition,       // 1
             3,                          // 2
@@ -102,62 +128,60 @@ class ViewController: GLKViewController {
         
         glGenBuffers(1, &ebo)
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), ebo)
-        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER),
-                     sphere.indices.size(),
-                     sphere.indices,
-                     GLenum(GL_STATIC_DRAW))
+        
+        //for model in models {
+            glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER),
+                         model.indices.size(),
+                         model.indices,
+                         GLenum(GL_STATIC_DRAW))
+       // }
         
         glBindVertexArrayOES(0)
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
+        vaoList.append(vao)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.gravityImageView.isHidden = false;
         setupGL()
-        setupGravityDirection()
-    }
-    
-    func setupGravityDirection(){
-        if motion.isDeviceMotionAvailable {
-            motion.deviceMotionUpdateInterval = 0.01
-            motion.startDeviceMotionUpdates(to: .main) {
-                [weak self] (data, error) in
-                guard let data = data, error == nil else {
-                    return
-                }
-                
-                let rotation = atan2(data.gravity.x,
-                                     data.gravity.y) - .pi
-                
-                self?.rotationDirection = CGFloat(rotation);
-                self?.gravityImageView.transform =
-                    CGAffineTransform(rotationAngle: CGFloat(rotation));
-            }
-        }
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
-        // 1
-        glClearColor(0.85, 0.85, 0.85, 1.0)
-        // 2
+        // clear the scene
+        glClearColor(0, 0, 0, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
-        
-        effect.prepareToDraw()
-        
-        glBindVertexArrayOES(vao);
-        glDrawElements(GLenum(GL_TRIANGLES),     // 1
-            GLsizei(sphere.indices.count),   // 2
-            GLenum(GL_UNSIGNED_BYTE), // 3
-            nil)                      // 4
-        glBindVertexArrayOES(0)
+
+        // draw each model
+        for i in 0 ..< models.count {
+            
+            // add transformations to the effect
+            effect.transform.modelviewMatrix = models[i].modelViewMatrix
+            
+            // apply perspective transformation
+            let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
+            let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 4.0, 10.0)
+            effect.transform.projectionMatrix = projectionMatrix
+            
+            // draw the model on the scene
+            effect.prepareToDraw()
+            glBindVertexArrayOES(vaoList[i]);
+            
+            glDrawElements(GLenum(GL_TRIANGLES),     // 1
+                GLsizei(models[i].indices.count),   // 2
+                GLenum(GL_UNSIGNED_BYTE), // 3
+                nil)                      // 4
+
+            glBindVertexArrayOES(0)
+        }
     }
     
     private func tearDownGL() {
         EAGLContext.setCurrent(context)
         
-        glDeleteBuffers(1, &vao)
+        for var vao in vaoList {
+            glDeleteBuffers(1, &vao)
+        }
         glDeleteBuffers(1, &vbo)
         glDeleteBuffers(1, &ebo)
         
@@ -173,47 +197,9 @@ class ViewController: GLKViewController {
 
 extension ViewController: GLKViewControllerDelegate {
     func glkViewControllerUpdate(_ controller: GLKViewController) {
-        // 1
-        let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
-        // 2
-        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 2.0, 30.0)
-        // 3
-        effect.transform.projectionMatrix = projectionMatrix
-        // 1
-        if(true){// GOING IN A DIRECTION
-            // set direction and velocity
-            //print(Float(view.bounds.size.height/2));
-            //print(curLocationY*10);
-            
-            print(rotationDirection)
 
-            curLocationX = curLocationX+0.05;
-            curLocationY = curLocationY+0.07;
-        }
-        // OUT OF BOUNDS WRAPAROUND
-        if(curLocationX*10 >= 118){
-            curLocationX = -117/10;
-            print("OUT OF BOUNDS WRAPAROUND +X");
-        }
-        if(curLocationX*10 <= -118){
-            curLocationX = 117/10;
-            print("OUT OF BOUNDS WRAPAROUND -X");
-        }
-        if(curLocationY*10 >= 201){
-            curLocationY = -200/10;
-            print("OUT OF BOUNDS WRAPAROUND +Y");
-        }
-        if(curLocationY*10 <= -201){
-            curLocationY = 200/10;
-            print("OUT OF BOUNDS WRAPAROUND -Y");
-        }
-        
-        var modelViewMatrix = GLKMatrix4MakeTranslation(curLocationX, curLocationY, -30)
-        // 2
-        rotation += 90 * Float(timeSinceLastUpdate)
-        modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, GLKMathDegreesToRadians(rotation), 1, 1, 0)
-        // 3
-        effect.transform.modelviewMatrix = modelViewMatrix
+        // update entity component system
+        GameObject.root.update(deltaTime: 1/30)
+        // TODO: if this is going to always be the same amount, maybe just make it a constant somewhere
     }
 }
-
