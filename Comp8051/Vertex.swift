@@ -8,6 +8,12 @@
 
 import GLKit
 
+enum VertexAttributes : GLuint {
+    case position = 0
+    case color = 1
+}
+
+
 struct Vertex {
     var x: GLfloat
     var y: GLfloat

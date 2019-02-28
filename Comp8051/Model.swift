@@ -24,6 +24,10 @@ class Model {
     public var name : String
     public var modelViewMatrix : GLKMatrix4
     
+            var vao = GLuint()
+    private var ebo = GLuint()
+    private var vbo = GLuint()
+
     public init(modelName: String){
         name = modelName
         currentMaterial = "" // Set to default material
@@ -108,6 +112,60 @@ class Model {
                 print("Invalid separator '" + separator[0] + "' in model " + name + ", line " + (offset+1).description)
             }
         }
+        
+        glGenVertexArraysOES(1, &vao) // GPU에 VertexArrayObject를 생성해서 미리 정점과 인덱스를 CPU에서 GPU로 모두 복사한다
+        glBindVertexArrayOES(vao)
+        
+        
+        glGenBuffers(GLsizei(1), &vbo)
+        glBindBuffer(GLenum(GL_ARRAY_BUFFER), vbo)
+        let count = vertices.count
+        let size =  MemoryLayout<Vertex>.size
+        glBufferData(GLenum(GL_ARRAY_BUFFER), count * size, vertices, GLenum(GL_STATIC_DRAW))
+        
+        glGenBuffers(GLsizei(1), &ebo)
+        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), ebo)
+        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), vertexIndices.count * MemoryLayout<GLubyte>.size, vertexIndices, GLenum(GL_STATIC_DRAW))
+        
+        
+        // 현재 vao가 바인딩 되어 있어서 아래 함수를 실행하면 정점과 인덱스 데이터가 모두 vao에 저장된다.
+        glEnableVertexAttribArray(VertexAttributes.position.rawValue)
+        glVertexAttribPointer(
+            VertexAttributes.position.rawValue,
+            3,
+            GLenum(GL_FLOAT),
+            GLboolean(GL_FALSE),
+            GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(0))
+        
+        
+        glEnableVertexAttribArray(VertexAttributes.color.rawValue)
+        glVertexAttribPointer(
+            VertexAttributes.color.rawValue,
+            4,
+            GLenum(GL_FLOAT),
+            GLboolean(GL_FALSE),
+            GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(3 * MemoryLayout<GLfloat>.size)) // x, y, z | r, g, b, a :: offset is 3*sizeof(GLfloat)
+        
+        // 바인딩을 끈다
+        glBindVertexArrayOES(0)
+        glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
+        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
+    }
+    func BUFFER_OFFSET(_ n: Int) -> UnsafeRawPointer? {
+        return UnsafeRawPointer(bitPattern: n)
+    }
+    
+    func render(){
+        //shader.prepareToDraw()
+        
+        glBindVertexArrayOES(vao);
+        
+        glDrawElements(GLenum(GL_TRIANGLES),     // 1
+            GLsizei(vertexIndices.count),   // 2
+            GLenum(GL_UNSIGNED_BYTE), // 3
+            nil)                      // 4
+        
+        glBindVertexArrayOES(0)
     }
 }
 
