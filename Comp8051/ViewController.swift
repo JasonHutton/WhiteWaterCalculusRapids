@@ -27,6 +27,8 @@ class ViewController: GLKViewController {
     
     var models : [Model] = []
     
+    var shader : BaseEffect!
+    
     private func setupGL() {
         
         Input.start()
@@ -44,6 +46,13 @@ class ViewController: GLKViewController {
             // 4
             delegate = self
         }
+        
+        // apply perspective transformation
+        let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
+        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 4.0, 10.0)
+        effect.transform.projectionMatrix = projectionMatrix
+        
+        self.shader = BaseEffect(vertexShader: "SimpleVertexShader.glsl", fragmentShader: "SimpleFragmentShader.glsl")
         
         // set up scene
         // add camera before adding any model renderers
@@ -92,11 +101,6 @@ class ViewController: GLKViewController {
             
             // add transformations to the effect
             effect.transform.modelviewMatrix = models[i].modelViewMatrix
-            
-            // apply perspective transformation
-            let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
-            let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 4.0, 10.0)
-            effect.transform.projectionMatrix = projectionMatrix
             
             // draw the model on the scene
             effect.prepareToDraw()
