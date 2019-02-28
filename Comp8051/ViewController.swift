@@ -50,9 +50,12 @@ class ViewController: GLKViewController {
         // apply perspective transformation
         let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
         let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 4.0, 10.0)
-        effect.transform.projectionMatrix = projectionMatrix
         
         self.shader = BaseEffect(vertexShader: "SimpleVertexShader.glsl", fragmentShader: "SimpleFragmentShader.glsl")
+        
+        shader.projectionMatrix = projectionMatrix
+        
+        effect.transform.projectionMatrix = projectionMatrix
         
         // set up scene
         // add camera before adding any model renderers
@@ -66,14 +69,14 @@ class ViewController: GLKViewController {
         sphereObj.transform.position = Vector3(x: 0, y: 2, z: 0)
         // add component to rotate the sphere (probably temporary)
         sphereObj.addComponent(component: SphereBehaviour())
-        sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere"))
+        sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere", shader: shader))
         GameObject.root.addChild(gameObject: sphereObj)
         
         let surfaceObj = GameObject(tag: "Surface")
         // set initial position
         surfaceObj.transform.position = Vector3(x: 0, y: -2, z: 0)
         surfaceObj.transform.scale.x = 10
-        surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitSurface"))
+        surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitSurface", shader: shader))
         GameObject.root.addChild(gameObject: surfaceObj)
     }
     
@@ -98,13 +101,13 @@ class ViewController: GLKViewController {
         
         // draw each model
         for i in 0 ..< models.count {
-            
+            models[i].render()
             // add transformations to the effect
             effect.transform.modelviewMatrix = models[i].modelViewMatrix
             
             // draw the model on the scene
             effect.prepareToDraw()
-            models[i].render()
+
         }
     }
     

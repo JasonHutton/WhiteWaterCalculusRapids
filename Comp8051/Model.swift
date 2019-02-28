@@ -27,9 +27,11 @@ class Model {
             var vao = GLuint()
     private var ebo = GLuint()
     private var vbo = GLuint()
-
-    public init(modelName: String){
+    var shader: BaseEffect!
+    
+    public init(modelName: String, shader: BaseEffect){
         name = modelName
+        self.shader = shader
         currentMaterial = "" // Set to default material
         currentGroup = "" // Set to default group
         currentObject = "" // Set to default object
@@ -156,7 +158,8 @@ class Model {
     }
     
     func render(){
-        //shader.prepareToDraw()
+        shader.modelViewMatrix = modelViewMatrix
+        shader.prepareToDraw()
         
         glBindVertexArrayOES(vao);
         
