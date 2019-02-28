@@ -10,7 +10,7 @@ class SphereBehaviour : Component {
     
     var velocity = Vector3()
     var g: Float = 9.81
-    let stoppingPoint: Float = -2 + 0.5 + 0.05
+    let stoppingPoint: Float = -2 + 1 + 0.05
     // sort-of arbitrary value, based of radius of sphere and where edge of platform is
     
     override func update(deltaTime: Float) {

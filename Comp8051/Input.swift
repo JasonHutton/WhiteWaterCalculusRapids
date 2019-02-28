@@ -38,6 +38,7 @@ class Input {
             }
         } else {
             print("Error: Device motion not available.")
+            Input.gravity = Vector3(x:0, y: -1, z: 0)
         }
     }
     
