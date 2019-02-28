@@ -55,7 +55,7 @@ class ViewController: GLKViewController {
         
         shader.projectionMatrix = projectionMatrix
         
-        effect.transform.projectionMatrix = projectionMatrix
+        //effect.transform.projectionMatrix = projectionMatrix
         
         // set up scene
         // add camera before adding any model renderers
@@ -103,10 +103,10 @@ class ViewController: GLKViewController {
         for i in 0 ..< models.count {
             models[i].render()
             // add transformations to the effect
-            effect.transform.modelviewMatrix = models[i].modelViewMatrix
+            //effect.transform.modelviewMatrix = models[i].modelViewMatrix
             
             // draw the model on the scene
-            effect.prepareToDraw()
+            //effect.prepareToDraw()
 
         }
     }
