@@ -12,12 +12,12 @@ import GLKit
 import Foundation
 
 class Material {
-    public var vertices: [Vertex] = []
-    public var indices: [GLubyte] = []
     public var name : String
+    public var mName : String // Not sure why we have 2 names yet. Same for Models.
     
     public init(materialName: String){
         name = materialName
+        mName = name // There's probably a better way to do this. This can be changed by the file though.
       
         // get the full path for the model file
         let path = Bundle.main.path(forResource: materialName, ofType: "mtl")
@@ -45,6 +45,7 @@ class Material {
                 
             case "newmtl":
                 // Name the material
+                mName = separator[1]
                 break // does nothing for now
             case "Ka":
                 // Ambient Color 0.0-1.0

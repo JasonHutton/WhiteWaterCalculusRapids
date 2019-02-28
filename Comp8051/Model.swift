@@ -82,23 +82,21 @@ class Model {
             case "s":
                 // Smooth shading across polygons
                 break // does nothing for now
-            case "f":
-                // for the 3 indices, grab the first charcter, e.g. for f 1//2//3 4//5//6 7//8//9, indices would be 1, 4, and 7
-                var face : Face = Face(objectName: currentObject, groupName: currentGroup, materialName: currentMaterial)
-                
+            case "f":              
                 for vert in 1...3 {
-                    let vertexIndex = GLubyte(separator[vert].components(separatedBy: "//")[0])!-1
-                    let vertexTextureIndex = GLubyte(separator[vert].components(separatedBy: "//")[1])!-1
-                    let vertexNormalIndex = GLubyte(separator[vert].components(separatedBy: "//")[2])!-1
+                    let vertexIndex = separator[vert].components(separatedBy: "/")[0]
+                    let vertexTextureIndex = separator[vert].components(separatedBy: "/")[1]
+                    let vertexNormalIndex = separator[vert].components(separatedBy: "/")[2]
                     
-                    vertexIndices.append(vertexIndex)
-                    vertexTextureIndices.append(vertexTextureIndex)
-                    vertexNormalIndices.append(vertexNormalIndex)
-                    
-                    // There's probably a better way to do this?
-                    //face.vertexIndices.append(vertexIndex)
-                    //face.rtexTextureIndices.append(vertexTextureIndex)
-                    //face.vertexNormalIndices.append(vertexNormalIndex)
+                    if !vertexIndex.isEmpty {
+                        vertexIndices.append(GLubyte(vertexIndex)!-1)
+                    }
+                    if !vertexTextureIndex.isEmpty {
+                        vertexTextureIndices.append(GLubyte(vertexTextureIndex)!-1)
+                    }
+                    if !vertexNormalIndex.isEmpty {
+                        vertexNormalIndices.append(GLubyte(vertexNormalIndex)!-1)
+                    }
                 }
                 break
             case "#":
