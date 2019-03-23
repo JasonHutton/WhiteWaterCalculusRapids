@@ -77,7 +77,6 @@ class Model {
             case "usemtl":
                 // Specify material name to be used for following elements
                 loadTexture(separator[1])
-                NSLog(separator[1])
                 break
             case "v":
                 // vertex coordinates
@@ -99,7 +98,7 @@ class Model {
                     
                     let vertexIndex = Int(separator[vert].components(separatedBy: "/")[0])
                     let vertexTextureIndex = Int(separator[vert].components(separatedBy: "/")[1])
-                    //let vertexNormalIndex = Int(separator[vert].components(separatedBy: "/")[2])
+                    let vertexNormalIndex = Int(separator[vert].components(separatedBy: "/")[2])
                     
                     var vertex = Vertex()
                     vertex.x = vertexPositions[vertexIndex!-1].x
@@ -107,9 +106,9 @@ class Model {
                     vertex.z = vertexPositions[vertexIndex!-1].z
                     vertex.u = textureCoords[vertexTextureIndex!-1].x
                     vertex.v = textureCoords[vertexTextureIndex!-1].y
-                    /*vertex.nx = normals[vertexNormalIndex!-1].x
+                    vertex.nx = normals[vertexNormalIndex!-1].x
                     vertex.ny = normals[vertexNormalIndex!-1].y
-                    vertex.nz = normals[vertexNormalIndex!-1].z*/
+                    vertex.nz = normals[vertexNormalIndex!-1].z
                     
                     vertices.append(vertex)
                     i += 1
@@ -166,6 +165,14 @@ class Model {
             GLenum(GL_FLOAT),
             GLboolean(GL_FALSE),
             GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET((3+4) * MemoryLayout<GLfloat>.size)) // x, y, z | r, g, b, a | u, v :: offset is (3+4)*sizeof(GLfloat)
+        
+        glEnableVertexAttribArray(VertexAttributes.normal.rawValue)
+        glVertexAttribPointer(
+            VertexAttributes.normal.rawValue,
+            3,
+            GLenum(GL_FLOAT),
+            GLboolean(GL_FALSE),
+            GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET((3+4+2) * MemoryLayout<GLfloat>.size)) // x, y, z | r, g, b, a | u, v | nx, ny, nz :: offset is (3+4+2)*sizeof(GLfloat)
         
         // 바인딩을 끈다
         glBindVertexArrayOES(0)

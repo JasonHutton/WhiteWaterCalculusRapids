@@ -14,6 +14,13 @@ class BaseEffect {
     var modelViewMatrixUniform : Int32 = 0
     var projectionMatrixUniform : Int32 = 0
     var textureUniform : Int32 = 0
+    var lightColorUniform : Int32 = 0
+    var lightAmbientIntensityUniform : Int32 = 0
+    var lightDiffuseIntensityUniform : Int32 = 0
+    var lightDirectionUniform : Int32 = 0
+    var lightSpecularIntensityUniform : Int32 = 0
+    var lightShininessUniform : Int32 = 0
+    
     
     var modelViewMatrix : GLKMatrix4 = GLKMatrix4Identity
     var projectionMatrix : GLKMatrix4 = GLKMatrix4Identity
@@ -37,6 +44,19 @@ class BaseEffect {
         glActiveTexture(GLenum(GL_TEXTURE1))
         glBindTexture(GLenum(GL_TEXTURE_2D), self.texture)
         glUniform1i(self.textureUniform, 1)
+        
+        // 유니폼 주입
+        glUniform3f(self.lightColorUniform, 1, 1, 1)
+        glUniform1f(self.lightAmbientIntensityUniform, 0.5)
+        
+        // 유니폼 주입
+        let lightDirection : GLKVector3 = GLKVector3(v: (0, -1, 0))
+        glUniform3f(self.lightDirectionUniform, lightDirection.x, lightDirection.y, lightDirection.z)
+        glUniform1f(self.lightDiffuseIntensityUniform, 0.5)
+        
+        // 유니폼 주입
+        glUniform1f(self.lightSpecularIntensityUniform, 0.5)
+        glUniform1f(self.lightShininessUniform, 0.5)
     }
 }
 
@@ -93,12 +113,19 @@ extension BaseEffect {
         glBindAttribLocation(self.programHandle, VertexAttributes.position.rawValue, "a_Position") // 정점 보내는 곳을 a_Position 어트리뷰트로 바인딩한다.
         glBindAttribLocation(self.programHandle, VertexAttributes.color.rawValue, "a_Color") // 색상 보내는 곳을 a_Color 어트리뷰트로 바인딩한다.
         glBindAttribLocation(self.programHandle, VertexAttributes.texCoord.rawValue, "a_TexCoord")  // 텍스춰 좌표 보내는 곳을 a_TexCoord 어트리뷰트로 바인딩한다.
+        glBindAttribLocation(self.programHandle, VertexAttributes.normal.rawValue, "a_Normal") // 노말벡터 좌표 보내는 곳을 a_Normal 어트리뷰트로 바인딩한다.
         glLinkProgram(self.programHandle)
         
         // 유니폼은 링크를 한 다음에 찾아야 한다. vertexshader나 fragmentshader에 존재할 수 있으므로
         self.modelViewMatrixUniform = glGetUniformLocation(self.programHandle, "u_ModelViewMatrix")
         self.projectionMatrixUniform = glGetUniformLocation(self.programHandle, "u_ProjectionMatrix")
         self.textureUniform = glGetUniformLocation(self.programHandle, "u_Texture")
+        self.lightColorUniform = glGetUniformLocation(self.programHandle, "u_Light.Color")
+        self.lightAmbientIntensityUniform = glGetUniformLocation(self.programHandle, "u_Light.AmbientIntensity")
+        self.lightDiffuseIntensityUniform = glGetUniformLocation(self.programHandle, "u_Light.DiffuseIntensity")
+        self.lightDirectionUniform = glGetUniformLocation(self.programHandle, "u_Light.Direction")
+        self.lightSpecularIntensityUniform = glGetUniformLocation(self.programHandle, "u_Light.SpecularIntensity")
+        self.lightShininessUniform = glGetUniformLocation(self.programHandle, "u_Light.Shininess")
         
         var linkStatus : GLint = 0
         glGetProgramiv(self.programHandle, GLenum(GL_LINK_STATUS), &linkStatus)

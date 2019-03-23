@@ -12,7 +12,7 @@ enum VertexAttributes : GLuint {
     case position = 0
     case color = 1
     case texCoord = 2
-    //case normal = 3
+    case normal = 3
 }
 
 
@@ -21,17 +21,17 @@ struct Vertex {
     var y : GLfloat = 0.0
     var z : GLfloat = 0.0
     
-    var r : GLfloat = 1.0
-    var g : GLfloat = 1.0
-    var b : GLfloat = 1.0
+    var r : GLfloat = 0.0
+    var g : GLfloat = 0.0
+    var b : GLfloat = 0.0
     var a : GLfloat = 1.0
     
     var u : GLfloat = 0.0
     var v : GLfloat = 0.0
     
-    /*var nx : GLfloat = 0.0
+    var nx : GLfloat = 0.0
     var ny : GLfloat = 0.0
-    var nz : GLfloat = 0.0*/
+    var nz : GLfloat = 0.0
     
     init(){
         
