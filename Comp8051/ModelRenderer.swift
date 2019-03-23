@@ -13,9 +13,9 @@ class ModelRenderer : Component {
     private var model: Model
     private static var camera: GameObject?
     
-    init(modelName: String) {
+    init(modelName: String, shader: BaseEffect) {
         
-        model = Model(modelName: modelName)
+        model = Model(modelName: modelName, shader: shader)
         ViewController.instance?.addModel(model: &model)
         
         // grab the camera, if not already grabbed

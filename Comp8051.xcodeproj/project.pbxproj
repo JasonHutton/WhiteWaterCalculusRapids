@@ -24,8 +24,14 @@
 		DA99572D22151F11002315D0 /* Comp8051UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99572C22151F11002315D0 /* Comp8051UITests.swift */; };
 		DA99573B2215335C002315D0 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99573A2215335C002315D0 /* Vertex.swift */; };
 		DA99573D2217A53F002315D0 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99573C2217A53F002315D0 /* Model.swift */; };
-		DA995740221BAD08002315D0 /* ICOSphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = DA99573E221BAD08002315D0 /* ICOSphere.obj */; };
-		DA995743221E275A002315D0 /* UnitSurface.obj in Resources */ = {isa = PBXBuildFile; fileRef = DA995742221E275A002315D0 /* UnitSurface.obj */; };
+		DA9957702227BEEF002315D0 /* SimpleFragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA99576E2227BEEE002315D0 /* SimpleFragmentShader.glsl */; };
+		DA9957712227BEEF002315D0 /* SimpleVertexShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA99576F2227BEEE002315D0 /* SimpleVertexShader.glsl */; };
+		DA9957732227BF07002315D0 /* BaseEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9957722227BF07002315D0 /* BaseEffect.swift */; };
+		DA9957752227BF6C002315D0 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9957742227BF6C002315D0 /* Thing.swift */; };
+		DAD246B322459D2700B4D62C /* marbleTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B122459D2600B4D62C /* marbleTexture.jpg */; };
+		DAD246B422459D2700B4D62C /* woodTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B222459D2600B4D62C /* woodTexture.jpg */; };
+		DAD246B72245A1CE00B4D62C /* ICOSphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B52245A1CD00B4D62C /* ICOSphere.obj */; };
+		DAD246B82245A1CE00B4D62C /* UnitSurface.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B62245A1CE00B4D62C /* UnitSurface.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,8 +75,14 @@
 		DA99572E22151F11002315D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA99573A2215335C002315D0 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		DA99573C2217A53F002315D0 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		DA99573E221BAD08002315D0 /* ICOSphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ICOSphere.obj; sourceTree = "<group>"; };
-		DA995742221E275A002315D0 /* UnitSurface.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitSurface.obj; sourceTree = "<group>"; };
+		DA99576E2227BEEE002315D0 /* SimpleFragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleFragmentShader.glsl; sourceTree = "<group>"; };
+		DA99576F2227BEEE002315D0 /* SimpleVertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleVertexShader.glsl; sourceTree = "<group>"; };
+		DA9957722227BF07002315D0 /* BaseEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEffect.swift; sourceTree = "<group>"; };
+		DA9957742227BF6C002315D0 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
+		DAD246B122459D2600B4D62C /* marbleTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = marbleTexture.jpg; path = ../../../Downloads/marbleTexture.jpg; sourceTree = "<group>"; };
+		DAD246B222459D2600B4D62C /* woodTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = woodTexture.jpg; path = ../../../Downloads/woodTexture.jpg; sourceTree = "<group>"; };
+		DAD246B52245A1CD00B4D62C /* ICOSphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ICOSphere.obj; sourceTree = "<group>"; };
+		DAD246B62245A1CE00B4D62C /* UnitSurface.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitSurface.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +113,8 @@
 		830436232222310E0019F5BF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DA995742221E275A002315D0 /* UnitSurface.obj */,
-				DA99573E221BAD08002315D0 /* ICOSphere.obj */,
+				DAD246B52245A1CD00B4D62C /* ICOSphere.obj */,
+				DAD246B62245A1CE00B4D62C /* UnitSurface.obj */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -130,6 +142,7 @@
 			children = (
 				830A028F22264B050028E531 /* Input.swift */,
 				8309925C22272636007B8B98 /* Error.swift */,
+				DA9957742227BF6C002315D0 /* Thing.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -168,6 +181,8 @@
 		DA99570B22151F0F002315D0 /* Comp8051 */ = {
 			isa = PBXGroup;
 			children = (
+				DAD246B022459D0D00B4D62C /* Textures */,
+				DA99576D2227BEB8002315D0 /* ShaderStuff */,
 				DA99570C22151F0F002315D0 /* AppDelegate.swift */,
 				DA99570E22151F0F002315D0 /* ViewController.swift */,
 				DA99571022151F0F002315D0 /* Main.storyboard */,
@@ -199,6 +214,25 @@
 				DA99572E22151F11002315D0 /* Info.plist */,
 			);
 			path = Comp8051UITests;
+			sourceTree = "<group>";
+		};
+		DA99576D2227BEB8002315D0 /* ShaderStuff */ = {
+			isa = PBXGroup;
+			children = (
+				DA99576E2227BEEE002315D0 /* SimpleFragmentShader.glsl */,
+				DA99576F2227BEEE002315D0 /* SimpleVertexShader.glsl */,
+				DA9957722227BF07002315D0 /* BaseEffect.swift */,
+			);
+			name = ShaderStuff;
+			sourceTree = "<group>";
+		};
+		DAD246B022459D0D00B4D62C /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				DAD246B122459D2600B4D62C /* marbleTexture.jpg */,
+				DAD246B222459D2600B4D62C /* woodTexture.jpg */,
+			);
+			name = Textures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,10 +339,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA995743221E275A002315D0 /* UnitSurface.obj in Resources */,
-				DA995740221BAD08002315D0 /* ICOSphere.obj in Resources */,
+				DAD246B72245A1CE00B4D62C /* ICOSphere.obj in Resources */,
+				DAD246B422459D2700B4D62C /* woodTexture.jpg in Resources */,
+				DAD246B82245A1CE00B4D62C /* UnitSurface.obj in Resources */,
+				DA9957712227BEEF002315D0 /* SimpleVertexShader.glsl in Resources */,
 				DA99571722151F11002315D0 /* LaunchScreen.storyboard in Resources */,
+				DAD246B322459D2700B4D62C /* marbleTexture.jpg in Resources */,
 				DA99571422151F11002315D0 /* Assets.xcassets in Resources */,
+				DA9957702227BEEF002315D0 /* SimpleFragmentShader.glsl in Resources */,
 				DA99571222151F0F002315D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +378,8 @@
 				8309925D22272636007B8B98 /* Error.swift in Sources */,
 				83043626222231F10019F5BF /* ModelRenderer.swift in Sources */,
 				830845A02224C40100B69A4C /* SphereBehaviour.swift in Sources */,
+				DA9957752227BF6C002315D0 /* Thing.swift in Sources */,
+				DA9957732227BF07002315D0 /* BaseEffect.swift in Sources */,
 				DA99573B2215335C002315D0 /* Vertex.swift in Sources */,
 				DA99573D2217A53F002315D0 /* Model.swift in Sources */,
 				83D305BA22224517008D5CFC /* Transform.swift in Sources */,
