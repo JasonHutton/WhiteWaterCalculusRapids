@@ -1,9 +1,9 @@
 //
-//  BaseEffect.swift
-//  Comp8051
+//  GLBaseEffect.swift
+//  Triangle
 //
-//  Created by Paul on 2019-02-27.
-//  Copyright © 2019 Paul. All rights reserved.
+//  Created by burt on 2016. 2. 25..
+//  Copyright © 2016년 BurtK. All rights reserved.
 //
 
 import Foundation
@@ -13,9 +13,11 @@ class BaseEffect {
     var programHandle : GLuint = 0
     var modelViewMatrixUniform : Int32 = 0
     var projectionMatrixUniform : Int32 = 0
+    var textureUniform : Int32 = 0
     
     var modelViewMatrix : GLKMatrix4 = GLKMatrix4Identity
     var projectionMatrix : GLKMatrix4 = GLKMatrix4Identity
+    var texture: GLuint = 0
     
     init(vertexShader: String, fragmentShader: String) {
         self.compile(vertexShader: vertexShader, fragmentShader: fragmentShader)
@@ -30,6 +32,11 @@ class BaseEffect {
         
         // 유니폼 주입
         glUniformMatrix4fv(self.modelViewMatrixUniform, 1, GLboolean(GL_FALSE), self.modelViewMatrix.array)
+        
+        // 유니폼 주입
+        glActiveTexture(GLenum(GL_TEXTURE1))
+        glBindTexture(GLenum(GL_TEXTURE_2D), self.texture)
+        glUniform1i(self.textureUniform, 1)
     }
 }
 
@@ -85,11 +92,13 @@ extension BaseEffect {
         
         glBindAttribLocation(self.programHandle, VertexAttributes.position.rawValue, "a_Position") // 정점 보내는 곳을 a_Position 어트리뷰트로 바인딩한다.
         glBindAttribLocation(self.programHandle, VertexAttributes.color.rawValue, "a_Color") // 색상 보내는 곳을 a_Color 어트리뷰트로 바인딩한다.
+        glBindAttribLocation(self.programHandle, VertexAttributes.texCoord.rawValue, "a_TexCoord")  // 텍스춰 좌표 보내는 곳을 a_TexCoord 어트리뷰트로 바인딩한다.
         glLinkProgram(self.programHandle)
         
         // 유니폼은 링크를 한 다음에 찾아야 한다. vertexshader나 fragmentshader에 존재할 수 있으므로
         self.modelViewMatrixUniform = glGetUniformLocation(self.programHandle, "u_ModelViewMatrix")
         self.projectionMatrixUniform = glGetUniformLocation(self.programHandle, "u_ProjectionMatrix")
+        self.textureUniform = glGetUniformLocation(self.programHandle, "u_Texture")
         
         var linkStatus : GLint = 0
         glGetProgramiv(self.programHandle, GLenum(GL_LINK_STATUS), &linkStatus)
