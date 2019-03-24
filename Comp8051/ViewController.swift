@@ -78,6 +78,9 @@ class ViewController: GLKViewController {
         surfaceObj.transform.scale.x = 10
         surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitSurface", shader: shader))
         GameObject.root.addChild(gameObject: surfaceObj)
+        
+        // initialize physics
+        _ = PhysicsWrapper()
     }
     
     
@@ -129,6 +132,7 @@ extension ViewController: GLKViewControllerDelegate {
 
         // update entity component system
         GameObject.root.update(deltaTime: 1/30)
+        PhysicsWrapper.update(1/30)
         // TODO: if this is going to always be the same amount, maybe just make it a constant somewhere
     }
 }
