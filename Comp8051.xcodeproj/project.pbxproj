@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		83043626222231F10019F5BF /* ModelRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83043625222231F10019F5BF /* ModelRenderer.swift */; };
+		8307E0FE2246E77A008269C2 /* woodTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8307E0FC2246E77A008269C2 /* woodTexture.jpg */; };
+		8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8307E0FD2246E77A008269C2 /* marbleTexture.jpg */; };
 		83083A9E221E75A3003931A2 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83083A9D221E75A3003931A2 /* Component.swift */; };
 		83083AA2221E75AA003931A2 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83083AA1221E75AA003931A2 /* GameObject.swift */; };
 		830845A02224C40100B69A4C /* SphereBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8308459F2224C40100B69A4C /* SphereBehaviour.swift */; };
@@ -28,13 +30,25 @@
 		DA9957712227BEEF002315D0 /* SimpleVertexShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA99576F2227BEEE002315D0 /* SimpleVertexShader.glsl */; };
 		DA9957732227BF07002315D0 /* BaseEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9957722227BF07002315D0 /* BaseEffect.swift */; };
 		DA9957752227BF6C002315D0 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9957742227BF6C002315D0 /* Thing.swift */; };
-		DAD246B322459D2700B4D62C /* marbleTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B122459D2600B4D62C /* marbleTexture.jpg */; };
-		DAD246B422459D2700B4D62C /* woodTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B222459D2600B4D62C /* woodTexture.jpg */; };
 		DAD246B72245A1CE00B4D62C /* ICOSphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B52245A1CD00B4D62C /* ICOSphere.obj */; };
 		DAD246B82245A1CE00B4D62C /* UnitSurface.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B62245A1CE00B4D62C /* UnitSurface.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8307E11522470970008269C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8307E11122470970008269C2 /* Box2D.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 779BEEAF92FBAC4E3F4E12870486C4C0CABB307B387EA8E;
+			remoteInfo = Box2D;
+		};
+		8307E11722470976008269C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8307E11122470970008269C2 /* Box2D.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 39EE070EA1B83274116F8C05A52904A662DE762695A8B4;
+			remoteInfo = Box2D;
+		};
 		DA99571E22151F11002315D0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DA99570122151F0F002315D0 /* Project object */;
@@ -53,6 +67,9 @@
 
 /* Begin PBXFileReference section */
 		83043625222231F10019F5BF /* ModelRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRenderer.swift; sourceTree = "<group>"; };
+		8307E0FC2246E77A008269C2 /* woodTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = woodTexture.jpg; sourceTree = "<group>"; };
+		8307E0FD2246E77A008269C2 /* marbleTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = marbleTexture.jpg; sourceTree = "<group>"; };
+		8307E11122470970008269C2 /* Box2D.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Box2D.xcodeproj; path = Comp8051/Box2D/Box2D.xcodeproj; sourceTree = "<group>"; };
 		83083A9D221E75A3003931A2 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		83083AA1221E75AA003931A2 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		8308459F2224C40100B69A4C /* SphereBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereBehaviour.swift; sourceTree = "<group>"; };
@@ -79,8 +96,6 @@
 		DA99576F2227BEEE002315D0 /* SimpleVertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleVertexShader.glsl; sourceTree = "<group>"; };
 		DA9957722227BF07002315D0 /* BaseEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEffect.swift; sourceTree = "<group>"; };
 		DA9957742227BF6C002315D0 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
-		DAD246B122459D2600B4D62C /* marbleTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = marbleTexture.jpg; path = ../../../Downloads/marbleTexture.jpg; sourceTree = "<group>"; };
-		DAD246B222459D2600B4D62C /* woodTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = woodTexture.jpg; path = ../../../Downloads/woodTexture.jpg; sourceTree = "<group>"; };
 		DAD246B52245A1CD00B4D62C /* ICOSphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ICOSphere.obj; sourceTree = "<group>"; };
 		DAD246B62245A1CE00B4D62C /* UnitSurface.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitSurface.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +143,14 @@
 			name = Components;
 			sourceTree = "<group>";
 		};
+		8307E11222470970008269C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8307E11622470970008269C2 /* libBox2D.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		83083AA5221E7634003931A2 /* Entity Component System */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +184,7 @@
 		DA99570022151F0F002315D0 = {
 			isa = PBXGroup;
 			children = (
+				8307E11122470970008269C2 /* Box2D.xcodeproj */,
 				DA99570B22151F0F002315D0 /* Comp8051 */,
 				DA99572022151F11002315D0 /* Comp8051Tests */,
 				DA99572B22151F11002315D0 /* Comp8051UITests */,
@@ -229,8 +253,8 @@
 		DAD246B022459D0D00B4D62C /* Textures */ = {
 			isa = PBXGroup;
 			children = (
-				DAD246B122459D2600B4D62C /* marbleTexture.jpg */,
-				DAD246B222459D2600B4D62C /* woodTexture.jpg */,
+				8307E0FD2246E77A008269C2 /* marbleTexture.jpg */,
+				8307E0FC2246E77A008269C2 /* woodTexture.jpg */,
 			);
 			name = Textures;
 			sourceTree = "<group>";
@@ -249,6 +273,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8307E11822470976008269C2 /* PBXTargetDependency */,
 			);
 			name = Comp8051;
 			productName = Comp8051;
@@ -325,6 +350,12 @@
 			mainGroup = DA99570022151F0F002315D0;
 			productRefGroup = DA99570A22151F0F002315D0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8307E11222470970008269C2 /* Products */;
+					ProjectRef = 8307E11122470970008269C2 /* Box2D.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DA99570822151F0F002315D0 /* Comp8051 */,
@@ -334,17 +365,27 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		8307E11622470970008269C2 /* libBox2D.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBox2D.a;
+			remoteRef = 8307E11522470970008269C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		DA99570722151F0F002315D0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8307E0FE2246E77A008269C2 /* woodTexture.jpg in Resources */,
 				DAD246B72245A1CE00B4D62C /* ICOSphere.obj in Resources */,
-				DAD246B422459D2700B4D62C /* woodTexture.jpg in Resources */,
 				DAD246B82245A1CE00B4D62C /* UnitSurface.obj in Resources */,
 				DA9957712227BEEF002315D0 /* SimpleVertexShader.glsl in Resources */,
 				DA99571722151F11002315D0 /* LaunchScreen.storyboard in Resources */,
-				DAD246B322459D2700B4D62C /* marbleTexture.jpg in Resources */,
+				8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */,
 				DA99571422151F11002315D0 /* Assets.xcassets in Resources */,
 				DA9957702227BEEF002315D0 /* SimpleFragmentShader.glsl in Resources */,
 				DA99571222151F0F002315D0 /* Main.storyboard in Resources */,
@@ -408,6 +449,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8307E11822470976008269C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Box2D;
+			targetProxy = 8307E11722470976008269C2 /* PBXContainerItemProxy */;
+		};
 		DA99571F22151F11002315D0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DA99570822151F0F002315D0 /* Comp8051 */;
