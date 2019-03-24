@@ -35,18 +35,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8307E11522470970008269C2 /* PBXContainerItemProxy */ = {
+		8307E12322470BA1008269C2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 8307E11122470970008269C2 /* Box2D.xcodeproj */;
+			containerPortal = 8307E11F22470BA1008269C2 /* Box2D.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 779BEEAF92FBAC4E3F4E12870486C4C0CABB307B387EA8E;
-			remoteInfo = Box2D;
-		};
-		8307E11722470976008269C2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8307E11122470970008269C2 /* Box2D.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39EE070EA1B83274116F8C05A52904A662DE762695A8B4;
 			remoteInfo = Box2D;
 		};
 		DA99571E22151F11002315D0 /* PBXContainerItemProxy */ = {
@@ -69,7 +62,7 @@
 		83043625222231F10019F5BF /* ModelRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRenderer.swift; sourceTree = "<group>"; };
 		8307E0FC2246E77A008269C2 /* woodTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = woodTexture.jpg; sourceTree = "<group>"; };
 		8307E0FD2246E77A008269C2 /* marbleTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = marbleTexture.jpg; sourceTree = "<group>"; };
-		8307E11122470970008269C2 /* Box2D.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Box2D.xcodeproj; path = Comp8051/Box2D/Box2D.xcodeproj; sourceTree = "<group>"; };
+		8307E11F22470BA1008269C2 /* Box2D.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Box2D.xcodeproj; path = Box2D/Build/Box2D.xcodeproj; sourceTree = "<group>"; };
 		83083A9D221E75A3003931A2 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		83083AA1221E75AA003931A2 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		8308459F2224C40100B69A4C /* SphereBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereBehaviour.swift; sourceTree = "<group>"; };
@@ -143,10 +136,10 @@
 			name = Components;
 			sourceTree = "<group>";
 		};
-		8307E11222470970008269C2 /* Products */ = {
+		8307E12022470BA1008269C2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8307E11622470970008269C2 /* libBox2D.a */,
+				8307E12422470BA1008269C2 /* libBox2D.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,7 +177,7 @@
 		DA99570022151F0F002315D0 = {
 			isa = PBXGroup;
 			children = (
-				8307E11122470970008269C2 /* Box2D.xcodeproj */,
+				8307E11F22470BA1008269C2 /* Box2D.xcodeproj */,
 				DA99570B22151F0F002315D0 /* Comp8051 */,
 				DA99572022151F11002315D0 /* Comp8051Tests */,
 				DA99572B22151F11002315D0 /* Comp8051UITests */,
@@ -273,7 +266,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				8307E11822470976008269C2 /* PBXTargetDependency */,
 			);
 			name = Comp8051;
 			productName = Comp8051;
@@ -352,8 +344,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 8307E11222470970008269C2 /* Products */;
-					ProjectRef = 8307E11122470970008269C2 /* Box2D.xcodeproj */;
+					ProductGroup = 8307E12022470BA1008269C2 /* Products */;
+					ProjectRef = 8307E11F22470BA1008269C2 /* Box2D.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -366,11 +358,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		8307E11622470970008269C2 /* libBox2D.a */ = {
+		8307E12422470BA1008269C2 /* libBox2D.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libBox2D.a;
-			remoteRef = 8307E11522470970008269C2 /* PBXContainerItemProxy */;
+			remoteRef = 8307E12322470BA1008269C2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -449,11 +441,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8307E11822470976008269C2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Box2D;
-			targetProxy = 8307E11722470976008269C2 /* PBXContainerItemProxy */;
-		};
 		DA99571F22151F11002315D0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DA99570822151F0F002315D0 /* Comp8051 */;
