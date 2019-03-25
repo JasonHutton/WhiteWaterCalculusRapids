@@ -17,7 +17,7 @@
 - (void)addGroundBody:(NSString*) tag posX:(float) posX posY:(float) posY scaleX:(float) scaleX
                scaleY:(float) scaleY rotation:(float) rotation;
 - (void)addBallBody:(NSString*) tag posX:(float) posX posY:(float) posY radius:(float) radius;
-- (struct CVector3)getBodyPos:(NSString*) tag;
+- (struct CTransform)getBodyTransform:(NSString*) tag;
 
 @end
 

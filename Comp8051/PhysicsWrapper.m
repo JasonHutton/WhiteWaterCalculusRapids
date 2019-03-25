@@ -7,7 +7,7 @@
 //
 
 #import "Physics.h"
-#import "CVector3.h"
+#import "CTransform.h"
 #import "Comp8051-Swift.h"
 #import "PhysicsWrapper.h"
 
@@ -58,9 +58,9 @@ static PhysicsWrapper* instance = nil;
     [instance->physics addBallBody:tag posX:posX posY:posY radius:radius];
 }
 
-+ (CVector3)getBodyPos:(NSString*) tag {
++ (CTransform)getBodyTransform:(NSString*) tag {
     
-    return [instance->physics getBodyPos:tag];
+    return [instance->physics getBodyTransform:tag];
 }
 
 @end

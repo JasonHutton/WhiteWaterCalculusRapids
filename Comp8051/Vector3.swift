@@ -78,8 +78,16 @@ struct Vector3 {
         y *= m
     }
     
-    static func convert (cVector3: CVector3) -> Vector3 {
-        return Vector3 (x:cVector3.x, y:cVector3.y, z:0);
+    static func convertFromCVector (cVector: CVector) -> Vector3 {
+        return Vector3 (x:cVector.x, y:cVector.y, z:0);
+    }
+    
+    func convertToCVector () -> CVector {
+        var cVec = CVector()
+        cVec.x = x
+        cVec.y = y
+        
+        return cVec
     }
     
     

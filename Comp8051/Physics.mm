@@ -6,7 +6,7 @@
 //  Copyright © 2019 Paul. All rights reserved.
 //
 
-#import "CVector3.h"
+#import "CTransform.h"
 #import "Box2D/Box2D.h"
 #import "Physics.h"
 
@@ -79,18 +79,18 @@ const float GRAV_CONSTANT = 9.81f;
     [dict setObject:[NSValue valueWithPointer:ballBody] forKey:tag];
 }
 
-- (CVector3)getBodyPos:(NSString*) tag {
+- (CTransform)getBodyTransform:(NSString*) tag {
     
     b2Body* body = (b2Body*)[[dict valueForKey:tag] pointerValue];
     
     b2Vec2 vec = body->GetPosition();
     
-    CVector3 cVec3;
-    cVec3.x = vec.x;
-    cVec3.y = vec.y;
-    cVec3.z = 0;
+    CTransform transform;
+    transform.position.x = vec.x;
+    transform.position.y = vec.y;
+    transform.rotation = body->GetAngle();
     
-    return cVec3;
+    return transform;
 }
 
 @end

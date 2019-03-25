@@ -27,8 +27,9 @@ class SphereBody : Component {
         
         if gameObject != nil {
             
-            let pos = Vector3.convert(cVector3:PhysicsWrapper.getBodyPos(tag))
-            gameObject!.worldTransform.position = pos
+            let transform = PhysicsWrapper.getBodyTransform(tag)
+            gameObject!.transform.position = Vector3.convertFromCVector(cVector: transform.position)
+            gameObject!.transform.rotation.z = transform.rotation
         }
     }
 }
