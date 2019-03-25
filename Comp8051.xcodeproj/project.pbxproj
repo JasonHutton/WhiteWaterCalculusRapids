@@ -80,7 +80,7 @@
 		DA9957702227BEEF002315D0 /* SimpleFragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA99576E2227BEEE002315D0 /* SimpleFragmentShader.glsl */; };
 		DA9957712227BEEF002315D0 /* SimpleVertexShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA99576F2227BEEE002315D0 /* SimpleVertexShader.glsl */; };
 		DA9957732227BF07002315D0 /* BaseEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9957722227BF07002315D0 /* BaseEffect.swift */; };
-		DA9957752227BF6C002315D0 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9957742227BF6C002315D0 /* Thing.swift */; };
+		DA9957752227BF6C002315D0 /* GLKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9957742227BF6C002315D0 /* GLKExtensions.swift */; };
 		DAD246B72245A1CE00B4D62C /* ICOSphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B52245A1CD00B4D62C /* ICOSphere.obj */; };
 		DAD246B82245A1CE00B4D62C /* UnitSurface.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B62245A1CE00B4D62C /* UnitSurface.obj */; };
 /* End PBXBuildFile section */
@@ -233,7 +233,7 @@
 		DA99576E2227BEEE002315D0 /* SimpleFragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleFragmentShader.glsl; sourceTree = "<group>"; };
 		DA99576F2227BEEE002315D0 /* SimpleVertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleVertexShader.glsl; sourceTree = "<group>"; };
 		DA9957722227BF07002315D0 /* BaseEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEffect.swift; sourceTree = "<group>"; };
-		DA9957742227BF6C002315D0 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
+		DA9957742227BF6C002315D0 /* GLKExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLKExtensions.swift; sourceTree = "<group>"; };
 		DAD246B52245A1CD00B4D62C /* ICOSphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ICOSphere.obj; sourceTree = "<group>"; };
 		DAD246B62245A1CE00B4D62C /* UnitSurface.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitSurface.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -305,22 +305,22 @@
 			children = (
 				830A028F22264B050028E531 /* Input.swift */,
 				8309925C22272636007B8B98 /* Error.swift */,
-				DA9957742227BF6C002315D0 /* Thing.swift */,
-				8307E15B2247255C008269C2 /* Physics.h */,
-				8307E15A2247255C008269C2 /* Physics.mm */,
-				8307E15D2247255C008269C2 /* PhysicsWrapper.h */,
-				8307E15C2247255C008269C2 /* PhysicsWrapper.m */,
+				DA9957742227BF6C002315D0 /* GLKExtensions.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
 		};
-		836E37DA22489A2000CF7303 /* Box2D */ = {
+		836E37DA22489A2000CF7303 /* Physics */ = {
 			isa = PBXGroup;
 			children = (
+				8307E15B2247255C008269C2 /* Physics.h */,
+				8307E15A2247255C008269C2 /* Physics.mm */,
+				8307E15D2247255C008269C2 /* PhysicsWrapper.h */,
+				8307E15C2247255C008269C2 /* PhysicsWrapper.m */,
 				836E36BA224895C200CF7303 /* Box2D.h */,
 				836E37DB22489A8800CF7303 /* Box2D */,
 			);
-			name = Box2D;
+			name = Physics;
 			sourceTree = "<group>";
 		};
 		836E37DB22489A8800CF7303 /* Box2D */ = {
@@ -458,7 +458,7 @@
 		DA99570B22151F0F002315D0 /* Comp8051 */ = {
 			isa = PBXGroup;
 			children = (
-				836E37DA22489A2000CF7303 /* Box2D */,
+				836E37DA22489A2000CF7303 /* Physics */,
 				DAD246B022459D0D00B4D62C /* Textures */,
 				DA99576D2227BEB8002315D0 /* ShaderStuff */,
 				DA99570C22151F0F002315D0 /* AppDelegate.swift */,
@@ -674,7 +674,7 @@
 				830845A02224C40100B69A4C /* SphereBehaviour.swift in Sources */,
 				836E385F22489A8800CF7303 /* b2PulleyJoint.cpp in Sources */,
 				836E385622489A8800CF7303 /* b2PolygonShape.cpp in Sources */,
-				DA9957752227BF6C002315D0 /* Thing.swift in Sources */,
+				DA9957752227BF6C002315D0 /* GLKExtensions.swift in Sources */,
 				836E384722489A8800CF7303 /* b2DynamicTree.cpp in Sources */,
 				836E383C22489A8800CF7303 /* b2MouseJoint.cpp in Sources */,
 				836E385222489A8800CF7303 /* b2MotorJoint.cpp in Sources */,

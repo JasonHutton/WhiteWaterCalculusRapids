@@ -29,17 +29,20 @@ const float GRAV_CONSTANT = 9.81f;
     return self;
 }
 
+// step the physics one tick forward
 - (void)update:(float)deltaTime {
     
     world->Step(deltaTime, 6, 2);
 }
 
+// change the gravity vector - input should be clamped below magnitude 1
 - (void)setGravityX:(float) x y:(float)y {
     
     b2Vec2 gravity(x * GRAV_CONSTANT, y * GRAV_CONSTANT);
     world->SetGravity(gravity);
 }
 
+// add a static square to the world
 - (void)addGroundBody:(NSString*) tag posX:(float) posX posY:(float) posY scaleX:(float) scaleX
                scaleY:(float) scaleY rotation:(float) rotation {
     
@@ -58,6 +61,7 @@ const float GRAV_CONSTANT = 9.81f;
     [dict setObject:[NSValue valueWithPointer:groundBody] forKey:tag];
 }
 
+// add a dynamic circle to the world
 - (void)addBallBody:(NSString*) tag posX:(float) posX posY:(float) posY radius:(float) radius {
     
     b2BodyDef ballBodyDef;
@@ -79,6 +83,7 @@ const float GRAV_CONSTANT = 9.81f;
     [dict setObject:[NSValue valueWithPointer:ballBody] forKey:tag];
 }
 
+// find a transform by its tag
 - (CTransform)getBodyTransform:(NSString*) tag {
     
     b2Body* body = (b2Body*)[[dict valueForKey:tag] pointerValue];
