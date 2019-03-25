@@ -7,6 +7,7 @@
 //
 
 #import "Physics.h"
+#import "CVector3.h"
 #import "Comp8051-Swift.h"
 #import "PhysicsWrapper.h"
 
@@ -22,13 +23,15 @@ static PhysicsWrapper* instance = nil;
     if (self = [super init]) {
         
         // singleton initialization
-        
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            instance = [[PhysicsWrapper alloc] init];
+            
+            instance = self;
             
             // other initialization here
             instance->physics = [[Physics alloc] init];
+            
+            printf("Physics initialized.\n");
         });
     }
     return self;
@@ -37,6 +40,27 @@ static PhysicsWrapper* instance = nil;
 + (void)update:(float)deltaTime {
     
     [instance->physics update:deltaTime];
+}
+
++ (void)setGravityX:(float) x y:(float)y {
+    
+    [instance->physics setGravityX:x y:y];
+}
+
++ (void)addGroundBody:(NSString*) tag posX:(float) posX posY:(float) posY scaleX:(float) scaleX
+               scaleY:(float) scaleY rotation:(float) rotation {
+    
+    [instance->physics addGroundBody:tag posX:posX posY:posY scaleX:scaleX scaleY:scaleY rotation:rotation];
+}
+
++ (void)addBallBody:(NSString*) tag posX:(float) posX posY:(float) posY radius:(float) radius {
+    
+    [instance->physics addBallBody:tag posX:posX posY:posY radius:radius];
+}
+
++ (CVector3)getBodyPos:(NSString*) tag {
+    
+    return [instance->physics getBodyPos:tag];
 }
 
 @end

@@ -78,6 +78,10 @@ struct Vector3 {
         y *= m
     }
     
+    static func convert (cVector3: CVector3) -> Vector3 {
+        return Vector3 (x:cVector3.x, y:cVector3.y, z:0);
+    }
+    
     
     /* OPERATORS */
     

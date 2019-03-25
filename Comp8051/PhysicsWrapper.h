@@ -15,6 +15,11 @@
 @property PhysicsWrapper* instance;
 
 + (void)update:(float)deltaTime;
++ (void)setGravityX:(float) x y:(float) y;
++ (void)addGroundBody:(NSString*) tag posX:(float) posX posY:(float) posY scaleX:(float) scaleX
+               scaleY:(float) scaleY rotation:(float) rotation;
++ (void)addBallBody:(NSString*) tag posX:(float) posX posY:(float) posY radius:(float) radius;
++ (struct CVector3)getBodyPos:(NSString*) tag;
 
 @end
 

@@ -32,7 +32,7 @@ class ModelRenderer : Component {
         }
     }
     
-    override func update(deltaTime: Float) {
+    override func lateUpdate(deltaTime: Float) {
         
         if let gameObject = self.gameObject, let camPos = ModelRenderer.camera?.transform.position {
             

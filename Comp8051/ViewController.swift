@@ -17,6 +17,8 @@ extension Array {
 
 class ViewController: GLKViewController {
     
+    static var deltaTime: Float = 1.0/30.0
+    
     static var instance: ViewController?
     
     private var setupComplete = false
@@ -131,8 +133,8 @@ extension ViewController: GLKViewControllerDelegate {
     func glkViewControllerUpdate(_ controller: GLKViewController) {
 
         // update entity component system
-        GameObject.root.update(deltaTime: 1/30)
-        PhysicsWrapper.update(1/30)
-        // TODO: if this is going to always be the same amount, maybe just make it a constant somewhere
+        GameObject.root.update(deltaTime: ViewController.deltaTime)
+        PhysicsWrapper.update(ViewController.deltaTime)
+        GameObject.root.lateUpdate(deltaTime: ViewController.deltaTime)
     }
 }

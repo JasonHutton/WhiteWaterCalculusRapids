@@ -35,8 +35,11 @@ class Component {
     */
     
     
-    // called every frame
+    // called every frame before physics
     func update(deltaTime : Float) {}
+    
+    // called every frame after physics
+    func lateUpdate(deltaTime : Float) {}
     
     // called when active is set to true
     func onEnable () {}
