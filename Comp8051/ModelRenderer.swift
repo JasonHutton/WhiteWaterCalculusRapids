@@ -34,11 +34,10 @@ class ModelRenderer : Component {
     
     override func lateUpdate(deltaTime: Float) {
         
-        if let gameObject = self.gameObject, let camPos = ModelRenderer.camera?.transform.position {
+        if var transform = gameObject?.worldTransform, let camPos = ModelRenderer.camera?.transform.position {
             
             // get position relative to camera
             // TODO, MAYBE?: relative to camera only cares about position, ignores rotation - probably not important
-            var transform = gameObject.transform
             transform.position -= camPos
             
             var transformationMatrix = GLKMatrix4Identity

@@ -48,7 +48,7 @@ const float GRAV_CONSTANT = 9.81f;
     groundBodyDef.position.Set(posX, posY);
     
     b2PolygonShape groundBox;
-    groundBox.SetAsBox(scaleX, scaleY);
+    groundBox.SetAsBox(scaleX / 2, scaleY / 2);
     
     b2Body* groundBody = world->CreateBody(&groundBodyDef);
     groundBody->CreateFixture(&groundBox, 0.0f);

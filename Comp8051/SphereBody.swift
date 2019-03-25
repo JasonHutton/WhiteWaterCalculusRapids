@@ -25,10 +25,10 @@ class SphereBody : Component {
     
     override func update(deltaTime: Float) {
         
-        if (gameObject?.worldTransform) != nil {
+        if gameObject != nil {
             
             let pos = Vector3.convert(cVector3:PhysicsWrapper.getBodyPos(tag))
-            gameObject!.transform.position = pos
+            gameObject!.worldTransform.position = pos
         }
     }
 }

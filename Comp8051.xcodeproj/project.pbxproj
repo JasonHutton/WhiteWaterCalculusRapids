@@ -19,6 +19,7 @@
 		830845A02224C40100B69A4C /* SphereBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8308459F2224C40100B69A4C /* SphereBehaviour.swift */; };
 		8309925D22272636007B8B98 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8309925C22272636007B8B98 /* Error.swift */; };
 		830A029022264B050028E531 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A028F22264B050028E531 /* Input.swift */; };
+		834E1E28224860570055E02A /* BlockBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E1E27224860570055E02A /* BlockBody.swift */; };
 		83D305BA22224517008D5CFC /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305B922224517008D5CFC /* Transform.swift */; };
 		83D305BC22224524008D5CFC /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305BB22224524008D5CFC /* Vector3.swift */; };
 		DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570C22151F0F002315D0 /* AppDelegate.swift */; };
@@ -86,6 +87,7 @@
 		8308459F2224C40100B69A4C /* SphereBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereBehaviour.swift; sourceTree = "<group>"; };
 		8309925C22272636007B8B98 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		830A028F22264B050028E531 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		834E1E27224860570055E02A /* BlockBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockBody.swift; sourceTree = "<group>"; };
 		83D305B922224517008D5CFC /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		83D305BB22224524008D5CFC /* Vector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 		DA99570922151F0F002315D0 /* Comp8051.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +154,7 @@
 				83043625222231F10019F5BF /* ModelRenderer.swift */,
 				8308459F2224C40100B69A4C /* SphereBehaviour.swift */,
 				8307E1DE224839C3008269C2 /* SphereBody.swift */,
+				834E1E27224860570055E02A /* BlockBody.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				830845A02224C40100B69A4C /* SphereBehaviour.swift in Sources */,
 				DA9957752227BF6C002315D0 /* Thing.swift in Sources */,
 				DA9957732227BF07002315D0 /* BaseEffect.swift in Sources */,
+				834E1E28224860570055E02A /* BlockBody.swift in Sources */,
 				DA99573B2215335C002315D0 /* Vertex.swift in Sources */,
 				DA99573D2217A53F002315D0 /* Model.swift in Sources */,
 				83D305BA22224517008D5CFC /* Transform.swift in Sources */,
