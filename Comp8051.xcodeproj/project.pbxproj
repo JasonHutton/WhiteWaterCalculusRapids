@@ -12,7 +12,6 @@
 		8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8307E0FD2246E77A008269C2 /* marbleTexture.jpg */; };
 		8307E15E2247255C008269C2 /* Physics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8307E15A2247255C008269C2 /* Physics.mm */; };
 		8307E15F2247255C008269C2 /* PhysicsWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8307E15C2247255C008269C2 /* PhysicsWrapper.m */; };
-		8307E1DD22472B51008269C2 /* libBox2D.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8307E1DA22472B3B008269C2 /* libBox2D.a */; };
 		8307E1DF224839C3008269C2 /* SphereBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8307E1DE224839C3008269C2 /* SphereBody.swift */; };
 		83083A9E221E75A3003931A2 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83083A9D221E75A3003931A2 /* Component.swift */; };
 		83083AA2221E75AA003931A2 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83083AA1221E75AA003931A2 /* GameObject.swift */; };
@@ -20,6 +19,7 @@
 		8309925D22272636007B8B98 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8309925C22272636007B8B98 /* Error.swift */; };
 		830A029022264B050028E531 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A028F22264B050028E531 /* Input.swift */; };
 		834E1E28224860570055E02A /* BlockBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E1E27224860570055E02A /* BlockBody.swift */; };
+		836E36B9224892C700CF7303 /* libBox2D.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 836E36B02248846200CF7303 /* libBox2D.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		83D305BA22224517008D5CFC /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305B922224517008D5CFC /* Transform.swift */; };
 		83D305BC22224524008D5CFC /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305BB22224524008D5CFC /* Vector3.swift */; };
 		DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570C22151F0F002315D0 /* AppDelegate.swift */; };
@@ -40,16 +40,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8307E1D922472B3B008269C2 /* PBXContainerItemProxy */ = {
+		836E36AF2248846200CF7303 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 8307E1D522472B3B008269C2 /* Box2D.xcodeproj */;
+			containerPortal = 836E36AB2248846200CF7303 /* Box2D.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 779BEEAF92FBAC4E3F4E12870486C4C0CABB307B387EA8E;
 			remoteInfo = Box2D;
 		};
-		8307E1DB22472B4C008269C2 /* PBXContainerItemProxy */ = {
+		836E36B72248923F00CF7303 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 8307E1D522472B3B008269C2 /* Box2D.xcodeproj */;
+			containerPortal = 836E36AB2248846200CF7303 /* Box2D.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 39EE070EA1B83274116F8C05A52904A662DE762695A8B4;
 			remoteInfo = Box2D;
@@ -79,7 +79,6 @@
 		8307E15B2247255C008269C2 /* Physics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Physics.h; sourceTree = "<group>"; };
 		8307E15C2247255C008269C2 /* PhysicsWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhysicsWrapper.m; sourceTree = "<group>"; };
 		8307E15D2247255C008269C2 /* PhysicsWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsWrapper.h; sourceTree = "<group>"; };
-		8307E1D522472B3B008269C2 /* Box2D.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Box2D.xcodeproj; path = Box2D/Build/Box2D.xcodeproj; sourceTree = "<group>"; };
 		8307E1DE224839C3008269C2 /* SphereBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereBody.swift; sourceTree = "<group>"; };
 		8307E1E022483F72008269C2 /* CTransform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTransform.h; sourceTree = "<group>"; };
 		83083A9D221E75A3003931A2 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		8309925C22272636007B8B98 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		830A028F22264B050028E531 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		834E1E27224860570055E02A /* BlockBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockBody.swift; sourceTree = "<group>"; };
+		836E36AB2248846200CF7303 /* Box2D.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Box2D.xcodeproj; path = Box2D/Build/Box2D.xcodeproj; sourceTree = "<group>"; };
 		83D305B922224517008D5CFC /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		83D305BB22224524008D5CFC /* Vector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 		DA99570922151F0F002315D0 /* Comp8051.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,7 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8307E1DD22472B51008269C2 /* libBox2D.a in Frameworks */,
+				836E36B9224892C700CF7303 /* libBox2D.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,14 +166,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8307E1D622472B3B008269C2 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8307E1DA22472B3B008269C2 /* libBox2D.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		83083AA5221E7634003931A2 /* Entity Component System */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +189,14 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		836E36AC2248846200CF7303 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				836E36B02248846200CF7303 /* libBox2D.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		83D305B822223DA2008D5CFC /* Data Types */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,7 +212,7 @@
 		DA99570022151F0F002315D0 = {
 			isa = PBXGroup;
 			children = (
-				8307E1D522472B3B008269C2 /* Box2D.xcodeproj */,
+				836E36AB2248846200CF7303 /* Box2D.xcodeproj */,
 				DA99570B22151F0F002315D0 /* Comp8051 */,
 				DA99572022151F11002315D0 /* Comp8051Tests */,
 				DA99572B22151F11002315D0 /* Comp8051UITests */,
@@ -303,7 +303,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				8307E1DC22472B4C008269C2 /* PBXTargetDependency */,
+				836E36B82248923F00CF7303 /* PBXTargetDependency */,
 			);
 			name = Comp8051;
 			productName = Comp8051;
@@ -383,8 +383,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 8307E1D622472B3B008269C2 /* Products */;
-					ProjectRef = 8307E1D522472B3B008269C2 /* Box2D.xcodeproj */;
+					ProductGroup = 836E36AC2248846200CF7303 /* Products */;
+					ProjectRef = 836E36AB2248846200CF7303 /* Box2D.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -397,11 +397,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		8307E1DA22472B3B008269C2 /* libBox2D.a */ = {
+		836E36B02248846200CF7303 /* libBox2D.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libBox2D.a;
-			remoteRef = 8307E1D922472B3B008269C2 /* PBXContainerItemProxy */;
+			remoteRef = 836E36AF2248846200CF7303 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -484,10 +484,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8307E1DC22472B4C008269C2 /* PBXTargetDependency */ = {
+		836E36B82248923F00CF7303 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Box2D;
-			targetProxy = 8307E1DB22472B4C008269C2 /* PBXContainerItemProxy */;
+			targetProxy = 836E36B72248923F00CF7303 /* PBXContainerItemProxy */;
 		};
 		DA99571F22151F11002315D0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -644,7 +644,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L45428QCUH;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/Box2D/**";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/Box2D";
 				INFOPLIST_FILE = Comp8051/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -667,7 +667,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L45428QCUH;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/Box2D/**";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/Box2D";
 				INFOPLIST_FILE = Comp8051/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
