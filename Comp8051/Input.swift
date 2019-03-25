@@ -12,7 +12,7 @@ class Input {
     
     private(set) static var gravity = Vector3()
     
-    static let instance = Input()
+    private static let instance = Input()
     private let motion = CMMotionManager()
     
     static func start () {

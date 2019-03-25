@@ -7,7 +7,7 @@
 //
 
 #import "CTransform.h"
-#import "Box2D/Box2D.h"
+#import "Box2D.h"
 #import "Physics.h"
 
 @implementation Physics {
