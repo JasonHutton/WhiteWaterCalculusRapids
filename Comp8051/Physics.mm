@@ -37,7 +37,7 @@ const float GRAV_CONSTANT = 9.81f;
 - (void)setGravityX:(float) x y:(float)y {
     
     b2Vec2 gravity(x * GRAV_CONSTANT, y * GRAV_CONSTANT);
-    world->SetGravity(b2Vec2(x, y));
+    world->SetGravity(gravity);
 }
 
 - (void)addGroundBody:(NSString*) tag posX:(float) posX posY:(float) posY scaleX:(float) scaleX
@@ -70,7 +70,7 @@ const float GRAV_CONSTANT = 9.81f;
     b2FixtureDef ballShapeDef;
     ballShapeDef.shape = &circle;
     ballShapeDef.density = 1.0f;
-    ballShapeDef.friction = 0.2f;
+    ballShapeDef.friction = 0.5f;
     ballShapeDef.restitution = 0.5f;
     
     b2Body* ballBody = world->CreateBody(&ballBodyDef);

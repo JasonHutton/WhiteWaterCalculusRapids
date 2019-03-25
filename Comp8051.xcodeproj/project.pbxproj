@@ -65,6 +65,7 @@
 		836E386322489A8800CF7303 /* b2CollideEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836E383422489A8800CF7303 /* b2CollideEdge.cpp */; };
 		836E386422489A8800CF7303 /* b2Collision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836E383522489A8800CF7303 /* b2Collision.cpp */; };
 		836E386522489A8800CF7303 /* b2RopeJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836E383622489A8800CF7303 /* b2RopeJoint.cpp */; };
+		836E386722489C2C00CF7303 /* GravityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E386622489C2C00CF7303 /* GravityManager.swift */; };
 		83D305BA22224517008D5CFC /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305B922224517008D5CFC /* Transform.swift */; };
 		83D305BC22224524008D5CFC /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305BB22224524008D5CFC /* Vector3.swift */; };
 		DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570C22151F0F002315D0 /* AppDelegate.swift */; };
@@ -211,6 +212,7 @@
 		836E383522489A8800CF7303 /* b2Collision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Collision.cpp; sourceTree = "<group>"; };
 		836E383622489A8800CF7303 /* b2RopeJoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2RopeJoint.cpp; sourceTree = "<group>"; };
 		836E383722489A8800CF7303 /* b2MotorJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2MotorJoint.h; sourceTree = "<group>"; };
+		836E386622489C2C00CF7303 /* GravityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GravityManager.swift; sourceTree = "<group>"; };
 		83D305B922224517008D5CFC /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		83D305BB22224524008D5CFC /* Vector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 		DA99570922151F0F002315D0 /* Comp8051.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,6 +279,7 @@
 				8308459F2224C40100B69A4C /* SphereBehaviour.swift */,
 				8307E1DE224839C3008269C2 /* SphereBody.swift */,
 				834E1E27224860570055E02A /* BlockBody.swift */,
+				836E386622489C2C00CF7303 /* GravityManager.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				836E383C22489A8800CF7303 /* b2MouseJoint.cpp in Sources */,
 				836E385222489A8800CF7303 /* b2MotorJoint.cpp in Sources */,
 				836E384F22489A8800CF7303 /* b2Timer.cpp in Sources */,
+				836E386722489C2C00CF7303 /* GravityManager.swift in Sources */,
 				836E385A22489A8800CF7303 /* b2GearJoint.cpp in Sources */,
 				836E384222489A8800CF7303 /* b2CollidePolygon.cpp in Sources */,
 				836E384B22489A8800CF7303 /* b2Settings.cpp in Sources */,

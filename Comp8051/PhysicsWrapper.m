@@ -11,56 +11,45 @@
 #import "Comp8051-Swift.h"
 #import "PhysicsWrapper.h"
 
-@implementation PhysicsWrapper {
-    
-    Physics* physics;
-}
+@implementation PhysicsWrapper
 
-static PhysicsWrapper* instance = nil;
+static Physics* physics = nil;
 
-- (instancetype)init {
++ (void)start {
     
-    if (self = [super init]) {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         
-        // singleton initialization
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            
-            instance = self;
-            
-            // other initialization here
-            instance->physics = [[Physics alloc] init];
-            
-            printf("Physics initialized.\n");
-        });
-    }
-    return self;
+        physics = [[Physics alloc] init];
+        
+        printf("Physics initialized.\n");
+    });
 }
 
 + (void)update:(float)deltaTime {
     
-    [instance->physics update:deltaTime];
+    [physics update:deltaTime];
 }
 
 + (void)setGravityX:(float) x y:(float)y {
     
-    [instance->physics setGravityX:x y:y];
+    [physics setGravityX:x y:y];
 }
 
 + (void)addGroundBody:(NSString*) tag posX:(float) posX posY:(float) posY scaleX:(float) scaleX
                scaleY:(float) scaleY rotation:(float) rotation {
     
-    [instance->physics addGroundBody:tag posX:posX posY:posY scaleX:scaleX scaleY:scaleY rotation:rotation];
+    [physics addGroundBody:tag posX:posX posY:posY scaleX:scaleX scaleY:scaleY rotation:rotation];
 }
 
 + (void)addBallBody:(NSString*) tag posX:(float) posX posY:(float) posY radius:(float) radius {
     
-    [instance->physics addBallBody:tag posX:posX posY:posY radius:radius];
+    [physics addBallBody:tag posX:posX posY:posY radius:radius];
 }
 
 + (CTransform)getBodyTransform:(NSString*) tag {
     
-    return [instance->physics getBodyTransform:tag];
+    return [physics getBodyTransform:tag];
 }
 
 @end

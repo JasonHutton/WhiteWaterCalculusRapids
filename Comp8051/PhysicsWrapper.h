@@ -12,8 +12,7 @@
 
 @interface PhysicsWrapper : NSObject
 
-@property PhysicsWrapper* instance;
-
++ (void)start;
 + (void)update:(float)deltaTime;
 + (void)setGravityX:(float) x y:(float) y;
 + (void)addGroundBody:(NSString*) tag posX:(float) posX posY:(float) posY scaleX:(float) scaleX

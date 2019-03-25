@@ -33,7 +33,9 @@ class ViewController: GLKViewController {
     
     private func setupGL() {
         
+        // initialize utilities
         Input.start()
+        PhysicsWrapper.start();
         
         ViewController.instance = self
         
@@ -59,10 +61,8 @@ class ViewController: GLKViewController {
         
         //effect.transform.projectionMatrix = projectionMatrix
         
-        // initialize physics
-        _ = PhysicsWrapper()
-        
         // set up scene
+        GameObject.root.addComponent(component: GravityManager()) // this is silly but it works
         // add camera before adding any model renderers
         let cameraObj = GameObject(tag: "Camera")
         cameraObj.transform.position = Vector3(x: 0, y: 0, z: 6)
