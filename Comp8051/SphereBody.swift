@@ -29,7 +29,7 @@ class SphereBody : Component {
             
             let transform = PhysicsWrapper.getBodyTransform(tag)
             gameObject!.transform.position = Vector3.convertFromCVector(cVector: transform.position)
-            gameObject!.transform.rotation.z = transform.rotation
+            gameObject!.transform.rotation.z = transform.rotation / 2
         }
     }
 }

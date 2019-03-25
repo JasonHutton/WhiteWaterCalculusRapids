@@ -49,7 +49,13 @@ class ViewController: GLKViewController {
             view.context = context
             // 4
             delegate = self
+            
+            view.drawableDepthFormat = GLKViewDrawableDepthFormat.format24
         }
+        
+        // enable opengl stuff
+        glEnable(GLenum(GL_DEPTH_TEST))
+        glEnable(GLenum(GL_CULL_FACE))
         
         // apply perspective transformation
         let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
@@ -101,19 +107,11 @@ class ViewController: GLKViewController {
         // clear the scene
         glClearColor(0, 0, 0, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT))
-
-        glEnable(GLenum(GL_DEPTH_TEST))
-        glEnable(GLenum(GL_CULL_FACE))
         
         // draw each model
         for i in 0 ..< models.count {
-            models[i].render()
-            // add transformations to the effect
-            //effect.transform.modelviewMatrix = models[i].modelViewMatrix
             
-            // draw the model on the scene
-            //effect.prepareToDraw()
-
+            models[i].render()
         }
     }
     
