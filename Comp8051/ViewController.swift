@@ -59,6 +59,9 @@ class ViewController: GLKViewController {
         
         //effect.transform.projectionMatrix = projectionMatrix
         
+        // initialize physics
+        _ = PhysicsWrapper()
+        
         // set up scene
         // add camera before adding any model renderers
         let cameraObj = GameObject(tag: "Camera")
@@ -70,7 +73,7 @@ class ViewController: GLKViewController {
         // set initial position
         sphereObj.transform.position = Vector3(x: 0, y: 2, z: 0)
         // add component to rotate the sphere (probably temporary)
-        sphereObj.addComponent(component: SphereBehaviour())
+        sphereObj.addComponent(component: SphereBody(tag: "Ball"))
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere", shader: shader))
         GameObject.root.addChild(gameObject: sphereObj)
         
@@ -80,9 +83,6 @@ class ViewController: GLKViewController {
         surfaceObj.transform.scale.x = 10
         surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitSurface", shader: shader))
         GameObject.root.addChild(gameObject: surfaceObj)
-        
-        // initialize physics
-        _ = PhysicsWrapper()
     }
     
     

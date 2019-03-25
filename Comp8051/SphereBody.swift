@@ -13,7 +13,9 @@ class SphereBody : Component {
     init(tag: String) {
         
         self.tag = tag
-        super.init()
+    }
+    
+    override func onEnable() {
         
         if let transform = gameObject?.worldTransform {
             
@@ -23,11 +25,10 @@ class SphereBody : Component {
     
     override func update(deltaTime: Float) {
         
-        if var transform = gameObject?.worldTransform {
+        if (gameObject?.worldTransform) != nil {
             
-            let pos = Vector3.convert(cVector3:PhysicsWrapper.getBodyPos(tag));
-            
-            transform.position = pos;
+            let pos = Vector3.convert(cVector3:PhysicsWrapper.getBodyPos(tag))
+            gameObject!.transform.position = pos
         }
     }
 }

@@ -120,6 +120,11 @@ class GameObject {
     func addComponent(component : Component) {
         components.append(component)
         component.gameObject = self
+        
+        if (component.active)
+        {
+            component.onEnable()
+        }
     }
     
     // Remove a component from this game object, if we have it
