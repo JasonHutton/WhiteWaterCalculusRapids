@@ -17,6 +17,8 @@ extension Array {
 
 class ViewController: GLKViewController {
     
+    @IBOutlet weak var menuView: GLKView!
+    
     static var deltaTime: Float = 1.0/30.0
     
     static var instance: ViewController?
@@ -30,6 +32,17 @@ class ViewController: GLKViewController {
     var models : [Model] = []
     
     var shader : BaseEffect!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //setupGL()
+    }
+    
+
+    @IBAction func startGame(_ sender: Any) {
+        menuView.isHidden = true
+        setupGL()
+    }
     
     private func setupGL() {
         
@@ -52,10 +65,6 @@ class ViewController: GLKViewController {
             
             view.drawableDepthFormat = GLKViewDrawableDepthFormat.format24
         }
-        
-        // enable opengl stuff
-        glEnable(GLenum(GL_DEPTH_TEST))
-        glEnable(GLenum(GL_CULL_FACE))
         
         // apply perspective transformation
         let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
@@ -99,19 +108,18 @@ class ViewController: GLKViewController {
         models.append(model)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupGL()
-    }
-    
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         // clear the scene
         glClearColor(0, 0, 0, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT))
         
+        glEnable(GLenum(GL_DEPTH_TEST))
+        glEnable(GLenum(GL_CULL_FACE))
+        glEnable(GLenum(GL_BLEND))
+        glBlendFunc(GLenum(GL_SRC_ALPHA), GLenum(GL_ONE_MINUS_SRC_ALPHA))
+        
         // draw each model
         for i in 0 ..< models.count {
-            
             models[i].render()
         }
     }
