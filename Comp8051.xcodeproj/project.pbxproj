@@ -83,6 +83,7 @@
 		DA9957752227BF6C002315D0 /* GLKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9957742227BF6C002315D0 /* GLKExtensions.swift */; };
 		DAD246B72245A1CE00B4D62C /* ICOSphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B52245A1CD00B4D62C /* ICOSphere.obj */; };
 		DAD246B82245A1CE00B4D62C /* UnitSurface.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B62245A1CE00B4D62C /* UnitSurface.obj */; };
+		DAD246BA2249D3E600B4D62C /* UnitCube.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B92249D3E600B4D62C /* UnitCube.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +237,7 @@
 		DA9957742227BF6C002315D0 /* GLKExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLKExtensions.swift; sourceTree = "<group>"; };
 		DAD246B52245A1CD00B4D62C /* ICOSphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ICOSphere.obj; sourceTree = "<group>"; };
 		DAD246B62245A1CE00B4D62C /* UnitSurface.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitSurface.obj; sourceTree = "<group>"; };
+		DAD246B92249D3E600B4D62C /* UnitCube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitCube.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +268,7 @@
 		830436232222310E0019F5BF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DAD246B92249D3E600B4D62C /* UnitCube.obj */,
 				DAD246B52245A1CD00B4D62C /* ICOSphere.obj */,
 				DAD246B62245A1CE00B4D62C /* UnitSurface.obj */,
 			);
@@ -625,6 +628,7 @@
 				DA9957712227BEEF002315D0 /* SimpleVertexShader.glsl in Resources */,
 				DA99571722151F11002315D0 /* LaunchScreen.storyboard in Resources */,
 				8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */,
+				DAD246BA2249D3E600B4D62C /* UnitCube.obj in Resources */,
 				DA99571422151F11002315D0 /* Assets.xcassets in Resources */,
 				DA9957702227BEEF002315D0 /* SimpleFragmentShader.glsl in Resources */,
 				DA99571222151F0F002315D0 /* Main.storyboard in Resources */,
