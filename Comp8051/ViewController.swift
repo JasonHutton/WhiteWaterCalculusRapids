@@ -22,6 +22,8 @@ class ViewController: GLKViewController {
     
     var player: AVAudioPlayer!
     
+    var isMusicPlaying: Bool!
+    
     static var deltaTime: Float = 1.0/30.0
     
     static var instance: ViewController?
@@ -39,6 +41,8 @@ class ViewController: GLKViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        isMusicPlaying = true
+        
         playMusic(soundFile: "menu")
     }
     
@@ -52,20 +56,29 @@ class ViewController: GLKViewController {
     }
     
     @IBAction func toggleAudio(_ sender: Any) {
-        if(player.isPlaying){
+        if(isMusicPlaying){
+            isMusicPlaying = false
             player.pause()
-        } else if (!player.isPlaying){
+        } else if (!isMusicPlaying){
+            isMusicPlaying = true;
             player.play()
         }
     }
     
+    @IBAction func quitGame(_ sender: Any) {
+        menuView.isHidden = false
+        playMusic(soundFile: "menu")
+        tearDownGL()
+    }
     fileprivate func playMusic(soundFile: String) {
         let path = Bundle.main.path(forResource: soundFile, ofType: "mp3")!
         let url = URL(fileURLWithPath: path)
         do {
             player = try AVAudioPlayer(contentsOf: url)
             player.prepareToPlay()
-            player.play()
+            if(isMusicPlaying){
+                player.play()
+            }
         } catch let error as NSError{
             print(error.description)
         }
