@@ -17,6 +17,7 @@ class Input {
     
     static func start () {
         instance.respond()
+        Gravity.start()
     }
     
     // hey, this is goofy, but it does work
@@ -33,12 +34,13 @@ class Input {
                     return
                 }
                 
-                Input.gravity = Vector3(x: Float(data.gravity.x), y: Float(data.gravity.y), z: 0).normalized
+                Gravity.setGravity(gravity: Vector3(x: Float(data.gravity.x), y: Float(data.gravity.y), z: Float(data.gravity.z)))
+                Input.gravity = Gravity.gravity
                 
             }
         } else {
             print("Error: Device motion not available. Defaulting gravity to (0, -1, 0).")
-            Input.gravity = Vector3(x:0, y: -1, z: 0)
+            Input.gravity = Gravity.defaultGravity
         }
     }
     
