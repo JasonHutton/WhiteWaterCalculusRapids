@@ -51,6 +51,14 @@ class ViewController: GLKViewController {
         setupGL()
     }
     
+    @IBAction func toggleAudio(_ sender: Any) {
+        if(player.isPlaying){
+            player.pause()
+        } else if (!player.isPlaying){
+            player.play()
+        }
+    }
+    
     fileprivate func playMusic(soundFile: String) {
         let path = Bundle.main.path(forResource: soundFile, ofType: "mp3")!
         let url = URL(fileURLWithPath: path)
