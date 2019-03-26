@@ -84,6 +84,7 @@
 		DAD246B72245A1CE00B4D62C /* ICOSphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B52245A1CD00B4D62C /* ICOSphere.obj */; };
 		DAD246B82245A1CE00B4D62C /* UnitSurface.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B62245A1CE00B4D62C /* UnitSurface.obj */; };
 		DAD246BA2249D3E600B4D62C /* UnitCube.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B92249D3E600B4D62C /* UnitCube.obj */; };
+		E3681E4C2249FFE2000B3974 /* Gravity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3681E4B2249FFE2000B3974 /* Gravity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,6 +239,7 @@
 		DAD246B52245A1CD00B4D62C /* ICOSphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ICOSphere.obj; sourceTree = "<group>"; };
 		DAD246B62245A1CE00B4D62C /* UnitSurface.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitSurface.obj; sourceTree = "<group>"; };
 		DAD246B92249D3E600B4D62C /* UnitCube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitCube.obj; sourceTree = "<group>"; };
+		E3681E4B2249FFE2000B3974 /* Gravity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gravity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +324,7 @@
 				8307E15C2247255C008269C2 /* PhysicsWrapper.m */,
 				836E36BA224895C200CF7303 /* Box2D.h */,
 				836E37DB22489A8800CF7303 /* Box2D */,
+				E3681E4B2249FFE2000B3974 /* Gravity.swift */,
 			);
 			name = Physics;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				836E383D22489A8800CF7303 /* b2Distance.cpp in Sources */,
 				836E385022489A8800CF7303 /* b2WheelJoint.cpp in Sources */,
 				DA99573B2215335C002315D0 /* Vertex.swift in Sources */,
+				E3681E4C2249FFE2000B3974 /* Gravity.swift in Sources */,
 				836E385B22489A8800CF7303 /* b2Joint.cpp in Sources */,
 				836E386522489A8800CF7303 /* b2RopeJoint.cpp in Sources */,
 				DA99573D2217A53F002315D0 /* Model.swift in Sources */,

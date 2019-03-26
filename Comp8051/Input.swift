@@ -7,13 +7,16 @@
 //
 
 import CoreMotion
+import UIKit
 
 class Input {
     
-    private(set) static var gravity = Vector3()
+    //private(set) static var gravity = Vector3()
+    public static var gravity = Vector3()
     
     private static let instance = Input()
     private let motion = CMMotionManager()
+    //private lazy var tap = UITapGestureRecognizer(target: ViewController.instance, action:#selector(Input.instance.handleTap()))
     
     static func start () {
         instance.respond()
@@ -25,7 +28,15 @@ class Input {
         print("Input initialized.")
     }
     
+    @objc func handleTap() {
+        
+    }
+    
     init() {
+        //tap.
+        //let gr = UIGestureRecognizer()
+        //gr.addg
+        
         if motion.isDeviceMotionAvailable {
             motion.deviceMotionUpdateInterval = 1/30
             motion.startDeviceMotionUpdates(to: .main) {
