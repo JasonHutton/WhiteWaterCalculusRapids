@@ -87,8 +87,9 @@ class ViewController: GLKViewController {
         // set initial position
         surfaceObj.transform.position = Vector3(x: 0, y: -2, z: 0)
         surfaceObj.transform.scale.x = 10
+        surfaceObj.transform.scale.y = 0.1
         surfaceObj.addComponent(component: BlockBody(tag: "Floor"))
-        surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitSurface", shader: shader))
+        surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
         GameObject.root.addChild(gameObject: surfaceObj)
     }
     
