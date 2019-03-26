@@ -17,9 +17,9 @@ class Model {
     public var normals:[GLKVector3] = []
     public var textureCoords:[GLKVector2] = []
     public var faces: [Face] = [] // Faces
-    public var vertexIndices: [GLubyte] = []
-    public var vertexTextureIndices: [GLubyte] = []
-    public var vertexNormalIndices: [GLubyte] = []
+    public var vertexIndices: [GLuint] = []
+    public var vertexTextureIndices: [GLuint] = []
+    public var vertexNormalIndices: [GLuint] = []
     public var materials: [String] = [] // Material names
     private var currentGroup: String // Current group name
     private var currentObject: String // Current object name
@@ -57,7 +57,7 @@ class Model {
         let string = String(data: data!, encoding: String.Encoding.utf8)
         // split the file data into an array of strings separated by new line character
         let lines: [String] = (string?.components(separatedBy: "\n"))!
-        var i = GLubyte(0);
+        var i = GLuint(0);
         //go through each line
         for (offset, line) in lines.enumerated() {
             // split the line into words
@@ -136,7 +136,7 @@ class Model {
         
         glGenBuffers(GLsizei(1), &ebo)
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), ebo)
-        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), vertexIndices.count * MemoryLayout<GLubyte>.size, vertexIndices, GLenum(GL_STATIC_DRAW))
+        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), vertexIndices.count * MemoryLayout<GLuint>.size, vertexIndices, GLenum(GL_STATIC_DRAW))
         
         
         // 현재 vao가 바인딩 되어 있어서 아래 함수를 실행하면 정점과 인덱스 데이터가 모두 vao에 저장된다.
@@ -192,7 +192,7 @@ class Model {
         
         glDrawElements(GLenum(GL_TRIANGLES),     // 1
             GLsizei(vertexIndices.count),   // 2
-            GLenum(GL_UNSIGNED_BYTE), // 3
+            GLenum(GL_UNSIGNED_INT), // 3
             nil)                      // 4
         
         glBindVertexArrayOES(0)

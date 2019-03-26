@@ -59,7 +59,7 @@ class ViewController: GLKViewController {
         
         // apply perspective transformation
         let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
-        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 1.0, 10.0)
+        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 1.0, 40.0)
         
         self.shader = BaseEffect(vertexShader: "SimpleVertexShader.glsl", fragmentShader: "SimpleFragmentShader.glsl")
         
@@ -71,7 +71,7 @@ class ViewController: GLKViewController {
         GameObject.root.addComponent(component: GravityManager()) // this is silly but it works
         // add camera before adding any model renderers
         let cameraObj = GameObject(tag: "Camera")
-        cameraObj.transform.position = Vector3(x: 0, y: 0, z: 6)
+        cameraObj.transform.position = Vector3(x: 0, y: 0, z: 30)
         GameObject.root.addChild(gameObject: cameraObj)
         // TODO: currently, component order DOES MATTER. modelrenderer should always occur last!
         // for now, add a game object's model renderer last.
@@ -87,8 +87,9 @@ class ViewController: GLKViewController {
         // set initial position
         surfaceObj.transform.position = Vector3(x: 0, y: -2, z: 0)
         surfaceObj.transform.scale.x = 10
+        surfaceObj.transform.scale.y = 0.1
         surfaceObj.addComponent(component: BlockBody(tag: "Floor"))
-        surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitSurface", shader: shader))
+        surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
         GameObject.root.addChild(gameObject: surfaceObj)
     }
     
