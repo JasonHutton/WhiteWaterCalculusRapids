@@ -85,6 +85,8 @@
 		DAD246B82245A1CE00B4D62C /* UnitSurface.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246B62245A1CE00B4D62C /* UnitSurface.obj */; };
 		DAD246BC2249DD8F00B4D62C /* Menu Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD246BB2249DD8F00B4D62C /* Menu Background.png */; };
 		DAD246BE2249E89600B4D62C /* UnitCube.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246BD2249E89600B4D62C /* UnitCube.obj */; };
+		DAD246C32249F26700B4D62C /* gameplay3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C12249F26600B4D62C /* gameplay3.mp3 */; };
+		DAD246C42249F26700B4D62C /* menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C22249F26700B4D62C /* menu.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,6 +242,8 @@
 		DAD246B62245A1CE00B4D62C /* UnitSurface.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitSurface.obj; sourceTree = "<group>"; };
 		DAD246BB2249DD8F00B4D62C /* Menu Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu Background.png"; sourceTree = "<group>"; };
 		DAD246BD2249E89600B4D62C /* UnitCube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitCube.obj; sourceTree = "<group>"; };
+		DAD246C12249F26600B4D62C /* gameplay3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameplay3.mp3; sourceTree = "<group>"; };
+		DAD246C22249F26700B4D62C /* menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,6 +467,7 @@
 		DA99570B22151F0F002315D0 /* Comp8051 */ = {
 			isa = PBXGroup;
 			children = (
+				DAD246BF2249F24400B4D62C /* Sound */,
 				836E37DA22489A2000CF7303 /* Physics */,
 				DAD246B022459D0D00B4D62C /* Textures */,
 				DA99576D2227BEB8002315D0 /* ShaderStuff */,
@@ -518,6 +523,23 @@
 				8307E0FC2246E77A008269C2 /* woodTexture.jpg */,
 			);
 			name = Textures;
+			sourceTree = "<group>";
+		};
+		DAD246BF2249F24400B4D62C /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				DAD246C02249F25400B4D62C /* Music */,
+			);
+			name = Sound;
+			sourceTree = "<group>";
+		};
+		DAD246C02249F25400B4D62C /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				DAD246C12249F26600B4D62C /* gameplay3.mp3 */,
+				DAD246C22249F26700B4D62C /* menu.mp3 */,
+			);
+			name = Music;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -631,10 +653,12 @@
 				DAD246B82245A1CE00B4D62C /* UnitSurface.obj in Resources */,
 				DA9957712227BEEF002315D0 /* SimpleVertexShader.glsl in Resources */,
 				DA99571722151F11002315D0 /* LaunchScreen.storyboard in Resources */,
+				DAD246C32249F26700B4D62C /* gameplay3.mp3 in Resources */,
 				DAD246BC2249DD8F00B4D62C /* Menu Background.png in Resources */,
 				8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */,
 				DA99571422151F11002315D0 /* Assets.xcassets in Resources */,
 				DA9957702227BEEF002315D0 /* SimpleFragmentShader.glsl in Resources */,
+				DAD246C42249F26700B4D62C /* menu.mp3 in Resources */,
 				DA99571222151F0F002315D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -901,7 +925,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L45428QCUH;
+				DEVELOPMENT_TEAM = H6MLZYGHNY;
 				HEADER_SEARCH_PATHS = "${SRCROOT}/Box2D";
 				INFOPLIST_FILE = Comp8051/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -924,7 +948,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L45428QCUH;
+				DEVELOPMENT_TEAM = H6MLZYGHNY;
 				HEADER_SEARCH_PATHS = "${SRCROOT}/Box2D";
 				INFOPLIST_FILE = Comp8051/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

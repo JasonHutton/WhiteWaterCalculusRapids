@@ -8,6 +8,7 @@
 
 import GLKit
 import CoreMotion
+import AVFoundation
 
 extension Array {
     func size() -> Int {
@@ -18,6 +19,8 @@ extension Array {
 class ViewController: GLKViewController {
     
     @IBOutlet weak var menuView: GLKView!
+    
+    var player: AVAudioPlayer!
     
     static var deltaTime: Float = 1.0/30.0
     
@@ -35,13 +38,29 @@ class ViewController: GLKViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setupGL()
+        
+        playMusic(soundFile: "menu")
     }
     
 
     @IBAction func startGame(_ sender: Any) {
         menuView.isHidden = true
+        
+        playMusic(soundFile: "gameplay3")
+        
         setupGL()
+    }
+    
+    fileprivate func playMusic(soundFile: String) {
+        let path = Bundle.main.path(forResource: soundFile, ofType: "mp3")!
+        let url = URL(fileURLWithPath: path)
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player.prepareToPlay()
+            player.play()
+        } catch let error as NSError{
+            print(error.description)
+        }
     }
     
     private func setupGL() {
