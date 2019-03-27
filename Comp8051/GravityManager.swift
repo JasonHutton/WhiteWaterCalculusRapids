@@ -7,9 +7,23 @@
 //
 
 class GravityManager : Component {
+    private var gravity = Vector3()
+    private var gravityChanged = Bool()
+    
+    override init() {
+        gravity = Input.instance.gravity.gravity
+        gravityChanged = true
+    }
     
     override func update(deltaTime: Float) {
+        if(gravityChanged) {
+            PhysicsWrapper.setGravityX(gravity.x, y: gravity.y)
+            gravityChanged = false
+        }
         
-        PhysicsWrapper.setGravityX(Input.instance.gravity.gravity.x, y: Input.instance.gravity.gravity.y)
+        if(!gravity.EqualTo(other: Input.instance.gravity.gravity)) {
+            gravity = Input.instance.gravity.gravity
+            gravityChanged = true
+        }
     }
 }
