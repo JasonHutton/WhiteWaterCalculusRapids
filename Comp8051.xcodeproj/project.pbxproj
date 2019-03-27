@@ -86,7 +86,6 @@
 		DAD246BE2249E89600B4D62C /* UnitCube.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246BD2249E89600B4D62C /* UnitCube.obj */; };
 		DAD246C32249F26700B4D62C /* gameplay3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C12249F26600B4D62C /* gameplay3.mp3 */; };
 		DAD246C42249F26700B4D62C /* menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C22249F26700B4D62C /* menu.mp3 */; };
-		E30E5675224B6E2900956B87 /* VectorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E5674224B6E2900956B87 /* VectorExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,7 +242,6 @@
 		DAD246BD2249E89600B4D62C /* UnitCube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitCube.obj; sourceTree = "<group>"; };
 		DAD246C12249F26600B4D62C /* gameplay3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameplay3.mp3; sourceTree = "<group>"; };
 		DAD246C22249F26700B4D62C /* menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu.mp3; sourceTree = "<group>"; };
-		E30E5674224B6E2900956B87 /* VectorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,7 +312,6 @@
 				830A028F22264B050028E531 /* Input.swift */,
 				8309925C22272636007B8B98 /* Error.swift */,
 				DA9957742227BF6C002315D0 /* GLKExtensions.swift */,
-				E30E5674224B6E2900956B87 /* VectorExtensions.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -731,7 +728,6 @@
 				DA99573B2215335C002315D0 /* Vertex.swift in Sources */,
 				836E385B22489A8800CF7303 /* b2Joint.cpp in Sources */,
 				836E386522489A8800CF7303 /* b2RopeJoint.cpp in Sources */,
-				E30E5675224B6E2900956B87 /* VectorExtensions.swift in Sources */,
 				DA99573D2217A53F002315D0 /* Model.swift in Sources */,
 				83D305BA22224517008D5CFC /* Transform.swift in Sources */,
 				836E385422489A8800CF7303 /* b2CircleShape.cpp in Sources */,

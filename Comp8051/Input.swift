@@ -36,10 +36,11 @@ class Input {
                     return
                 }
                 
-                self.gravity = Vector3(x:Float(data.gravity.x), y:Float(data.gravity.y), z: 0).normalized
+                self.gravity = Vector3(x:Float(data.gravity.x), y:Float(data.gravity.y), z: 0).normalized2D
             }
         } else {
-            print("Error: Device motion not available. Defaulting gravity to (0, -1, 0).") // Gravity() already defaults
+            self.gravity = Vector3(x:0, y:-1, z: 0)
+            print("Error: Device motion not available. Defaulting gravity to (0, -1, 0).")
         }
     }
 }

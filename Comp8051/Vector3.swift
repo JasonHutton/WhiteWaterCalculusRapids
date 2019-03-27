@@ -90,6 +90,14 @@ struct Vector3 {
         return cVec
     }
     
+    static func dotProduct (left: Vector3, right: Vector3) -> Float {
+        var product = Float(0)
+        product += left.x * right.x
+        product += left.y * right.y
+        product += left.z * right.z
+        return product
+    }
+    
     
     /* OPERATORS */
     
@@ -161,4 +169,12 @@ struct Vector3 {
         left.z /= right
     }
     
+    // equality operators
+    static func ==(left: Vector3, right: Vector3) -> Bool {
+        if(left.x != right.x) { return false }
+        if(left.y != right.y) { return false }
+        if(left.z != right.z) { return false }
+        
+        return true
+    }
 }
