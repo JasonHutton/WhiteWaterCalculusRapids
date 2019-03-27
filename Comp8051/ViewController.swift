@@ -109,8 +109,7 @@ class ViewController: GLKViewController {
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        Gravity.invertGravity()
-        Input.gravity = Gravity.gravity
+        Input.instance.gravity.invertGravity()
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {

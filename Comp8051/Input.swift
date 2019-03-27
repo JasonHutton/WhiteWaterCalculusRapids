@@ -11,16 +11,14 @@ import UIKit
 
 class Input {
     
-    //private(set) static var gravity = Vector3()
-    public static var gravity = Vector3()
+    public let gravity = Gravity()
     
-    private static let instance = Input()
+    public static let instance = Input()
     private let motion = CMMotionManager()
     //private lazy var tap = UITapGestureRecognizer(target: ViewController.instance, action:#selector(Input.instance.handleTap()))
     
     static func start () {
         instance.respond()
-        Gravity.start()
     }
     
     // hey, this is goofy, but it does work
@@ -33,9 +31,6 @@ class Input {
     }
     
     init() {
-        //tap.
-        //let gr = UIGestureRecognizer()
-        //gr.addg
         
         if motion.isDeviceMotionAvailable {
             motion.deviceMotionUpdateInterval = 1/30
@@ -45,13 +40,10 @@ class Input {
                     return
                 }
                 
-                Gravity.setGravity(gravity: Vector3(x: Float(data.gravity.x), y: Float(data.gravity.y), z: Float(data.gravity.z)))
-                Input.gravity = Gravity.gravity
-                
+                self.gravity.setGravity(gravity: Vector3(x: Float(data.gravity.x), y: Float(data.gravity.y), z: Float(data.gravity.z)))
             }
         } else {
-            print("Error: Device motion not available. Defaulting gravity to (0, -1, 0).")
-            Input.gravity = Gravity.defaultGravity
+            print("Error: Device motion not available. Defaulting gravity to (0, -1, 0).") // Gravity() already defaults
         }
     }
     
