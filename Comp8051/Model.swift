@@ -33,7 +33,7 @@ class Model {
     
     var shader: BaseEffect!
     
-    public init(modelName: String, shader: BaseEffect){
+    public init(modelName: String, shader: BaseEffect, texture: String? = nil){
         name = modelName
         self.shader = shader
         currentGroup = "" // Set to default group
@@ -76,7 +76,11 @@ class Model {
                 break
             case "usemtl":
                 // Specify material name to be used for following elements
-                loadTexture(separator[1])
+                if(texture == nil){
+                    loadTexture(separator[1])
+                } else{
+                    loadTexture(texture!)
+                }
                 break
             case "v":
                 // vertex coordinates

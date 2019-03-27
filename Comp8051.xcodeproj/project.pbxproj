@@ -87,6 +87,8 @@
 		DAD246BE2249E89600B4D62C /* UnitCube.obj in Resources */ = {isa = PBXBuildFile; fileRef = DAD246BD2249E89600B4D62C /* UnitCube.obj */; };
 		DAD246C32249F26700B4D62C /* gameplay3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C12249F26600B4D62C /* gameplay3.mp3 */; };
 		DAD246C42249F26700B4D62C /* menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C22249F26700B4D62C /* menu.mp3 */; };
+		DAD246CB224C131400B4D62C /* winTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C9224C131400B4D62C /* winTexture.jpg */; };
+		DAD246CC224C131400B4D62C /* deathTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD246CA224C131400B4D62C /* deathTexture.png */; };
 		E30E5675224B6E2900956B87 /* VectorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E5674224B6E2900956B87 /* VectorExtensions.swift */; };
 		E3681E4C2249FFE2000B3974 /* Gravity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3681E4B2249FFE2000B3974 /* Gravity.swift */; };
 /* End PBXBuildFile section */
@@ -246,6 +248,8 @@
 		DAD246BD2249E89600B4D62C /* UnitCube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnitCube.obj; sourceTree = "<group>"; };
 		DAD246C12249F26600B4D62C /* gameplay3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameplay3.mp3; sourceTree = "<group>"; };
 		DAD246C22249F26700B4D62C /* menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu.mp3; sourceTree = "<group>"; };
+		DAD246C9224C131400B4D62C /* winTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = winTexture.jpg; sourceTree = "<group>"; };
+		DAD246CA224C131400B4D62C /* deathTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deathTexture.png; sourceTree = "<group>"; };
 		E30E5674224B6E2900956B87 /* VectorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorExtensions.swift; sourceTree = "<group>"; };
 		E3681E4B2249FFE2000B3974 /* Gravity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gravity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -524,6 +528,8 @@
 		DAD246B022459D0D00B4D62C /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				DAD246CA224C131400B4D62C /* deathTexture.png */,
+				DAD246C9224C131400B4D62C /* winTexture.jpg */,
 				DAD246BB2249DD8F00B4D62C /* Menu Background.png */,
 				8307E0FD2246E77A008269C2 /* marbleTexture.jpg */,
 				8307E0FC2246E77A008269C2 /* woodTexture.jpg */,
@@ -653,6 +659,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD246CB224C131400B4D62C /* winTexture.jpg in Resources */,
 				DAD246BE2249E89600B4D62C /* UnitCube.obj in Resources */,
 				8307E0FE2246E77A008269C2 /* woodTexture.jpg in Resources */,
 				DAD246B72245A1CE00B4D62C /* ICOSphere.obj in Resources */,
@@ -662,6 +669,7 @@
 				DAD246C32249F26700B4D62C /* gameplay3.mp3 in Resources */,
 				DAD246BC2249DD8F00B4D62C /* Menu Background.png in Resources */,
 				8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */,
+				DAD246CC224C131400B4D62C /* deathTexture.png in Resources */,
 				DA99571422151F11002315D0 /* Assets.xcassets in Resources */,
 				DA9957702227BEEF002315D0 /* SimpleFragmentShader.glsl in Resources */,
 				DAD246C42249F26700B4D62C /* menu.mp3 in Resources */,
@@ -941,7 +949,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = bcit.Comp8051;
+				PRODUCT_BUNDLE_IDENTIFIER = bcit.Comp8051Paul;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Comp8051/Comp8051-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -964,7 +972,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = bcit.Comp8051;
+				PRODUCT_BUNDLE_IDENTIFIER = bcit.Comp8051Paul;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Comp8051/Comp8051-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
