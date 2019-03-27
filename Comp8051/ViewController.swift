@@ -110,7 +110,7 @@ class ViewController: GLKViewController {
         let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
         let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 1.0, 40.0)
         let width = 30 * tan(GLKMathDegreesToRadians(32.5))
-        print(width)
+
         self.shader = BaseEffect(vertexShader: "SimpleVertexShader.glsl", fragmentShader: "SimpleFragmentShader.glsl")
         
         shader.projectionMatrix = projectionMatrix
@@ -246,5 +246,7 @@ extension ViewController: GLKViewControllerDelegate {
         GameObject.root.update(deltaTime: ViewController.deltaTime)
         PhysicsWrapper.update(ViewController.deltaTime)
         GameObject.root.lateUpdate(deltaTime: ViewController.deltaTime)
+        GameObject.root.getChild(tag: "Camera")?.transform.position.x = (GameObject.root.getChild(tag: "Sphere")?.transform.position.x)!
+        GameObject.root.getChild(tag: "Camera")?.transform.position.y = (GameObject.root.getChild(tag: "Sphere")?.transform.position.y)!
     }
 }
