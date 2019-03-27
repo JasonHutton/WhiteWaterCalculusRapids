@@ -59,7 +59,6 @@ class ModelRenderer : Component {
                                              transform.scale.y,
                                              transform.scale.z)
             
-            
             model.modelViewMatrix = transformationMatrix
         }
         
