@@ -24,13 +24,11 @@ class GravityManager : Component {
             gravity = Vector3(x:gravity.x / gravity.x.magnitude, y:-1, z:0).normalized2D
         }
         
-        // flip gravity if the tap input is enabled
+        // flip output gravity if the tap input is enabled
         if Input.instance.tapped {
             
             gravity.y *= -1
         }
-        
-        print(gravity.description)
         
         PhysicsWrapper.setGravityX(gravity.x, y: gravity.y)
     }
