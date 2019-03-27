@@ -109,12 +109,11 @@ class ViewController: GLKViewController {
         // apply perspective transformation
         let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
         let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 1.0, 40.0)
-        
+        let width = 30 * tan(GLKMathDegreesToRadians(32.5))
+        print(width)
         self.shader = BaseEffect(vertexShader: "SimpleVertexShader.glsl", fragmentShader: "SimpleFragmentShader.glsl")
         
         shader.projectionMatrix = projectionMatrix
-        
-        //effect.transform.projectionMatrix = projectionMatrix
         
         // set up scene
         GameObject.root.addComponent(component: GravityManager()) // this is silly but it works
@@ -167,6 +166,42 @@ class ViewController: GLKViewController {
         surfaceObj4.addComponent(component: BlockBody(tag: "Floor"))
         surfaceObj4.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
         GameObject.root.addChild(gameObject: surfaceObj4)
+        
+        let leftWall = GameObject(tag: "Surface")
+        // set initial position
+        leftWall.transform.position = Vector3(x: -width/2, y: 0, z: 0)
+        leftWall.transform.scale.x = 0.5
+        leftWall.transform.scale.y = width/aspect
+        leftWall.addComponent(component: BlockBody(tag: "Floor"))
+        leftWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        GameObject.root.addChild(gameObject: leftWall)
+        
+        let rightWall = GameObject(tag: "Surface")
+        // set initial position
+        rightWall.transform.position = Vector3(x: width/2, y: 0, z: 0)
+        rightWall.transform.scale.x = 0.5
+        rightWall.transform.scale.y = width/aspect
+        rightWall.addComponent(component: BlockBody(tag: "Floor"))
+        rightWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        GameObject.root.addChild(gameObject: rightWall)
+        
+        let topWall = GameObject(tag: "Surface")
+        // set initial position
+        topWall.transform.position = Vector3(x: 0, y: width, z: 0)
+        topWall.transform.scale.x = width
+        topWall.transform.scale.y = 0.5
+        topWall.addComponent(component: BlockBody(tag: "Floor"))
+        topWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        GameObject.root.addChild(gameObject: topWall)
+        
+        let bottomWall = GameObject(tag: "Surface")
+        // set initial position
+        bottomWall.transform.position = Vector3(x: 0, y: -width, z: 0)
+        bottomWall.transform.scale.x = width
+        bottomWall.transform.scale.y = 0.5
+        bottomWall.addComponent(component: BlockBody(tag: "Floor"))
+        bottomWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        GameObject.root.addChild(gameObject: bottomWall)
     }
     
     
