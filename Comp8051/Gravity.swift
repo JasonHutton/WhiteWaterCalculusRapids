@@ -19,7 +19,7 @@ class Gravity {
     }
     
     init() {
-        gravity = self.defaultGravity
+        self.gravity = self.defaultGravity
         inverted = Bool(booleanLiteral: false)
     }
     
@@ -30,7 +30,7 @@ class Gravity {
             inverted = true
         }
 
-        setGravity(x: gravity.x, y: gravity.y, z: gravity.z)
+        setGravity(x: self.gravity.x, y: self.gravity.y, z: self.gravity.z)
     }
     
     // hey, this is goofy, but it does work
@@ -39,11 +39,12 @@ class Gravity {
     }
     
     func setGravity(gravity: Vector3) {
-        var g = gravity.y // This is initially set to the default gravity.y and never actually set from inputs.
+        var g = -1//self.gravity.y // This is initially set to the default gravity.y and never actually set from inputs.
         if(inverted) {
-            g = -g
+            g = 1//-g
         }
-        self.gravity = Vector3(x: gravity.x, y: g, z: 0).normalized
+        self.gravity = Vector3(x: gravity.x, y: Float(g), z: 0)
+        print(self.gravity.y)
     }
     
     func setGravity(x: Float, y: Float, z: Float) {
