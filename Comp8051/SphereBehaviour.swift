@@ -18,7 +18,7 @@ class SphereBehaviour : Component {
         if var transform = gameObject?.worldTransform {
             
             // handle the ball's position
-            let gravity = g * Input.gravity
+            let gravity = g * Input.instance.gravity.gravity
             
             transform.position += velocity * deltaTime + 1/2 * gravity * deltaTime * deltaTime
             velocity += gravity * deltaTime

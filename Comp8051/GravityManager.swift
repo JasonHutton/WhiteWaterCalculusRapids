@@ -10,6 +10,6 @@ class GravityManager : Component {
     
     override func update(deltaTime: Float) {
         
-        PhysicsWrapper.setGravityX(Input.gravity.x, y: Input.gravity.y)
+        PhysicsWrapper.setGravityX(Input.instance.gravity.gravity.x, y: Input.instance.gravity.gravity.y)
     }
 }
