@@ -136,10 +136,37 @@ class ViewController: GLKViewController {
         // set initial position
         surfaceObj.transform.position = Vector3(x: 0, y: -2, z: 0)
         surfaceObj.transform.scale.x = 10
-        surfaceObj.transform.scale.y = 0.1
+        surfaceObj.transform.scale.y = 0.5
         surfaceObj.addComponent(component: BlockBody(tag: "Floor"))
         surfaceObj.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
         GameObject.root.addChild(gameObject: surfaceObj)
+        
+        let surfaceObj2 = GameObject(tag: "Surface")
+        // set initial position
+        surfaceObj2.transform.position = Vector3(x: 0, y: -10, z: 0)
+        surfaceObj2.transform.scale.x = 10
+        surfaceObj2.transform.scale.y = 0.5
+        surfaceObj2.addComponent(component: BlockBody(tag: "Floor"))
+        surfaceObj2.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        GameObject.root.addChild(gameObject: surfaceObj2)
+        
+        let surfaceObj3 = GameObject(tag: "Surface")
+        // set initial position
+        surfaceObj3.transform.position = Vector3(x: 0, y: 6, z: 0)
+        surfaceObj3.transform.scale.x = 10
+        surfaceObj3.transform.scale.y = 0.5
+        surfaceObj3.addComponent(component: BlockBody(tag: "Floor"))
+        surfaceObj3.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        GameObject.root.addChild(gameObject: surfaceObj3)
+        
+        let surfaceObj4 = GameObject(tag: "Surface")
+        // set initial position
+        surfaceObj4.transform.position = Vector3(x: 2, y: 10, z: 0)
+        surfaceObj4.transform.scale.x = 2
+        surfaceObj4.transform.scale.y = 0.5
+        surfaceObj4.addComponent(component: BlockBody(tag: "Floor"))
+        surfaceObj4.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        GameObject.root.addChild(gameObject: surfaceObj4)
     }
     
     
