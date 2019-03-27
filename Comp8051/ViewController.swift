@@ -37,18 +37,12 @@ class ViewController: GLKViewController {
     var models : [Model] = []
     
     var shader : BaseEffect!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        isMusicPlaying = true
-        
-        playMusic(soundFile: "menu")
-    }
-    
 
     @IBAction func startGame(_ sender: Any) {
         menuView.isHidden = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        view.addGestureRecognizer(tap)
         
         playMusic(soundFile: "gameplay3")
         
@@ -70,6 +64,7 @@ class ViewController: GLKViewController {
         playMusic(soundFile: "menu")
         tearDownGL()
     }
+    
     fileprivate func playMusic(soundFile: String) {
         let path = Bundle.main.path(forResource: soundFile, ofType: "mp3")!
         let url = URL(fileURLWithPath: path)
@@ -213,15 +208,14 @@ class ViewController: GLKViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addGestureRecognizer(tap)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        setupGL()
-        
+        isMusicPlaying = true
+        playMusic(soundFile: "menu")
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         Input.instance.gravity.invertGravity()
     }
+    
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         // clear the scene
         glClearColor(0, 0, 0, 1.0)
