@@ -203,7 +203,7 @@ class ViewController: GLKViewController {
         deathWall.transform.scale.x = width
         deathWall.transform.scale.y = 10
         deathWall.addComponent(component: BlockBody(tag: "Floor"))
-        deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "deathTexture.png"))
+        deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "deathTexture.jpg"))
         GameObject.root.addChild(gameObject: deathWall)
     }
     
@@ -263,6 +263,6 @@ extension ViewController: GLKViewControllerDelegate {
         GameObject.root.getChild(tag: "Camera")?.transform.position.x = (GameObject.root.getChild(tag: "Sphere")?.transform.position.x)!
         GameObject.root.getChild(tag: "Camera")?.transform.position.y = (GameObject.root.getChild(tag: "Sphere")?.transform.position.y)!
         
-         GameObject.root.getChild(tag: "Death")?.transform.position.y -= 0.1
+         GameObject.root.getChild(tag: "Death")?.transform.position.y -= 0.01
     }
 }
