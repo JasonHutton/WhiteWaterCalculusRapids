@@ -89,8 +89,6 @@
 		DAD246C42249F26700B4D62C /* menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C22249F26700B4D62C /* menu.mp3 */; };
 		DAD246CB224C131400B4D62C /* winTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C9224C131400B4D62C /* winTexture.jpg */; };
 		DAD246CE224CA1C100B4D62C /* deathTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246CD224CA1C000B4D62C /* deathTexture.jpg */; };
-		E30E5675224B6E2900956B87 /* VectorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E5674224B6E2900956B87 /* VectorExtensions.swift */; };
-		E3681E4C2249FFE2000B3974 /* Gravity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3681E4B2249FFE2000B3974 /* Gravity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -250,8 +248,6 @@
 		DAD246C22249F26700B4D62C /* menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu.mp3; sourceTree = "<group>"; };
 		DAD246C9224C131400B4D62C /* winTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = winTexture.jpg; sourceTree = "<group>"; };
 		DAD246CD224CA1C000B4D62C /* deathTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = deathTexture.jpg; sourceTree = "<group>"; };
-		E30E5674224B6E2900956B87 /* VectorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorExtensions.swift; sourceTree = "<group>"; };
-		E3681E4B2249FFE2000B3974 /* Gravity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gravity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,7 +319,6 @@
 				830A028F22264B050028E531 /* Input.swift */,
 				8309925C22272636007B8B98 /* Error.swift */,
 				DA9957742227BF6C002315D0 /* GLKExtensions.swift */,
-				E30E5674224B6E2900956B87 /* VectorExtensions.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -337,7 +332,6 @@
 				8307E15C2247255C008269C2 /* PhysicsWrapper.m */,
 				836E36BA224895C200CF7303 /* Box2D.h */,
 				836E37DB22489A8800CF7303 /* Box2D */,
-				E3681E4B2249FFE2000B3974 /* Gravity.swift */,
 			);
 			name = Physics;
 			sourceTree = "<group>";
@@ -744,10 +738,8 @@
 				836E383D22489A8800CF7303 /* b2Distance.cpp in Sources */,
 				836E385022489A8800CF7303 /* b2WheelJoint.cpp in Sources */,
 				DA99573B2215335C002315D0 /* Vertex.swift in Sources */,
-				E3681E4C2249FFE2000B3974 /* Gravity.swift in Sources */,
 				836E385B22489A8800CF7303 /* b2Joint.cpp in Sources */,
 				836E386522489A8800CF7303 /* b2RopeJoint.cpp in Sources */,
-				E30E5675224B6E2900956B87 /* VectorExtensions.swift in Sources */,
 				DA99573D2217A53F002315D0 /* Model.swift in Sources */,
 				83D305BA22224517008D5CFC /* Transform.swift in Sources */,
 				836E385422489A8800CF7303 /* b2CircleShape.cpp in Sources */,
