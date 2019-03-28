@@ -7,23 +7,29 @@
 //
 
 class GravityManager : Component {
-    private var gravity = Vector3()
-    private var gravityChanged = Bool()
     
-    override init() {
-        gravity = Input.instance.gravity.gravity
-        gravityChanged = true
-    }
+    private let DOWN_VECTOR = Vector3(x:0, y:-1, z:0)
     
     override func update(deltaTime: Float) {
-        if(gravityChanged) {
-            PhysicsWrapper.setGravityX(gravity.x, y: gravity.y)
-            gravityChanged = false
+        
+        var gravity = Input.instance.gravity
+        
+        // always point input gravity downward
+        gravity.y = -gravity.y.magnitude
+        
+        // clamp angle to 45 degrees
+        let angle = Vector3.dotProduct(left: gravity, right: DOWN_VECTOR) / gravity.magnitude2D
+        if angle <= 0.5 {
+            
+            gravity = Vector3(x:gravity.x / gravity.x.magnitude, y:-1, z:0).normalized2D
         }
         
-        if(!gravity.EqualTo(other: Input.instance.gravity.gravity)) {
-            gravity = Input.instance.gravity.gravity
-            gravityChanged = true
+        // flip output gravity if the tap input is enabled
+        if Input.instance.tapped {
+            
+            gravity.y *= -1
         }
+        
+        PhysicsWrapper.setGravityX(gravity.x, y: gravity.y)
     }
 }

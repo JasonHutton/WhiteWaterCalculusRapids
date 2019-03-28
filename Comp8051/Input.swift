@@ -11,11 +11,11 @@ import UIKit
 
 class Input {
     
-    public let gravity = Gravity()
+    public var gravity = Vector3()
+    public var tapped = false
     
     public static let instance = Input()
     private let motion = CMMotionManager()
-    //private lazy var tap = UITapGestureRecognizer(target: ViewController.instance, action:#selector(Input.instance.handleTap()))
     
     static func start () {
         instance.respond()
@@ -24,10 +24,6 @@ class Input {
     // hey, this is goofy, but it does work
     private func respond () {
         print("Input initialized.")
-    }
-    
-    @objc func handleTap() {
-        
     }
     
     init() {
@@ -40,11 +36,11 @@ class Input {
                     return
                 }
                 
-                self.gravity.setGravity(gravity: Vector3(x: Float(data.gravity.x), y: Float(data.gravity.y), z: Float(data.gravity.z)))
+                self.gravity = Vector3(x:Float(data.gravity.x), y:Float(data.gravity.y), z: 0).normalized2D
             }
         } else {
-            print("Error: Device motion not available. Defaulting gravity to (0, -1, 0).") // Gravity() already defaults
+            self.gravity = Vector3(x:0, y:-1, z: 0)
+            print("Error: Device motion not available. Defaulting gravity to (0, -1, 0).")
         }
     }
-    
 }

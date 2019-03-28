@@ -221,7 +221,8 @@ class ViewController: GLKViewController {
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        Input.instance.gravity.invertGravity()
+        
+        Input.instance.tapped = !Input.instance.tapped
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
@@ -260,6 +261,8 @@ extension ViewController: GLKViewControllerDelegate {
         GameObject.root.update(deltaTime: ViewController.deltaTime)
         PhysicsWrapper.update(ViewController.deltaTime)
         GameObject.root.lateUpdate(deltaTime: ViewController.deltaTime)
+        
+        // temp
         GameObject.root.getChild(tag: "Camera")?.transform.position.x = (GameObject.root.getChild(tag: "Sphere")?.transform.position.x)!
         GameObject.root.getChild(tag: "Camera")?.transform.position.y = (GameObject.root.getChild(tag: "Sphere")?.transform.position.y)!
         
