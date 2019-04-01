@@ -937,7 +937,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = bcit.Comp8051Paul;
+				PRODUCT_BUNDLE_IDENTIFIER = bcit.Comp8051;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Comp8051/Comp8051-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -960,7 +960,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = bcit.Comp8051Paul;
+				PRODUCT_BUNDLE_IDENTIFIER = bcit.Comp8051;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Comp8051/Comp8051-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
