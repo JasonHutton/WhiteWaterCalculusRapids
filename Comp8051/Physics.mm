@@ -9,6 +9,7 @@
 #import "CTransform.h"
 #import "Box2D.h"
 #import "ContactListener.hpp"
+#import "PhysicsWrapper.h"
 #import <dispatch/dispatch.h>
 #import "Physics.h"
 
@@ -60,6 +61,7 @@ const float GRAV_CONSTANT = 9.81f;
     b2Body* groundBody = world->CreateBody(&groundBodyDef);
     groundBody->CreateFixture(&groundBox, 0.0f);
     groundBody->SetTransform(groundBody->GetPosition(), rotation);
+    groundBody->GetFixtureList()->SetUserData((__bridge void*)tag);
     
     // add ground body to the dictionary
     [dict setObject:[NSValue valueWithPointer:groundBody] forKey:tag];
@@ -83,6 +85,7 @@ const float GRAV_CONSTANT = 9.81f;
     
     b2Body* ballBody = world->CreateBody(&ballBodyDef);
     ballBody->CreateFixture(&ballShapeDef);
+    ballBody->GetFixtureList()->SetUserData((__bridge void*)tag);
     
     [dict setObject:[NSValue valueWithPointer:ballBody] forKey:tag];
 }
@@ -102,14 +105,16 @@ const float GRAV_CONSTANT = 9.81f;
     return transform;
 }
 
-- (void)handleCollisionEnter:(NSString*) tag {
+// pass the collider tags to the physicswrapper enter function
+- (void)handleCollisionEnter:(NSString*) tag1 tag2:(NSString*) tag2 {
     
-    printf("%s", [tag UTF8String]);
+    [PhysicsWrapper handleCollisionEnter:tag1 tag2:tag2];
 }
 
-- (void)handleCollisionExit:(NSString*) tag {
+// pass the collider tags to the physicswrapper exit function
+- (void)handleCollisionExit:(NSString*) tag1 tag2:(NSString*) tag2 {
     
-    
+    [PhysicsWrapper handleCollisionExit:tag1 tag2:tag2];
 }
 
 @end

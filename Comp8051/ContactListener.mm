@@ -6,7 +6,6 @@
 //  Copyright © 2019 Paul. All rights reserved.
 //
 
-#include <objc/runtime.h>
 #include "Physics.h"
 #include "ContactListener.hpp"
 
@@ -15,21 +14,16 @@ ContactListener::ContactListener(Physics* physics) {
     this->physics = physics;
 }
 
-void ContactListener::BeginContact(b2Contact contact) {
+void ContactListener::BeginContact(b2Contact* contact) {
     
-    printf("AAAAAAA");
-    [physics handleCollisionEnter:@"enter"];
+    NSString* tag1 = (__bridge NSString*)contact->GetFixtureA()->GetUserData();
+    NSString* tag2 = (__bridge NSString*)contact->GetFixtureB()->GetUserData();
+    [physics handleCollisionEnter:tag1 tag2:tag2];
 }
 
-void ContactListener::EndContact(b2Contact contact) {
+void ContactListener::EndContact(b2Contact* contact) {
     
-    [physics handleCollisionExit:@"exit"];
-}
-
-void ContactListener::PreSolve(b2Contact contact, b2Manifold oldManifold) {
-    // do nothing
-}
-
-void ContactListener::PostSolve(b2Contact contact, b2ContactImpulse impulse) {
-    // do nothing
+    NSString* tag1 = (__bridge NSString*)contact->GetFixtureA()->GetUserData();
+    NSString* tag2 = (__bridge NSString*)contact->GetFixtureB()->GetUserData();
+    [physics handleCollisionExit:tag1 tag2:tag2];
 }

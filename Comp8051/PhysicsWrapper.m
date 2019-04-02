@@ -65,4 +65,14 @@ static Physics* physics = nil;
     return [physics getBodyTransform:tag];
 }
 
++ (void)handleCollisionEnter:(NSString*) tag1 tag2:(NSString*) tag2 {
+    
+    NSLog(@"Enter: %@ %@\n", tag1, tag2);
+}
+
++ (void)handleCollisionExit:(NSString*) tag1 tag2:(NSString*) tag2 {
+    
+    NSLog(@"Exit: %@ %@\n", tag1, tag2);
+}
+
 @end
