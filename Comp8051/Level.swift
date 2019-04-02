@@ -11,8 +11,7 @@ import GLKit
 
 class Level{
     
-    func createLevel(aspect: Float, shader: BaseEffect){
-        let width = 30 * tan(GLKMathDegreesToRadians(32.5))
+    func createLevel(width: Float, aspect: Float, shader: BaseEffect){
         // TODO: currently, component order DOES MATTER. modelrenderer should always occur last!
         // for now, add a game object's model renderer last.
         let sphereObj = GameObject(tag: "Sphere")

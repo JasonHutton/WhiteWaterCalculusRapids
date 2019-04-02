@@ -107,7 +107,7 @@ class ViewController: GLKViewController {
         // apply perspective transformation
         let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
         let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 1.0, 40.0)
-
+        let width = 30 * tan(GLKMathDegreesToRadians(32.5))
         self.shader = BaseEffect(vertexShader: "SimpleVertexShader.glsl", fragmentShader: "SimpleFragmentShader.glsl")
         
         shader.projectionMatrix = projectionMatrix
@@ -122,7 +122,7 @@ class ViewController: GLKViewController {
         GameObject.root.addChild(gameObject: cameraObj)
         
         let level = Level()
-        level.createLevel(aspect: aspect, shader: shader)
+        level.createLevel(width: width, aspect: aspect, shader: shader)
     }
     
     
