@@ -18,6 +18,7 @@ extension Array {
 
 class ViewController: GLKViewController {
     
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var menuView: GLKView!
     
     var player: AVAudioPlayer!
@@ -38,6 +39,8 @@ class ViewController: GLKViewController {
     
     var shader : BaseEffect!
 
+    var score: Int = 0
+    
     @IBAction func startGame(_ sender: Any) {
         menuView.isHidden = true
         
@@ -112,6 +115,8 @@ class ViewController: GLKViewController {
         
         // set up scene
         GameObject.root.addComponent(component: GravityManager()) // this is silly but it works
+        
+        
         // add camera before adding any model renderers
         let cameraObj = GameObject(tag: "Camera")
         cameraObj.transform.position = Vector3(x: 0, y: 0, z: 30)
@@ -202,7 +207,7 @@ class ViewController: GLKViewController {
         deathWall.transform.position = Vector3(x: 0, y: width+50, z: 0)
         deathWall.transform.scale.x = width
         deathWall.transform.scale.y = 100
-        deathWall.transform.scale.z = 2;
+        deathWall.transform.scale.z = 2
         deathWall.addComponent(component: BlockBody(tag: "Floor"))
         deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "deathTexture.jpg"))
         GameObject.root.addChild(gameObject: deathWall)
@@ -268,5 +273,8 @@ extension ViewController: GLKViewControllerDelegate {
         GameObject.root.getChild(tag: "Camera")?.transform.position.y = (GameObject.root.getChild(tag: "Sphere")?.transform.position.y)!
         
          GameObject.root.getChild(tag: "Death")?.transform.position.y -= 0.05
+        
+        score += 1
+        scoreLabel.text = "Score: \(score)"
     }
 }
