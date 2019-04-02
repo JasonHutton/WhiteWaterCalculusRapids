@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		83043626222231F10019F5BF /* ModelRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83043625222231F10019F5BF /* ModelRenderer.swift */; };
+		830456072252D85A00D12630 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 830456052252D85A00D12630 /* ContactListener.mm */; };
+		830456092252DBF500D12630 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830456082252DBF500D12630 /* Body.swift */; };
+		83071FD42253EDF3005837F8 /* ContactPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83071FD32253EDF3005837F8 /* ContactPublisher.swift */; };
 		8307E0FE2246E77A008269C2 /* woodTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8307E0FC2246E77A008269C2 /* woodTexture.jpg */; };
 		8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8307E0FD2246E77A008269C2 /* marbleTexture.jpg */; };
 		8307E15E2247255C008269C2 /* Physics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8307E15A2247255C008269C2 /* Physics.mm */; };
@@ -110,6 +113,10 @@
 
 /* Begin PBXFileReference section */
 		83043625222231F10019F5BF /* ModelRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRenderer.swift; sourceTree = "<group>"; };
+		830456052252D85A00D12630 /* ContactListener.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
+		830456062252D85A00D12630 /* ContactListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ContactListener.hpp; sourceTree = "<group>"; };
+		830456082252DBF500D12630 /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		83071FD32253EDF3005837F8 /* ContactPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPublisher.swift; sourceTree = "<group>"; };
 		8307E0FC2246E77A008269C2 /* woodTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = woodTexture.jpg; sourceTree = "<group>"; };
 		8307E0FD2246E77A008269C2 /* marbleTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = marbleTexture.jpg; sourceTree = "<group>"; };
 		8307E14422471E98008269C2 /* Comp8051-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Comp8051-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -291,6 +298,7 @@
 				83043625222231F10019F5BF /* ModelRenderer.swift */,
 				8307E1DE224839C3008269C2 /* SphereBody.swift */,
 				834E1E27224860570055E02A /* BlockBody.swift */,
+				830456082252DBF500D12630 /* Body.swift */,
 				836E386622489C2C00CF7303 /* GravityManager.swift */,
 			);
 			name = Components;
@@ -317,6 +325,7 @@
 			children = (
 				830A028F22264B050028E531 /* Input.swift */,
 				8309925C22272636007B8B98 /* Error.swift */,
+				83071FD32253EDF3005837F8 /* ContactPublisher.swift */,
 				DA9957742227BF6C002315D0 /* GLKExtensions.swift */,
 				DA5C72322253E74E00B5E5A3 /* Level.swift */,
 			);
@@ -326,6 +335,8 @@
 		836E37DA22489A2000CF7303 /* Physics */ = {
 			isa = PBXGroup;
 			children = (
+				830456062252D85A00D12630 /* ContactListener.hpp */,
+				830456052252D85A00D12630 /* ContactListener.mm */,
 				8307E15B2247255C008269C2 /* Physics.h */,
 				8307E15A2247255C008269C2 /* Physics.mm */,
 				8307E15D2247255C008269C2 /* PhysicsWrapper.h */,
@@ -713,6 +724,7 @@
 				83043626222231F10019F5BF /* ModelRenderer.swift in Sources */,
 				836E384C22489A8800CF7303 /* b2PolygonContact.cpp in Sources */,
 				836E385F22489A8800CF7303 /* b2PulleyJoint.cpp in Sources */,
+				83071FD42253EDF3005837F8 /* ContactPublisher.swift in Sources */,
 				836E385622489A8800CF7303 /* b2PolygonShape.cpp in Sources */,
 				DA9957752227BF6C002315D0 /* GLKExtensions.swift in Sources */,
 				836E384722489A8800CF7303 /* b2DynamicTree.cpp in Sources */,
@@ -726,6 +738,7 @@
 				836E386422489A8800CF7303 /* b2Collision.cpp in Sources */,
 				836E383E22489A8800CF7303 /* b2CollideCircle.cpp in Sources */,
 				836E384A22489A8800CF7303 /* b2WorldCallbacks.cpp in Sources */,
+				830456092252DBF500D12630 /* Body.swift in Sources */,
 				836E384322489A8800CF7303 /* b2Draw.cpp in Sources */,
 				DA9957732227BF07002315D0 /* BaseEffect.swift in Sources */,
 				836E385822489A8800CF7303 /* b2StackAllocator.cpp in Sources */,
@@ -735,6 +748,7 @@
 				836E385522489A8800CF7303 /* b2BroadPhase.cpp in Sources */,
 				836E384522489A8800CF7303 /* b2ChainAndCircleContact.cpp in Sources */,
 				836E385D22489A8800CF7303 /* b2CircleContact.cpp in Sources */,
+				830456072252D85A00D12630 /* ContactListener.mm in Sources */,
 				836E383D22489A8800CF7303 /* b2Distance.cpp in Sources */,
 				836E385022489A8800CF7303 /* b2WheelJoint.cpp in Sources */,
 				DA99573B2215335C002315D0 /* Vertex.swift in Sources */,
