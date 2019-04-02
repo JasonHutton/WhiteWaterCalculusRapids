@@ -18,6 +18,8 @@
                scaleY:(float) scaleY rotation:(float) rotation;
 - (void)addBallBody:(NSString*) tag posX:(float) posX posY:(float) posY radius:(float) radius;
 - (struct CTransform)getBodyTransform:(NSString*) tag;
+- (void)handleCollisionEnter:(NSString*) tag;
+- (void)handleCollisionExit:(NSString*) tag;
 
 @end
 

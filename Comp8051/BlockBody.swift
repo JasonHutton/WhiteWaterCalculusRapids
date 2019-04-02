@@ -6,14 +6,7 @@
 //  Copyright © 2019 Paul. All rights reserved.
 //
 
-class BlockBody : Component {
-    
-    private var tag: String;
-    
-    init(tag: String) {
-        
-        self.tag = tag
-    }
+class BlockBody : Body {
     
     override func onEnable() {
         

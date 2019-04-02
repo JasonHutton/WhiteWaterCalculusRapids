@@ -8,6 +8,8 @@
 
 #import "CTransform.h"
 #import "Box2D.h"
+#import "ContactListener.hpp"
+#import <dispatch/dispatch.h>
 #import "Physics.h"
 
 @implementation Physics {
@@ -25,6 +27,8 @@ const float GRAV_CONSTANT = 9.81f;
         b2Vec2 gravity(0.0f, -GRAV_CONSTANT);
         world = new b2World(gravity);
         dict = [[NSMutableDictionary alloc] init];
+        
+        world->SetContactListener(new ContactListener(self));
     }
     return self;
 }
@@ -96,6 +100,16 @@ const float GRAV_CONSTANT = 9.81f;
     transform.rotation = body->GetAngle();
     
     return transform;
+}
+
+- (void)handleCollisionEnter:(NSString*) tag {
+    
+    printf("%s", [tag UTF8String]);
+}
+
+- (void)handleCollisionExit:(NSString*) tag {
+    
+    
 }
 
 @end

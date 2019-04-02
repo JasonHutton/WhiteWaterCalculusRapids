@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		83043626222231F10019F5BF /* ModelRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83043625222231F10019F5BF /* ModelRenderer.swift */; };
+		830456072252D85A00D12630 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 830456052252D85A00D12630 /* ContactListener.mm */; };
+		830456092252DBF500D12630 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830456082252DBF500D12630 /* Body.swift */; };
 		8307E0FE2246E77A008269C2 /* woodTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8307E0FC2246E77A008269C2 /* woodTexture.jpg */; };
 		8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8307E0FD2246E77A008269C2 /* marbleTexture.jpg */; };
 		8307E15E2247255C008269C2 /* Physics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8307E15A2247255C008269C2 /* Physics.mm */; };
@@ -107,6 +109,9 @@
 
 /* Begin PBXFileReference section */
 		83043625222231F10019F5BF /* ModelRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRenderer.swift; sourceTree = "<group>"; };
+		830456052252D85A00D12630 /* ContactListener.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
+		830456062252D85A00D12630 /* ContactListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ContactListener.hpp; sourceTree = "<group>"; };
+		830456082252DBF500D12630 /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
 		8307E0FC2246E77A008269C2 /* woodTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = woodTexture.jpg; sourceTree = "<group>"; };
 		8307E0FD2246E77A008269C2 /* marbleTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = marbleTexture.jpg; sourceTree = "<group>"; };
 		8307E14422471E98008269C2 /* Comp8051-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Comp8051-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -285,6 +290,7 @@
 				83043625222231F10019F5BF /* ModelRenderer.swift */,
 				8307E1DE224839C3008269C2 /* SphereBody.swift */,
 				834E1E27224860570055E02A /* BlockBody.swift */,
+				830456082252DBF500D12630 /* Body.swift */,
 				836E386622489C2C00CF7303 /* GravityManager.swift */,
 			);
 			name = Components;
@@ -323,6 +329,8 @@
 				8307E15A2247255C008269C2 /* Physics.mm */,
 				8307E15D2247255C008269C2 /* PhysicsWrapper.h */,
 				8307E15C2247255C008269C2 /* PhysicsWrapper.m */,
+				830456062252D85A00D12630 /* ContactListener.hpp */,
+				830456052252D85A00D12630 /* ContactListener.mm */,
 				836E36BA224895C200CF7303 /* Box2D.h */,
 				836E37DB22489A8800CF7303 /* Box2D */,
 			);
@@ -714,6 +722,7 @@
 				836E386422489A8800CF7303 /* b2Collision.cpp in Sources */,
 				836E383E22489A8800CF7303 /* b2CollideCircle.cpp in Sources */,
 				836E384A22489A8800CF7303 /* b2WorldCallbacks.cpp in Sources */,
+				830456092252DBF500D12630 /* Body.swift in Sources */,
 				836E384322489A8800CF7303 /* b2Draw.cpp in Sources */,
 				DA9957732227BF07002315D0 /* BaseEffect.swift in Sources */,
 				836E385822489A8800CF7303 /* b2StackAllocator.cpp in Sources */,
@@ -723,6 +732,7 @@
 				836E385522489A8800CF7303 /* b2BroadPhase.cpp in Sources */,
 				836E384522489A8800CF7303 /* b2ChainAndCircleContact.cpp in Sources */,
 				836E385D22489A8800CF7303 /* b2CircleContact.cpp in Sources */,
+				830456072252D85A00D12630 /* ContactListener.mm in Sources */,
 				836E383D22489A8800CF7303 /* b2Distance.cpp in Sources */,
 				836E385022489A8800CF7303 /* b2WheelJoint.cpp in Sources */,
 				DA99573B2215335C002315D0 /* Vertex.swift in Sources */,

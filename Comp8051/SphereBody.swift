@@ -6,14 +6,7 @@
 //  Copyright © 2019 Paul. All rights reserved.
 //
 
-class SphereBody : Component {
-    
-    private var tag: String;
-    
-    init(tag: String) {
-        
-        self.tag = tag
-    }
+class SphereBody : Body {
     
     override func onEnable() {
         
