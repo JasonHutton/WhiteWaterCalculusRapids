@@ -6,16 +6,17 @@
 //  Copyright © 2019 Paul. All rights reserved.
 //
 
-@objc class ContactPublisher: NSObject {
+@objc class CollisionPublisher: NSObject {
     
     private var bodies: [Body] = []
-    public static let instance = ContactPublisher()
+    public static let instance = CollisionPublisher()
     
     static func subscribe (body: Body) {
         
         instance.bodies.append(body)
     }
     
+    // filters collision enter events so that only the bodies concerned with the collision are notified
     @objc static func handleCollisionEnter (tag1: String, tag2: String) {
         
         var tag1Found = false
@@ -40,6 +41,7 @@
         }
     }
     
+    // filters collision exit events so that only the bodies concerned with the collision are notified
     @objc static func handleCollisionExit (tag1: String, tag2: String) {
         
         var tag1Found = false
