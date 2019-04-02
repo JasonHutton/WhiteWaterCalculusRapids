@@ -65,14 +65,16 @@ static Physics* physics = nil;
     return [physics getBodyTransform:tag];
 }
 
+// pass the collider tags to the contact notifier
 + (void)handleCollisionEnter:(NSString*) tag1 tag2:(NSString*) tag2 {
     
-    NSLog(@"Enter: %@ %@\n", tag1, tag2);
+    [ContactNotifier handleCollisionEnterWithTag1:tag1 tag2:tag2];
 }
 
+// pass the collider tags to the contact notifier
 + (void)handleCollisionExit:(NSString*) tag1 tag2:(NSString*) tag2 {
     
-    NSLog(@"Exit: %@ %@\n", tag1, tag2);
+    [ContactNotifier handleCollisionExitWithTag1:tag1 tag2:tag2];
 }
 
 @end

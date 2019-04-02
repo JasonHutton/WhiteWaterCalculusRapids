@@ -9,6 +9,7 @@
 class Body: Component {
     
     public private(set) var tag: String;
+    public var initialized = false;
     
     init(tag: String) {
         
@@ -16,8 +17,8 @@ class Body: Component {
     }
     
     // called when an attached body collides with another
-    func onCollisionEnter (other: GameObject) {}
+    func onCollisionEnter (tag: String) {}
     
     // called when an attached body stops colliding with another
-    func onCollisionExit (other: GameObject) {}
+    func onCollisionExit (tag: String) {}
 }

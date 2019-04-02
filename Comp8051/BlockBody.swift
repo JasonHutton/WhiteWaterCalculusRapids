@@ -12,7 +12,11 @@ class BlockBody : Body {
         
         if let transform = gameObject?.worldTransform {
             
-            PhysicsWrapper.addGroundBody(tag, posX: transform.position.x, posY: transform.position.y, scaleX: transform.scale.x, scaleY: transform.scale.y, rotation: transform.rotation.z)
+            if !initialized {
+                
+                PhysicsWrapper.addGroundBody(tag, posX: transform.position.x, posY: transform.position.y, scaleX: transform.scale.x, scaleY: transform.scale.y, rotation: transform.rotation.z)
+                initialized = true
+            }
         }
     }
 

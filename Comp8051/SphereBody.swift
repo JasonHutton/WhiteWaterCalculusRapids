@@ -8,11 +8,22 @@
 
 class SphereBody : Body {
     
+    override init(tag: String) {
+        
+        super.init(tag: tag)
+        ContactNotifier.subscribe(body: self)
+    }
+    
     override func onEnable() {
         
         if let transform = gameObject?.worldTransform {
             
-            PhysicsWrapper.addBallBody(tag, posX: transform.position.x, posY: transform.position.y, radius: transform.scale.x / 2)
+            if !initialized {
+                
+                PhysicsWrapper.addBallBody(tag, posX: transform.position.x, posY: transform.position.y, radius: transform.scale.x / 2)
+                
+                initialized = true
+            }
         }
     }
     
@@ -24,5 +35,10 @@ class SphereBody : Body {
             gameObject!.transform.position = Vector3.convertFromCVector(cVector: transform.position)
             gameObject!.transform.rotation.z = transform.rotation / 2
         }
+    }
+    
+    override func onCollisionEnter (tag: String) {
+        
+        print(tag)
     }
 }
