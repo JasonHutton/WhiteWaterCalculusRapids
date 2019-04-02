@@ -123,7 +123,6 @@ class ViewController: GLKViewController {
         
         let level = Level()
         level.createLevel(aspect: aspect, shader: shader)
-        
     }
     
     
@@ -185,9 +184,8 @@ extension ViewController: GLKViewControllerDelegate {
         GameObject.root.getChild(tag: "Camera")?.transform.position.x = (GameObject.root.getChild(tag: "Sphere")?.transform.position.x)!
         GameObject.root.getChild(tag: "Camera")?.transform.position.y = (GameObject.root.getChild(tag: "Sphere")?.transform.position.y)!
         
-         GameObject.root.getChild(tag: "Death")?.transform.position.y -= 0.05
+        GameObject.root.getChild(tag: "Death")?.transform.position.y -= 0.05
         
-        score += 1
         scoreLabel.text = "Score: \(score)"
     }
 }
