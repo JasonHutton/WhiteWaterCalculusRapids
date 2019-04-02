@@ -11,7 +11,7 @@ class SphereBody : Body {
     override init(tag: String) {
         
         super.init(tag: tag)
-        ContactNotifier.subscribe(body: self)
+        ContactPublisher.subscribe(body: self)
     }
     
     override func onEnable() {

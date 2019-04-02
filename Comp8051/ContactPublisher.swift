@@ -6,10 +6,10 @@
 //  Copyright © 2019 Paul. All rights reserved.
 //
 
-@objc class ContactNotifier: NSObject {
+@objc class ContactPublisher: NSObject {
     
     private var bodies: [Body] = []
-    public static let instance = ContactNotifier()
+    public static let instance = ContactPublisher()
     
     static func subscribe (body: Body) {
         
