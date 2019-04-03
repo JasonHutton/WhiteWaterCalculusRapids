@@ -38,7 +38,15 @@ class SphereBody : Body {
     }
     
     override func onCollisionEnter (tag: String) {
-        
-        print(tag)
+        //SoundEffect se =
+        /*let value : SoundEffect = gameObject!.getComponent()! as! SoundEffect*/
+        let se = gameObject!.getComponent() as! SoundEffect
+        //if(se != nil) {
+        se.playSound()
+        //}
+   
+        //se->playSound();
+        //gameObject.getComponent(SoundEffect: Component)?DoSoething();
+        //print(tag)
     }
 }
