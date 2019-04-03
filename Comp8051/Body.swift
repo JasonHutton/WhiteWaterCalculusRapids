@@ -10,10 +10,12 @@ class Body: Component {
     
     public private(set) var tag: String;
     public var initialized = false;
+    private static var iterator = 0
     
     init(tag: String) {
         
-        self.tag = tag
+        self.tag = tag + " " + String(Body.iterator)
+        Body.iterator += 1
     }
     
     // called when an attached body collides with another
