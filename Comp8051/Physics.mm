@@ -19,7 +19,7 @@
     NSMutableDictionary* dict;
 }
 
-const float GRAV_CONSTANT = 9.81f;
+const float GRAV_CONSTANT = 80.0f;
 
 - (instancetype)init {
     
@@ -81,7 +81,7 @@ const float GRAV_CONSTANT = 9.81f;
     ballShapeDef.shape = &circle;
     ballShapeDef.density = 1.0f;
     ballShapeDef.friction = 0.5f;
-    ballShapeDef.restitution = 0.5f;
+    ballShapeDef.restitution = 0.50f;
     
     b2Body* ballBody = world->CreateBody(&ballBodyDef);
     ballBody->CreateFixture(&ballShapeDef);
