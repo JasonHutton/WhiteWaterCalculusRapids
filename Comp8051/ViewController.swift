@@ -112,7 +112,6 @@ class ViewController: GLKViewController {
         
         shader.projectionMatrix = projectionMatrix
         
-        sphereObj.addComponent(component: CollisionSound(sound: SoundEffect(soundFile: "ballimpact")))
         Level.createLevel(width: width, aspect: aspect, shader: shader)
     }
     
