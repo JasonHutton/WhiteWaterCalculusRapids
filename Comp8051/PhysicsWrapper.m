@@ -53,6 +53,12 @@ static Physics* physics = nil;
     [physics addGroundBody:tag posX:posX posY:posY scaleX:scaleX scaleY:scaleY rotation:rotation];
 }
 
++ (void)addKinematicBody:(NSString*) tag posX:(float) posX posY:(float) posY scaleX:(float) scaleX
+                  scaleY:(float) scaleY rotation:(float) rotation {
+    
+    [physics addKinematicBody:tag posX:posX posY:posY scaleX:scaleX scaleY:scaleY rotation:rotation];
+}
+
 // add a dynamic circle to the world
 + (void)addBallBody:(NSString*) tag posX:(float) posX posY:(float) posY radius:(float) radius {
     
@@ -75,6 +81,11 @@ static Physics* physics = nil;
 + (void)handleCollisionExit:(NSString*) tag1 tag2:(NSString*) tag2 {
     
     [CollisionPublisher handleCollisionExitWithTag1:tag1 tag2:tag2];
+}
+
++ (void)setBodyPosition:(NSString*)tag transform:(CTransform) transform {
+    
+    [physics setBodyPosition:tag transform:transform];
 }
 
 @end

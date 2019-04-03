@@ -67,6 +67,26 @@ const float GRAV_CONSTANT = 80.0f;
     [dict setObject:[NSValue valueWithPointer:groundBody] forKey:tag];
 }
 
+// add a kinematic square
+- (void)addKinematicBody:(NSString*) tag posX:(float) posX posY:(float) posY scaleX:(float) scaleX
+               scaleY:(float) scaleY rotation:(float) rotation {
+    
+    b2BodyDef groundBodyDef;
+    groundBodyDef.type = b2_kinematicBody;
+    groundBodyDef.position.Set(posX, posY);
+    
+    b2PolygonShape groundBox;
+    groundBox.SetAsBox(scaleX / 2, scaleY / 2);
+    
+    b2Body* groundBody = world->CreateBody(&groundBodyDef);
+    groundBody->CreateFixture(&groundBox, 0.0f);
+    groundBody->SetTransform(groundBody->GetPosition(), rotation);
+    groundBody->GetFixtureList()->SetUserData((__bridge void*)tag);
+    
+    // add ground body to the dictionary
+    [dict setObject:[NSValue valueWithPointer:groundBody] forKey:tag];
+}
+
 // add a dynamic circle to the world
 - (void)addBallBody:(NSString*) tag posX:(float) posX posY:(float) posY radius:(float) radius {
     
@@ -115,6 +135,15 @@ const float GRAV_CONSTANT = 80.0f;
 - (void)handleCollisionExit:(NSString*) tag1 tag2:(NSString*) tag2 {
     
     [PhysicsWrapper handleCollisionExit:tag1 tag2:tag2];
+}
+
+- (void)setBodyPosition:(NSString*)tag transform:(CTransform) transform {
+    
+    b2Body* body = (b2Body*)[[dict valueForKey:tag] pointerValue];
+    
+    b2Vec2 vec2 = b2Vec2(transform.position.x, transform.position.y);
+    
+    body->SetTransform(vec2, transform.rotation);
 }
 
 @end

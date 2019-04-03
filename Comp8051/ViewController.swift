@@ -170,8 +170,6 @@ extension ViewController: GLKViewControllerDelegate {
         PhysicsWrapper.update(ViewController.deltaTime)
         GameObject.root.lateUpdate(deltaTime: ViewController.deltaTime)
         
-        GameObject.root.getChild(tag: "Death")?.transform.position.y -= 0.05
-        
         scoreLabel.text = "Score: \(score)"
     }
 }
