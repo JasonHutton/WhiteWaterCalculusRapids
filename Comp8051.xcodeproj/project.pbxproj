@@ -13,6 +13,7 @@
 		83055BDE22553F7D00CBF1A9 /* CameraTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83055BDD22553F7D00CBF1A9 /* CameraTrack.swift */; };
 		83055BE0225545BA00CBF1A9 /* FloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83055BDF225545BA00CBF1A9 /* FloatExtensions.swift */; };
 		83055BE2225548F600CBF1A9 /* KinematicBlockBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83055BE1225548F600CBF1A9 /* KinematicBlockBody.swift */; };
+		83055BE42255550800CBF1A9 /* DeathWallBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83055BE32255550800CBF1A9 /* DeathWallBehaviour.swift */; };
 		83071FD42253EDF3005837F8 /* CollisionPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83071FD32253EDF3005837F8 /* CollisionPublisher.swift */; };
 		8307E0FE2246E77A008269C2 /* woodTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8307E0FC2246E77A008269C2 /* woodTexture.jpg */; };
 		8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8307E0FD2246E77A008269C2 /* marbleTexture.jpg */; };
@@ -122,6 +123,7 @@
 		83055BDD22553F7D00CBF1A9 /* CameraTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTrack.swift; sourceTree = "<group>"; };
 		83055BDF225545BA00CBF1A9 /* FloatExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtensions.swift; sourceTree = "<group>"; };
 		83055BE1225548F600CBF1A9 /* KinematicBlockBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinematicBlockBody.swift; sourceTree = "<group>"; };
+		83055BE32255550800CBF1A9 /* DeathWallBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathWallBehaviour.swift; sourceTree = "<group>"; };
 		83071FD32253EDF3005837F8 /* CollisionPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionPublisher.swift; sourceTree = "<group>"; };
 		8307E0FC2246E77A008269C2 /* woodTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = woodTexture.jpg; sourceTree = "<group>"; };
 		8307E0FD2246E77A008269C2 /* marbleTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = marbleTexture.jpg; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				8307E1DE224839C3008269C2 /* SphereBody.swift */,
 				834E1E27224860570055E02A /* BlockBody.swift */,
 				83055BE1225548F600CBF1A9 /* KinematicBlockBody.swift */,
+				83055BE32255550800CBF1A9 /* DeathWallBehaviour.swift */,
 				830456082252DBF500D12630 /* Body.swift */,
 				83055BDD22553F7D00CBF1A9 /* CameraTrack.swift */,
 				836E386622489C2C00CF7303 /* GravityManager.swift */,
@@ -718,6 +721,7 @@
 				836E383F22489A8800CF7303 /* b2FrictionJoint.cpp in Sources */,
 				836E383922489A8800CF7303 /* b2Body.cpp in Sources */,
 				83083AA2221E75AA003931A2 /* GameObject.swift in Sources */,
+				83055BE42255550800CBF1A9 /* DeathWallBehaviour.swift in Sources */,
 				836E385122489A8800CF7303 /* b2TimeOfImpact.cpp in Sources */,
 				DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */,
 				8307E15E2247255C008269C2 /* Physics.mm in Sources */,

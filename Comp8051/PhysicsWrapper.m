@@ -83,6 +83,7 @@ static Physics* physics = nil;
     [CollisionPublisher handleCollisionExitWithTag1:tag1 tag2:tag2];
 }
 
+// sets a body's transform in the world
 + (void)setBodyPosition:(NSString*)tag transform:(CTransform) transform {
     
     [physics setBodyPosition:tag transform:transform];

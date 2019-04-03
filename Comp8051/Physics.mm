@@ -137,6 +137,7 @@ const float GRAV_CONSTANT = 80.0f;
     [PhysicsWrapper handleCollisionExit:tag1 tag2:tag2];
 }
 
+// sets a body's transform in the world
 - (void)setBodyPosition:(NSString*)tag transform:(CTransform) transform {
     
     b2Body* body = (b2Body*)[[dict valueForKey:tag] pointerValue];

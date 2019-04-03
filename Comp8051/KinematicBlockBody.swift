@@ -22,15 +22,13 @@ class KinematicBlockBody : Body {
     
     override func update(deltaTime: Float) {
         
-        if var transform = gameObject?.worldTransform {
-            
-            transform.position.y -= 0.05
-            gameObject!.worldTransform = transform
+        if let transform = gameObject?.worldTransform {
             
             var cTransform = CTransform()
             cTransform.position = transform.position.convertToCVector()
             cTransform.rotation = transform.rotation.z
             
+            gameObject!.worldTransform = transform
             PhysicsWrapper.setBodyPosition(tag, transform: cTransform)
         }
     }
