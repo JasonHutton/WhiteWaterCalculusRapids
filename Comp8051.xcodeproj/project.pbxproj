@@ -10,6 +10,10 @@
 		83043626222231F10019F5BF /* ModelRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83043625222231F10019F5BF /* ModelRenderer.swift */; };
 		830456072252D85A00D12630 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 830456052252D85A00D12630 /* ContactListener.mm */; };
 		830456092252DBF500D12630 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830456082252DBF500D12630 /* Body.swift */; };
+		83055BDE22553F7D00CBF1A9 /* CameraTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83055BDD22553F7D00CBF1A9 /* CameraTrack.swift */; };
+		83055BE0225545BA00CBF1A9 /* FloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83055BDF225545BA00CBF1A9 /* FloatExtensions.swift */; };
+		83055BE2225548F600CBF1A9 /* KinematicBlockBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83055BE1225548F600CBF1A9 /* KinematicBlockBody.swift */; };
+		83055BE42255550800CBF1A9 /* DeathWallBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83055BE32255550800CBF1A9 /* DeathWallBehaviour.swift */; };
 		83071FD42253EDF3005837F8 /* CollisionPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83071FD32253EDF3005837F8 /* CollisionPublisher.swift */; };
 		8307E0FE2246E77A008269C2 /* woodTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8307E0FC2246E77A008269C2 /* woodTexture.jpg */; };
 		8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8307E0FD2246E77A008269C2 /* marbleTexture.jpg */; };
@@ -70,6 +74,7 @@
 		836E386722489C2C00CF7303 /* GravityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E386622489C2C00CF7303 /* GravityManager.swift */; };
 		83D305BA22224517008D5CFC /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305B922224517008D5CFC /* Transform.swift */; };
 		83D305BC22224524008D5CFC /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305BB22224524008D5CFC /* Vector3.swift */; };
+		DA5C72332253E74E00B5E5A3 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C72322253E74E00B5E5A3 /* Level.swift */; };
 		DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570C22151F0F002315D0 /* AppDelegate.swift */; };
 		DA99570F22151F0F002315D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570E22151F0F002315D0 /* ViewController.swift */; };
 		DA99571222151F0F002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA99571022151F0F002315D0 /* Main.storyboard */; };
@@ -119,6 +124,10 @@
 		830456052252D85A00D12630 /* ContactListener.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
 		830456062252D85A00D12630 /* ContactListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ContactListener.hpp; sourceTree = "<group>"; };
 		830456082252DBF500D12630 /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		83055BDD22553F7D00CBF1A9 /* CameraTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTrack.swift; sourceTree = "<group>"; };
+		83055BDF225545BA00CBF1A9 /* FloatExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtensions.swift; sourceTree = "<group>"; };
+		83055BE1225548F600CBF1A9 /* KinematicBlockBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinematicBlockBody.swift; sourceTree = "<group>"; };
+		83055BE32255550800CBF1A9 /* DeathWallBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathWallBehaviour.swift; sourceTree = "<group>"; };
 		83071FD32253EDF3005837F8 /* CollisionPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionPublisher.swift; sourceTree = "<group>"; };
 		8307E0FC2246E77A008269C2 /* woodTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = woodTexture.jpg; sourceTree = "<group>"; };
 		8307E0FD2246E77A008269C2 /* marbleTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = marbleTexture.jpg; sourceTree = "<group>"; };
@@ -230,6 +239,7 @@
 		836E386622489C2C00CF7303 /* GravityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GravityManager.swift; sourceTree = "<group>"; };
 		83D305B922224517008D5CFC /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		83D305BB22224524008D5CFC /* Vector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		DA5C72322253E74E00B5E5A3 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		DA99570922151F0F002315D0 /* Comp8051.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA99570C22151F0F002315D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA99570E22151F0F002315D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -303,7 +313,10 @@
 				83043625222231F10019F5BF /* ModelRenderer.swift */,
 				8307E1DE224839C3008269C2 /* SphereBody.swift */,
 				834E1E27224860570055E02A /* BlockBody.swift */,
+				83055BE1225548F600CBF1A9 /* KinematicBlockBody.swift */,
+				83055BE32255550800CBF1A9 /* DeathWallBehaviour.swift */,
 				830456082252DBF500D12630 /* Body.swift */,
+				83055BDD22553F7D00CBF1A9 /* CameraTrack.swift */,
 				836E386622489C2C00CF7303 /* GravityManager.swift */,
 				E3F7C57A22553D780060CA09 /* SoundEffect.swift */,
 				E39030AF225555150092A689 /* CollisionSound.swift */,
@@ -334,6 +347,8 @@
 				8309925C22272636007B8B98 /* Error.swift */,
 				83071FD32253EDF3005837F8 /* CollisionPublisher.swift */,
 				DA9957742227BF6C002315D0 /* GLKExtensions.swift */,
+				83055BDF225545BA00CBF1A9 /* FloatExtensions.swift */,
+				DA5C72322253E74E00B5E5A3 /* Level.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -725,13 +740,16 @@
 				836E383F22489A8800CF7303 /* b2FrictionJoint.cpp in Sources */,
 				836E383922489A8800CF7303 /* b2Body.cpp in Sources */,
 				83083AA2221E75AA003931A2 /* GameObject.swift in Sources */,
+				83055BE42255550800CBF1A9 /* DeathWallBehaviour.swift in Sources */,
 				836E385122489A8800CF7303 /* b2TimeOfImpact.cpp in Sources */,
 				DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */,
 				8307E15E2247255C008269C2 /* Physics.mm in Sources */,
 				836E385722489A8800CF7303 /* b2RevoluteJoint.cpp in Sources */,
+				83055BDE22553F7D00CBF1A9 /* CameraTrack.swift in Sources */,
 				836E386122489A8800CF7303 /* b2Contact.cpp in Sources */,
 				836E383A22489A8800CF7303 /* b2World.cpp in Sources */,
 				836E384E22489A8800CF7303 /* b2Rope.cpp in Sources */,
+				DA5C72332253E74E00B5E5A3 /* Level.swift in Sources */,
 				836E385922489A8800CF7303 /* b2ContactSolver.cpp in Sources */,
 				836E385322489A8800CF7303 /* b2EdgeShape.cpp in Sources */,
 				8309925D22272636007B8B98 /* Error.swift in Sources */,
@@ -762,6 +780,7 @@
 				836E384822489A8800CF7303 /* b2DistanceJoint.cpp in Sources */,
 				834E1E28224860570055E02A /* BlockBody.swift in Sources */,
 				836E385522489A8800CF7303 /* b2BroadPhase.cpp in Sources */,
+				83055BE2225548F600CBF1A9 /* KinematicBlockBody.swift in Sources */,
 				836E384522489A8800CF7303 /* b2ChainAndCircleContact.cpp in Sources */,
 				836E385D22489A8800CF7303 /* b2CircleContact.cpp in Sources */,
 				830456072252D85A00D12630 /* ContactListener.mm in Sources */,
@@ -770,6 +789,7 @@
 				DA99573B2215335C002315D0 /* Vertex.swift in Sources */,
 				836E385B22489A8800CF7303 /* b2Joint.cpp in Sources */,
 				836E386522489A8800CF7303 /* b2RopeJoint.cpp in Sources */,
+				83055BE0225545BA00CBF1A9 /* FloatExtensions.swift in Sources */,
 				DA99573D2217A53F002315D0 /* Model.swift in Sources */,
 				83D305BA22224517008D5CFC /* Transform.swift in Sources */,
 				836E385422489A8800CF7303 /* b2CircleShape.cpp in Sources */,

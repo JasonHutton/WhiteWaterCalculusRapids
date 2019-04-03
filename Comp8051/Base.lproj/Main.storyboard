@@ -19,8 +19,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uy3-vd-0jK">
-                                <rect key="frame" x="0.0" y="500" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="509" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" title="Quit"/>
                                 <connections>
                                     <action selector="quitGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wyb-3d-VWl"/>
@@ -31,14 +31,14 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Menu Background.png" translatesAutoresizingMaskIntoConstraints="NO" id="0rm-YI-sK9">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="512"/>
+                                        <rect key="frame" x="0.0" y="-1" width="320" height="513"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <viewLayoutGuide key="safeArea" id="TYq-iK-5b2"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsq-f9-Pao">
-                                        <rect key="frame" x="121" y="360" width="78" height="36"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <rect key="frame" x="121" y="452" width="78" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <viewLayoutGuide key="safeArea" id="smS-C4-uJc"/>
                                         <state key="normal" title="Start Game"/>
                                         <connections>
@@ -48,8 +48,15 @@
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="g9r-ll-jDM"/>
                             </glkView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6N-hQ-4z5">
+                                <rect key="frame" x="161" y="23" width="143" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWI-5R-d3u">
-                                <rect key="frame" x="92" y="18" width="137" height="30"/>
+                                <rect key="frame" x="16" y="23" width="137" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <viewLayoutGuide key="safeArea" id="3cB-qF-HSy"/>
                                 <state key="normal" title="Mute/Unmute Audio"/>
@@ -63,11 +70,12 @@
                     </view>
                     <connections>
                         <outlet property="menuView" destination="Ri7-X6-RW3" id="o3N-bb-qK8"/>
+                        <outlet property="scoreLabel" destination="s6N-hQ-4z5" id="uAQ-je-0vD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129.375" y="101.40845070422536"/>
+            <point key="canvasLocation" x="127.5" y="100.35211267605634"/>
         </scene>
     </scenes>
     <resources>
