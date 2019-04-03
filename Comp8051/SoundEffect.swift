@@ -22,13 +22,12 @@ class SoundEffect : Component {
     }
     
     public func playSound() {
-        print("playing sound %s", self.soundFile)
-        /*do {
+        do {
             player = try AVAudioPlayer(contentsOf: self.url)
             player.prepareToPlay()
             player.play()
         } catch let error as NSError{
             print(error.description)
-        }*/
+        }
     }
 }
