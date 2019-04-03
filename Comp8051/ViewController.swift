@@ -112,17 +112,7 @@ class ViewController: GLKViewController {
         
         shader.projectionMatrix = projectionMatrix
         
-        // set up scene
-        GameObject.root.addComponent(component: GravityManager()) // this is silly but it works
-        
-        
-        // add camera before adding any model renderers
-        let cameraObj = GameObject(tag: "Camera")
-        cameraObj.transform.position = Vector3(x: 0, y: 0, z: 30)
-        GameObject.root.addChild(gameObject: cameraObj)
-        
-        let level = Level()
-        level.createLevel(width: width, aspect: aspect, shader: shader)
+        Level.createLevel(width: width, aspect: aspect, shader: shader)
     }
     
     
@@ -179,10 +169,6 @@ extension ViewController: GLKViewControllerDelegate {
         GameObject.root.update(deltaTime: ViewController.deltaTime)
         PhysicsWrapper.update(ViewController.deltaTime)
         GameObject.root.lateUpdate(deltaTime: ViewController.deltaTime)
-        
-        // temp
-        GameObject.root.getChild(tag: "Camera")?.transform.position.x = (GameObject.root.getChild(tag: "Sphere")?.transform.position.x)!
-        GameObject.root.getChild(tag: "Camera")?.transform.position.y = (GameObject.root.getChild(tag: "Sphere")?.transform.position.y)!
         
         GameObject.root.getChild(tag: "Death")?.transform.position.y -= 0.05
         

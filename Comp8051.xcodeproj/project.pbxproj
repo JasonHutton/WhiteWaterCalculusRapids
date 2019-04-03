@@ -10,6 +10,8 @@
 		83043626222231F10019F5BF /* ModelRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83043625222231F10019F5BF /* ModelRenderer.swift */; };
 		830456072252D85A00D12630 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 830456052252D85A00D12630 /* ContactListener.mm */; };
 		830456092252DBF500D12630 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830456082252DBF500D12630 /* Body.swift */; };
+		83055BDE22553F7D00CBF1A9 /* CameraTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83055BDD22553F7D00CBF1A9 /* CameraTrack.swift */; };
+		83055BE0225545BA00CBF1A9 /* FloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83055BDF225545BA00CBF1A9 /* FloatExtensions.swift */; };
 		83071FD42253EDF3005837F8 /* CollisionPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83071FD32253EDF3005837F8 /* CollisionPublisher.swift */; };
 		8307E0FE2246E77A008269C2 /* woodTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8307E0FC2246E77A008269C2 /* woodTexture.jpg */; };
 		8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8307E0FD2246E77A008269C2 /* marbleTexture.jpg */; };
@@ -116,6 +118,8 @@
 		830456052252D85A00D12630 /* ContactListener.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
 		830456062252D85A00D12630 /* ContactListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ContactListener.hpp; sourceTree = "<group>"; };
 		830456082252DBF500D12630 /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		83055BDD22553F7D00CBF1A9 /* CameraTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTrack.swift; sourceTree = "<group>"; };
+		83055BDF225545BA00CBF1A9 /* FloatExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtensions.swift; sourceTree = "<group>"; };
 		83071FD32253EDF3005837F8 /* CollisionPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionPublisher.swift; sourceTree = "<group>"; };
 		8307E0FC2246E77A008269C2 /* woodTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = woodTexture.jpg; sourceTree = "<group>"; };
 		8307E0FD2246E77A008269C2 /* marbleTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = marbleTexture.jpg; sourceTree = "<group>"; };
@@ -299,6 +303,7 @@
 				8307E1DE224839C3008269C2 /* SphereBody.swift */,
 				834E1E27224860570055E02A /* BlockBody.swift */,
 				830456082252DBF500D12630 /* Body.swift */,
+				83055BDD22553F7D00CBF1A9 /* CameraTrack.swift */,
 				836E386622489C2C00CF7303 /* GravityManager.swift */,
 			);
 			name = Components;
@@ -327,6 +332,7 @@
 				8309925C22272636007B8B98 /* Error.swift */,
 				83071FD32253EDF3005837F8 /* CollisionPublisher.swift */,
 				DA9957742227BF6C002315D0 /* GLKExtensions.swift */,
+				83055BDF225545BA00CBF1A9 /* FloatExtensions.swift */,
 				DA5C72322253E74E00B5E5A3 /* Level.swift */,
 			);
 			name = Utilities;
@@ -713,6 +719,7 @@
 				DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */,
 				8307E15E2247255C008269C2 /* Physics.mm in Sources */,
 				836E385722489A8800CF7303 /* b2RevoluteJoint.cpp in Sources */,
+				83055BDE22553F7D00CBF1A9 /* CameraTrack.swift in Sources */,
 				836E386122489A8800CF7303 /* b2Contact.cpp in Sources */,
 				836E383A22489A8800CF7303 /* b2World.cpp in Sources */,
 				836E384E22489A8800CF7303 /* b2Rope.cpp in Sources */,
@@ -754,6 +761,7 @@
 				DA99573B2215335C002315D0 /* Vertex.swift in Sources */,
 				836E385B22489A8800CF7303 /* b2Joint.cpp in Sources */,
 				836E386522489A8800CF7303 /* b2RopeJoint.cpp in Sources */,
+				83055BE0225545BA00CBF1A9 /* FloatExtensions.swift in Sources */,
 				DA99573D2217A53F002315D0 /* Model.swift in Sources */,
 				83D305BA22224517008D5CFC /* Transform.swift in Sources */,
 				836E385422489A8800CF7303 /* b2CircleShape.cpp in Sources */,
