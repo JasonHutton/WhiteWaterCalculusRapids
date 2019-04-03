@@ -63,9 +63,14 @@ class ViewController: GLKViewController {
     }
     
     @IBAction func quitGame(_ sender: Any) {
+        quit()
+    }
+    
+    public func quit(){
         menuView.isHidden = false
         playMusic(soundFile: "menu")
         tearDownGL()
+        tearDownLevel()
     }
     
     fileprivate func playMusic(soundFile: String) {
@@ -165,6 +170,10 @@ class ViewController: GLKViewController {
         EAGLContext.setCurrent(nil)
         
         context = nil
+    }
+    
+    private func tearDownLevel(){
+    
     }
     
     deinit {
