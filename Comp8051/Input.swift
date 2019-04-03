@@ -7,12 +7,14 @@
 //
 
 import CoreMotion
+import UIKit
 
 class Input {
     
-    private(set) static var gravity = Vector3()
+    public var gravity = Vector3()
+    public var tapped = false
     
-    static let instance = Input()
+    public static let instance = Input()
     private let motion = CMMotionManager()
     
     static func start () {
@@ -25,6 +27,7 @@ class Input {
     }
     
     init() {
+        
         if motion.isDeviceMotionAvailable {
             motion.deviceMotionUpdateInterval = 1/30
             motion.startDeviceMotionUpdates(to: .main) {
@@ -33,13 +36,11 @@ class Input {
                     return
                 }
                 
-                Input.gravity = Vector3(x: Float(data.gravity.x), y: Float(data.gravity.y), z: 0).normalized
-                
+                self.gravity = Vector3(x:Float(data.gravity.x), y:Float(data.gravity.y), z: 0).normalized2D
             }
         } else {
-            print("Error: Device motion not available.")
-            Input.gravity = Vector3(x:0, y: -1, z: 0)
+            self.gravity = Vector3(x:0, y:-1, z: 0)
+            print("Error: Device motion not available. Defaulting gravity to (0, -1, 0).")
         }
     }
-    
 }

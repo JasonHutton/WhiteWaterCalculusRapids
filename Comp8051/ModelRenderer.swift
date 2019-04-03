@@ -13,9 +13,9 @@ class ModelRenderer : Component {
     private var model: Model
     private static var camera: GameObject?
     
-    init(modelName: String) {
+    init(modelName: String, shader: BaseEffect) {
         
-        model = Model(modelName: modelName)
+        model = Model(modelName: modelName, shader: shader)
         ViewController.instance?.addModel(model: &model)
         
         // grab the camera, if not already grabbed
@@ -32,16 +32,18 @@ class ModelRenderer : Component {
         }
     }
     
-    override func update(deltaTime: Float) {
+    override func lateUpdate(deltaTime: Float) {
         
-        if let gameObject = self.gameObject, let camPos = ModelRenderer.camera?.transform.position {
+        if var transform = gameObject?.worldTransform, let cam = ModelRenderer.camera?.transform {
             
             // get position relative to camera
-            // TODO, MAYBE?: relative to camera only cares about position, ignores rotation - probably not important
-            var transform = gameObject.transform
-            transform.position -= camPos
+            transform.position -= cam.position
             
             var transformationMatrix = GLKMatrix4Identity
+            // camera rotation
+            transformationMatrix = GLKMatrix4RotateX(transformationMatrix, -cam.rotation.x)
+            transformationMatrix = GLKMatrix4RotateY(transformationMatrix, cam.rotation.y)
+            
             // translation
             transformationMatrix = GLKMatrix4Translate(transformationMatrix,
                                                  transform.position.x,
@@ -56,7 +58,6 @@ class ModelRenderer : Component {
                                              transform.scale.x,
                                              transform.scale.y,
                                              transform.scale.z)
-            
             
             model.modelViewMatrix = transformationMatrix
         }

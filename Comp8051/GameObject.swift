@@ -80,6 +80,23 @@ class GameObject {
         }
     }
     
+    // Update this object by updating all components
+    // Should ONLY be called by the view controller
+    func lateUpdate (deltaTime : Float) {
+        
+        for component in self.components {
+            if component.active {
+                component.lateUpdate(deltaTime: deltaTime)
+            }
+        }
+        
+        for child in self.children {
+            if child.active {
+                child.lateUpdate(deltaTime: deltaTime)
+            }
+        }
+    }
+    
     // remove references to this gameobject and all children and allow components to clean up
     func destroy () {
         
@@ -103,6 +120,11 @@ class GameObject {
     func addComponent(component : Component) {
         components.append(component)
         component.gameObject = self
+        
+        if (component.active)
+        {
+            component.onEnable()
+        }
     }
     
     // Remove a component from this game object, if we have it

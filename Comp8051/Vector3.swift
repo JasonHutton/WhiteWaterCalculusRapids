@@ -78,6 +78,26 @@ struct Vector3 {
         y *= m
     }
     
+    static func convertFromCVector (cVector: CVector) -> Vector3 {
+        return Vector3 (x:cVector.x, y:cVector.y, z:0);
+    }
+    
+    func convertToCVector () -> CVector {
+        var cVec = CVector()
+        cVec.x = x
+        cVec.y = y
+        
+        return cVec
+    }
+    
+    static func dotProduct (left: Vector3, right: Vector3) -> Float {
+        var product = Float(0)
+        product += left.x * right.x
+        product += left.y * right.y
+        product += left.z * right.z
+        return product
+    }
+    
     
     /* OPERATORS */
     
@@ -149,4 +169,12 @@ struct Vector3 {
         left.z /= right
     }
     
+    // equality operators
+    static func ==(left: Vector3, right: Vector3) -> Bool {
+        if(left.x != right.x) { return false }
+        if(left.y != right.y) { return false }
+        if(left.z != right.z) { return false }
+        
+        return true
+    }
 }
