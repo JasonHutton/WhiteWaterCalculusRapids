@@ -62,7 +62,7 @@ class Level{
         // set initial position
         leftWall.transform.position = Vector3(x: -width/2, y: 0, z: 0)
         leftWall.transform.scale.x = 0.5
-        leftWall.transform.scale.y = width/aspect
+        leftWall.transform.scale.y = width*2
         leftWall.addComponent(component: BlockBody(tag: "Floor"))
         leftWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
         GameObject.root.addChild(gameObject: leftWall)
@@ -71,7 +71,7 @@ class Level{
         // set initial position
         rightWall.transform.position = Vector3(x: width/2, y: 0, z: 0)
         rightWall.transform.scale.x = 0.5
-        rightWall.transform.scale.y = width/aspect
+        rightWall.transform.scale.y = width*2
         rightWall.addComponent(component: BlockBody(tag: "Floor"))
         rightWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
         GameObject.root.addChild(gameObject: rightWall)
@@ -90,7 +90,7 @@ class Level{
         bottomWall.transform.position = Vector3(x: 0, y: -width, z: 0)
         bottomWall.transform.scale.x = width
         bottomWall.transform.scale.y = 0.5
-        bottomWall.addComponent(component: BlockBody(tag: "Floor"))
+        bottomWall.addComponent(component: BlockBody(tag: "Win"))
         bottomWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "winTexture.jpg"))
         GameObject.root.addChild(gameObject: bottomWall)
         
@@ -99,7 +99,7 @@ class Level{
         deathWall.transform.scale.x = width
         deathWall.transform.scale.y = 100
         deathWall.transform.scale.z = 2
-        deathWall.addComponent(component: BlockBody(tag: "Floor"))
+        deathWall.addComponent(component: BlockBody(tag: "Lose"))
         deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "deathTexture.jpg"))
         GameObject.root.addChild(gameObject: deathWall)
     }
