@@ -9,9 +9,18 @@
 import Foundation
 import GLKit
 
-class Level{
+class Level {
     
-    func createLevel(width: Float, aspect: Float, shader: BaseEffect){
+    static func createLevel(width: Float, aspect: Float, shader: BaseEffect) {
+        
+        // set up scene
+        GameObject.root.addComponent(component: GravityManager()) // this is silly but it works
+        
+        // add camera before adding any model renderers
+        let cameraObj = GameObject(tag: "Camera")
+        cameraObj.transform.position = Vector3(x: 0, y: 0, z: 30)
+        GameObject.root.addChild(gameObject: cameraObj)
+        
         // TODO: currently, component order DOES MATTER. modelrenderer should always occur last!
         // for now, add a game object's model renderer last.
         let sphereObj = GameObject(tag: "Sphere")
@@ -21,6 +30,9 @@ class Level{
         sphereObj.addComponent(component: SphereBody(tag: "Ball"))
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere", shader: shader))
         GameObject.root.addChild(gameObject: sphereObj)
+        // add camera track component to track sphere
+        cameraObj.addComponent(component: CameraTrack(trackedObj: sphereObj))
+        
         
         let surfaceObj = GameObject(tag: "Surface")
         // set initial position
