@@ -36,12 +36,4 @@ class SphereBody : Body {
             gameObject!.transform.rotation.z = transform.rotation / 2
         }
     }
-    
-    override func onCollisionEnter (tag: String) {
-
-        if let cs: CollisionSound = self.gameObject?.getComponent() {
-            
-            cs.Collide()
-        }
-    }
 }
