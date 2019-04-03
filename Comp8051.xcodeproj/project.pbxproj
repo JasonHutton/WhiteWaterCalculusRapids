@@ -91,6 +91,7 @@
 		DAD246C42249F26700B4D62C /* menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C22249F26700B4D62C /* menu.mp3 */; };
 		DAD246CB224C131400B4D62C /* winTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C9224C131400B4D62C /* winTexture.jpg */; };
 		DAD246CE224CA1C100B4D62C /* deathTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246CD224CA1C000B4D62C /* deathTexture.jpg */; };
+		E39030B0225555150092A689 /* CollisionSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39030AF225555150092A689 /* CollisionSound.swift */; };
 		E3F7C57922553BEA0060CA09 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830456082252DBF500D12630 /* Body.swift */; };
 		E3F7C57B22553D780060CA09 /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F7C57A22553D780060CA09 /* SoundEffect.swift */; };
 		E3F7C57E22554C300060CA09 /* ballimpact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E3F7C57D22554C300060CA09 /* ballimpact.mp3 */; };
@@ -256,6 +257,7 @@
 		DAD246C22249F26700B4D62C /* menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu.mp3; sourceTree = "<group>"; };
 		DAD246C9224C131400B4D62C /* winTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = winTexture.jpg; sourceTree = "<group>"; };
 		DAD246CD224CA1C000B4D62C /* deathTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = deathTexture.jpg; sourceTree = "<group>"; };
+		E39030AF225555150092A689 /* CollisionSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSound.swift; sourceTree = "<group>"; };
 		E3F7C57A22553D780060CA09 /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
 		E3F7C57D22554C300060CA09 /* ballimpact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ballimpact.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -304,6 +306,7 @@
 				830456082252DBF500D12630 /* Body.swift */,
 				836E386622489C2C00CF7303 /* GravityManager.swift */,
 				E3F7C57A22553D780060CA09 /* SoundEffect.swift */,
+				E39030AF225555150092A689 /* CollisionSound.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -750,6 +753,7 @@
 				836E386422489A8800CF7303 /* b2Collision.cpp in Sources */,
 				836E383E22489A8800CF7303 /* b2CollideCircle.cpp in Sources */,
 				836E384A22489A8800CF7303 /* b2WorldCallbacks.cpp in Sources */,
+				E39030B0225555150092A689 /* CollisionSound.swift in Sources */,
 				830456092252DBF500D12630 /* Body.swift in Sources */,
 				836E384322489A8800CF7303 /* b2Draw.cpp in Sources */,
 				DA9957732227BF07002315D0 /* BaseEffect.swift in Sources */,

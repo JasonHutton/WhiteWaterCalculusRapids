@@ -39,9 +39,9 @@ class SphereBody : Body {
     
     override func onCollisionEnter (tag: String) {
 
-        if let se: SoundEffect = self.gameObject?.getComponent() {
+        if let cs: CollisionSound = self.gameObject?.getComponent() {
             
-            se.playSound()
+            cs.Collide()
         }
     }
 }

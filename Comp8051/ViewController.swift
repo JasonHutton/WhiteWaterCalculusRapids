@@ -123,7 +123,7 @@ class ViewController: GLKViewController {
         sphereObj.transform.position = Vector3(x: 0, y: 2, z: 0)
         // add component to rotate the sphere (probably temporary)
         sphereObj.addComponent(component: SphereBody(tag: "Ball"))
-        sphereObj.addComponent(component: SoundEffect(soundFile: "ballimpact"))
+        sphereObj.addComponent(component: CollisionSound(sound: SoundEffect(soundFile: "ballimpact")))
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere", shader: shader))
         GameObject.root.addChild(gameObject: sphereObj)
         
