@@ -9,9 +9,18 @@
 import Foundation
 import GLKit
 
-class Level{
+class Level {
     
-    func createLevel(width: Float, aspect: Float, shader: BaseEffect){
+    static func createLevel(width: Float, aspect: Float, shader: BaseEffect) {
+        
+        // set up scene
+        GameObject.root.addComponent(component: GravityManager()) // this is silly but it works
+        
+        // add camera before adding any model renderers
+        let cameraObj = GameObject(tag: "Camera")
+        cameraObj.transform.position = Vector3(x: 0, y: 0, z: 30)
+        GameObject.root.addChild(gameObject: cameraObj)
+        
         // TODO: currently, component order DOES MATTER. modelrenderer should always occur last!
         // for now, add a game object's model renderer last.
         let sphereObj = GameObject(tag: "Sphere")
@@ -19,8 +28,12 @@ class Level{
         sphereObj.transform.position = Vector3(x: 0, y: 2, z: 0)
         // add component to rotate the sphere (probably temporary)
         sphereObj.addComponent(component: SphereBody(tag: "Ball"))
+        sphereObj.addComponent(component: CollisionSound(sound: SoundEffect(soundFile: "ballimpact")))
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere", shader: shader))
         GameObject.root.addChild(gameObject: sphereObj)
+        // add camera track component to track sphere
+        cameraObj.addComponent(component: CameraTrack(trackedObj: sphereObj))
+        
         
         let surfaceObj = GameObject(tag: "Surface")
         // set initial position
@@ -99,7 +112,8 @@ class Level{
         deathWall.transform.scale.x = width
         deathWall.transform.scale.y = 100
         deathWall.transform.scale.z = 2
-        deathWall.addComponent(component: BlockBody(tag: "Lose"))
+        deathWall.addComponent(component: DeathWallBehaviour())
+        deathWall.addComponent(component: KinematicBlockBody(tag: "Lose"))
         deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "deathTexture.jpg"))
         GameObject.root.addChild(gameObject: deathWall)
     }

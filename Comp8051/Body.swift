@@ -19,7 +19,13 @@ class Body: Component {
     }
     
     // called when an attached body collides with another
-    func onCollisionEnter (tag: String) {}
+    func onCollisionEnter (tag: String) {
+        
+        if let cs: CollisionSound = self.gameObject?.getComponent() {
+            
+            cs.Collide()
+        }
+    }
     
     // called when an attached body stops colliding with another
     func onCollisionExit (tag: String) {}
