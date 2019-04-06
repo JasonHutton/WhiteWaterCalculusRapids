@@ -118,7 +118,9 @@ class Level {
         GameObject.root.addChild(gameObject: deathWall)
     }
     
-    static func deleteLevel(){
+    static func deleteLevel() {
+        
+        CollisionPublisher.unsubscribeAll()
         GameObject.root.removeAllChildren()
         GameObject.root.removeAllComponents()
     }

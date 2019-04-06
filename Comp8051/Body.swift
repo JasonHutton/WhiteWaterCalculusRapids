@@ -29,4 +29,9 @@ class Body: Component {
     
     // called when an attached body stops colliding with another
     func onCollisionExit (tag: String) {}
+    
+    override func onDestroy() {
+        PhysicsWrapper.removeBody(self.tag)
+        initialized = false
+    }
 }

@@ -16,12 +16,17 @@
         instance.bodies.append(body)
     }
     
+    static func unsubscribeAll() {
+        print("unsubscribe")
+        instance.bodies.removeAll()
+    }
+    
     // filters collision enter events so that only the bodies concerned with the collision are notified
     @objc static func handleCollisionEnter (tag1: String, tag2: String) {
         
         var tag1Found = false
         var tag2Found = false
-        
+        print("enter")
         for body in instance.bodies {
             
             if tag1Found && tag2Found {
@@ -46,7 +51,7 @@
         
         var tag1Found = false
         var tag2Found = false
-        
+        print("exit")
         for body in instance.bodies {
             
             if tag1Found && tag2Found {
