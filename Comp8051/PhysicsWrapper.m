@@ -89,4 +89,13 @@ static Physics* physics = nil;
     [physics setBodyPosition:tag transform:transform];
 }
 
++ (void)removeBody:(NSString*) tag{
+    
+    [physics removeBody:tag];
+}
+
++ (void)removeAllBodies{
+    
+    [physics removeAllBodies];
+}
 @end
