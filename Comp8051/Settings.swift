@@ -45,6 +45,12 @@ class Settings : NSObject {
 
     private var allSettings = [Setting]()
     
+    // Setting names must all be listed in here. This is intended to avoid typos mostly.
+    public enum Names : String {
+        case playMusic = "playMusic"
+        case playSound = "playSound"
+    }
+    
     public static let instance = Settings()
     
     static func start () {
@@ -57,7 +63,9 @@ class Settings : NSObject {
     }
     
     override init() {
-        allSettings += [Setting(name: "playMusic", defaultValue: "1")]
+        // Create new settings here.
+        allSettings += [Setting(name: Settings.Names.playMusic.rawValue, defaultValue: "1")]
+        allSettings += [Setting(name: Settings.Names.playSound.rawValue, defaultValue: "1")]
     }
     
     func getSetting(name: String) -> String {
@@ -93,18 +101,6 @@ class Settings : NSObject {
             self.setSetting(name: name, value: "1")
         } else {
             self.setSetting(name: name, value: "0")
-        }
-    }
-    
-    func load() {
-        for setting in allSettings {
-            setting.setValue(value: UserDefaults.standard.string(forKey: setting.name) ?? setting.getValue())
-        }
-    }
-    
-    func save(key: String, value: String) {
-        for setting in allSettings {
-            UserDefaults.standard.set(setting.getValue(), forKey: setting.name)
         }
     }
 }

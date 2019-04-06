@@ -51,11 +51,11 @@ class ViewController: GLKViewController {
     }
     
     @IBAction func toggleAudio(_ sender: Any) {
-        if(Settings.instance.getSetting(name: "playMusic")) {
-            Settings.instance.setSetting(name: "playMusic", value: false)
+        if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
+            Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: false)
             player.pause()
         } else {
-            Settings.instance.setSetting(name: "playMusic", value: true)
+            Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: true)
             player.play()
         }
     }
@@ -73,7 +73,7 @@ class ViewController: GLKViewController {
             player = try AVAudioPlayer(contentsOf: url)
             player.prepareToPlay()
             
-            if(Settings.instance.getSetting(name: "playMusic")){
+            if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)){
                 player.play()
             }
         } catch let error as NSError{
