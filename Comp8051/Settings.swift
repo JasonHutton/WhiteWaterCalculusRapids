@@ -13,18 +13,23 @@ class Setting : NSObject {
     private var value : String? // Current value
     private(set) var defaultValue : String // Default value of the setting
     private var lastValue : String? // Last value the setting had. (Used to know when to save.)
+    private(set) var deferSave : Bool // Don't save unless explicitly asked to.
     
-    init(name: String, defaultValue: String) {
+    init(name: String, defaultValue: String, deferSave: Bool = false) {
         self.name = name
+        self.value = nil
         self.defaultValue = defaultValue
         self.lastValue = self.value
+        self.deferSave = deferSave
     }
     
-    public func setValue(value: String) {
+    public func setValue(value: String, explicitSave: Bool = false) {
         self.value = value
         
         if(self.getValue() != self.lastValue) {
-            UserDefaults.standard.set(self.getValue(), forKey: self.name)
+            if(self.deferSave == false || explicitSave == true) {
+                UserDefaults.standard.set(self.getValue(), forKey: self.name)
+            }
         }
         
         self.lastValue = self.value
@@ -49,6 +54,7 @@ class Settings : NSObject {
     public enum Names : String {
         case playMusic = "playMusic"
         case playSound = "playSound"
+        case highScore = "highScore"
     }
     
     public static let instance = Settings()
@@ -66,6 +72,7 @@ class Settings : NSObject {
         // Create new settings here.
         allSettings += [Setting(name: Settings.Names.playMusic.rawValue, defaultValue: "1")]
         allSettings += [Setting(name: Settings.Names.playSound.rawValue, defaultValue: "1")]
+        allSettings += [Setting(name: Settings.Names.highScore.rawValue, defaultValue: "0", deferSave: true)]
     }
     
     func getSetting(name: String) -> String {
@@ -88,20 +95,28 @@ class Settings : NSObject {
         }
     }
     
-    func setSetting(name: String, value: String) {
+    func getSetting(name: String) -> Int {
+        return Int(self.getSetting(name: name) as String) ?? 0
+    }
+    
+    func setSetting(name: String, value: String, explicitSave: Bool = false) {
         for setting in allSettings {
             if(setting.name == name) {
-                setting.setValue(value: value)
+                setting.setValue(value: value, explicitSave: explicitSave)
             }
         }
     }
     
-    func setSetting(name: String, value: Bool) {
+    func setSetting(name: String, value: Bool, explicitSave: Bool = false) {
         if(value == true) {
-            self.setSetting(name: name, value: "1")
+            self.setSetting(name: name, value: "1", explicitSave: explicitSave)
         } else {
-            self.setSetting(name: name, value: "0")
+            self.setSetting(name: name, value: "0", explicitSave: explicitSave)
         }
+    }
+    
+    func setSetting(name: String, value: Int, explicitSave: Bool = false) {
+        self.setSetting(name: name, value: String(value), explicitSave: explicitSave)
     }
 }
 

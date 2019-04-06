@@ -66,6 +66,7 @@ class ViewController: GLKViewController {
     
     public func quit(){
         menuView.isHidden = false
+        scoreLabel.text = "Score: \(score)"
         playMusic(soundFile: "menu")
         tearDownGL()
         tearDownLevel()
@@ -130,6 +131,8 @@ class ViewController: GLKViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scoreLabel.text = "Score: \(score)"
 
         playMusic(soundFile: "menu")
     }
@@ -180,6 +183,9 @@ extension ViewController: GLKViewControllerDelegate {
         GameObject.root.update(deltaTime: ViewController.deltaTime)
         PhysicsWrapper.update(ViewController.deltaTime)
         GameObject.root.lateUpdate(deltaTime: ViewController.deltaTime)
+        
+        score = score + 1
+        //Settings.instance.setSetting(name: Settings.Names.highScore.rawValue, value: score, explicitSave: true) // We don't want to be saving highscore constantly, or displaying it as normal score
         
         scoreLabel.text = "Score: \(score)"
     }
