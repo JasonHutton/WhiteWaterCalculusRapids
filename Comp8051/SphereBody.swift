@@ -40,11 +40,11 @@ class SphereBody : Body {
     override func onCollisionEnter (tag: String) {
         if tag.contains("Win"){
             print("You Win!")
-            ViewController.instance?.quit()
+            //ViewController.instance?.quit()
         } else if tag.contains("Lose"){
             print("Game Over, you Lose!")
-            ViewController.instance?.quit()
+            //ViewController.instance?.quit()
         }
-        print(tag)
+        //print(tag)
     }
 }

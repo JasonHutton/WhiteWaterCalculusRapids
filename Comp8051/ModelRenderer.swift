@@ -71,6 +71,7 @@ class ModelRenderer : Component {
     }
     
     override func onDestroy() {
+        ModelRenderer.camera = nil
         model = nil
     }
     

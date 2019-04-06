@@ -17,7 +17,7 @@
     }
     
     static func unsubscribeAll() {
-        print("unsubscribe")
+        
         instance.bodies.removeAll()
     }
     
@@ -26,7 +26,7 @@
         
         var tag1Found = false
         var tag2Found = false
-        print("enter")
+
         for body in instance.bodies {
             
             if tag1Found && tag2Found {
@@ -51,7 +51,7 @@
         
         var tag1Found = false
         var tag2Found = false
-        print("exit")
+        
         for body in instance.bodies {
             
             if tag1Found && tag2Found {
