@@ -34,9 +34,12 @@ class Setting : NSObject, NSCoding {
         aCoder.encode(defaultValue, forKey: Keys.defaultValue.rawValue)
     }
     
-    required convenience init?(coder aDecoder: NSCoder) {
+    init(setting: String, value: Int, defaultValue: Int) {
+        super.init()
         
-        self.init()
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
         
         guard let setting = aDecoder.decodeObject(forKey: Keys.setting.rawValue) as? String else {
             print("Unable to decode the name of a setting.")
@@ -45,5 +48,10 @@ class Setting : NSObject, NSCoding {
         
         let value = aDecoder.decodeInteger(forKey: Keys.value.rawValue)
         let defaultValue = aDecoder.decodeInteger(forKey: Keys.defaultValue.rawValue)
+        
+        /*if let content = messageObject.value(forKey:"content") as? String {
+            stringContent = content
+        }*/
+        self.init(setting: "", value: 0, defaultValue: 0)
     }
 }
