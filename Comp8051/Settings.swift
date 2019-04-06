@@ -34,7 +34,7 @@ class Setting : NSObject, NSCoding {
         aCoder.encode(defaultValue, forKey: Keys.defaultValue.rawValue)
     }
     
-    init(setting: String, value: Int, defaultValue: Int) {
+    init(setting: String, value: String, defaultValue: String) {
         super.init()
         
     }
@@ -46,12 +46,12 @@ class Setting : NSObject, NSCoding {
             return nil
         }
         
-        let value = aDecoder.decodeInteger(forKey: Keys.value.rawValue)
-        let defaultValue = aDecoder.decodeInteger(forKey: Keys.defaultValue.rawValue)
+        let value = aDecoder.decodeObject(forKey: Keys.value.rawValue) as! String
+        let defaultValue = aDecoder.decodeObject(forKey: Keys.defaultValue.rawValue) as! String
         
         /*if let content = messageObject.value(forKey:"content") as? String {
             stringContent = content
         }*/
-        self.init(setting: "", value: 0, defaultValue: 0)
+        self.init(setting: "", value: "0", defaultValue: "0")
     }
 }
