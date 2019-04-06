@@ -35,7 +35,7 @@ class ViewController: GLKViewController {
 
     private var effect = GLKBaseEffect()
     
-    var models : [Model] = []
+    var models : [Model?] = []
     
     var shader : BaseEffect!
 
@@ -63,9 +63,14 @@ class ViewController: GLKViewController {
     }
     
     @IBAction func quitGame(_ sender: Any) {
+        quit()
+    }
+    
+    public func quit(){
         menuView.isHidden = false
         playMusic(soundFile: "menu")
         tearDownGL()
+        tearDownLevel()
     }
     
     fileprivate func playMusic(soundFile: String) {
@@ -121,6 +126,9 @@ class ViewController: GLKViewController {
         models.append(model)
     }
     
+    func removeModels() {
+        models.removeAll()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -145,7 +153,7 @@ class ViewController: GLKViewController {
         
         // draw each model
         for i in 0 ..< models.count {
-            models[i].render()
+            models[i]?.render()
         }
     }
     
@@ -155,6 +163,11 @@ class ViewController: GLKViewController {
         EAGLContext.setCurrent(nil)
         
         context = nil
+    }
+    
+    private func tearDownLevel(){
+        Level.deleteLevel()
+        removeModels()
     }
     
     deinit {

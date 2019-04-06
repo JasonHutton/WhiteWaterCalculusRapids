@@ -36,4 +36,16 @@ class SphereBody : Body {
             gameObject!.transform.rotation.z = transform.rotation / 2
         }
     }
+    
+    override func onCollisionEnter (tag: String) {
+        super.onCollisionEnter(tag: tag)
+        if tag.contains("Win"){
+            print("You Win!")
+            //ViewController.instance?.quit()
+        } else if tag.contains("Lose"){
+            print("Game Over, you Lose!")
+            //ViewController.instance?.quit()
+        }
+        //print(tag)
+    }
 }
