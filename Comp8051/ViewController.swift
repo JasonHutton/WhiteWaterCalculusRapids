@@ -122,9 +122,7 @@ class ViewController: GLKViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //isMusicPlaying = true
-        // LOAD SETTINGS HERE?
+
         playMusic(soundFile: "menu")
     }
     

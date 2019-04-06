@@ -9,21 +9,35 @@
 import Foundation
 
 class Setting : NSObject {
-    private(set) var name : String
-    private var value : String?
-    private(set) var defaultValue : String
+    private(set) var name : String // Name of the setting
+    private var value : String? // Current value
+    private(set) var defaultValue : String // Default value of the setting
+    private var lastValue : String? // Last value the setting had. (Used to know when to save.)
     
     init(name: String, defaultValue: String) {
         self.name = name
         self.defaultValue = defaultValue
+        self.lastValue = self.value
     }
     
     public func setValue(value: String) {
         self.value = value
+        
+        if(self.getValue() != self.lastValue) {
+            UserDefaults.standard.set(self.getValue(), forKey: self.name)
+        }
+        
+        self.lastValue = self.value
     }
     
     public func getValue() -> String {
-        return self.value ?? self.defaultValue
+        if(self.value == nil) {
+            self.setValue(value: UserDefaults.standard.string(forKey: self.name) ?? self.defaultValue)
+        }
+        
+        assert(self.value != nil)
+        
+        return self.value!
     }
 }
 
