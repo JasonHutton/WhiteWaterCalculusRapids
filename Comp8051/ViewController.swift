@@ -23,8 +23,6 @@ class ViewController: GLKViewController {
     
     var player: AVAudioPlayer!
     
-    var isMusicPlaying: Bool!
-    
     static var deltaTime: Float = 1.0/30.0
     
     static var instance: ViewController?
@@ -53,11 +51,11 @@ class ViewController: GLKViewController {
     }
     
     @IBAction func toggleAudio(_ sender: Any) {
-        if(isMusicPlaying){
-            isMusicPlaying = false
+        if(Settings.instance.getSetting(name: "playMusic")) {
+            Settings.instance.setSetting(name: "playMusic", value: false)
             player.pause()
-        } else if (!isMusicPlaying){
-            isMusicPlaying = true;
+        } else {
+            Settings.instance.setSetting(name: "playMusic", value: true)
             player.play()
         }
     }
@@ -74,7 +72,8 @@ class ViewController: GLKViewController {
         do {
             player = try AVAudioPlayer(contentsOf: url)
             player.prepareToPlay()
-            if(isMusicPlaying){
+            
+            if(Settings.instance.getSetting(name: "playMusic")){
                 player.play()
             }
         } catch let error as NSError{
@@ -124,7 +123,8 @@ class ViewController: GLKViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        isMusicPlaying = true
+        //isMusicPlaying = true
+        // LOAD SETTINGS HERE?
         playMusic(soundFile: "menu")
     }
     
