@@ -67,9 +67,9 @@ class ViewController: GLKViewController {
     }
     
     public func quit(){
-        //menuView.isHidden = false
+        menuView.isHidden = false
         playMusic(soundFile: "menu")
-        //tearDownGL()
+        tearDownGL()
         tearDownLevel()
     }
     
@@ -126,6 +126,9 @@ class ViewController: GLKViewController {
         models.append(model)
     }
     
+    func removeModels() {
+        models.removeAll()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -163,13 +166,8 @@ class ViewController: GLKViewController {
     }
     
     private func tearDownLevel(){
-        // deinitialize each model
-        for i in 0 ..< models.count {
-            models[i] = nil
-        }
-        
-        // set the model array to be empty
-        models = []
+        Level.deleteLevel()
+        removeModels()
     }
     
     deinit {
