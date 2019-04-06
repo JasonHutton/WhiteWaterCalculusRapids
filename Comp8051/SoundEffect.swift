@@ -25,7 +25,10 @@ class SoundEffect : Component {
         do {
             player = try AVAudioPlayer(contentsOf: self.url)
             player.prepareToPlay()
-            player.play()
+            
+            if(Settings.instance.getSetting(name: Settings.Names.playSound.rawValue)) {
+                player.play()
+            }
         } catch let error as NSError{
             print(error.description)
         }

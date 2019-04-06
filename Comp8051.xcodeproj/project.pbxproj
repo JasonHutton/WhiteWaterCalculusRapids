@@ -97,6 +97,7 @@
 		DAD246CB224C131400B4D62C /* winTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C9224C131400B4D62C /* winTexture.jpg */; };
 		DAD246CE224CA1C100B4D62C /* deathTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246CD224CA1C000B4D62C /* deathTexture.jpg */; };
 		E39030B0225555150092A689 /* CollisionSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39030AF225555150092A689 /* CollisionSound.swift */; };
+		E3CBE9422258620800DCBE28 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CBE9412258620800DCBE28 /* Settings.swift */; };
 		E3F7C57922553BEA0060CA09 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830456082252DBF500D12630 /* Body.swift */; };
 		E3F7C57B22553D780060CA09 /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F7C57A22553D780060CA09 /* SoundEffect.swift */; };
 		E3F7C57E22554C300060CA09 /* ballimpact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E3F7C57D22554C300060CA09 /* ballimpact.mp3 */; };
@@ -268,6 +269,7 @@
 		DAD246C9224C131400B4D62C /* winTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = winTexture.jpg; sourceTree = "<group>"; };
 		DAD246CD224CA1C000B4D62C /* deathTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = deathTexture.jpg; sourceTree = "<group>"; };
 		E39030AF225555150092A689 /* CollisionSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSound.swift; sourceTree = "<group>"; };
+		E3CBE9412258620800DCBE28 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E3F7C57A22553D780060CA09 /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
 		E3F7C57D22554C300060CA09 /* ballimpact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ballimpact.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -349,6 +351,7 @@
 				DA9957742227BF6C002315D0 /* GLKExtensions.swift */,
 				83055BDF225545BA00CBF1A9 /* FloatExtensions.swift */,
 				DA5C72322253E74E00B5E5A3 /* Level.swift */,
+				E3CBE9412258620800DCBE28 /* Settings.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -743,6 +746,7 @@
 				83055BE42255550800CBF1A9 /* DeathWallBehaviour.swift in Sources */,
 				836E385122489A8800CF7303 /* b2TimeOfImpact.cpp in Sources */,
 				DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */,
+				E3CBE9422258620800DCBE28 /* Settings.swift in Sources */,
 				8307E15E2247255C008269C2 /* Physics.mm in Sources */,
 				836E385722489A8800CF7303 /* b2RevoluteJoint.cpp in Sources */,
 				83055BDE22553F7D00CBF1A9 /* CameraTrack.swift in Sources */,

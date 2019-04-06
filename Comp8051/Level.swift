@@ -117,4 +117,11 @@ class Level {
         deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "deathTexture.jpg"))
         GameObject.root.addChild(gameObject: deathWall)
     }
+    
+    static func deleteLevel() {
+        
+        CollisionPublisher.unsubscribeAll()
+        GameObject.root.removeAllChildren()
+        GameObject.root.removeAllComponents()
+    }
 }

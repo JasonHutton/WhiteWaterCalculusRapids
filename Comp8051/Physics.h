@@ -23,6 +23,8 @@
 - (void)handleCollisionEnter:(NSString*) tag1 tag2:(NSString*) tag2;
 - (void)handleCollisionExit:(NSString*) tag1 tag2:(NSString*) tag2;
 - (void)setBodyPosition:(NSString*)tag transform:(struct CTransform) transform;
+- (void)removeBody:(NSString*) tag;
+- (void)removeAllBodies;
 
 @end
 

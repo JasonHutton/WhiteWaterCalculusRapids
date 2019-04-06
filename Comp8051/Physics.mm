@@ -57,7 +57,7 @@ const float GRAV_CONSTANT = 80.0f;
     
     b2PolygonShape groundBox;
     groundBox.SetAsBox(scaleX / 2, scaleY / 2);
-    
+
     b2Body* groundBody = world->CreateBody(&groundBodyDef);
     groundBody->CreateFixture(&groundBox, 0.0f);
     groundBody->SetTransform(groundBody->GetPosition(), rotation);
@@ -147,4 +147,15 @@ const float GRAV_CONSTANT = 80.0f;
     body->SetTransform(vec2, transform.rotation);
 }
 
+- (void)removeBody:(NSString*) tag {
+    b2Body* body = (b2Body*)[[dict valueForKey:tag] pointerValue];
+    world->DestroyBody(body);
+    // remove object from the dictionary
+    [dict removeObjectForKey:tag];
+}
+
+- (void)removeAllBodies{
+    // remove all bodies from the dictionary
+    [dict removeAllObjects];
+}
 @end

@@ -23,8 +23,6 @@ class ViewController: GLKViewController {
     
     var player: AVAudioPlayer!
     
-    var isMusicPlaying: Bool!
-    
     static var deltaTime: Float = 1.0/30.0
     
     static var instance: ViewController?
@@ -35,7 +33,7 @@ class ViewController: GLKViewController {
 
     private var effect = GLKBaseEffect()
     
-    var models : [Model] = []
+    var models : [Model?] = []
     
     var shader : BaseEffect!
 
@@ -53,19 +51,24 @@ class ViewController: GLKViewController {
     }
     
     @IBAction func toggleAudio(_ sender: Any) {
-        if(isMusicPlaying){
-            isMusicPlaying = false
+        if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
+            Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: false)
             player.pause()
-        } else if (!isMusicPlaying){
-            isMusicPlaying = true;
+        } else {
+            Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: true)
             player.play()
         }
     }
     
     @IBAction func quitGame(_ sender: Any) {
+        quit()
+    }
+    
+    public func quit(){
         menuView.isHidden = false
         playMusic(soundFile: "menu")
         tearDownGL()
+        tearDownLevel()
     }
     
     fileprivate func playMusic(soundFile: String) {
@@ -74,7 +77,8 @@ class ViewController: GLKViewController {
         do {
             player = try AVAudioPlayer(contentsOf: url)
             player.prepareToPlay()
-            if(isMusicPlaying){
+            
+            if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)){
                 player.play()
             }
         } catch let error as NSError{
@@ -121,10 +125,12 @@ class ViewController: GLKViewController {
         models.append(model)
     }
     
+    func removeModels() {
+        models.removeAll()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        isMusicPlaying = true
+
         playMusic(soundFile: "menu")
     }
     
@@ -145,7 +151,7 @@ class ViewController: GLKViewController {
         
         // draw each model
         for i in 0 ..< models.count {
-            models[i].render()
+            models[i]?.render()
         }
     }
     
@@ -155,6 +161,11 @@ class ViewController: GLKViewController {
         EAGLContext.setCurrent(nil)
         
         context = nil
+    }
+    
+    private func tearDownLevel(){
+        Level.deleteLevel()
+        removeModels()
     }
     
     deinit {
