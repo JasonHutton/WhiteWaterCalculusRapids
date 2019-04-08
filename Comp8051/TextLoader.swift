@@ -10,14 +10,14 @@ import Foundation
 
 class TextLoader {
 
-    public static func loadFile(fileName: String, fileType: String) -> [String] {
+    public static func loadFile(fileName: String, fileType: String?) -> [String] {
         let string = loadFile(fileName: fileName, fileType: fileType) as String?
         
         // split the file data into an array of strings separated by new line character
         return (string?.components(separatedBy: "\n"))!
     }
    
-    public static func loadFile(fileName: String, fileType: String) -> String? {
+    public static func loadFile(fileName: String, fileType: String?) -> String? {
     
         // get the full path for the model file
         let path = Bundle.main.path(forResource: fileName, ofType: fileType)

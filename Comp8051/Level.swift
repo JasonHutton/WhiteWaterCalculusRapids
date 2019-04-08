@@ -11,6 +11,101 @@ import GLKit
 
 class Level {
     
+    static func loadLevel(fileName: String, width: Float, aspect: Float, shader: BaseEffect) {
+        Level.levelBefore(width: width, aspect: aspect, shader: shader)
+        
+        let lines : [String] = TextLoader.loadFile(fileName: fileName, fileType: nil)
+
+        var obj : GameObject? = nil
+        for (offset, line) in lines.enumerated() {
+            // split the line into words
+            let separator = line.components(separatedBy: " ")
+            // switch statement for the first charcter in the line
+            switch separator[0] {
+            case "GameObject":
+                let tag = separator[1].components(separatedBy: ":")
+                obj = GameObject(tag: tag[1])
+                break
+            case "position":
+                let x = separator[1].components(separatedBy: ":")[1]
+                let y = separator[2].components(separatedBy: ":")[1]
+                let z = separator[3].components(separatedBy: ":")[1]
+                // Need to handle variables and math still.
+                obj!.transform.position.x = Float(x)!
+                obj!.transform.position.y = Float(y)!
+                obj!.transform.position.z = Float(z)!
+            case "scale":
+                let x = separator[1].components(separatedBy: ":")[1]
+                let y = separator[2].components(separatedBy: ":")[1]
+                let z = separator[3].components(separatedBy: ":")[1]
+                // Need to handle variables and math still.
+                obj!.transform.scale.x = Float(x)!
+                obj!.transform.scale.y = Float(y)!
+                obj!.transform.scale.z = Float(z)!
+            case "component":
+                switch(separator[1].components(separatedBy: ":")[1]) {
+                case "BlockBody":
+                    let tag = separator[2].components(separatedBy: ":")
+                    obj!.addComponent(component: BlockBody(tag: tag[1]))
+                break
+                case "ModelRenderer":
+                    let modelName = separator[2].components(separatedBy: ":")
+                    obj!.addComponent(component: ModelRenderer(modelName: modelName[1], shader: shader))
+                    break
+                default:
+                    assert(false)
+                }
+                break
+            case "#":
+                break // this is a comment, do nothing
+            case "":
+                break // this is an empty line, do nothing
+            default:
+                // this is something that shouldn't be in an obj file, print it
+                print("Invalid separator '" + separator[0] + "' in level " + fileName + ", line " + (offset+1).description)
+            }
+        }
+        
+        if(obj != nil) {
+            GameObject.root.addChild(gameObject: obj!)
+        }
+        
+        Level.levelAfter(width: width, aspect: aspect, shader: shader)
+    }
+    
+    static func levelBefore(width: Float, aspect: Float, shader: BaseEffect) {
+        // set up scene
+        GameObject.root.addComponent(component: GravityManager()) // this is silly but it works
+        
+        // add camera before adding any model renderers
+        let cameraObj = GameObject(tag: "Camera")
+        cameraObj.transform.position = Vector3(x: 0, y: 0, z: 30)
+        GameObject.root.addChild(gameObject: cameraObj)
+        
+        // TODO: currently, component order DOES MATTER. modelrenderer should always occur last!
+        // for now, add a game object's model renderer last.
+        let sphereObj = GameObject(tag: "Sphere")
+        // set initial position
+        sphereObj.transform.position = Vector3(x: 0, y: 2, z: 0)
+        // add component to rotate the sphere (probably temporary)
+        sphereObj.addComponent(component: SphereBody(tag: "Ball"))
+        sphereObj.addComponent(component: CollisionSound(sound: SoundEffect(soundFile: "ballimpact")))
+        sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere", shader: shader))
+        GameObject.root.addChild(gameObject: sphereObj)
+        // add camera track component to track sphere
+        cameraObj.addComponent(component: CameraTrack(trackedObj: sphereObj))    }
+    
+    static func levelAfter(width: Float, aspect: Float, shader: BaseEffect) {
+        let deathWall = GameObject(tag: "Death")
+        deathWall.transform.position = Vector3(x: 0, y: width*2, z: 0)
+        deathWall.transform.scale.x = width
+        deathWall.transform.scale.y = width*2
+        deathWall.transform.scale.z = 2
+        deathWall.addComponent(component: DeathWallBehaviour())
+        deathWall.addComponent(component: KinematicBlockBody(tag: "Lose"))
+        deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "dangerTexture.jpg"))
+        GameObject.root.addChild(gameObject: deathWall)    }
+    
     static func createLevel(width: Float, aspect: Float, shader: BaseEffect) {
         
         // set up scene
