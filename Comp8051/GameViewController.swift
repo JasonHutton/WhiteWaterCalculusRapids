@@ -19,10 +19,7 @@ extension Array {
 class GameViewController: GLKViewController {
     
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var menuView: GLKView!
     @IBOutlet weak var audioButton: UIButton!
-    
-    var player: AVAudioPlayer!
     
     static var deltaTime: Float = 1.0/30.0
     
@@ -40,25 +37,14 @@ class GameViewController: GLKViewController {
 
     var score: Int = 0
     
-    @IBAction func startGame(_ sender: Any) {
-        menuView.isHidden = true
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        view.addGestureRecognizer(tap)
-        
-        playMusic(soundFile: "gameplay3")
-        
-        setupGL()
-    }
-    
     @IBAction func toggleAudio(_ sender: Any) {
         if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: false)
-            player.pause()
+            Settings.instance.player.pause()
             audioButton.setTitle("Un-mute Audio", for: .normal)
         } else {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: true)
-            player.play()
+            Settings.instance.player.play()
             audioButton.setTitle("Mute Audio", for: .normal)
         }
     }
@@ -76,26 +62,10 @@ class GameViewController: GLKViewController {
     }
     
     public func quit(){
-        menuView.isHidden = false
         scoreLabel.text = "Score: \(score)"
-        playMusic(soundFile: "menu")
+        Settings.instance.playMusic(soundFile: "menu")
         tearDownGL()
         tearDownLevel()
-    }
-    
-    fileprivate func playMusic(soundFile: String) {
-        let path = Bundle.main.path(forResource: soundFile, ofType: "mp3")!
-        let url = URL(fileURLWithPath: path)
-        do {
-            player = try AVAudioPlayer(contentsOf: url)
-            player.prepareToPlay()
-            
-            if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)){
-                player.play()
-            }
-        } catch let error as NSError{
-            print(error.description)
-        }
     }
     
     private func setupGL() {
@@ -140,12 +110,16 @@ class GameViewController: GLKViewController {
     func removeModels() {
         models.removeAll()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scoreLabel.text = "Score: \(score)"
-
-        playMusic(soundFile: "menu")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        view.addGestureRecognizer(tap)
+        
+        Settings.instance.playMusic(soundFile: "gameplay3")
+        
+        setupGL()
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {

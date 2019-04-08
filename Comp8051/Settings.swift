@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 class Setting : NSObject {
     private(set) var name : String // Name of the setting
@@ -49,6 +50,7 @@ class Setting : NSObject {
 class Settings : NSObject {
 
     private var allSettings = [Setting]()
+    public var player: AVAudioPlayer!
     
     // Setting names must all be listed in here. This is intended to avoid typos mostly.
     public enum Names : String {
@@ -117,6 +119,21 @@ class Settings : NSObject {
     
     func setSetting(name: String, value: Int, explicitSave: Bool = false) {
         self.setSetting(name: name, value: String(value), explicitSave: explicitSave)
+    }
+    
+    func playMusic(soundFile: String) {
+        let path = Bundle.main.path(forResource: soundFile, ofType: "mp3")!
+        let url = URL(fileURLWithPath: path)
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player.prepareToPlay()
+            
+            if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)){
+                player.play()
+            }
+        } catch let error as NSError{
+            print(error.description)
+        }
     }
 }
 

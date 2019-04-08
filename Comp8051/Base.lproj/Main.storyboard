@@ -60,8 +60,8 @@
         <!--Menu View Controller-->
         <scene sceneID="f0i-nI-Fex">
             <objects>
-                <viewController id="cAv-X3-C6U" customClass="MenuViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TIT-Vy-wVj">
+                <viewController id="cAv-X3-C6U" customClass="MenuViewController" customModule="Comp8051" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TIT-Vy-wVj" customClass="GLKView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -103,7 +103,7 @@
         <scene sceneID="WZl-8z-aW8">
             <objects>
                 <viewController id="rUb-zx-V8s" customClass="GameOverViewController" customModule="Comp8051" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ww9-aP-TYt">
+                    <view key="view" contentMode="scaleToFill" id="Ww9-aP-TYt" customClass="GLKView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -135,7 +135,7 @@
         <scene sceneID="4Ph-aa-35k">
             <objects>
                 <viewController id="hKG-Km-AeK" customClass="WinViewController" customModule="Comp8051" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mAg-to-Cy0">
+                    <view key="view" contentMode="scaleToFill" id="mAg-to-Cy0" customClass="GLKView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -168,6 +168,7 @@
         <image name="Menu Background.png" width="1152" height="648"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LPV-KZ-V1A"/>
+        <segue reference="Osm-gf-ynY"/>
+        <segue reference="FPi-ca-VQy"/>
     </inferredMetricsTieBreakers>
 </document>

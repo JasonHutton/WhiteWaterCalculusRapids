@@ -10,5 +10,13 @@ import Foundation
 import GLKit
 
 class MenuViewController: GLKViewController {
-
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //scoreLabel.text = "Score: \(score)"
+        
+        Settings.instance.playMusic(soundFile: "menu")
+    }
 }
