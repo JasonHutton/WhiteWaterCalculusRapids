@@ -42,21 +42,8 @@ class Model {
         // set mvm to 0 matrix
         modelViewMatrix = GLKMatrix4Identity
         
-        // get the full path for the model file
-        let path = Bundle.main.path(forResource: modelName, ofType: "obj")
-        
-        // get the file using the path
-        let file: FileHandle? = FileHandle(forReadingAtPath: path!)
-        
-        // read the data from the file
-        let data = file?.readDataToEndOfFile()
-        
-        file?.closeFile()
-        
-        // get the contents of the file in one big string
-        let string = String(data: data!, encoding: String.Encoding.utf8)
-        // split the file data into an array of strings separated by new line character
-        let lines: [String] = (string?.components(separatedBy: "\n"))!
+        let lines: [String] = TextLoader.loadFile(fileName: modelName, fileType: "obj") as [String]
+
         var i = GLuint(0);
         //go through each line
         for (offset, line) in lines.enumerated() {
