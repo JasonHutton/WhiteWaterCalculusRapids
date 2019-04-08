@@ -11,4 +11,7 @@ import GLKit
 
 class GameOverViewController: GLKViewController {
     
+    @IBAction func backToMenu(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }

@@ -54,11 +54,15 @@ class GameViewController: GLKViewController {
     }
     
     public func win(){
+        dismiss(animated: true, completion: nil)
         performSegue(withIdentifier: "winGame", sender: nil)
+        Settings.instance.playMusic(soundFile: "victory")
     }
     
     public func lose(){
+        dismiss(animated: true, completion: nil)
         performSegue(withIdentifier: "loseGame", sender: nil)
+        Settings.instance.playMusic(soundFile: "gameover")
     }
     
     public func quit(){
@@ -66,6 +70,7 @@ class GameViewController: GLKViewController {
         Settings.instance.playMusic(soundFile: "menu")
         tearDownGL()
         tearDownLevel()
+        dismiss(animated: true, completion: nil)
     }
     
     private func setupGL() {

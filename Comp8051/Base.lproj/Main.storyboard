@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uy3-vd-0jK">
-                                <rect key="frame" x="0.0" y="509" width="30" height="30"/>
+                                <rect key="frame" x="10" y="509" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" title="Quit"/>
                                 <connections>
@@ -87,6 +87,7 @@
                                 <viewLayoutGuide key="safeArea" id="fNs-H6-qug"/>
                                 <state key="normal" title="Mute Audio"/>
                                 <connections>
+                                    <action selector="toggleAudio:" destination="cAv-X3-C6U" eventType="touchUpInside" id="YwI-76-xhk"/>
                                     <action selector="toggleAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dg3-Nk-HGU"/>
                                 </connections>
                             </button>
@@ -94,6 +95,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="WhT-He-VEE"/>
                     </view>
+                    <connections>
+                        <outlet property="audioButton" destination="BK2-Rn-KvG" id="jH4-Ns-AJp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rR5-vL-kRd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -119,11 +123,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Return to menu"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="FPi-ca-VQy"/>
+                                    <action selector="backToMenu:" destination="rUb-zx-V8s" eventType="touchUpInside" id="zU5-b0-yt6"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Wav-jv-54I"/>
                     </view>
                 </viewController>
@@ -151,24 +155,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Return to Menu"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="bLr-sf-smv"/>
+                                    <action selector="backToMenu:" destination="hKG-Km-AeK" eventType="touchUpInside" id="scc-ea-xtS"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="n8R-Q2-8uD"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SeJ-z5-C9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1985.625" y="849.29577464788736"/>
+            <point key="canvasLocation" x="1931" y="473"/>
         </scene>
     </scenes>
     <resources>
         <image name="Menu Background.png" width="1152" height="648"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Osm-gf-ynY"/>
-        <segue reference="FPi-ca-VQy"/>
-    </inferredMetricsTieBreakers>
 </document>

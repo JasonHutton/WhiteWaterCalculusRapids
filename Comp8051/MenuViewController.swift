@@ -11,6 +11,7 @@ import GLKit
 
 class MenuViewController: GLKViewController {
     
+    @IBOutlet weak var audioButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,5 +19,16 @@ class MenuViewController: GLKViewController {
         //scoreLabel.text = "Score: \(score)"
         
         Settings.instance.playMusic(soundFile: "menu")
+    }
+    @IBAction func toggleAudio(_ sender: Any) {
+        if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
+            Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: false)
+            Settings.instance.player.pause()
+            audioButton.setTitle("Un-mute Audio", for: .normal)
+        } else {
+            Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: true)
+            Settings.instance.player.play()
+            audioButton.setTitle("Mute Audio", for: .normal)
+        }
     }
 }
