@@ -102,7 +102,7 @@ class Level {
         // set initial position
         bottomWall.transform.position = Vector3(x: 0, y: -width, z: 0)
         bottomWall.transform.scale.x = width
-        bottomWall.transform.scale.y = 0.5
+        bottomWall.transform.scale.y = 2
         bottomWall.addComponent(component: BlockBody(tag: "Win"))
         bottomWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "winTexture.jpg"))
         GameObject.root.addChild(gameObject: bottomWall)
