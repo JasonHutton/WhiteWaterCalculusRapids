@@ -14,7 +14,7 @@ class Level {
     static func loadLevel(fileName: String, width: Float, aspect: Float, shader: BaseEffect) {
         Level.levelBefore(width: width, aspect: aspect, shader: shader)
         
-        let lines : [String] = TextLoader.loadFile(fileName: fileName, fileType: nil)
+        let lines : [String] = TextLoader.loadFile(fileName: fileName, fileType: "level")
 
         var obj : GameObject? = nil
         for (offset, line) in lines.enumerated() {
@@ -74,6 +74,7 @@ class Level {
     }
     
     static func levelBefore(width: Float, aspect: Float, shader: BaseEffect) {
+        
         // set up scene
         GameObject.root.addComponent(component: GravityManager()) // this is silly but it works
         
@@ -93,9 +94,11 @@ class Level {
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere", shader: shader))
         GameObject.root.addChild(gameObject: sphereObj)
         // add camera track component to track sphere
-        cameraObj.addComponent(component: CameraTrack(trackedObj: sphereObj))    }
+        cameraObj.addComponent(component: CameraTrack(trackedObj: sphereObj))
+    }
     
     static func levelAfter(width: Float, aspect: Float, shader: BaseEffect) {
+        
         let deathWall = GameObject(tag: "Death")
         deathWall.transform.position = Vector3(x: 0, y: width*2, z: 0)
         deathWall.transform.scale.x = width
@@ -103,8 +106,9 @@ class Level {
         deathWall.transform.scale.z = 2
         deathWall.addComponent(component: DeathWallBehaviour())
         deathWall.addComponent(component: KinematicBlockBody(tag: "Lose"))
-        deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "dangerTexture.jpg"))
-        GameObject.root.addChild(gameObject: deathWall)    }
+        deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "deathTexture.jpg"))
+        GameObject.root.addChild(gameObject: deathWall)
+    }
     
     static func createLevel(width: Float, aspect: Float, shader: BaseEffect) {
         
