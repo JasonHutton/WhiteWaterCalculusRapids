@@ -67,6 +67,14 @@ class ViewController: GLKViewController {
         quit()
     }
     
+    public func win(){
+        performSegue(withIdentifier: "winGame", sender: nil)
+    }
+    
+    public func lose(){
+        performSegue(withIdentifier: "loseGame", sender: nil)
+    }
+    
     public func quit(){
         menuView.isHidden = false
         scoreLabel.text = "Score: \(score)"

@@ -72,11 +72,28 @@
                         <outlet property="audioButton" destination="xWI-5R-d3u" id="2SE-PH-6PE"/>
                         <outlet property="menuView" destination="Ri7-X6-RW3" id="o3N-bb-qK8"/>
                         <outlet property="scoreLabel" destination="s6N-hQ-4z5" id="uAQ-je-0vD"/>
+                        <segue destination="rUb-zx-V8s" kind="show" identifier="loseGame" id="Osm-gf-ynY"/>
+                        <segue destination="hKG-Km-AeK" kind="show" identifier="winGame" id="AFg-rm-NBB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="127.5" y="100.35211267605634"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="f0i-nI-Fex">
+            <objects>
+                <viewController id="cAv-X3-C6U" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TIT-Vy-wVj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="WhT-He-VEE"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rR5-vL-kRd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131" y="851"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="WZl-8z-aW8">
@@ -93,15 +110,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFE-9d-Ke4">
-                                <rect key="frame" x="129" y="356" width="63" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Try again"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60p-8E-YPN">
                                 <rect key="frame" x="107" y="425" width="106" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Return to menu"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="FPi-ca-VQy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="25I-nV-KoK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011" y="100"/>
+            <point key="canvasLocation" x="1933" y="-350"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="4Ph-aa-35k">
@@ -131,6 +146,9 @@
                                 <rect key="frame" x="107" y="341" width="106" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Return to Menu"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="bLr-sf-smv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -139,10 +157,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SeJ-z5-C9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1973" y="100"/>
+            <point key="canvasLocation" x="1986" y="850"/>
         </scene>
     </scenes>
     <resources>
         <image name="Menu Background.png" width="1152" height="648"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="bLr-sf-smv"/>
+    </inferredMetricsTieBreakers>
 </document>
