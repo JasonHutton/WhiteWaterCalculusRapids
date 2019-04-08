@@ -20,6 +20,7 @@ class ViewController: GLKViewController {
     
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var menuView: GLKView!
+    @IBOutlet weak var audioButton: UIButton!
     
     var player: AVAudioPlayer!
     
@@ -54,9 +55,11 @@ class ViewController: GLKViewController {
         if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: false)
             player.pause()
+            audioButton.setTitle("Un-mute Audio", for: .normal)
         } else {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: true)
             player.play()
+            audioButton.setTitle("Mute Audio", for: .normal)
         }
     }
     

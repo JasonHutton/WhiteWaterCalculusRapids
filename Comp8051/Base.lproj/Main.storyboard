@@ -59,7 +59,7 @@
                                 <rect key="frame" x="16" y="23" width="137" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <viewLayoutGuide key="safeArea" id="3cB-qF-HSy"/>
-                                <state key="normal" title="Mute/Unmute Audio"/>
+                                <state key="normal" title="Mute Audio"/>
                                 <connections>
                                     <action selector="toggleAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nl0-ka-7vY"/>
                                 </connections>
@@ -69,6 +69,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="audioButton" destination="xWI-5R-d3u" id="2SE-PH-6PE"/>
                         <outlet property="menuView" destination="Ri7-X6-RW3" id="o3N-bb-qK8"/>
                         <outlet property="scoreLabel" destination="s6N-hQ-4z5" id="uAQ-je-0vD"/>
                     </connections>
