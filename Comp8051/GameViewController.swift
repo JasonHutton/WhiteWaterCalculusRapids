@@ -16,7 +16,7 @@ extension Array {
     }
 }
 
-class ViewController: GLKViewController {
+class GameViewController: GLKViewController {
     
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var menuView: GLKView!
@@ -26,7 +26,7 @@ class ViewController: GLKViewController {
     
     static var deltaTime: Float = 1.0/30.0
     
-    static var instance: ViewController?
+    static var instance: GameViewController?
     
     private var setupComplete = false
     
@@ -104,7 +104,7 @@ class ViewController: GLKViewController {
         Input.start()
         PhysicsWrapper.start();
         
-        ViewController.instance = self
+        GameViewController.instance = self
         
         // 1
         context = EAGLContext(api: .openGLES2)
@@ -187,13 +187,13 @@ class ViewController: GLKViewController {
     }
 }
 
-extension ViewController: GLKViewControllerDelegate {
+extension GameViewController: GLKViewControllerDelegate {
     func glkViewControllerUpdate(_ controller: GLKViewController) {
 
         // update entity component system
-        GameObject.root.update(deltaTime: ViewController.deltaTime)
-        PhysicsWrapper.update(ViewController.deltaTime)
-        GameObject.root.lateUpdate(deltaTime: ViewController.deltaTime)
+        GameObject.root.update(deltaTime: GameViewController.deltaTime)
+        PhysicsWrapper.update(GameViewController.deltaTime)
+        GameObject.root.lateUpdate(deltaTime: GameViewController.deltaTime)
         
         score = score + 1
         //Settings.instance.setSetting(name: Settings.Names.highScore.rawValue, value: score, explicitSave: true) // We don't want to be saving highscore constantly, or displaying it as normal score
