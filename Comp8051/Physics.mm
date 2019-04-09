@@ -19,7 +19,7 @@
     NSMutableDictionary* dict;
 }
 
-const float GRAV_CONSTANT = 80.0f;
+const float GRAV_CONSTANT = 9.81f;
 
 - (instancetype)init {
     
