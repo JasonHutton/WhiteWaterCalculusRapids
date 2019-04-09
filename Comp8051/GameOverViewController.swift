@@ -16,10 +16,10 @@ class GameOverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scoreLabel.text = "Your Score: \(GameViewController.instance!.score)"
+        scoreLabel.text = "Your Score: \(ViewController.instance!.score)"
     }
     @IBAction func backToMenu(_ sender: Any) {
-        GameViewController.instance?.quit()
+        ViewController.instance?.quit()
         //dismiss(animated: true, completion: nil)
     }
 }

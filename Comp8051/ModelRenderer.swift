@@ -22,7 +22,7 @@ class ModelRenderer : Component {
             model = Model(modelName: modelName, shader: shader, texture: texture)
         }
         
-        GameViewController.instance?.addModel(model: &model!)
+        ViewController.instance?.addModel(model: &model!)
         
         // grab the camera, if not already grabbed
         if ModelRenderer.camera == nil {
