@@ -21,18 +21,24 @@ class Level {
             let files = TextLoader.loadFiles(fileType: ".json")
             for file in files {
                 
-                storeNode(fileName: file)
+                storeNode(jsonString: file)
             }
             
             hasStored = true
         }
     }
     
-    // traverse a json array, send each json object inside the array to the loadGameObject func
+    // load a json string and store it as a node
     static func storeNode(fileName: String) {
         
         let string : String = TextLoader.loadFile(fileName: fileName, fileType: "json")!
-        let data = string.data(using: .utf8)!
+        storeNode(jsonString: string)
+    }
+    
+    // convert a json string to a dictionary
+    static func storeNode(jsonString: String) {
+        
+        let data = jsonString.data(using: .utf8)!
         do {
             if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [Dictionary<String,Any>] {
                 
