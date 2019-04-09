@@ -15,7 +15,7 @@ class CollisionSound : Component {
         self.sound = sound
     }
     
-    public func Collide() {
+    public func Collide(tag: String) {
         self.sound.playSound()
     }
 }
