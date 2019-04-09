@@ -74,7 +74,7 @@
 		836E386722489C2C00CF7303 /* GravityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E386622489C2C00CF7303 /* GravityManager.swift */; };
 		83D305BA22224517008D5CFC /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305B922224517008D5CFC /* Transform.swift */; };
 		83D305BC22224524008D5CFC /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305BB22224524008D5CFC /* Vector3.swift */; };
-		83D6D339225C11550074CD98 /* Level01.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D6D338225C11550074CD98 /* Level01.json */; };
+		83D6D339225C11550074CD98 /* node01.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D6D338225C11550074CD98 /* node01.json */; };
 		DA5C72332253E74E00B5E5A3 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C72322253E74E00B5E5A3 /* Level.swift */; };
 		DA5C7237225B15DA00B5E5A3 /* dangerTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA5C7236225B15DA00B5E5A3 /* dangerTexture.jpg */; };
 		DA5C7239225BF91500B5E5A3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C7238225BF91500B5E5A3 /* MenuViewController.swift */; };
@@ -104,8 +104,6 @@
 		DAD246CB224C131400B4D62C /* winTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C9224C131400B4D62C /* winTexture.jpg */; };
 		DAD246CE224CA1C100B4D62C /* deathTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246CD224CA1C000B4D62C /* deathTexture.jpg */; };
 		E3237C98225AC88300B533BA /* TextLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237C97225AC88300B533BA /* TextLoader.swift */; };
-		E3237CA0225BADFB00B533BA /* Level01.level in Sources */ = {isa = PBXBuildFile; fileRef = E3237C9F225BADFB00B533BA /* Level01.level */; };
-		E3237CA1225BCB6C00B533BA /* Level01.level in Resources */ = {isa = PBXBuildFile; fileRef = E3237C9F225BADFB00B533BA /* Level01.level */; };
 		E39030B0225555150092A689 /* CollisionSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39030AF225555150092A689 /* CollisionSound.swift */; };
 		E3CBE9422258620800DCBE28 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CBE9412258620800DCBE28 /* Settings.swift */; };
 		E3F7C57922553BEA0060CA09 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830456082252DBF500D12630 /* Body.swift */; };
@@ -250,7 +248,7 @@
 		836E386622489C2C00CF7303 /* GravityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GravityManager.swift; sourceTree = "<group>"; };
 		83D305B922224517008D5CFC /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		83D305BB22224524008D5CFC /* Vector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
-		83D6D338225C11550074CD98 /* Level01.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Level01.json; sourceTree = "<group>"; };
+		83D6D338225C11550074CD98 /* node01.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = node01.json; sourceTree = "<group>"; };
 		DA5C72322253E74E00B5E5A3 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		DA5C7236225B15DA00B5E5A3 /* dangerTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dangerTexture.jpg; sourceTree = "<group>"; };
 		DA5C7238225BF91500B5E5A3 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 		DAD246C9224C131400B4D62C /* winTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = winTexture.jpg; sourceTree = "<group>"; };
 		DAD246CD224CA1C000B4D62C /* deathTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = deathTexture.jpg; sourceTree = "<group>"; };
 		E3237C97225AC88300B533BA /* TextLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLoader.swift; sourceTree = "<group>"; };
-		E3237C9F225BADFB00B533BA /* Level01.level */ = {isa = PBXFileReference; lastKnownFileType = text; path = Level01.level; sourceTree = "<group>"; };
 		E39030AF225555150092A689 /* CollisionSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSound.swift; sourceTree = "<group>"; };
 		E3CBE9412258620800DCBE28 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E3F7C57A22553D780060CA09 /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
@@ -614,8 +611,7 @@
 		E3237C9E225BADE400B533BA /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				E3237C9F225BADFB00B533BA /* Level01.level */,
-				83D6D338225C11550074CD98 /* Level01.json */,
+				83D6D338225C11550074CD98 /* node01.json */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -733,8 +729,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3237CA1225BCB6C00B533BA /* Level01.level in Resources */,
-				83D6D339225C11550074CD98 /* Level01.json in Resources */,
+				83D6D339225C11550074CD98 /* node01.json in Resources */,
 				DAD246CB224C131400B4D62C /* winTexture.jpg in Resources */,
 				DAD246BE2249E89600B4D62C /* UnitCube.obj in Resources */,
 				8307E0FE2246E77A008269C2 /* woodTexture.jpg in Resources */,
@@ -846,7 +841,6 @@
 				836E383822489A8800CF7303 /* b2ChainShape.cpp in Sources */,
 				8307E1DF224839C3008269C2 /* SphereBody.swift in Sources */,
 				836E384622489A8800CF7303 /* b2BlockAllocator.cpp in Sources */,
-				E3237CA0225BADFB00B533BA /* Level01.level in Sources */,
 				836E386322489A8800CF7303 /* b2CollideEdge.cpp in Sources */,
 				83D305BC22224524008D5CFC /* Vector3.swift in Sources */,
 				830A029022264B050028E531 /* Input.swift in Sources */,
