@@ -24,7 +24,7 @@ class Level {
             if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [Dictionary<String,Any>] {
                 
                 for json in jsonArray {
-                    loadGameObject(json: json, parent: GameObject.root, shader: shader)
+                    loadGameObject(json: json, parent: GameObject.root, width: width, shader: shader)
                 }
                 
             } else {
@@ -40,7 +40,7 @@ class Level {
     }
     
     // traverse all the key value pairs in the json object and create a gameobject from their values
-    private static func loadGameObject(json: Dictionary<String,Any>, parent: GameObject, shader: BaseEffect) {
+    private static func loadGameObject(json: Dictionary<String,Any>, parent: GameObject, width: Float, shader: BaseEffect) {
         
         var tag = String()
         var pos = Vector3(x: 0, y: 0, z: 0)
@@ -59,6 +59,16 @@ class Level {
                     pos.x = val["x"] as! Float
                     pos.y = val["y"] as! Float
                     pos.z = val["z"] as! Float
+                    // multiply axis by width if scalebywidth is set
+                    if let _ = val["xScaleByWidth"] {
+                        pos.x *= width
+                    }
+                    if let _ = val["yScaleByWidth"] {
+                        pos.y *= width
+                    }
+                    if let _ = val["zScaleByWidth"] {
+                        pos.z *= width
+                    }
                 }
                 break
             case "scale":
@@ -66,6 +76,16 @@ class Level {
                     scale.x = val["x"] as! Float
                     scale.y = val["y"] as! Float
                     scale.z = val["z"] as! Float
+                    // multiply axis by width if scalebywidth is set
+                    if let _ = val["xScaleByWidth"] {
+                        scale.x *= width
+                    }
+                    if let _ = val["yScaleByWidth"] {
+                        scale.y *= width
+                    }
+                    if let _ = val["zScaleByWidth"] {
+                        scale.z *= width
+                    }
                 }
                 break
             case "rotation":
