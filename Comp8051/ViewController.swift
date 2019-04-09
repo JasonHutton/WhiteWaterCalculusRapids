@@ -121,6 +121,7 @@ class ViewController: GLKViewController {
         shader.projectionMatrix = projectionMatrix
         
         Level.loadLevel(fileName: "Level01", width: width, aspect: aspect, shader: shader)
+        Level.loadLevelGood(fileName: "Level01", width: width, aspect: aspect, shader: shader)
         //Level.createLevel(width: width, aspect: aspect, shader: shader)
     }
     

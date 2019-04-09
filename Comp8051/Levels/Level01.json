@@ -1,0 +1,28 @@
+[
+    {
+        "tag":"Surface",
+        "position":
+        {
+            "x":0,
+            "y":-2,
+            "z":0
+        },
+        "scale":
+        {
+            "x":10,
+            "y":1,
+            "z":1
+        },
+        "components":
+        [
+            {
+                "type":"ModelRenderer",
+                "modelName":"UnitCube"
+            },
+            {
+                "type":"BlockBody",
+                "tag":"Floor"
+            }
+        ]
+    }
+]

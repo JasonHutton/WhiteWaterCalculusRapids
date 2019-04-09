@@ -74,6 +74,7 @@
 		836E386722489C2C00CF7303 /* GravityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E386622489C2C00CF7303 /* GravityManager.swift */; };
 		83D305BA22224517008D5CFC /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305B922224517008D5CFC /* Transform.swift */; };
 		83D305BC22224524008D5CFC /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305BB22224524008D5CFC /* Vector3.swift */; };
+		83D6D339225C11550074CD98 /* Level01.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D6D338225C11550074CD98 /* Level01.json */; };
 		DA5C72332253E74E00B5E5A3 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C72322253E74E00B5E5A3 /* Level.swift */; };
 		DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570C22151F0F002315D0 /* AppDelegate.swift */; };
 		DA99570F22151F0F002315D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570E22151F0F002315D0 /* ViewController.swift */; };
@@ -243,6 +244,7 @@
 		836E386622489C2C00CF7303 /* GravityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GravityManager.swift; sourceTree = "<group>"; };
 		83D305B922224517008D5CFC /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		83D305BB22224524008D5CFC /* Vector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		83D6D338225C11550074CD98 /* Level01.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Level01.json; sourceTree = "<group>"; };
 		DA5C72322253E74E00B5E5A3 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		DA99570922151F0F002315D0 /* Comp8051.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA99570C22151F0F002315D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 			isa = PBXGroup;
 			children = (
 				E3237C9F225BADFB00B533BA /* Level01.level */,
+				83D6D338225C11550074CD98 /* Level01.json */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3237CA1225BCB6C00B533BA /* Level01.level in Resources */,
+				83D6D339225C11550074CD98 /* Level01.json in Resources */,
 				DAD246CB224C131400B4D62C /* winTexture.jpg in Resources */,
 				DAD246BE2249E89600B4D62C /* UnitCube.obj in Resources */,
 				8307E0FE2246E77A008269C2 /* woodTexture.jpg in Resources */,
