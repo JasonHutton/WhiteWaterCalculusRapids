@@ -54,13 +54,11 @@ class GameViewController: GLKViewController {
     }
     
     public func win(){
-        dismiss(animated: true, completion: nil)
         performSegue(withIdentifier: "winGame", sender: nil)
-        Settings.instance.playMusic(soundFile: "victory")
+        Settings.instance.playMusic(soundFile: "complete")
     }
     
     public func lose(){
-        dismiss(animated: true, completion: nil)
         performSegue(withIdentifier: "loseGame", sender: nil)
         Settings.instance.playMusic(soundFile: "gameover")
     }
@@ -71,6 +69,7 @@ class GameViewController: GLKViewController {
         tearDownGL()
         tearDownLevel()
         dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil) // need the second one when returning from win or game over screen
     }
     
     private func setupGL() {

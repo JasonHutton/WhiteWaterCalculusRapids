@@ -7,11 +7,12 @@
 //
 
 import Foundation
-import GLKit
+import UIKit
 
-class WinViewController: GLKViewController {
+class WinViewController: UIViewController {
     
     @IBAction func backToMenu(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        GameViewController.instance?.quit()
+        //dismiss(animated: true, completion: nil)
     }
 }

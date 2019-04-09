@@ -20,6 +20,7 @@ class MenuViewController: GLKViewController {
         
         Settings.instance.playMusic(soundFile: "menu")
     }
+    
     @IBAction func toggleAudio(_ sender: Any) {
         if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: false)

@@ -49,8 +49,8 @@
                     <connections>
                         <outlet property="audioButton" destination="xWI-5R-d3u" id="2SE-PH-6PE"/>
                         <outlet property="scoreLabel" destination="s6N-hQ-4z5" id="uAQ-je-0vD"/>
-                        <segue destination="rUb-zx-V8s" kind="show" identifier="loseGame" id="Osm-gf-ynY"/>
-                        <segue destination="hKG-Km-AeK" kind="show" identifier="winGame" id="AFg-rm-NBB"/>
+                        <segue destination="rUb-zx-V8s" kind="presentation" identifier="loseGame" id="Osm-gf-ynY"/>
+                        <segue destination="hKG-Km-AeK" kind="presentation" identifier="winGame" id="AFg-rm-NBB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -78,7 +78,7 @@
                                 <state key="normal" title="Start Game"/>
                                 <connections>
                                     <action selector="startGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lyf-u2-ISp"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="LPV-KZ-V1A"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="LPV-KZ-V1A"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BK2-Rn-KvG">
@@ -107,20 +107,20 @@
         <scene sceneID="WZl-8z-aW8">
             <objects>
                 <viewController id="rUb-zx-V8s" customClass="GameOverViewController" customModule="Comp8051" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ww9-aP-TYt" customClass="GLKView">
+                    <view key="view" contentMode="scaleToFill" id="Ww9-aP-TYt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c13-t0-vsr">
-                                <rect key="frame" x="35" y="253" width="250" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="253" width="320" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="52"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60p-8E-YPN">
                                 <rect key="frame" x="107" y="425" width="106" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" title="Return to menu"/>
                                 <connections>
                                     <action selector="backToMenu:" destination="rUb-zx-V8s" eventType="touchUpInside" id="zU5-b0-yt6"/>
@@ -133,26 +133,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="25I-nV-KoK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1933" y="-350"/>
+            <point key="canvasLocation" x="1931.25" y="-350.7042253521127"/>
         </scene>
         <!--Win View Controller-->
         <scene sceneID="4Ph-aa-35k">
             <objects>
                 <viewController id="hKG-Km-AeK" customClass="WinViewController" customModule="Comp8051" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mAg-to-Cy0" customClass="GLKView">
+                    <view key="view" contentMode="scaleToFill" id="mAg-to-Cy0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You win!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igr-1C-aBh">
-                                <rect key="frame" x="16" y="253" width="288" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="253" width="320" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="52"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a11-BI-yN1">
                                 <rect key="frame" x="107" y="341" width="106" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" title="Return to Menu"/>
                                 <connections>
                                     <action selector="backToMenu:" destination="hKG-Km-AeK" eventType="touchUpInside" id="scc-ea-xtS"/>
@@ -165,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SeJ-z5-C9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1931" y="473"/>
+            <point key="canvasLocation" x="1929.375" y="472.18309859154931"/>
         </scene>
     </scenes>
     <resources>
