@@ -33,26 +33,4 @@ class TextLoader {
         // get the contents of the file in one big string
         return String(data: data!, encoding: String.Encoding.utf8)
     }
-    
-    public static func loadFiles(fileType: String) -> [String] {
-        
-        var files = [String]()
-        
-        let paths = Bundle.main.paths(forResourcesOfType: ".json", inDirectory: "")
-        
-        for path in paths {
-            
-            if let file = FileHandle(forReadingAtPath: path) {
-                
-                let data = file.readDataToEndOfFile()
-                file.closeFile()
-                if let string = String(data: data, encoding: String.Encoding.utf8) {
-                    
-                    files.append(string)
-                }
-            }
-        }
-        
-        return files
-    }
 }

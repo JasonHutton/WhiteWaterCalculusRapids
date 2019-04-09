@@ -39,17 +39,6 @@ class ViewController: GLKViewController {
 
     var score: Int = 0
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        view.addGestureRecognizer(tap)
-        
-        Settings.instance.playMusic(soundFile: "gameplay3")
-        
-        setupGL()
-    }
-    
     @IBAction func toggleAudio(_ sender: Any) {
         if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: false)
@@ -118,10 +107,7 @@ class ViewController: GLKViewController {
         let hFov = 2 * atan(tan(vFov / 2) * aspect)
         let cameraDist: Float = 30
         let width = 2 * cameraDist * tan(hFov/2)
-        
-        Level.storeAllNodes()
-        Level.loadUniversalGameObjects(width: width, shader: shader)
-        Level.loadRandomNode(yOffset: 0, width: width, shader: shader)
+        Level.loadLevel(fileName: "Level01", width: width, aspect: aspect, shader: shader)
     }
     
     
@@ -132,6 +118,17 @@ class ViewController: GLKViewController {
     
     func removeModels() {
         models.removeAll()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        view.addGestureRecognizer(tap)
+        
+        Settings.instance.playMusic(soundFile: "gameplay3")
+        
+        setupGL()
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
