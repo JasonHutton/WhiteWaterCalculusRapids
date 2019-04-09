@@ -12,13 +12,12 @@ class SoundEffect : Component {
     
     var player: AVAudioPlayer!
     var soundFile: String
-    var path: String
     var url: URL
     
     init(soundFile: String) {
         self.soundFile = soundFile
-        self.path = Bundle.main.path(forResource: self.soundFile, ofType: "mp3")!
-        self.url = URL(fileURLWithPath: self.path)
+        let path = Bundle.main.path(forResource: self.soundFile, ofType: "mp3")!
+        self.url = URL(fileURLWithPath: path)
     }
     
     public func playSound() {

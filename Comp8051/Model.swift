@@ -42,7 +42,7 @@ class Model {
         // set mvm to 0 matrix
         modelViewMatrix = GLKMatrix4Identity
         
-        let lines: [String] = TextLoader.loadFile(fileName: modelName, fileType: "obj") as [String]
+        let lines: [String] = TextLoader.loadFile(fileName: modelName, fileType: "obj")!
 
         var i = GLuint(0);
         //go through each line
