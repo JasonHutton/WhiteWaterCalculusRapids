@@ -186,7 +186,7 @@ class Level {
         sphereObj.transform.position = Vector3(x: 0, y: 2, z: 0)
         // add component to rotate the sphere (probably temporary)
         sphereObj.addComponent(component: SphereBody(tag: "Ball"))
-        sphereObj.addComponent(component: CollisionSound(sound: SoundEffect(soundFile: "ballimpact")))
+        sphereObj.addComponent(component: ContextCollisionSounds(sound: SoundEffect(soundFile: "ballimpact"), sounds: ["Lose": SoundEffect(soundFile: "ballblast")]))
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere", shader: shader))
         GameObject.root.addChild(gameObject: sphereObj)
         // add camera track component to track sphere

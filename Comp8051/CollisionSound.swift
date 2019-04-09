@@ -9,13 +9,13 @@
 import Foundation
 
 class CollisionSound : Component {
-    var sound : SoundEffect
+    var sound : SoundEffect?
     
-    init(sound: SoundEffect) {
+    init(sound: SoundEffect?) {
         self.sound = sound
     }
     
-    public func Collide() {
-        self.sound.playSound()
+    public func Collide(tag: String) {
+        self.sound?.playSound()
     }
 }

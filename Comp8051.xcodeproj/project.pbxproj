@@ -104,6 +104,8 @@
 		DAD246CB224C131400B4D62C /* winTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246C9224C131400B4D62C /* winTexture.jpg */; };
 		DAD246CE224CA1C100B4D62C /* deathTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD246CD224CA1C000B4D62C /* deathTexture.jpg */; };
 		E3237C98225AC88300B533BA /* TextLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237C97225AC88300B533BA /* TextLoader.swift */; };
+		E3237CA3225CD27E00B533BA /* ContextCollisionSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237CA2225CD27E00B533BA /* ContextCollisionSounds.swift */; };
+		E3237CA5225CDD1C00B533BA /* ballblast.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E3237CA4225CDD1B00B533BA /* ballblast.mp3 */; };
 		E39030B0225555150092A689 /* CollisionSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39030AF225555150092A689 /* CollisionSound.swift */; };
 		E3CBE9422258620800DCBE28 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CBE9412258620800DCBE28 /* Settings.swift */; };
 		E3F7C57922553BEA0060CA09 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830456082252DBF500D12630 /* Body.swift */; };
@@ -284,6 +286,8 @@
 		DAD246C9224C131400B4D62C /* winTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = winTexture.jpg; sourceTree = "<group>"; };
 		DAD246CD224CA1C000B4D62C /* deathTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = deathTexture.jpg; sourceTree = "<group>"; };
 		E3237C97225AC88300B533BA /* TextLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLoader.swift; sourceTree = "<group>"; };
+		E3237CA2225CD27E00B533BA /* ContextCollisionSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextCollisionSounds.swift; sourceTree = "<group>"; };
+		E3237CA4225CDD1B00B533BA /* ballblast.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ballblast.mp3; sourceTree = "<group>"; };
 		E39030AF225555150092A689 /* CollisionSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSound.swift; sourceTree = "<group>"; };
 		E3CBE9412258620800DCBE28 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E3F7C57A22553D780060CA09 /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
@@ -338,6 +342,7 @@
 				836E386622489C2C00CF7303 /* GravityManager.swift */,
 				E3F7C57A22553D780060CA09 /* SoundEffect.swift */,
 				E39030AF225555150092A689 /* CollisionSound.swift */,
+				E3237CA2225CD27E00B533BA /* ContextCollisionSounds.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -619,6 +624,7 @@
 		E3F7C57C22554C090060CA09 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				E3237CA4225CDD1B00B533BA /* ballblast.mp3 */,
 				E3F7C57D22554C300060CA09 /* ballimpact.mp3 */,
 			);
 			path = Sound;
@@ -745,6 +751,7 @@
 				DAD246BC2249DD8F00B4D62C /* Menu Background.png in Resources */,
 				8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */,
 				DA99571422151F11002315D0 /* Assets.xcassets in Resources */,
+				E3237CA5225CDD1C00B533BA /* ballblast.mp3 in Resources */,
 				DA9957702227BEEF002315D0 /* SimpleFragmentShader.glsl in Resources */,
 				DA5C7237225B15DA00B5E5A3 /* dangerTexture.jpg in Resources */,
 				DAD246C42249F26700B4D62C /* menu.mp3 in Resources */,
@@ -809,6 +816,7 @@
 				836E385A22489A8800CF7303 /* b2GearJoint.cpp in Sources */,
 				836E384222489A8800CF7303 /* b2CollidePolygon.cpp in Sources */,
 				836E384B22489A8800CF7303 /* b2Settings.cpp in Sources */,
+				E3237CA3225CD27E00B533BA /* ContextCollisionSounds.swift in Sources */,
 				836E386422489A8800CF7303 /* b2Collision.cpp in Sources */,
 				836E383E22489A8800CF7303 /* b2CollideCircle.cpp in Sources */,
 				DA5C723B225BF93F00B5E5A3 /* GameOverViewController.swift in Sources */,

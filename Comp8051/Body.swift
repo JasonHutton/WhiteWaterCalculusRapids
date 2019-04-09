@@ -23,7 +23,7 @@ class Body: Component {
         
         if let cs: CollisionSound = self.gameObject?.getComponent() {
             
-            cs.Collide()
+            cs.Collide(tag: tag)
         }
     }
     
