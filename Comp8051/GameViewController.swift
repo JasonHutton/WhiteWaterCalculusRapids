@@ -23,8 +23,6 @@ class ViewController: GLKViewController {
     
     static var deltaTime: Float = 1.0/30.0
     
-    static var fov: Float = 65
-    
     static var instance: ViewController?
     
     private var setupComplete = false
@@ -98,15 +96,12 @@ class ViewController: GLKViewController {
         
         // apply perspective transformation
         let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
-        let vFov = GLKMathDegreesToRadians(ViewController.fov);
-        let projectionMatrix = GLKMatrix4MakePerspective(vFov, aspect, 1.0, 40.0)
+        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 1.0, 40.0)
+        let width = 30 * tan(GLKMathDegreesToRadians(32.5))
         self.shader = BaseEffect(vertexShader: "SimpleVertexShader.glsl", fragmentShader: "SimpleFragmentShader.glsl")
         
         shader.projectionMatrix = projectionMatrix
         
-        let hFov = 2 * atan(tan(vFov / 2) * aspect)
-        let cameraDist: Float = 30
-        let width = 2 * cameraDist * tan(hFov/2)
         Level.loadLevel(fileName: "Level01", width: width, aspect: aspect, shader: shader)
     }
     

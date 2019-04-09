@@ -76,6 +76,12 @@
 		83D305BC22224524008D5CFC /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D305BB22224524008D5CFC /* Vector3.swift */; };
 		83D6D339225C11550074CD98 /* Level01.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D6D338225C11550074CD98 /* Level01.json */; };
 		DA5C72332253E74E00B5E5A3 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C72322253E74E00B5E5A3 /* Level.swift */; };
+		DA5C7237225B15DA00B5E5A3 /* dangerTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA5C7236225B15DA00B5E5A3 /* dangerTexture.jpg */; };
+		DA5C7239225BF91500B5E5A3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C7238225BF91500B5E5A3 /* MenuViewController.swift */; };
+		DA5C723B225BF93F00B5E5A3 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C723A225BF93F00B5E5A3 /* GameOverViewController.swift */; };
+		DA5C723D225BF95700B5E5A3 /* WinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C723C225BF95700B5E5A3 /* WinViewController.swift */; };
+		DA5C723F225C119200B5E5A3 /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA5C723E225C119100B5E5A3 /* gameover.mp3 */; };
+		DA5C7243225C385A00B5E5A3 /* complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA5C7242225C385A00B5E5A3 /* complete.mp3 */; };
 		DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570C22151F0F002315D0 /* AppDelegate.swift */; };
 		DA99570F22151F0F002315D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570E22151F0F002315D0 /* ViewController.swift */; };
 		DA99571222151F0F002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA99571022151F0F002315D0 /* Main.storyboard */; };
@@ -246,6 +252,12 @@
 		83D305BB22224524008D5CFC /* Vector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 		83D6D338225C11550074CD98 /* Level01.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Level01.json; sourceTree = "<group>"; };
 		DA5C72322253E74E00B5E5A3 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		DA5C7236225B15DA00B5E5A3 /* dangerTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dangerTexture.jpg; sourceTree = "<group>"; };
+		DA5C7238225BF91500B5E5A3 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		DA5C723A225BF93F00B5E5A3 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		DA5C723C225BF95700B5E5A3 /* WinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinViewController.swift; sourceTree = "<group>"; };
+		DA5C723E225C119100B5E5A3 /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
+		DA5C7242225C385A00B5E5A3 /* complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = complete.mp3; sourceTree = "<group>"; };
 		DA99570922151F0F002315D0 /* Comp8051.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA99570C22151F0F002315D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA99570E22151F0F002315D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -521,6 +533,9 @@
 				DA99576D2227BEB8002315D0 /* ShaderStuff */,
 				DA99570C22151F0F002315D0 /* AppDelegate.swift */,
 				DA99570E22151F0F002315D0 /* ViewController.swift */,
+				DA5C7238225BF91500B5E5A3 /* MenuViewController.swift */,
+				DA5C723C225BF95700B5E5A3 /* WinViewController.swift */,
+				DA5C723A225BF93F00B5E5A3 /* GameOverViewController.swift */,
 				DA99571022151F0F002315D0 /* Main.storyboard */,
 				DA99571322151F11002315D0 /* Assets.xcassets */,
 				DA99571522151F11002315D0 /* LaunchScreen.storyboard */,
@@ -566,6 +581,7 @@
 		DAD246B022459D0D00B4D62C /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				DA5C7236225B15DA00B5E5A3 /* dangerTexture.jpg */,
 				DAD246CD224CA1C000B4D62C /* deathTexture.jpg */,
 				DAD246C9224C131400B4D62C /* winTexture.jpg */,
 				DAD246BB2249DD8F00B4D62C /* Menu Background.png */,
@@ -587,6 +603,8 @@
 		DAD246C02249F25400B4D62C /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				DA5C7242225C385A00B5E5A3 /* complete.mp3 */,
+				DA5C723E225C119100B5E5A3 /* gameover.mp3 */,
 				DAD246C12249F26600B4D62C /* gameplay3.mp3 */,
 				DAD246C22249F26700B4D62C /* menu.mp3 */,
 			);
@@ -725,12 +743,15 @@
 				E3F7C57E22554C300060CA09 /* ballimpact.mp3 in Resources */,
 				DA9957712227BEEF002315D0 /* SimpleVertexShader.glsl in Resources */,
 				DAD246CE224CA1C100B4D62C /* deathTexture.jpg in Resources */,
+				DA5C723F225C119200B5E5A3 /* gameover.mp3 in Resources */,
 				DA99571722151F11002315D0 /* LaunchScreen.storyboard in Resources */,
+				DA5C7243225C385A00B5E5A3 /* complete.mp3 in Resources */,
 				DAD246C32249F26700B4D62C /* gameplay3.mp3 in Resources */,
 				DAD246BC2249DD8F00B4D62C /* Menu Background.png in Resources */,
 				8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */,
 				DA99571422151F11002315D0 /* Assets.xcassets in Resources */,
 				DA9957702227BEEF002315D0 /* SimpleFragmentShader.glsl in Resources */,
+				DA5C7237225B15DA00B5E5A3 /* dangerTexture.jpg in Resources */,
 				DAD246C42249F26700B4D62C /* menu.mp3 in Resources */,
 				DA99571222151F0F002315D0 /* Main.storyboard in Resources */,
 			);
@@ -795,6 +816,7 @@
 				836E384B22489A8800CF7303 /* b2Settings.cpp in Sources */,
 				836E386422489A8800CF7303 /* b2Collision.cpp in Sources */,
 				836E383E22489A8800CF7303 /* b2CollideCircle.cpp in Sources */,
+				DA5C723B225BF93F00B5E5A3 /* GameOverViewController.swift in Sources */,
 				836E384A22489A8800CF7303 /* b2WorldCallbacks.cpp in Sources */,
 				E39030B0225555150092A689 /* CollisionSound.swift in Sources */,
 				830456092252DBF500D12630 /* Body.swift in Sources */,
@@ -816,6 +838,7 @@
 				836E386522489A8800CF7303 /* b2RopeJoint.cpp in Sources */,
 				83055BE0225545BA00CBF1A9 /* FloatExtensions.swift in Sources */,
 				DA99573D2217A53F002315D0 /* Model.swift in Sources */,
+				DA5C7239225BF91500B5E5A3 /* MenuViewController.swift in Sources */,
 				83D305BA22224517008D5CFC /* Transform.swift in Sources */,
 				836E385422489A8800CF7303 /* b2CircleShape.cpp in Sources */,
 				836E385E22489A8800CF7303 /* b2Math.cpp in Sources */,
@@ -833,6 +856,7 @@
 				83083A9E221E75A3003931A2 /* Component.swift in Sources */,
 				E3F7C57B22553D780060CA09 /* SoundEffect.swift in Sources */,
 				8307E15F2247255C008269C2 /* PhysicsWrapper.m in Sources */,
+				DA5C723D225BF95700B5E5A3 /* WinViewController.swift in Sources */,
 				836E384922489A8800CF7303 /* b2PolygonAndCircleContact.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
