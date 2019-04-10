@@ -74,7 +74,6 @@ static Physics* physics = nil;
 // pass the collider tags to the contact notifier
 + (void)handleCollisionEnter:(NSString*) tag1 tag2:(NSString*) tag2 {
     
-    printf("oh no\n");
     [CollisionPublisher handleCollisionEnterWithTag1:tag1 tag2:tag2];
 }
 

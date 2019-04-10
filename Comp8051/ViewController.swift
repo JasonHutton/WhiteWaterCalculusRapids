@@ -22,9 +22,11 @@ class ViewController: GLKViewController {
 
     @IBOutlet weak var audioButton: UIButton!
     
-    static var deltaTime: Float = 1.0/30.0
+    static let frameRate: Int = 60
     
-    static var fov: Float = 40
+    static let deltaTime: Float = 1.0/Float(frameRate)
+    
+    static let fov: Float = 40
     
     static var instance: ViewController?
     
@@ -44,6 +46,8 @@ class ViewController: GLKViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        preferredFramesPerSecond = ViewController.frameRate
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         view.addGestureRecognizer(tap)
