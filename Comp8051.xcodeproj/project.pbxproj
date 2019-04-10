@@ -119,6 +119,8 @@
 		E31648C9225DD38C0042A593 /* node04.json in Resources */ = {isa = PBXBuildFile; fileRef = E31648C8225DD38C0042A593 /* node04.json */; };
 		E31648FD225E0C270042A593 /* node06.json in Resources */ = {isa = PBXBuildFile; fileRef = E31648FC225E0C270042A593 /* node06.json */; };
 		E31648FF225E142D0042A593 /* node07.json in Resources */ = {isa = PBXBuildFile; fileRef = E31648FE225E142C0042A593 /* node07.json */; };
+		E3164901225E29720042A593 /* musicMute.png in Resources */ = {isa = PBXBuildFile; fileRef = E3164900225E29720042A593 /* musicMute.png */; };
+		E3164903225E297C0042A593 /* musicNotMute.png in Resources */ = {isa = PBXBuildFile; fileRef = E3164902225E297C0042A593 /* musicNotMute.png */; };
 		E3237C98225AC88300B533BA /* TextLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237C97225AC88300B533BA /* TextLoader.swift */; };
 		E3237CA3225CD27E00B533BA /* ContextCollisionSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237CA2225CD27E00B533BA /* ContextCollisionSounds.swift */; };
 		E3237CA5225CDD1C00B533BA /* ballblast.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E3237CA4225CDD1B00B533BA /* ballblast.mp3 */; };
@@ -317,6 +319,8 @@
 		E31648C8225DD38C0042A593 /* node04.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = node04.json; sourceTree = "<group>"; };
 		E31648FC225E0C270042A593 /* node06.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = node06.json; sourceTree = "<group>"; };
 		E31648FE225E142C0042A593 /* node07.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = node07.json; sourceTree = "<group>"; };
+		E3164900225E29720042A593 /* musicMute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicMute.png; sourceTree = "<group>"; };
+		E3164902225E297C0042A593 /* musicNotMute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicNotMute.png; sourceTree = "<group>"; };
 		E3237C97225AC88300B533BA /* TextLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLoader.swift; sourceTree = "<group>"; };
 		E3237CA2225CD27E00B533BA /* ContextCollisionSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextCollisionSounds.swift; sourceTree = "<group>"; };
 		E3237CA4225CDD1B00B533BA /* ballblast.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ballblast.mp3; sourceTree = "<group>"; };
@@ -619,6 +623,8 @@
 		DAD246B022459D0D00B4D62C /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				E3164900225E29720042A593 /* musicMute.png */,
+				E3164902225E297C0042A593 /* musicNotMute.png */,
 				DA5C7250225DAAD000B5E5A3 /* Menu Background2.png */,
 				DA5C724A225D9F5F00B5E5A3 /* lavaTexture.jpg */,
 				DA5C7248225D98B600B5E5A3 /* quit.png */,
@@ -785,6 +791,7 @@
 			files = (
 				83B6543E225DDB8400348B4E /* node05.json in Resources */,
 				83D6D339225C11550074CD98 /* node00.json in Resources */,
+				E3164903225E297C0042A593 /* musicNotMute.png in Resources */,
 				DA5C724B225D9F5F00B5E5A3 /* lavaTexture.jpg in Resources */,
 				DAD246CB224C131400B4D62C /* winTexture.jpg in Resources */,
 				E31648C9225DD38C0042A593 /* node04.json in Resources */,
@@ -799,6 +806,7 @@
 				DA9957712227BEEF002315D0 /* SimpleVertexShader.glsl in Resources */,
 				DAD246CE224CA1C100B4D62C /* deathTexture.jpg in Resources */,
 				E31648FF225E142D0042A593 /* node07.json in Resources */,
+				E3164901225E29720042A593 /* musicMute.png in Resources */,
 				DA5C723F225C119200B5E5A3 /* gameover.mp3 in Resources */,
 				DA99571722151F11002315D0 /* LaunchScreen.storyboard in Resources */,
 				DA5C7243225C385A00B5E5A3 /* complete.mp3 in Resources */,
