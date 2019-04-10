@@ -27,9 +27,9 @@ class MenuViewController: GLKViewController {
         MenuViewController.instance = self
         Settings.instance.playMusic(soundFile: "menu")
         
-        topScore.text = "Top Score: \(Settings.instance.getSetting(name: "highScore1") as Int)"
-        secondScore.text = "Second Score: \(Settings.instance.getSetting(name: "highScore2") as Int)"
-        thirdScore.text = "Third Score: \(Settings.instance.getSetting(name: "highScore3") as Int)"
+        topScore.text = "1st: \(Settings.instance.getSetting(name: "highScore1") as Int)"
+        secondScore.text = "2nd: \(Settings.instance.getSetting(name: "highScore2") as Int)"
+        thirdScore.text = "3rd: \(Settings.instance.getSetting(name: "highScore3") as Int)"
         
         
         if(!Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
