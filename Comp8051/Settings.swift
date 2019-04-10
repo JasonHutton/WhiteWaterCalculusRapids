@@ -56,7 +56,9 @@ class Settings : NSObject {
     public enum Names : String {
         case playMusic = "playMusic"
         case playSound = "playSound"
-        case highScore = "highScore"
+        case highScore1 = "highScore1"
+        case highScore2 = "highScore2"
+        case highScore3 = "highScore3"
     }
     
     public static let instance = Settings()
@@ -74,7 +76,9 @@ class Settings : NSObject {
         // Create new settings here.
         allSettings += [Setting(name: Settings.Names.playMusic.rawValue, defaultValue: "1")]
         allSettings += [Setting(name: Settings.Names.playSound.rawValue, defaultValue: "1")]
-        allSettings += [Setting(name: Settings.Names.highScore.rawValue, defaultValue: "0", deferSave: true)]
+        allSettings += [Setting(name: Settings.Names.highScore1.rawValue, defaultValue: "0", deferSave: true)]
+        allSettings += [Setting(name: Settings.Names.highScore2.rawValue, defaultValue: "0", deferSave: true)]
+        allSettings += [Setting(name: Settings.Names.highScore3.rawValue, defaultValue: "0", deferSave: true)]
     }
     
     func getSetting(name: String) -> String {
@@ -83,7 +87,7 @@ class Settings : NSObject {
                 return setting.getValue()
             }
         }
-        
+    
         assert(false)
     }
     
