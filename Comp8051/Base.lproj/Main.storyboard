@@ -194,11 +194,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Better luck next Time!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHD-FF-cjI">
+                                <rect key="frame" x="103" y="518" width="168" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Wav-jv-54I"/>
                     </view>
                     <connections>
+                        <outlet property="message" destination="qHD-FF-cjI" id="zyT-qs-9Uo"/>
                         <outlet property="scoreLabel" destination="LHv-Kd-mzK" id="y5A-d0-hc5"/>
                     </connections>
                 </viewController>
@@ -209,7 +217,6 @@
         <!--Win View Controller-->
         <scene sceneID="4Ph-aa-35k">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SeJ-z5-C9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="hKG-Km-AeK" customClass="WinViewController" customModule="Comp8051" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mAg-to-Cy0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -245,6 +252,7 @@
                         <outlet property="scoreLabel" destination="cce-Ui-MlY" id="gBS-5b-hMn"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SeJ-z5-C9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1929.375" y="472.18309859154931"/>
         </scene>
