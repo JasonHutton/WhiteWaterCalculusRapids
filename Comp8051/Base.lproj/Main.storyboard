@@ -129,10 +129,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Is-SQ-GSp">
-                                <rect key="frame" x="67" y="269" width="240" height="145"/>
+                                <rect key="frame" x="67" y="271" width="240" height="207"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">How to Play: Tilt your phone left or right (to a max of 45 degrees) to roll the marble in that direction. tap the screen once to flip the gravity.</string>
+                                <string key="text">How to Play: Tilt your phone left or right (to a max of 45 degrees) to roll the marble in that direction. tap the screen once to flip the gravity. Your goal is to survive for as long as possible by avoiding the falling lava roof.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
