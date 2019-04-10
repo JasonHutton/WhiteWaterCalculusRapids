@@ -38,7 +38,7 @@ const float SCALE_FACTOR = 8.0f;
 // step the physics one tick forward
 - (void)update:(float)deltaTime {
     
-    world->Step(deltaTime, 6, 2);
+    world->Step(deltaTime, 6, 6);
 }
 
 // change the gravity vector - input should be clamped below magnitude 1
@@ -108,6 +108,7 @@ const float SCALE_FACTOR = 8.0f;
     b2BodyDef ballBodyDef;
     ballBodyDef.type = b2_dynamicBody;
     ballBodyDef.position.Set(posX, posY);
+    ballBodyDef.allowSleep = false;
     
     b2CircleShape circle;
     circle.m_radius = radius;

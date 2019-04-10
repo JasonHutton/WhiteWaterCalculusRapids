@@ -62,7 +62,9 @@ class Level {
     
     func loadRandomNode(yOffset: Float) {
         
-        if let jsonArray = Level.nodePrefabs.randomElement() {
+        if var jsonArray = Level.nodePrefabs.randomElement() {
+            
+            jsonArray = Level.nodePrefabs[1] // temp override
             
             let node = Node(y: yOffset)
             
@@ -75,6 +77,32 @@ class Level {
             
             nodes.enqueue(node)
         }
+    }
+    
+    func loadEmptyNode(yOffset: Float) {
+        
+        let leftWall = GameObject(tag: "Wall");
+        leftWall.transform.position.x = -Level.NODE_WIDTH / 2
+        leftWall.transform.position.y = yOffset
+        leftWall.transform.scale.y = Level.NODE_HEIGHT
+        leftWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        leftWall.addComponent(component: BlockBody(tag: "Floor"))
+        GameObject.root.addChild(gameObject: leftWall)
+        
+        let rightWall = GameObject(tag: "Wall");
+        rightWall.transform.position.x = Level.NODE_WIDTH / 2
+        rightWall.transform.position.y = yOffset
+        rightWall.transform.scale.y = Level.NODE_HEIGHT
+        rightWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        rightWall.addComponent(component: BlockBody(tag: "Floor"))
+        GameObject.root.addChild(gameObject: rightWall)
+        
+        let node = Node(y: yOffset)
+        
+        node.add(gameObject: leftWall)
+        node.add(gameObject: rightWall)
+        
+        nodes.enqueue(node)
     }
     
     // traverse all the key value pairs in the json object and create a gameobject from their values
@@ -94,9 +122,9 @@ class Level {
                 break
             case "position":
                 if let val = value as? Dictionary<String,Any> {
-                    pos.x = val["x"] as! Float
-                    pos.y = (val["y"] as! Float) + yOffset // apply y offset
-                    pos.z = val["z"] as! Float
+                    pos.x = Float(val["x"] as! Double)
+                    pos.y = Float(val["y"] as! Double) + yOffset // apply y offset
+                    pos.z = Float(val["z"] as! Double)
                     // multiply axis by width if scalebywidth is set
                     if let _ = val["xScaleByWidth"] {
                         pos.x *= Level.NODE_WIDTH
@@ -111,9 +139,9 @@ class Level {
                 break
             case "scale":
                 if let val = value as? Dictionary<String,Any> {
-                    scale.x = val["x"] as! Float
-                    scale.y = val["y"] as! Float
-                    scale.z = val["z"] as! Float
+                    scale.x = Float(val["x"] as! Double)
+                    scale.y = Float(val["y"] as! Double)
+                    scale.z = Float(val["z"] as! Double)
                     // multiply axis by width if scalebywidth is set
                     if let _ = val["xScaleByWidth"] {
                         scale.x *= Level.NODE_WIDTH
@@ -128,9 +156,9 @@ class Level {
                 break
             case "rotation":
                 if let val = value as? Dictionary<String,Any> {
-                    rot.x = val["x"] as! Float
-                    rot.y = val["y"] as! Float
-                    rot.z = val["z"] as! Float
+                    rot.x = Float(val["x"] as! Double)
+                    rot.y = Float(val["y"] as! Double)
+                    rot.z = Float(val["z"] as! Double)
                 }
                 break
             case "components":
@@ -217,7 +245,7 @@ class Level {
         deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "lavaTexture.jpg"))
         GameObject.root.addChild(gameObject: deathWall)
         // add level generator to sphere
-        sphereObj.addComponent(component: LevelGenerator(deleteObj: deathWall, spawnAhead: 1, level: self))
+        sphereObj.addComponent(component: LevelGenerator(deleteObj: deathWall, spawnAhead: 3, level: self))
     }
     
     func close() {

@@ -18,7 +18,8 @@ class LevelGenerator : Component {
         self.spawnAhead = spawnAhead
         self.level = level
         
-        // TODO: initial spawning
+        level.loadEmptyNode(yOffset: Level.NODE_HEIGHT)
+        level.loadEmptyNode(yOffset: 0)
     }
     
     override func update(deltaTime: Float) {
