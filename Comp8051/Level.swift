@@ -62,7 +62,7 @@ class Level {
     
     func loadRandomNode(yOffset: Float) {
         
-        if let jsonArray = Level.nodePrefabs.randomElement() {
+        if let jsonArray = Level.nodePrefabs.last/*.randomElement()*/ {
             
             let node = Node(y: yOffset)
             
