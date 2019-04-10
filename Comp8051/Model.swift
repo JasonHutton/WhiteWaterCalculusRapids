@@ -11,7 +11,10 @@
 import GLKit
 import Foundation
 
-class Model {
+class Model : Equatable {
+    
+    public static var iterator: Int = 0
+    public var id: Int
     public var vertices: [Vertex] = [] // Vertices data
     public var vertexPositions:[GLKVector3] = []
     public var normals:[GLKVector3] = []
@@ -34,6 +37,10 @@ class Model {
     var shader: BaseEffect!
     
     public init(modelName: String, shader: BaseEffect, texture: String? = nil){
+        
+        id = Model.iterator
+        Model.iterator += 1
+        
         name = modelName
         self.shader = shader
         currentGroup = "" // Set to default group
@@ -201,10 +208,15 @@ class Model {
         }
     }
     
+    static func == (lhs: Model, rhs: Model) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     deinit{
         glDeleteBuffers(1, &vao)
         glDeleteBuffers(1, &vbo)
         glDeleteBuffers(1, &ebo)
+        print("deinit")
     }
 }
 

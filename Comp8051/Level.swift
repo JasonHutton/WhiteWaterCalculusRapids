@@ -6,13 +6,20 @@
 //  Copyright © 2019 Paul. All rights reserved.
 //
 
-import Foundation
-import GLKit
-
 class Level {
     
-    private static var nodes = [[Dictionary<String,Any>]]()
+    public static let NODE_WIDTH: Float = 20
+    public static let NODE_HEIGHT: Float = 10
+    private static var nodePrefabs = [[Dictionary<String,Any>]]()
     private static var hasStored = false
+    
+    public var nodes = Queue<Node>()
+    public let shader: BaseEffect
+    
+    init(shader: BaseEffect) {
+        
+        self.shader = shader
+    }
     
     static func storeAllNodes() {
         
@@ -42,7 +49,7 @@ class Level {
         do {
             if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [Dictionary<String,Any>] {
                 
-                nodes.append(jsonArray)
+                nodePrefabs.append(jsonArray)
                 
             } else {
                 
@@ -53,19 +60,25 @@ class Level {
         }
     }
     
-    static func loadRandomNode(yOffset: Float, width: Float, shader: BaseEffect) {
+    func loadRandomNode(yOffset: Float) {
         
-        if let jsonArray = nodes.randomElement() {
+        if let jsonArray = Level.nodePrefabs.randomElement() {
+            
+            let node = Node(y: yOffset)
             
             for json in jsonArray {
                 
-                loadGameObject(json: json, parent: GameObject.root, yOffset: yOffset, width: width, shader: shader)
+                let obj = loadGameObject(json: json, parent: GameObject.root, yOffset: yOffset)
+                
+                node.add(gameObject: obj)
             }
+            
+            nodes.enqueue(node)
         }
     }
     
     // traverse all the key value pairs in the json object and create a gameobject from their values
-    private static func loadGameObject(json: Dictionary<String,Any>, parent: GameObject, yOffset: Float, width: Float, shader: BaseEffect) {
+    private func loadGameObject(json: Dictionary<String,Any>, parent: GameObject, yOffset: Float) -> GameObject {
         
         var tag = String()
         var pos = Vector3(x: 0, y: 0, z: 0)
@@ -86,13 +99,13 @@ class Level {
                     pos.z = val["z"] as! Float
                     // multiply axis by width if scalebywidth is set
                     if let _ = val["xScaleByWidth"] {
-                        pos.x *= width
+                        pos.x *= Level.NODE_WIDTH
                     }
                     if let _ = val["yScaleByWidth"] {
-                        pos.y *= width
+                        pos.y *= Level.NODE_WIDTH
                     }
                     if let _ = val["zScaleByWidth"] {
-                        pos.z *= width
+                        pos.z *= Level.NODE_WIDTH
                     }
                 }
                 break
@@ -103,13 +116,13 @@ class Level {
                     scale.z = val["z"] as! Float
                     // multiply axis by width if scalebywidth is set
                     if let _ = val["xScaleByWidth"] {
-                        scale.x *= width
+                        scale.x *= Level.NODE_WIDTH
                     }
                     if let _ = val["yScaleByWidth"] {
-                        scale.y *= width
+                        scale.y *= Level.NODE_WIDTH
                     }
                     if let _ = val["zScaleByWidth"] {
-                        scale.z *= width
+                        scale.z *= Level.NODE_WIDTH
                     }
                 }
                 break
@@ -125,7 +138,7 @@ class Level {
                     
                     for componentJson in componentsJson {
                         
-                        if let component = getComponent(json: componentJson, shader: shader) {
+                        if let component = getComponent(json: componentJson) {
                             
                             components.append(component)
                         }
@@ -150,10 +163,12 @@ class Level {
         }
         
         parent.addChild(gameObject: obj)
+        
+        return obj
     }
     
     // initialize a components of the correct type given a json object
-    private static func getComponent(json: Dictionary<String,Any>, shader: BaseEffect) -> Component? {
+    private func getComponent(json: Dictionary<String,Any>) -> Component? {
         
         var component: Component? = nil
         let type = json["type"] as! String
@@ -171,14 +186,14 @@ class Level {
         return component
     }
     
-    static func loadUniversalGameObjects(width: Float, shader: BaseEffect) {
+    func loadUniversalGameObjects(cameraDist: Float) {
         
         // set up scene
         GameObject.root.addComponent(component: GravityManager()) // this is silly but it works
         
         // add camera before adding any model renderers
         let cameraObj = GameObject(tag: "Camera")
-        cameraObj.transform.position = Vector3(x: 0, y: 0, z: 30)
+        cameraObj.transform.position.z = cameraDist
         GameObject.root.addChild(gameObject: cameraObj)
         
         let sphereObj = GameObject(tag: "Sphere")
@@ -193,20 +208,24 @@ class Level {
         cameraObj.addComponent(component: CameraTrack(trackedObj: sphereObj))
         
         let deathWall = GameObject(tag: "Death")
-        deathWall.transform.position = Vector3(x: 0, y: width*2, z: 0)
-        deathWall.transform.scale.x = width
-        deathWall.transform.scale.y = width*2
+        deathWall.transform.position = Vector3(x: 0, y: 30, z: 0)
+        deathWall.transform.scale.x = Level.NODE_WIDTH
+        deathWall.transform.scale.y = 40
         deathWall.transform.scale.z = 2
-        deathWall.addComponent(component: DeathWallBehaviour())
+        deathWall.addComponent(component: DeathWallBehaviour(player: sphereObj, acceleration: 0.1, initialVelocity: 1, maxDist: 100))
         deathWall.addComponent(component: KinematicBlockBody(tag: "Lose"))
         deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "lavaTexture.jpg"))
         GameObject.root.addChild(gameObject: deathWall)
+        // add level generator to sphere
+        sphereObj.addComponent(component: LevelGenerator(deleteObj: deathWall, spawnAhead: 1, level: self))
     }
     
-    static func deleteLevel() {
+    func close() {
         
+        nodes.removeAll()
         CollisionPublisher.unsubscribeAll()
         GameObject.root.removeAllChildren()
         GameObject.root.removeAllComponents()
+        ModelRenderer.camera = nil
     }
 }
