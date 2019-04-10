@@ -19,7 +19,8 @@
     NSMutableDictionary* dict;
 }
 
-const float GRAV_CONSTANT = 80.0f;
+const float GRAV_CONSTANT = 9.81f;
+const float SCALE_FACTOR = 8.0f;
 
 - (instancetype)init {
     
@@ -51,6 +52,11 @@ const float GRAV_CONSTANT = 80.0f;
 - (void)addGroundBody:(NSString*) tag posX:(float) posX posY:(float) posY scaleX:(float) scaleX
                scaleY:(float) scaleY rotation:(float) rotation {
     
+    posX /= SCALE_FACTOR;
+    posY /= SCALE_FACTOR;
+    scaleX /= SCALE_FACTOR;
+    scaleY /= SCALE_FACTOR;
+    
     b2BodyDef groundBodyDef;
     groundBodyDef.type = b2_staticBody;
     groundBodyDef.position.Set(posX, posY);
@@ -71,6 +77,11 @@ const float GRAV_CONSTANT = 80.0f;
 - (void)addKinematicBody:(NSString*) tag posX:(float) posX posY:(float) posY scaleX:(float) scaleX
                scaleY:(float) scaleY rotation:(float) rotation {
     
+    posX /= SCALE_FACTOR;
+    posY /= SCALE_FACTOR;
+    scaleX /= SCALE_FACTOR;
+    scaleY /= SCALE_FACTOR;
+    
     b2BodyDef groundBodyDef;
     groundBodyDef.type = b2_kinematicBody;
     groundBodyDef.position.Set(posX, posY);
@@ -89,6 +100,10 @@ const float GRAV_CONSTANT = 80.0f;
 
 // add a dynamic circle to the world
 - (void)addBallBody:(NSString*) tag posX:(float) posX posY:(float) posY radius:(float) radius {
+    
+    posX /= SCALE_FACTOR;
+    posY /= SCALE_FACTOR;
+    radius /= SCALE_FACTOR;
     
     b2BodyDef ballBodyDef;
     ballBodyDef.type = b2_dynamicBody;
@@ -118,8 +133,8 @@ const float GRAV_CONSTANT = 80.0f;
     b2Vec2 vec = body->GetPosition();
     
     CTransform transform;
-    transform.position.x = vec.x;
-    transform.position.y = vec.y;
+    transform.position.x = vec.x * SCALE_FACTOR;
+    transform.position.y = vec.y * SCALE_FACTOR;
     transform.rotation = body->GetAngle();
     
     return transform;
@@ -142,7 +157,7 @@ const float GRAV_CONSTANT = 80.0f;
     
     b2Body* body = (b2Body*)[[dict valueForKey:tag] pointerValue];
     
-    b2Vec2 vec2 = b2Vec2(transform.position.x, transform.position.y);
+    b2Vec2 vec2 = b2Vec2(transform.position.x / SCALE_FACTOR, transform.position.y / SCALE_FACTOR);
     
     body->SetTransform(vec2, transform.rotation);
 }
