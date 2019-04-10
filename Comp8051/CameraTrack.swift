@@ -19,7 +19,7 @@ class CameraTrack : Component {
         
         if var pos = gameObject?.worldTransform.position {
             
-            pos.y = Float.lerp(start: pos.y, end: trackedObj.worldTransform.position.y, t: deltaTime * 2)
+            pos.y = Float.lerp(start: pos.y, end: trackedObj.worldTransform.position.y, t: deltaTime * 3)
             
             gameObject!.worldTransform.position = pos
         }

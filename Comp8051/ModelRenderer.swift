@@ -10,8 +10,8 @@ import GLKit
 
 class ModelRenderer : Component {
     
-    private var model: Model?
-    private static var camera: GameObject?
+    private var model: Model
+    static var camera: GameObject?
     
     init(modelName: String, shader: BaseEffect, texture: String? = nil ) {
         
@@ -22,7 +22,7 @@ class ModelRenderer : Component {
             model = Model(modelName: modelName, shader: shader, texture: texture)
         }
         
-        ViewController.instance?.addModel(model: &model!)
+        ViewController.instance?.addModel(model: &model)
         
         // grab the camera, if not already grabbed
         if ModelRenderer.camera == nil {
@@ -65,14 +65,16 @@ class ModelRenderer : Component {
                                              transform.scale.y,
                                              transform.scale.z)
             
-            model?.modelViewMatrix = transformationMatrix
+            model.modelViewMatrix = transformationMatrix
         }
         
     }
     
     override func onDestroy() {
-        ModelRenderer.camera = nil
-        model = nil
+        
+        if let vc = ViewController.instance {
+            vc.removeModel(model: model)
+        }
     }
     
 }

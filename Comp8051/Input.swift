@@ -31,7 +31,7 @@ class Input {
     init() {
 
         if motion.isDeviceMotionAvailable {
-            motion.deviceMotionUpdateInterval = 1/30
+            motion.deviceMotionUpdateInterval = 1/60
             motion.startDeviceMotionUpdates(to: .main) {
                 (data, error) in
                 guard let data = data, error == nil else {

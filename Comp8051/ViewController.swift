@@ -24,7 +24,7 @@ class ViewController: GLKViewController {
     
     static var deltaTime: Float = 1.0/30.0
     
-    static var fov: Float = 65
+    static var fov: Float = 40
     
     static var instance: ViewController?
     
@@ -39,6 +39,8 @@ class ViewController: GLKViewController {
     var shader : BaseEffect!
 
     var score: Int = 0
+    
+    var level: Level? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,21 +119,23 @@ class ViewController: GLKViewController {
             view.drawableDepthFormat = GLKViewDrawableDepthFormat.format24
         }
         
+        // calculate values for fov and game screen width
+        let hAspect = fabsf(Float(view.bounds.size.height) / Float(view.bounds.size.width))
+        let hFov = GLKMathDegreesToRadians(ViewController.fov);
+        let vFov = 2 * atan(tan(hFov / 2) * hAspect)
+        let cameraDist: Float = Level.NODE_WIDTH / (2 * tan(hFov/2))
+        
         // apply perspective transformation
-        let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
-        let vFov = GLKMathDegreesToRadians(ViewController.fov);
-        let projectionMatrix = GLKMatrix4MakePerspective(vFov, aspect, 1.0, 40.0)
+        let vAspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
+        let projectionMatrix = GLKMatrix4MakePerspective(vFov, vAspect, 1.0, 40.0)
         self.shader = BaseEffect(vertexShader: "SimpleVertexShader.glsl", fragmentShader: "SimpleFragmentShader.glsl")
         
         shader.projectionMatrix = projectionMatrix
         
-        let hFov = 2 * atan(tan(vFov / 2) * aspect)
-        let cameraDist: Float = 30
-        let width = 2 * cameraDist * tan(hFov/2)
-        
-        Level.storeAllNodes()
-        Level.loadUniversalGameObjects(width: width, shader: shader)
-        Level.loadRandomNode(yOffset: 0, width: width, shader: shader)
+        Level.storeAllNodes() // attempt to store nodes in memory from json files, only runs once
+        level = Level(shader: shader)
+        level!.loadUniversalGameObjects(cameraDist: cameraDist)
+        // Level.loadRandomNode(yOffset: 0, width: width, shader: shader)
     }
     
     
@@ -142,6 +146,10 @@ class ViewController: GLKViewController {
     
     func removeModels() {
         models.removeAll()
+    }
+    
+    func removeModel(model: Model) {
+        models = models.filter {$0 != model}
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
@@ -174,7 +182,7 @@ class ViewController: GLKViewController {
     }
     
     private func tearDownLevel(){
-        Level.deleteLevel()
+        level!.close()
         removeModels()
     }
     
