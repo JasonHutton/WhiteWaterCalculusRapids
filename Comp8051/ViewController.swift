@@ -48,21 +48,28 @@ class ViewController: GLKViewController {
         
         Settings.instance.playMusic(soundFile: "gameplay3")
         
+        // Set audio button to be the same image as on menu screen
+        audioButton.setImage(MenuViewController.instance?.audioButton.currentImage, for: .normal)
+        
         setupGL()
     }
     
     @IBAction func toggleAudio(_ sender: Any) {
+        var btnImage : UIImage?
+        
         if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: false)
             Settings.instance.player.pause()
-            let btnImage = UIImage(named: "mute")
-            audioButton.setImage(btnImage, for: .normal)
+            btnImage = UIImage(named: "mute")
+
         } else {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: true)
             Settings.instance.player.play()
-            let btnImage = UIImage(named: "notMute")
-            audioButton.setImage(btnImage, for: .normal)
+            btnImage = UIImage(named: "notMute")
         }
+        
+        audioButton.setImage(btnImage, for: .normal)
+        MenuViewController.instance?.audioButton.setImage(btnImage, for: .normal)// set audio button in menu
     }
     
     @IBAction func quitGame(_ sender: Any) {

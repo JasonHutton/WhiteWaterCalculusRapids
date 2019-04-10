@@ -10,7 +10,7 @@ import Foundation
 import GLKit
 
 class MenuViewController: GLKViewController {
-    
+    static var instance: MenuViewController?
 
     @IBOutlet weak var audioButton: UIButton!
     
@@ -18,7 +18,7 @@ class MenuViewController: GLKViewController {
         super.viewDidLoad()
         
         //scoreLabel.text = "Score: \(score)"
-        
+        MenuViewController.instance = self
         Settings.instance.playMusic(soundFile: "menu")
     }
     
