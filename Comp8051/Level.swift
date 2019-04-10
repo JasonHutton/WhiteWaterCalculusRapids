@@ -219,7 +219,7 @@ class Level {
         deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "lavaTexture.jpg"))
         GameObject.root.addChild(gameObject: deathWall)
         // add level generator to sphere
-        sphereObj.addComponent(component: LevelGenerator(deleteObj: deathWall, spawnAhead: 2, level: self))
+        sphereObj.addComponent(component: LevelGenerator(deleteObj: deathWall, spawnAhead: 3, level: self))
     }
     
     func close() {
