@@ -40,9 +40,9 @@ class GameOverViewController: UIViewController {
         
         scoreLabel.text = "Your Score: \(ViewController.instance!.score)"
         
-        MenuViewController.instance?.topScore.text = "Top Score: \(Settings.instance.getSetting(name: "highScore1") as Int)"
-        MenuViewController.instance?.secondScore.text = "Second Score: \(Settings.instance.getSetting(name: "highScore2") as Int)"
-        MenuViewController.instance?.thirdScore.text = "Third Score: \(Settings.instance.getSetting(name: "highScore3") as Int)"
+        MenuViewController.instance?.topScore.text = "1st: \(Settings.instance.getSetting(name: "highScore1") as Int)"
+        MenuViewController.instance?.secondScore.text = "2nd: \(Settings.instance.getSetting(name: "highScore2") as Int)"
+        MenuViewController.instance?.thirdScore.text = "3rd: \(Settings.instance.getSetting(name: "highScore3") as Int)"
     }
     @IBAction func backToMenu(_ sender: Any) {
         ViewController.instance?.quit()
