@@ -14,12 +14,22 @@ class MenuViewController: GLKViewController {
 
     @IBOutlet weak var audioButton: UIButton!
     
+    @IBOutlet weak var topScore: UILabel!
+    
+    @IBOutlet weak var secondScore: UILabel!
+    
+    @IBOutlet weak var thirdScore: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //scoreLabel.text = "Score: \(score)"
         MenuViewController.instance = self
         Settings.instance.playMusic(soundFile: "menu")
+        
+        topScore.text = "Top Score: \(Settings.instance.getSetting(name: "highScore1") as Int)"
+        secondScore.text = "Second Score: \(Settings.instance.getSetting(name: "highScore2") as Int)"
+        thirdScore.text = "Third Score: \(Settings.instance.getSetting(name: "highScore3") as Int)"
     }
     
     @IBAction func toggleAudio(_ sender: Any) {

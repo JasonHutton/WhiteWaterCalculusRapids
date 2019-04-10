@@ -17,16 +17,19 @@ class GameOverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let score = ViewController.instance?.score
+        let score = ViewController.instance!.score
         
-        if score! > Settings.instance.getSetting(name: "highScore1") {
-            Settings.instance.setSetting(name: "highScore1", value: score!, explicitSave: true)
+        if score > Settings.instance.getSetting(name: "highScore1") {
+            Settings.instance.setSetting(name: "highScore1", value: score, explicitSave: true)
+            MenuViewController.instance?.topScore.text = "Top Score: \(score)"
             message.text = "1st Place!"
-        } else if score! > Settings.instance.getSetting(name: "highScore2") {
-            Settings.instance.setSetting(name: "highScore2", value: score!, explicitSave: true)
+        } else if score > Settings.instance.getSetting(name: "highScore2") {
+            Settings.instance.setSetting(name: "highScore2", value: score, explicitSave: true)
+            MenuViewController.instance?.secondScore.text = "Second Score: \(score)"
             message.text = "2nd Place!"
-        } else if score! > Settings.instance.getSetting(name: "highScore3") {
-            Settings.instance.setSetting(name: "highScore3", value: score!, explicitSave: true)
+        } else if score > Settings.instance.getSetting(name: "highScore3") {
+            Settings.instance.setSetting(name: "highScore3", value: score, explicitSave: true)
+            MenuViewController.instance?.thirdScore.text = "Third Score: \(score)"
             message.text = "3rd Place!"
         }
         
