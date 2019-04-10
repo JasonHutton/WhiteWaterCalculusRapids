@@ -12,8 +12,8 @@ import GLKit
 class MenuViewController: GLKViewController {
     static var instance: MenuViewController?
 
-    @IBOutlet weak var audioButton: UIButton!
-    
+    @IBOutlet weak var musicButton: UIButton!
+    @IBOutlet weak var soundButton: UIButton!
     @IBOutlet weak var topScore: UILabel!
     
     @IBOutlet weak var secondScore: UILabel!
@@ -32,17 +32,28 @@ class MenuViewController: GLKViewController {
         thirdScore.text = "Third Score: \(Settings.instance.getSetting(name: "highScore3") as Int)"
     }
     
-    @IBAction func toggleAudio(_ sender: Any) {
+    @IBAction func toggleMusic(_ sender: Any) {
         if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: false)
             Settings.instance.player.pause()
-            let btnImage = UIImage(named: "mute")
-            audioButton.setImage(btnImage, for: .normal)
+            let btnImage = UIImage(named: "musicMute")
+            musicButton.setImage(btnImage, for: .normal)
         } else {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: true)
             Settings.instance.player.play()
-            let btnImage = UIImage(named: "notMute")
-            audioButton.setImage(btnImage, for: .normal)
+            let btnImage = UIImage(named: "musicNotMute")
+            musicButton.setImage(btnImage, for: .normal)
         }
     }
-}
+    
+    @IBAction func toggleSound(_ sender: Any) {
+        if(Settings.instance.getSetting(name: Settings.Names.playSound.rawValue)) {
+            Settings.instance.setSetting(name: Settings.Names.playSound.rawValue, value: false)
+            let btnImage = UIImage(named: "mute")
+            soundButton.setImage(btnImage, for: .normal)
+        } else {
+            Settings.instance.setSetting(name: Settings.Names.playSound.rawValue, value: true)
+            let btnImage = UIImage(named: "notMute")
+            soundButton.setImage(btnImage, for: .normal)
+        }
+    }}

@@ -25,16 +25,16 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCz-PC-vij">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCz-PC-vij" userLabel="Sound Button">
                                 <rect key="frame" x="16" y="20" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
                                 </accessibility>
                                 <viewLayoutGuide key="safeArea" id="J2r-ia-Ifc"/>
-                                <state key="normal" title="Mute Audio" image="notMute.png"/>
+                                <state key="normal" title="Mute Sound" image="notMute.png"/>
                                 <connections>
-                                    <action selector="toggleAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HYb-Iy-hj9"/>
+                                    <action selector="toggleSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dPW-sh-mha"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uy3-vd-0jK">
@@ -45,13 +45,26 @@
                                     <action selector="quitGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wyb-3d-VWl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSf-B6-NBY" userLabel="Music Button">
+                                <rect key="frame" x="60" y="20" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                </accessibility>
+                                <viewLayoutGuide key="safeArea" id="a8H-1x-I68"/>
+                                <state key="normal" title="Mute Music" image="musicNotMute.png"/>
+                                <connections>
+                                    <action selector="toggleMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NaR-9G-W2d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="audioButton" destination="rCz-PC-vij" id="YGx-Xs-rBt"/>
+                        <outlet property="musicButton" destination="FSf-B6-NBY" id="Ncu-8Y-J6I"/>
                         <outlet property="scoreLabel" destination="s6N-hQ-4z5" id="uAQ-je-0vD"/>
+                        <outlet property="soundButton" destination="rCz-PC-vij" id="g2g-cr-XHE"/>
                         <segue destination="rUb-zx-V8s" kind="presentation" identifier="loseGame" id="Osm-gf-ynY"/>
                         <segue destination="hKG-Km-AeK" kind="presentation" identifier="winGame" id="AFg-rm-NBB"/>
                     </connections>
@@ -86,16 +99,16 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" id="LPV-KZ-V1A"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BK2-Rn-KvG">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BK2-Rn-KvG" userLabel="Sound Button">
                                 <rect key="frame" x="16" y="20" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
                                 </accessibility>
                                 <viewLayoutGuide key="safeArea" id="fNs-H6-qug"/>
-                                <state key="normal" title="Mute Audio" image="notMute.png"/>
+                                <state key="normal" title="Mute Sound" image="notMute.png"/>
                                 <connections>
-                                    <action selector="toggleAudio:" destination="cAv-X3-C6U" eventType="touchUpInside" id="dLJ-Bj-9kY"/>
+                                    <action selector="toggleSound:" destination="cAv-X3-C6U" eventType="touchUpInside" id="Vjd-X8-R5S"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qP-4p-b1h">
@@ -129,13 +142,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5v-Ns-EJo" userLabel="Music Button">
+                                <rect key="frame" x="58" y="20" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                </accessibility>
+                                <viewLayoutGuide key="safeArea" id="NQ0-KP-p0y"/>
+                                <state key="normal" title="Mute Music" image="musicNotMute.png"/>
+                                <connections>
+                                    <action selector="toggleMusic:" destination="cAv-X3-C6U" eventType="touchUpInside" id="uaR-LJ-XrK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="WhT-He-VEE"/>
                     </view>
                     <connections>
-                        <outlet property="audioButton" destination="BK2-Rn-KvG" id="EAS-U1-YJn"/>
+                        <outlet property="musicButton" destination="j5v-Ns-EJo" id="n6v-cQ-yTw"/>
                         <outlet property="secondScore" destination="BYQ-0y-GAB" id="G0S-N9-lHn"/>
+                        <outlet property="soundButton" destination="BK2-Rn-KvG" id="eQq-no-XLz"/>
                         <outlet property="thirdScore" destination="m2j-5V-R5P" id="P68-oK-vjW"/>
                         <outlet property="topScore" destination="1Hv-4E-MPa" id="2ri-rL-yCz"/>
                     </connections>
@@ -290,6 +316,7 @@
     </scenes>
     <resources>
         <image name="Menu Background2.png" width="1152" height="1000"/>
+        <image name="musicNotMute.png" width="512" height="512"/>
         <image name="notMute.png" width="512" height="512"/>
         <image name="quit.png" width="512" height="512"/>
     </resources>

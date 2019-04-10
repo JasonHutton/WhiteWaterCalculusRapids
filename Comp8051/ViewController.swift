@@ -20,8 +20,8 @@ class ViewController: GLKViewController {
     
     @IBOutlet weak var scoreLabel: UILabel!
 
-    @IBOutlet weak var audioButton: UIButton!
-    
+    @IBOutlet weak var musicButton: UIButton!
+    @IBOutlet weak var soundButton: UIButton!
     static let frameRate: Int = 60
     
     static let deltaTime: Float = 1.0/Float(frameRate)
@@ -55,29 +55,45 @@ class ViewController: GLKViewController {
         Settings.instance.playMusic(soundFile: "gameplay3")
         
         // Set audio button to be the same image as on menu screen
-        audioButton.setImage(MenuViewController.instance?.audioButton.currentImage, for: .normal)
+        soundButton.setImage(MenuViewController.instance?.soundButton.currentImage, for: .normal)
+        musicButton.setImage(MenuViewController.instance?.musicButton.currentImage, for: .normal)
         
         setupGL()
     }
     
-    @IBAction func toggleAudio(_ sender: Any) {
+    @IBAction func toggleSound(_ sender: Any) {
+        var btnImage : UIImage?
+        
+        if(Settings.instance.getSetting(name: Settings.Names.playSound.rawValue)) {
+            Settings.instance.setSetting(name: Settings.Names.playSound.rawValue, value: false)
+            btnImage = UIImage(named: "mute")
+
+        } else {
+            Settings.instance.setSetting(name: Settings.Names.playSound.rawValue, value: true)
+            btnImage = UIImage(named: "notMute")
+        }
+        
+        soundButton.setImage(btnImage, for: .normal)
+        MenuViewController.instance?.soundButton.setImage(btnImage, for: .normal)// set audio button in menu
+    }
+    
+    @IBAction func toggleMusic(_ sender: Any) {
         var btnImage : UIImage?
         
         if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: false)
             Settings.instance.player.pause()
-            btnImage = UIImage(named: "mute")
-
+            btnImage = UIImage(named: "musicMute")
+            
         } else {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: true)
             Settings.instance.player.play()
-            btnImage = UIImage(named: "notMute")
+            btnImage = UIImage(named: "musicNotMute")
         }
         
-        audioButton.setImage(btnImage, for: .normal)
-        MenuViewController.instance?.audioButton.setImage(btnImage, for: .normal)// set audio button in menu
+        musicButton.setImage(btnImage, for: .normal)
+        MenuViewController.instance?.musicButton.setImage(btnImage, for: .normal)// set audio button in menu
     }
-    
     @IBAction func quitGame(_ sender: Any) {
         quit()
     }
