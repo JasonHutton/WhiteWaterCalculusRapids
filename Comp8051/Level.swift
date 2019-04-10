@@ -79,6 +79,32 @@ class Level {
         }
     }
     
+    func loadEmptyNode(yOffset: Float) {
+        
+        let leftWall = GameObject(tag: "Wall");
+        leftWall.transform.position.x = -Level.NODE_WIDTH / 2
+        leftWall.transform.position.y = yOffset
+        leftWall.transform.scale.y = Level.NODE_HEIGHT
+        leftWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        leftWall.addComponent(component: BlockBody(tag: "Floor"))
+        GameObject.root.addChild(gameObject: leftWall)
+        
+        let rightWall = GameObject(tag: "Wall");
+        rightWall.transform.position.x = Level.NODE_WIDTH / 2
+        rightWall.transform.position.y = yOffset
+        rightWall.transform.scale.y = Level.NODE_HEIGHT
+        rightWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        rightWall.addComponent(component: BlockBody(tag: "Floor"))
+        GameObject.root.addChild(gameObject: rightWall)
+        
+        let node = Node(y: yOffset)
+        
+        node.add(gameObject: leftWall)
+        node.add(gameObject: rightWall)
+        
+        nodes.enqueue(node)
+    }
+    
     // traverse all the key value pairs in the json object and create a gameobject from their values
     private func loadGameObject(json: Dictionary<String,Any>, parent: GameObject, yOffset: Float) -> GameObject {
         
