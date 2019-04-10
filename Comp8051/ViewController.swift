@@ -193,7 +193,7 @@ class ViewController: GLKViewController {
 
 extension ViewController: GLKViewControllerDelegate {
     func glkViewControllerUpdate(_ controller: GLKViewController) {
-
+        
         // update entity component system
         GameObject.root.update(deltaTime: ViewController.deltaTime)
         PhysicsWrapper.update(ViewController.deltaTime)

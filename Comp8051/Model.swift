@@ -216,7 +216,6 @@ class Model : Equatable {
         glDeleteBuffers(1, &vao)
         glDeleteBuffers(1, &vbo)
         glDeleteBuffers(1, &ebo)
-        print("deinit")
     }
 }
 

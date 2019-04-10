@@ -94,9 +94,9 @@ class Level {
                 break
             case "position":
                 if let val = value as? Dictionary<String,Any> {
-                    pos.x = val["x"] as! Float
-                    pos.y = (val["y"] as! Float) + yOffset // apply y offset
-                    pos.z = val["z"] as! Float
+                    pos.x = Float(val["x"] as! Double)
+                    pos.y = Float(val["y"] as! Double) + yOffset // apply y offset
+                    pos.z = Float(val["z"] as! Double)
                     // multiply axis by width if scalebywidth is set
                     if let _ = val["xScaleByWidth"] {
                         pos.x *= Level.NODE_WIDTH
@@ -111,9 +111,9 @@ class Level {
                 break
             case "scale":
                 if let val = value as? Dictionary<String,Any> {
-                    scale.x = val["x"] as! Float
-                    scale.y = val["y"] as! Float
-                    scale.z = val["z"] as! Float
+                    scale.x = Float(val["x"] as! Double)
+                    scale.y = Float(val["y"] as! Double)
+                    scale.z = Float(val["z"] as! Double)
                     // multiply axis by width if scalebywidth is set
                     if let _ = val["xScaleByWidth"] {
                         scale.x *= Level.NODE_WIDTH
@@ -128,9 +128,9 @@ class Level {
                 break
             case "rotation":
                 if let val = value as? Dictionary<String,Any> {
-                    rot.x = val["x"] as! Float
-                    rot.y = val["y"] as! Float
-                    rot.z = val["z"] as! Float
+                    rot.x = Float(val["x"] as! Double)
+                    rot.y = Float(val["y"] as! Double)
+                    rot.z = Float(val["z"] as! Double)
                 }
                 break
             case "components":
