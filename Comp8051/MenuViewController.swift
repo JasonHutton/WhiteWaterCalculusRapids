@@ -10,14 +10,15 @@ import Foundation
 import GLKit
 
 class MenuViewController: GLKViewController {
-    
+    static var instance: MenuViewController?
+
     @IBOutlet weak var audioButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //scoreLabel.text = "Score: \(score)"
-        
+        MenuViewController.instance = self
         Settings.instance.playMusic(soundFile: "menu")
     }
     
@@ -25,11 +26,13 @@ class MenuViewController: GLKViewController {
         if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: false)
             Settings.instance.player.pause()
-            audioButton.setTitle("Un-mute Audio", for: .normal)
+            let btnImage = UIImage(named: "mute")
+            audioButton.setImage(btnImage, for: .normal)
         } else {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: true)
             Settings.instance.player.play()
-            audioButton.setTitle("Mute Audio", for: .normal)
+            let btnImage = UIImage(named: "notMute")
+            audioButton.setImage(btnImage, for: .normal)
         }
     }
 }

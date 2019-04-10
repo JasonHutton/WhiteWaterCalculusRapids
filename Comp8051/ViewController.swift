@@ -19,6 +19,7 @@ extension Array {
 class ViewController: GLKViewController {
     
     @IBOutlet weak var scoreLabel: UILabel!
+
     @IBOutlet weak var audioButton: UIButton!
     
     static var deltaTime: Float = 1.0/30.0
@@ -47,19 +48,28 @@ class ViewController: GLKViewController {
         
         Settings.instance.playMusic(soundFile: "gameplay3")
         
+        // Set audio button to be the same image as on menu screen
+        audioButton.setImage(MenuViewController.instance?.audioButton.currentImage, for: .normal)
+        
         setupGL()
     }
     
     @IBAction func toggleAudio(_ sender: Any) {
+        var btnImage : UIImage?
+        
         if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: false)
             Settings.instance.player.pause()
-            audioButton.setTitle("Un-mute Audio", for: .normal)
+            btnImage = UIImage(named: "mute")
+
         } else {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: true)
             Settings.instance.player.play()
-            audioButton.setTitle("Mute Audio", for: .normal)
+            btnImage = UIImage(named: "notMute")
         }
+        
+        audioButton.setImage(btnImage, for: .normal)
+        MenuViewController.instance?.audioButton.setImage(btnImage, for: .normal)// set audio button in menu
     }
     
     @IBAction func quitGame(_ sender: Any) {
@@ -141,7 +151,7 @@ class ViewController: GLKViewController {
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         // clear the scene
-        glClearColor(0, 0, 0, 1.0)
+        glClearColor(0.5, 0.5, 0.5, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT))
         
         glEnable(GLenum(GL_DEPTH_TEST))

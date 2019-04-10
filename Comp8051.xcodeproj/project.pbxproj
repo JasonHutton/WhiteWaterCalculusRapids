@@ -82,6 +82,11 @@
 		DA5C723D225BF95700B5E5A3 /* WinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C723C225BF95700B5E5A3 /* WinViewController.swift */; };
 		DA5C723F225C119200B5E5A3 /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA5C723E225C119100B5E5A3 /* gameover.mp3 */; };
 		DA5C7243225C385A00B5E5A3 /* complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA5C7242225C385A00B5E5A3 /* complete.mp3 */; };
+		DA5C7246225D923A00B5E5A3 /* notMute.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C7244225D923A00B5E5A3 /* notMute.png */; };
+		DA5C7247225D923A00B5E5A3 /* mute.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C7245225D923A00B5E5A3 /* mute.png */; };
+		DA5C7249225D98B600B5E5A3 /* quit.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C7248225D98B600B5E5A3 /* quit.png */; };
+		DA5C724B225D9F5F00B5E5A3 /* lavaTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA5C724A225D9F5F00B5E5A3 /* lavaTexture.jpg */; };
+		DA5C7251225DAAD100B5E5A3 /* Menu Background2.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C7250225DAAD000B5E5A3 /* Menu Background2.png */; };
 		DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570C22151F0F002315D0 /* AppDelegate.swift */; };
 		DA99570F22151F0F002315D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570E22151F0F002315D0 /* ViewController.swift */; };
 		DA99571222151F0F002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA99571022151F0F002315D0 /* Main.storyboard */; };
@@ -258,6 +263,11 @@
 		DA5C723C225BF95700B5E5A3 /* WinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinViewController.swift; sourceTree = "<group>"; };
 		DA5C723E225C119100B5E5A3 /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		DA5C7242225C385A00B5E5A3 /* complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = complete.mp3; sourceTree = "<group>"; };
+		DA5C7244225D923A00B5E5A3 /* notMute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notMute.png; sourceTree = "<group>"; };
+		DA5C7245225D923A00B5E5A3 /* mute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mute.png; sourceTree = "<group>"; };
+		DA5C7248225D98B600B5E5A3 /* quit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quit.png; sourceTree = "<group>"; };
+		DA5C724A225D9F5F00B5E5A3 /* lavaTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lavaTexture.jpg; sourceTree = "<group>"; };
+		DA5C7250225DAAD000B5E5A3 /* Menu Background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu Background2.png"; sourceTree = "<group>"; };
 		DA99570922151F0F002315D0 /* Comp8051.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA99570C22151F0F002315D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA99570E22151F0F002315D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -583,6 +593,11 @@
 		DAD246B022459D0D00B4D62C /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				DA5C7250225DAAD000B5E5A3 /* Menu Background2.png */,
+				DA5C724A225D9F5F00B5E5A3 /* lavaTexture.jpg */,
+				DA5C7248225D98B600B5E5A3 /* quit.png */,
+				DA5C7245225D923A00B5E5A3 /* mute.png */,
+				DA5C7244225D923A00B5E5A3 /* notMute.png */,
 				DA5C7236225B15DA00B5E5A3 /* dangerTexture.jpg */,
 				DAD246CD224CA1C000B4D62C /* deathTexture.jpg */,
 				DAD246C9224C131400B4D62C /* winTexture.jpg */,
@@ -736,10 +751,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				83D6D339225C11550074CD98 /* node01.json in Resources */,
+				DA5C724B225D9F5F00B5E5A3 /* lavaTexture.jpg in Resources */,
 				DAD246CB224C131400B4D62C /* winTexture.jpg in Resources */,
 				DAD246BE2249E89600B4D62C /* UnitCube.obj in Resources */,
 				8307E0FE2246E77A008269C2 /* woodTexture.jpg in Resources */,
 				DAD246B72245A1CE00B4D62C /* ICOSphere.obj in Resources */,
+				DA5C7251225DAAD100B5E5A3 /* Menu Background2.png in Resources */,
 				DAD246B82245A1CE00B4D62C /* UnitSurface.obj in Resources */,
 				E3F7C57E22554C300060CA09 /* ballimpact.mp3 in Resources */,
 				DA9957712227BEEF002315D0 /* SimpleVertexShader.glsl in Resources */,
@@ -749,11 +766,14 @@
 				DA5C7243225C385A00B5E5A3 /* complete.mp3 in Resources */,
 				DAD246C32249F26700B4D62C /* gameplay3.mp3 in Resources */,
 				DAD246BC2249DD8F00B4D62C /* Menu Background.png in Resources */,
+				DA5C7249225D98B600B5E5A3 /* quit.png in Resources */,
 				8307E0FF2246E77A008269C2 /* marbleTexture.jpg in Resources */,
 				DA99571422151F11002315D0 /* Assets.xcassets in Resources */,
+				DA5C7246225D923A00B5E5A3 /* notMute.png in Resources */,
 				E3237CA5225CDD1C00B533BA /* ballblast.mp3 in Resources */,
 				DA9957702227BEEF002315D0 /* SimpleFragmentShader.glsl in Resources */,
 				DA5C7237225B15DA00B5E5A3 /* dangerTexture.jpg in Resources */,
+				DA5C7247225D923A00B5E5A3 /* mute.png in Resources */,
 				DAD246C42249F26700B4D62C /* menu.mp3 in Resources */,
 				DA99571222151F0F002315D0 /* Main.storyboard in Resources */,
 			);

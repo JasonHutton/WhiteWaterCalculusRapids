@@ -199,7 +199,7 @@ class Level {
         deathWall.transform.scale.z = 2
         deathWall.addComponent(component: DeathWallBehaviour())
         deathWall.addComponent(component: KinematicBlockBody(tag: "Lose"))
-        deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "dangerTexture.jpg"))
+        deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "lavaTexture.jpg"))
         GameObject.root.addChild(gameObject: deathWall)
     }
     
