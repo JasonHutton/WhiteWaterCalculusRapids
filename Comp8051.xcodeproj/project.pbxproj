@@ -91,6 +91,7 @@
 		DA5C7249225D98B600B5E5A3 /* quit.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C7248225D98B600B5E5A3 /* quit.png */; };
 		DA5C724B225D9F5F00B5E5A3 /* lavaTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA5C724A225D9F5F00B5E5A3 /* lavaTexture.jpg */; };
 		DA5C7251225DAAD100B5E5A3 /* Menu Background2.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C7250225DAAD000B5E5A3 /* Menu Background2.png */; };
+		DA5C7255225DC26200B5E5A3 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C7254225DC26200B5E5A3 /* InstructionViewController.swift */; };
 		DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570C22151F0F002315D0 /* AppDelegate.swift */; };
 		DA99570F22151F0F002315D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570E22151F0F002315D0 /* ViewController.swift */; };
 		DA99571222151F0F002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA99571022151F0F002315D0 /* Main.storyboard */; };
@@ -279,6 +280,7 @@
 		DA5C7248225D98B600B5E5A3 /* quit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quit.png; sourceTree = "<group>"; };
 		DA5C724A225D9F5F00B5E5A3 /* lavaTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lavaTexture.jpg; sourceTree = "<group>"; };
 		DA5C7250225DAAD000B5E5A3 /* Menu Background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu Background2.png"; sourceTree = "<group>"; };
+		DA5C7254225DC26200B5E5A3 /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		DA99570922151F0F002315D0 /* Comp8051.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA99570C22151F0F002315D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA99570E22151F0F002315D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 				DA99570C22151F0F002315D0 /* AppDelegate.swift */,
 				DA99570E22151F0F002315D0 /* ViewController.swift */,
 				DA5C7238225BF91500B5E5A3 /* MenuViewController.swift */,
+				DA5C7254225DC26200B5E5A3 /* InstructionViewController.swift */,
 				DA5C723C225BF95700B5E5A3 /* WinViewController.swift */,
 				DA5C723A225BF93F00B5E5A3 /* GameOverViewController.swift */,
 				DA99571022151F0F002315D0 /* Main.storyboard */,
@@ -864,6 +867,7 @@
 				E3237CA3225CD27E00B533BA /* ContextCollisionSounds.swift in Sources */,
 				836E386422489A8800CF7303 /* b2Collision.cpp in Sources */,
 				836E383E22489A8800CF7303 /* b2CollideCircle.cpp in Sources */,
+				DA5C7255225DC26200B5E5A3 /* InstructionViewController.swift in Sources */,
 				DA5C723B225BF93F00B5E5A3 /* GameOverViewController.swift in Sources */,
 				836E384A22489A8800CF7303 /* b2WorldCallbacks.cpp in Sources */,
 				E39030B0225555150092A689 /* CollisionSound.swift in Sources */,
