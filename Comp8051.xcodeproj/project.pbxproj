@@ -85,6 +85,7 @@
 		DA5C7246225D923A00B5E5A3 /* notMute.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C7244225D923A00B5E5A3 /* notMute.png */; };
 		DA5C7247225D923A00B5E5A3 /* mute.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C7245225D923A00B5E5A3 /* mute.png */; };
 		DA5C7249225D98B600B5E5A3 /* quit.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C7248225D98B600B5E5A3 /* quit.png */; };
+		DA5C724B225D9F5F00B5E5A3 /* lavaTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA5C724A225D9F5F00B5E5A3 /* lavaTexture.jpg */; };
 		DA99570D22151F0F002315D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570C22151F0F002315D0 /* AppDelegate.swift */; };
 		DA99570F22151F0F002315D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99570E22151F0F002315D0 /* ViewController.swift */; };
 		DA99571222151F0F002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA99571022151F0F002315D0 /* Main.storyboard */; };
@@ -264,6 +265,7 @@
 		DA5C7244225D923A00B5E5A3 /* notMute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notMute.png; sourceTree = "<group>"; };
 		DA5C7245225D923A00B5E5A3 /* mute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mute.png; sourceTree = "<group>"; };
 		DA5C7248225D98B600B5E5A3 /* quit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quit.png; sourceTree = "<group>"; };
+		DA5C724A225D9F5F00B5E5A3 /* lavaTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lavaTexture.jpg; sourceTree = "<group>"; };
 		DA99570922151F0F002315D0 /* Comp8051.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA99570C22151F0F002315D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA99570E22151F0F002315D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 		DAD246B022459D0D00B4D62C /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				DA5C724A225D9F5F00B5E5A3 /* lavaTexture.jpg */,
 				DA5C7248225D98B600B5E5A3 /* quit.png */,
 				DA5C7245225D923A00B5E5A3 /* mute.png */,
 				DA5C7244225D923A00B5E5A3 /* notMute.png */,
@@ -745,6 +748,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83D6D339225C11550074CD98 /* node01.json in Resources */,
+				DA5C724B225D9F5F00B5E5A3 /* lavaTexture.jpg in Resources */,
 				DAD246CB224C131400B4D62C /* winTexture.jpg in Resources */,
 				DAD246BE2249E89600B4D62C /* UnitCube.obj in Resources */,
 				8307E0FE2246E77A008269C2 /* woodTexture.jpg in Resources */,
