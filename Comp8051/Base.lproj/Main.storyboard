@@ -68,7 +68,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Menu Background.png" translatesAutoresizingMaskIntoConstraints="NO" id="9xn-1O-rac">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Menu Background2.png" translatesAutoresizingMaskIntoConstraints="NO" id="9xn-1O-rac">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -198,7 +198,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Menu Background.png" width="1152" height="648"/>
+        <image name="Menu Background2.png" width="1152" height="1000"/>
         <image name="notMute.png" width="512" height="512"/>
         <image name="quit.png" width="512" height="512"/>
     </resources>
