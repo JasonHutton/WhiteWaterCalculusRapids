@@ -62,7 +62,9 @@ class Level {
     
     func loadRandomNode(yOffset: Float) {
         
-        if let jsonArray = Level.nodePrefabs.last/*.randomElement()*/ {
+        if var jsonArray = Level.nodePrefabs.randomElement() {
+            
+            jsonArray = Level.nodePrefabs[0] // temp override
             
             let node = Node(y: yOffset)
             
@@ -217,7 +219,7 @@ class Level {
         deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "lavaTexture.jpg"))
         GameObject.root.addChild(gameObject: deathWall)
         // add level generator to sphere
-        sphereObj.addComponent(component: LevelGenerator(deleteObj: deathWall, spawnAhead: 1, level: self))
+        sphereObj.addComponent(component: LevelGenerator(deleteObj: deathWall, spawnAhead: 2, level: self))
     }
     
     func close() {
