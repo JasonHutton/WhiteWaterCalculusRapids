@@ -64,7 +64,7 @@ class Level {
         
         if var jsonArray = Level.nodePrefabs.randomElement() {
             
-            jsonArray = Level.nodePrefabs[1] // temp override
+            //jsonArray = Level.nodePrefabs[1] // temp override
             
             let node = Node(y: yOffset)
             
