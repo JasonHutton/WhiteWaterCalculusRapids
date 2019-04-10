@@ -30,6 +30,24 @@ class MenuViewController: GLKViewController {
         topScore.text = "Top Score: \(Settings.instance.getSetting(name: "highScore1") as Int)"
         secondScore.text = "Second Score: \(Settings.instance.getSetting(name: "highScore2") as Int)"
         thirdScore.text = "Third Score: \(Settings.instance.getSetting(name: "highScore3") as Int)"
+        
+        
+        if(!Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
+            let btnImage = UIImage(named: "musicMute")
+            musicButton.setImage(btnImage, for: .normal)
+        } else {
+            let btnImage = UIImage(named: "musicNotMute")
+            musicButton.setImage(btnImage, for: .normal)
+        }
+        
+        if(!Settings.instance.getSetting(name: Settings.Names.playSound.rawValue)) {
+            let btnImage = UIImage(named: "mute")
+            soundButton.setImage(btnImage, for: .normal)
+        } else {
+            let btnImage = UIImage(named: "notMute")
+            soundButton.setImage(btnImage, for: .normal)
+        }
+        
     }
     
     @IBAction func toggleMusic(_ sender: Any) {
