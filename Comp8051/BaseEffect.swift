@@ -20,7 +20,15 @@ class BaseEffect {
     var lightDirectionUniform : Int32 = 0
     var lightSpecularIntensityUniform : Int32 = 0
     var lightShininessUniform : Int32 = 0
-    
+    var pointLightColorUniform : Int32 = 0
+    var pointLightAmbientIntensityUniform : Int32 = 0
+    var pointLightDiffuseIntensityUniform : Int32 = 0
+    var pointLightSpecularIntensityUniform : Int32 = 0
+    var pointLightShininessUniform : Int32 = 0
+    var positionUniform : Int32 = 0
+    var constantUniform : Int32 = 0
+    var linearUniform : Int32 = 0
+    var quadraticUniform : Int32 = 0
     
     var modelViewMatrix : GLKMatrix4 = GLKMatrix4Identity
     var projectionMatrix : GLKMatrix4 = GLKMatrix4Identity
@@ -34,29 +42,38 @@ class BaseEffect {
         glUseProgram(self.programHandle)
         
         
-        // 유니폼 주입
         glUniformMatrix4fv(self.projectionMatrixUniform, 1, GLboolean(GL_FALSE), self.projectionMatrix.array)
         
-        // 유니폼 주입
         glUniformMatrix4fv(self.modelViewMatrixUniform, 1, GLboolean(GL_FALSE), self.modelViewMatrix.array)
         
-        // 유니폼 주입
         glActiveTexture(GLenum(GL_TEXTURE1))
         glBindTexture(GLenum(GL_TEXTURE_2D), self.texture)
         glUniform1i(self.textureUniform, 1)
         
-        // 유니폼 주입
+        // direction light
         glUniform3f(self.lightColorUniform, 1, 1, 1)
         glUniform1f(self.lightAmbientIntensityUniform, 0.5)
         
-        // 유니폼 주입
         let lightDirection : GLKVector3 = GLKVector3(v: (0, -1, 0))
         glUniform3f(self.lightDirectionUniform, lightDirection.x, lightDirection.y, lightDirection.z)
         glUniform1f(self.lightDiffuseIntensityUniform, 0.5)
         
-        // 유니폼 주입
         glUniform1f(self.lightSpecularIntensityUniform, 0.5)
         glUniform1f(self.lightShininessUniform, 0.5)
+        
+        // point light
+        glUniform3f(self.pointLightColorUniform, 1, 1, 1)
+        glUniform1f(self.pointLightAmbientIntensityUniform, 0.5)
+        
+        glUniform1f(self.pointLightDiffuseIntensityUniform, 0.5)
+        
+        glUniform1f(self.pointLightSpecularIntensityUniform, 0.5)
+        glUniform1f(self.pointLightShininessUniform, 0.5)
+
+        glUniform3f(self.positionUniform, 0, 0, 0)
+        glUniform1f(self.constantUniform, 0.5)
+        glUniform1f(self.linearUniform, 0.5)
+        glUniform1f(self.quadraticUniform, 0.5)
     }
 }
 
@@ -65,9 +82,7 @@ extension BaseEffect {
         let path = Bundle.main.path(forResource: shaderName, ofType: nil)
         
         do {
-            
-            // swift로 컴파일할 때, 데이터 컨버전의 어려움이 있었다.
-            // 이 부분을 잘 이해하자
+
             let shaderString = try NSString(contentsOfFile: path!, encoding: String.Encoding.utf8.rawValue)
             let shaderHandle = glCreateShader(shaderType)
             var shaderStringLength : GLint = GLint(Int32(shaderString.length))
@@ -110,13 +125,12 @@ extension BaseEffect {
         glAttachShader(self.programHandle, vertexShaderName)
         glAttachShader(self.programHandle, fragmentShaderName)
         
-        glBindAttribLocation(self.programHandle, VertexAttributes.position.rawValue, "a_Position") // 정점 보내는 곳을 a_Position 어트리뷰트로 바인딩한다.
-        glBindAttribLocation(self.programHandle, VertexAttributes.color.rawValue, "a_Color") // 색상 보내는 곳을 a_Color 어트리뷰트로 바인딩한다.
-        glBindAttribLocation(self.programHandle, VertexAttributes.texCoord.rawValue, "a_TexCoord")  // 텍스춰 좌표 보내는 곳을 a_TexCoord 어트리뷰트로 바인딩한다.
-        glBindAttribLocation(self.programHandle, VertexAttributes.normal.rawValue, "a_Normal") // 노말벡터 좌표 보내는 곳을 a_Normal 어트리뷰트로 바인딩한다.
+        glBindAttribLocation(self.programHandle, VertexAttributes.position.rawValue, "a_Position")
+        glBindAttribLocation(self.programHandle, VertexAttributes.color.rawValue, "a_Color")
+        glBindAttribLocation(self.programHandle, VertexAttributes.texCoord.rawValue, "a_TexCoord")
+        glBindAttribLocation(self.programHandle, VertexAttributes.normal.rawValue, "a_Normal")
         glLinkProgram(self.programHandle)
         
-        // 유니폼은 링크를 한 다음에 찾아야 한다. vertexshader나 fragmentshader에 존재할 수 있으므로
         self.modelViewMatrixUniform = glGetUniformLocation(self.programHandle, "u_ModelViewMatrix")
         self.projectionMatrixUniform = glGetUniformLocation(self.programHandle, "u_ProjectionMatrix")
         self.textureUniform = glGetUniformLocation(self.programHandle, "u_Texture")
