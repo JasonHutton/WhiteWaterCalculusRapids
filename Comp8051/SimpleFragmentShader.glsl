@@ -52,6 +52,7 @@ void main(void) {
     // attenuation
     lowp float dist = length(u_PointLight.Position - frag_Position);
     lowp float attenuation = 1.0 / (u_PointLight.Constant + u_PointLight.Linear * dist + u_PointLight.Quadratic * (dist * dist));
+    attenuation = clamp(attenuation, 0.0, 1.0);
     
     // Ambient
     lowp vec3 AmbientColorLava = u_PointLight.Color * u_PointLight.AmbientIntensity;

@@ -149,10 +149,9 @@ extension BaseEffect {
         self.pointLightSpecularIntensityUniform = glGetUniformLocation(self.programHandle, "u_PointLight.SpecularIntensity")
         self.pointLightShininessUniform = glGetUniformLocation(self.programHandle, "PointLight.Shininess")
         self.positionUniform = glGetUniformLocation(self.programHandle,"PointLight.Position")
-        self.constantUniform = glGetUniformLocation(self.programHandle,"PointLight.Costnat")
+        self.constantUniform = glGetUniformLocation(self.programHandle,"PointLight.Constant")
         self.linearUniform = glGetUniformLocation(self.programHandle,"PointLight.Linear")
         self.quadraticUniform = glGetUniformLocation(self.programHandle,"PointLight.Quadratic")
-        
         
         var linkStatus : GLint = 0
         glGetProgramiv(self.programHandle, GLenum(GL_LINK_STATUS), &linkStatus)
