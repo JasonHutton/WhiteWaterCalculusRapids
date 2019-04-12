@@ -71,7 +71,7 @@ class BaseEffect {
         
         glUniform1f(self.pointLightSpecularIntensityUniform, 0.5)
         glUniform1f(self.pointLightShininessUniform, 0.25)
-
+        //print(pointLightPosition.y)
         glUniform3f(self.positionUniform, pointLightPosition.x, pointLightPosition.y, pointLightPosition.z)
         glUniform1f(self.constantUniform, 1.0)
         glUniform1f(self.linearUniform, 0.7)
@@ -147,11 +147,11 @@ extension BaseEffect {
         self.pointLightAmbientIntensityUniform = glGetUniformLocation(self.programHandle, "u_PointLight.AmbientIntensity")
         self.pointLightDiffuseIntensityUniform = glGetUniformLocation(self.programHandle, "u_PointLight.DiffuseIntensity")
         self.pointLightSpecularIntensityUniform = glGetUniformLocation(self.programHandle, "u_PointLight.SpecularIntensity")
-        self.pointLightShininessUniform = glGetUniformLocation(self.programHandle, "PointLight.Shininess")
-        self.positionUniform = glGetUniformLocation(self.programHandle,"PointLight.Position")
-        self.constantUniform = glGetUniformLocation(self.programHandle,"PointLight.Constant")
-        self.linearUniform = glGetUniformLocation(self.programHandle,"PointLight.Linear")
-        self.quadraticUniform = glGetUniformLocation(self.programHandle,"PointLight.Quadratic")
+        self.pointLightShininessUniform = glGetUniformLocation(self.programHandle, "u_PointLight.Shininess")
+        self.positionUniform = glGetUniformLocation(self.programHandle,"u_PointLight.Position")
+        self.constantUniform = glGetUniformLocation(self.programHandle,"u_PointLight.Constant")
+        self.linearUniform = glGetUniformLocation(self.programHandle,"u_PointLight.Linear")
+        self.quadraticUniform = glGetUniformLocation(self.programHandle,"u_PointLight.Quadratic")
         
         var linkStatus : GLint = 0
         glGetProgramiv(self.programHandle, GLenum(GL_LINK_STATUS), &linkStatus)
