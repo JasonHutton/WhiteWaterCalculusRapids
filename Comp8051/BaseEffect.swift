@@ -74,8 +74,8 @@ class BaseEffect {
 
         glUniform3f(self.positionUniform, pointLightPosition.x, pointLightPosition.y, pointLightPosition.z)
         glUniform1f(self.constantUniform, 1.0)
-        glUniform1f(self.linearUniform, 0.09)
-        glUniform1f(self.quadraticUniform, 0.032)
+        glUniform1f(self.linearUniform, 0.7)
+        glUniform1f(self.quadraticUniform, 1.8)
     }
 }
 
