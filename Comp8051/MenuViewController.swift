@@ -25,7 +25,7 @@ class MenuViewController: GLKViewController {
         
         //scoreLabel.text = "Score: \(score)"
         MenuViewController.instance = self
-        Settings.instance.playMusic(soundFile: "menu")
+        Settings.instance.playMusic(soundFile: "menu", numberOfLoops: -1)
         
         topScore.text = "1st: \(Settings.instance.getSetting(name: "highScore1") as Int)"
         secondScore.text = "2nd: \(Settings.instance.getSetting(name: "highScore2") as Int)"
