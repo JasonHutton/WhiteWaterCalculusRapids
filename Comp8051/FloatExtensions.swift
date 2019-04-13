@@ -12,4 +12,39 @@ extension Float {
         
         return (1 - t) * start + t * end
     }
+    
+    func clamp(min: Float) -> Float {
+        
+        if self < min {
+            
+            return min
+        }
+        
+        return self
+    }
+    
+    func clamp(max: Float) -> Float {
+        
+        if self > max {
+            
+            return max
+        }
+        
+        return self
+    }
+    
+    func clamp(min: Float, max: Float) -> Float {
+        
+        if self < min {
+            
+            return min
+        }
+        
+        if self > max {
+            
+            return max
+        }
+        
+        return self
+    }
 }

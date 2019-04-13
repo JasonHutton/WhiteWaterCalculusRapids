@@ -13,7 +13,7 @@ class Level {
     private static var nodePrefabs = [[Dictionary<String,Any>]]()
     private static var hasStored = false
     
-    public var nodes = Queue<Node>()
+    public var nodes = Queue<LevelNode>()
     public let shader: BaseEffect
     
     init(shader: BaseEffect) {
@@ -66,7 +66,7 @@ class Level {
             
             //jsonArray = Level.nodePrefabs[1] // temp override
             
-            let node = Node(y: yOffset)
+            let node = LevelNode(y: yOffset)
             
             for json in jsonArray {
                 
@@ -97,7 +97,40 @@ class Level {
         rightWall.addComponent(component: BlockBody(tag: "Floor"))
         GameObject.root.addChild(gameObject: rightWall)
         
-        let node = Node(y: yOffset)
+        let node = LevelNode(y: yOffset)
+        
+        node.add(gameObject: leftWall)
+        node.add(gameObject: rightWall)
+        
+        nodes.enqueue(node)
+    }
+    
+    func loadCeilingNode(yOffset: Float) {
+        
+        let ceiling = GameObject(tag: "Wall");
+        ceiling.transform.position.y = yOffset + Level.NODE_HEIGHT / 2 - 0.5
+        ceiling.transform.scale.x = Level.NODE_WIDTH - 1
+        ceiling.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        ceiling.addComponent(component: BlockBody(tag: "Floor"))
+        GameObject.root.addChild(gameObject: ceiling)
+        
+        let leftWall = GameObject(tag: "Wall");
+        leftWall.transform.position.x = -Level.NODE_WIDTH / 2
+        leftWall.transform.position.y = yOffset
+        leftWall.transform.scale.y = Level.NODE_HEIGHT
+        leftWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        leftWall.addComponent(component: BlockBody(tag: "Floor"))
+        GameObject.root.addChild(gameObject: leftWall)
+        
+        let rightWall = GameObject(tag: "Wall");
+        rightWall.transform.position.x = Level.NODE_WIDTH / 2
+        rightWall.transform.position.y = yOffset
+        rightWall.transform.scale.y = Level.NODE_HEIGHT
+        rightWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader))
+        rightWall.addComponent(component: BlockBody(tag: "Floor"))
+        GameObject.root.addChild(gameObject: rightWall)
+        
+        let node = LevelNode(y: yOffset)
         
         node.add(gameObject: leftWall)
         node.add(gameObject: rightWall)
@@ -236,11 +269,11 @@ class Level {
         cameraObj.addComponent(component: CameraTrack(trackedObj: sphereObj, shader: shader))
         
         let deathWall = GameObject(tag: "Death")
-        deathWall.transform.position = Vector3(x: 0, y: 30, z: 0)
+        deathWall.transform.position = Vector3(x: 0, y: 1000, z: 0)
         deathWall.transform.scale.x = Level.NODE_WIDTH
         deathWall.transform.scale.y = 40
         deathWall.transform.scale.z = 2
-        deathWall.addComponent(component: DeathWallBehaviour(player: sphereObj, acceleration: 0.1, initialVelocity: 1, maxDist: 100, shader: shader))
+        deathWall.addComponent(component: DeathWallBehaviour(trackedObj: cameraObj, acceleration: 0.02, initialVelocity: 1, maxVelocity: 6, maxDist: 45, shader: shader))
         deathWall.addComponent(component: KinematicBlockBody(tag: "Lose"))
         deathWall.addComponent(component: ModelRenderer(modelName: "UnitCube", shader: shader, texture: "lavaTexture.jpg"))
         GameObject.root.addChild(gameObject: deathWall)

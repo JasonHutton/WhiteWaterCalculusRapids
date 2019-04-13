@@ -25,7 +25,7 @@
 		8309925D22272636007B8B98 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8309925C22272636007B8B98 /* Error.swift */; };
 		830A029022264B050028E531 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A028F22264B050028E531 /* Input.swift */; };
 		830EC388225D4A27002531FE /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830EC387225D4A27002531FE /* Queue.swift */; };
-		830EC38A225D4B32002531FE /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830EC389225D4B32002531FE /* Node.swift */; };
+		830EC38A225D4B32002531FE /* LevelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830EC389225D4B32002531FE /* LevelNode.swift */; };
 		830EC38C225D5186002531FE /* LevelGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830EC38B225D5186002531FE /* LevelGenerator.swift */; };
 		834E1E28224860570055E02A /* BlockBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E1E27224860570055E02A /* BlockBody.swift */; };
 		836E383822489A8800CF7303 /* b2ChainShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836E37DC22489A8800CF7303 /* b2ChainShape.cpp */; };
@@ -172,7 +172,7 @@
 		8309925C22272636007B8B98 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		830A028F22264B050028E531 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		830EC387225D4A27002531FE /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
-		830EC389225D4B32002531FE /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		830EC389225D4B32002531FE /* LevelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelNode.swift; sourceTree = "<group>"; };
 		830EC38B225D5186002531FE /* LevelGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelGenerator.swift; sourceTree = "<group>"; };
 		834E1E27224860570055E02A /* BlockBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockBody.swift; sourceTree = "<group>"; };
 		836E36BA224895C200CF7303 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
@@ -532,7 +532,7 @@
 		83D305B822223DA2008D5CFC /* Data Types */ = {
 			isa = PBXGroup;
 			children = (
-				830EC389225D4B32002531FE /* Node.swift */,
+				830EC389225D4B32002531FE /* LevelNode.swift */,
 				830EC387225D4A27002531FE /* Queue.swift */,
 				DA99573A2215335C002315D0 /* Vertex.swift */,
 				DA99573C2217A53F002315D0 /* Model.swift */,
@@ -926,7 +926,7 @@
 				836E384D22489A8800CF7303 /* b2Island.cpp in Sources */,
 				836E386222489A8800CF7303 /* b2ContactManager.cpp in Sources */,
 				83083A9E221E75A3003931A2 /* Component.swift in Sources */,
-				830EC38A225D4B32002531FE /* Node.swift in Sources */,
+				830EC38A225D4B32002531FE /* LevelNode.swift in Sources */,
 				830EC388225D4A27002531FE /* Queue.swift in Sources */,
 				E3F7C57B22553D780060CA09 /* SoundEffect.swift in Sources */,
 				8307E15F2247255C008269C2 /* PhysicsWrapper.m in Sources */,
