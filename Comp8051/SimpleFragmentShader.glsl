@@ -63,7 +63,7 @@ void main(void) {
     // Specular
     lowp vec3 ReflectionLava = reflect(lightDir, Normal);
     lowp float SpecularFactorLava = pow(max(0.0, -dot(ReflectionLava, Eye)), u_PointLight.Shininess);
-    lowp vec3 SpecularColorLava = u_PointLight.Color * u_PointLight.SpecularIntensity * SpecularFactor;
+    lowp vec3 SpecularColorLava = u_PointLight.Color * u_PointLight.SpecularIntensity * SpecularFactorLava;
     
     AmbientColorLava *= attenuation;
     DiffuseColorLava *= attenuation;
