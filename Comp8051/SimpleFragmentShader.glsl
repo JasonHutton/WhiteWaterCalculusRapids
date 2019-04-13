@@ -65,16 +65,5 @@ void main(void) {
     lowp float SpecularFactorLava = pow(max(0.0, -dot(ReflectionLava, Eye)), u_PointLight.Shininess);
     lowp vec3 SpecularColorLava = u_PointLight.Color * u_PointLight.SpecularIntensity * SpecularFactorLava;
     
-    AmbientColorLava *= attenuation;
-    DiffuseColorLava *= attenuation;
-    SpecularColorLava *= attenuation;
-    
-   /* AmbientColorLava *= 1.0;
-    DiffuseColorLava *= 1.0;
-    SpecularColorLava *= 1.0;
-    
-    AmbientColorLava *= 0.0;
-    DiffuseColorLava *= 0.0;
-    SpecularColorLava *= 0.0;*/
-    gl_FragColor = texture2D(u_Texture, frag_TexCoord) * (vec4((AmbientColor + DiffuseColor + SpecularColor), 1.0) + vec4((AmbientColorLava + DiffuseColorLava + SpecularColorLava), 1.0));
+    gl_FragColor = texture2D(u_Texture, frag_TexCoord) * (vec4((AmbientColor + DiffuseColor + SpecularColor), 1.0) + vec4(attenuation * (AmbientColorLava + DiffuseColorLava + SpecularColorLava), 1.0));
 }
