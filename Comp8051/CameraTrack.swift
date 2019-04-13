@@ -24,7 +24,6 @@ class CameraTrack : Component {
             pos.y = Float.lerp(start: pos.y, end: trackedObj.worldTransform.position.y, t: deltaTime * 3)
             
             gameObject!.worldTransform.position = pos
-            shader.pointLightPosition -= pos
         }
     }
 }

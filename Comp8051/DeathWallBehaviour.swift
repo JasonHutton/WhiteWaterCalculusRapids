@@ -38,8 +38,10 @@ class DeathWallBehaviour : Component {
                 pos.y = trackedObj.transform.position.y + maxDist
             }
             
+            let camPos = GameObject.root.getChild(tag: "Camera")!.worldTransform.position
+   
             gameObject!.transform.position = pos
-            shader.pointLightPosition = pos
+            shader.pointLightPosition = pos - camPos
         }
     }
 }
