@@ -9,10 +9,12 @@
 class CameraTrack : Component {
     
     private var trackedObj: GameObject
+    private let shader: BaseEffect
     
-    init (trackedObj: GameObject) {
+    init (trackedObj: GameObject, shader: BaseEffect) {
         
         self.trackedObj = trackedObj
+        self.shader = shader
     }
     
     override func lateUpdate(deltaTime: Float) {
@@ -22,6 +24,7 @@ class CameraTrack : Component {
             pos.y = Float.lerp(start: pos.y, end: trackedObj.worldTransform.position.y, t: deltaTime * 3)
             
             gameObject!.worldTransform.position = pos
+            shader.pointLightPosition -= pos
         }
     }
 }

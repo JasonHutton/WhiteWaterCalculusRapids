@@ -233,7 +233,7 @@ class Level {
         sphereObj.addComponent(component: ModelRenderer(modelName: "ICOSphere", shader: shader))
         GameObject.root.addChild(gameObject: sphereObj)
         // add camera track component to track sphere
-        cameraObj.addComponent(component: CameraTrack(trackedObj: sphereObj))
+        cameraObj.addComponent(component: CameraTrack(trackedObj: sphereObj, shader: shader))
         
         let deathWall = GameObject(tag: "Death")
         deathWall.transform.position = Vector3(x: 0, y: 30, z: 0)
