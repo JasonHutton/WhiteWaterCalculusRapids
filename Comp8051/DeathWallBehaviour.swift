@@ -12,13 +12,15 @@ class DeathWallBehaviour : Component {
     private let acceleration: Float
     private var velocity: Float
     private var maxDist: Float
+    private let shader: BaseEffect
     
-    init(player: GameObject, acceleration: Float, initialVelocity: Float, maxDist: Float) {
+    init(player: GameObject, acceleration: Float, initialVelocity: Float, maxDist: Float, shader: BaseEffect) {
         
         self.player = player
         self.acceleration = acceleration
         velocity = initialVelocity
         self.maxDist = maxDist
+        self.shader = shader
     }
     
     override func update(deltaTime: Float) {
@@ -34,6 +36,7 @@ class DeathWallBehaviour : Component {
             }
             
             gameObject!.transform.position = pos
+            shader.pointLightPosition = pos
         }
     }
 }

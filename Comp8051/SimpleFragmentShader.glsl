@@ -50,21 +50,31 @@ void main(void) {
     lowp vec3 lightDir = normalize(u_PointLight.Position - frag_Position);
     
     // attenuation
-    lowp float distance    = length(u_PointLight.Position - frag_Position);
-    lowp float attenuation = 1.0 / (u_PointLight.Constant + u_PointLight.Linear * distance +
-                               u_PointLight.Quadratic * (distance * distance));
+    lowp float dist = length(u_PointLight.Position - frag_Position);
+    lowp float attenuation = 1.0 / (u_PointLight.Constant + u_PointLight.Linear * dist + u_PointLight.Quadratic * (dist * dist));
     
     // Ambient
     lowp vec3 AmbientColorLava = u_PointLight.Color * u_PointLight.AmbientIntensity;
     
     // Diffuse
     lowp float DiffuseFactorLava = max(-dot(Normal, lightDir), 0.0);
-    lowp vec3 DiffuseColorLava = u_PointLight.Color * u_PointLight.DiffuseIntensity * DiffuseFactor;
+    lowp vec3 DiffuseColorLava = u_PointLight.Color * u_PointLight.DiffuseIntensity * DiffuseFactorLava;
     
     // Specular
     lowp vec3 ReflectionLava = reflect(lightDir, Normal);
-    lowp float SpecularFactorLava = pow(max(0.0, -dot(Reflection, Eye)), u_PointLight.Shininess);
-    lowp vec3 SpecularColorLava = u_PointLight.Color * u_PointLight.SpecularIntensity * SpecularFactor;
+    lowp float SpecularFactorLava = pow(max(0.0, -dot(ReflectionLava, Eye)), u_PointLight.Shininess);
+    lowp vec3 SpecularColorLava = u_PointLight.Color * u_PointLight.SpecularIntensity * SpecularFactorLava;
     
-    gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4((AmbientColor + DiffuseColor + SpecularColor), 1.0) * vec4((AmbientColorLava + DiffuseColorLava + SpecularColorLava), 1.0);
+    AmbientColorLava *= attenuation;
+    DiffuseColorLava *= attenuation;
+    SpecularColorLava *= attenuation;
+    
+   /* AmbientColorLava *= 1.0;
+    DiffuseColorLava *= 1.0;
+    SpecularColorLava *= 1.0;
+    
+    AmbientColorLava *= 0.0;
+    DiffuseColorLava *= 0.0;
+    SpecularColorLava *= 0.0;*/
+    gl_FragColor = texture2D(u_Texture, frag_TexCoord) * (vec4((AmbientColor + DiffuseColor + SpecularColor), 1.0) + vec4((AmbientColorLava + DiffuseColorLava + SpecularColorLava), 1.0));
 }
