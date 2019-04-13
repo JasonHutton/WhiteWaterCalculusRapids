@@ -53,6 +53,12 @@ static Physics* physics = nil;
     [physics addGroundBody:tag posX:posX posY:posY scaleX:scaleX scaleY:scaleY rotation:rotation];
 }
 
++ (void)addKinematicBody:(NSString*) tag posX:(float) posX posY:(float) posY scaleX:(float) scaleX
+                  scaleY:(float) scaleY rotation:(float) rotation {
+    
+    [physics addKinematicBody:tag posX:posX posY:posY scaleX:scaleX scaleY:scaleY rotation:rotation];
+}
+
 // add a dynamic circle to the world
 + (void)addBallBody:(NSString*) tag posX:(float) posX posY:(float) posY radius:(float) radius {
     
@@ -65,4 +71,31 @@ static Physics* physics = nil;
     return [physics getBodyTransform:tag];
 }
 
+// pass the collider tags to the contact notifier
++ (void)handleCollisionEnter:(NSString*) tag1 tag2:(NSString*) tag2 {
+    
+    [CollisionPublisher handleCollisionEnterWithTag1:tag1 tag2:tag2];
+}
+
+// pass the collider tags to the contact notifier
++ (void)handleCollisionExit:(NSString*) tag1 tag2:(NSString*) tag2 {
+    
+    [CollisionPublisher handleCollisionExitWithTag1:tag1 tag2:tag2];
+}
+
+// sets a body's transform in the world
++ (void)setBodyPosition:(NSString*)tag transform:(CTransform) transform {
+    
+    [physics setBodyPosition:tag transform:transform];
+}
+
++ (void)removeBody:(NSString*) tag{
+    
+    [physics removeBody:tag];
+}
+
++ (void)removeAllBodies{
+    
+    [physics removeAllBodies];
+}
 @end

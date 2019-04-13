@@ -23,13 +23,15 @@ class Input {
     
     // hey, this is goofy, but it does work
     private func respond () {
+        // set tapped to false on start
+        tapped = false
         print("Input initialized.")
     }
     
     init() {
-        
+
         if motion.isDeviceMotionAvailable {
-            motion.deviceMotionUpdateInterval = 1/30
+            motion.deviceMotionUpdateInterval = 1/60
             motion.startDeviceMotionUpdates(to: .main) {
                 (data, error) in
                 guard let data = data, error == nil else {

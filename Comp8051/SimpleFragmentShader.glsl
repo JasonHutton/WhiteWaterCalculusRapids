@@ -15,9 +15,23 @@ struct Light {
 };
 uniform Light u_Light;
 
+struct PointLight {
+    lowp vec3 Color;
+    lowp vec3 Position;
+    lowp float Constant;
+    lowp float Linear;
+    lowp float Quadratic;
+    lowp float AmbientIntensity;
+    lowp float DiffuseIntensity;
+    highp float SpecularIntensity;
+    highp float Shininess;
+};
+
+uniform PointLight u_PointLight;
 
 void main(void) {
     
+    // Directional Light
     // Ambient
     lowp vec3 AmbientColor = u_Light.Color * u_Light.AmbientIntensity;
     
@@ -32,5 +46,27 @@ void main(void) {
     lowp float SpecularFactor = pow(max(0.0, -dot(Reflection, Eye)), u_Light.Shininess);
     lowp vec3 SpecularColor = u_Light.Color * u_Light.SpecularIntensity * SpecularFactor;
     
-    gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4((AmbientColor + DiffuseColor + SpecularColor), 1.0);
+    // Point light
+    lowp vec3 lightDir = normalize(u_PointLight.Position - frag_Position);
+    
+    // attenuation
+    lowp float dist = length(u_PointLight.Position - frag_Position);
+    lowp float attenuation = 1.0 / (u_PointLight.Constant + u_PointLight.Linear * dist + u_PointLight.Quadratic * (dist * dist));
+    
+    // Ambient
+    lowp vec3 AmbientColorLava = u_PointLight.Color * u_PointLight.AmbientIntensity;
+    
+    // Diffuse
+    lowp float DiffuseFactorLava = max(-dot(Normal, lightDir), 0.0);
+    lowp vec3 DiffuseColorLava = u_PointLight.Color * u_PointLight.DiffuseIntensity * DiffuseFactorLava;
+    
+    // Specular
+    lowp vec3 ReflectionLava = reflect(lightDir, Normal);
+    lowp float SpecularFactorLava = pow(max(0.0, -dot(ReflectionLava, Eye)), u_PointLight.Shininess);
+    lowp vec3 SpecularColorLava = u_PointLight.Color * u_PointLight.SpecularIntensity * SpecularFactorLava;
+    
+    if(dist > 30.0) {
+        gl_FragColor = texture2D(u_Texture, frag_TexCoord) * (vec4((AmbientColor + DiffuseColor + SpecularColor), 1.0));// + vec4(attenuation * (AmbientColorLava + DiffuseColorLava + SpecularColorLava), 1.0));
+    } else {
+         gl_FragColor = texture2D(u_Texture, frag_TexCoord) * (vec4((AmbientColor + DiffuseColor + SpecularColor), 1.0) + vec4(attenuation * (AmbientColorLava + DiffuseColorLava + SpecularColorLava), 1.0));    }
 }

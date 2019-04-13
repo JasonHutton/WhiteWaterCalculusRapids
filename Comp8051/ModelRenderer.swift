@@ -11,11 +11,17 @@ import GLKit
 class ModelRenderer : Component {
     
     private var model: Model
-    private static var camera: GameObject?
+    static var camera: GameObject?
     
-    init(modelName: String, shader: BaseEffect) {
+    init(modelName: String, shader: BaseEffect, texture: String? = nil ) {
         
-        model = Model(modelName: modelName, shader: shader)
+        // if texture is specified, use it
+        if(texture == nil){
+            model = Model(modelName: modelName, shader: shader)
+        } else {
+            model = Model(modelName: modelName, shader: shader, texture: texture)
+        }
+        
         ViewController.instance?.addModel(model: &model)
         
         // grab the camera, if not already grabbed
@@ -65,7 +71,10 @@ class ModelRenderer : Component {
     }
     
     override func onDestroy() {
-        // TODO: deallocate buffers or whatever, not sure how literally any part of opengl works lol
+        
+        if let vc = ViewController.instance {
+            vc.removeModel(model: model)
+        }
     }
     
 }

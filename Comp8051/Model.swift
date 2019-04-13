@@ -11,7 +11,10 @@
 import GLKit
 import Foundation
 
-class Model {
+class Model : Equatable {
+    
+    public static var iterator: Int = 0
+    public var id: Int
     public var vertices: [Vertex] = [] // Vertices data
     public var vertexPositions:[GLKVector3] = []
     public var normals:[GLKVector3] = []
@@ -33,7 +36,11 @@ class Model {
     
     var shader: BaseEffect!
     
-    public init(modelName: String, shader: BaseEffect){
+    public init(modelName: String, shader: BaseEffect, texture: String? = nil){
+        
+        id = Model.iterator
+        Model.iterator += 1
+        
         name = modelName
         self.shader = shader
         currentGroup = "" // Set to default group
@@ -42,21 +49,8 @@ class Model {
         // set mvm to 0 matrix
         modelViewMatrix = GLKMatrix4Identity
         
-        // get the full path for the model file
-        let path = Bundle.main.path(forResource: modelName, ofType: "obj")
-        
-        // get the file using the path
-        let file: FileHandle? = FileHandle(forReadingAtPath: path!)
-        
-        // read the data from the file
-        let data = file?.readDataToEndOfFile()
-        
-        file?.closeFile()
-        
-        // get the contents of the file in one big string
-        let string = String(data: data!, encoding: String.Encoding.utf8)
-        // split the file data into an array of strings separated by new line character
-        let lines: [String] = (string?.components(separatedBy: "\n"))!
+        let lines: [String] = TextLoader.loadFile(fileName: modelName, fileType: "obj")!
+
         var i = GLuint(0);
         //go through each line
         for (offset, line) in lines.enumerated() {
@@ -76,7 +70,11 @@ class Model {
                 break
             case "usemtl":
                 // Specify material name to be used for following elements
-                loadTexture(separator[1])
+                if(texture == nil){
+                    loadTexture(separator[1])
+                } else{
+                    loadTexture(texture!)
+                }
                 break
             case "v":
                 // vertex coordinates
@@ -138,8 +136,6 @@ class Model {
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), ebo)
         glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), vertexIndices.count * MemoryLayout<GLuint>.size, vertexIndices, GLenum(GL_STATIC_DRAW))
         
-        
-        // 현재 vao가 바인딩 되어 있어서 아래 함수를 실행하면 정점과 인덱스 데이터가 모두 vao에 저장된다.
         glEnableVertexAttribArray(VertexAttributes.position.rawValue)
         glVertexAttribPointer(
             VertexAttributes.position.rawValue,
@@ -174,7 +170,6 @@ class Model {
             GLboolean(GL_FALSE),
             GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET((3+4+2) * MemoryLayout<GLfloat>.size)) // x, y, z | r, g, b, a | u, v | nx, ny, nz :: offset is (3+4+2)*sizeof(GLfloat)
         
-        // 바인딩을 끈다
         glBindVertexArrayOES(0)
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
@@ -209,15 +204,22 @@ class Model {
             
         }
     }
+    
+    static func == (lhs: Model, rhs: Model) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    deinit{
+        glDeleteBuffers(1, &vao)
+        glDeleteBuffers(1, &vbo)
+        glDeleteBuffers(1, &ebo)
+    }
 }
 
 class Face {
     public var group: String
     public var object: String
     public var material: String
-    //public var vertexIndices: [GLubyte] = []
-    //public var vertexTextureIndices: [GLubyte] = []
-    //public var vertexNormalIndices: [GLubyte] = []
     
     init(objectName: String, groupName: String, materialName: String) {
         object = objectName

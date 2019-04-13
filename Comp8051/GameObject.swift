@@ -135,6 +135,13 @@ class GameObject {
         }
     }
     
+    func removeAllComponents(){
+        for component in components {
+            component.onDestroy()
+        }
+        components.removeAll()
+    }
+    
     // Returns the first component of type T attached to this
     // game object
     func getComponent<T: Component>() -> T? {
@@ -179,6 +186,13 @@ class GameObject {
         if let index = children.index(where: { $0 === gameObject}) {
             children.remove(at: index)
         }
+    }
+    
+    func removeAllChildren(){
+        for gameObject in children {
+            gameObject.destroy()
+        }
+        children.removeAll()
     }
     
     // Returns the game object with the given tag

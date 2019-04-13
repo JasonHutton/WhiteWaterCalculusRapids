@@ -19,14 +19,9 @@ extension Array {
 class ViewController: GLKViewController {
     
     @IBOutlet weak var scoreLabel: UILabel!
-
-    @IBOutlet weak var musicButton: UIButton!
-    @IBOutlet weak var soundButton: UIButton!
-    static let frameRate: Int = 60
+    @IBOutlet weak var audioButton: UIButton!
     
-    static let deltaTime: Float = 1.0/Float(frameRate)
-    
-    static let fov: Float = 40
+    static var deltaTime: Float = 1.0/30.0
     
     static var instance: ViewController?
     
@@ -42,58 +37,18 @@ class ViewController: GLKViewController {
 
     var score: Int = 0
     
-    var level: Level? = nil
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        preferredFramesPerSecond = ViewController.frameRate
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        view.addGestureRecognizer(tap)
-        
-        Settings.instance.playMusic(soundFile: "gameplay3")
-        
-        // Set audio button to be the same image as on menu screen
-        soundButton.setImage(MenuViewController.instance?.soundButton.currentImage, for: .normal)
-        musicButton.setImage(MenuViewController.instance?.musicButton.currentImage, for: .normal)
-        
-        setupGL()
-    }
-    
-    @IBAction func toggleSound(_ sender: Any) {
-        var btnImage : UIImage?
-        
-        if(Settings.instance.getSetting(name: Settings.Names.playSound.rawValue)) {
-            Settings.instance.setSetting(name: Settings.Names.playSound.rawValue, value: false)
-            btnImage = UIImage(named: "mute")
-
-        } else {
-            Settings.instance.setSetting(name: Settings.Names.playSound.rawValue, value: true)
-            btnImage = UIImage(named: "notMute")
-        }
-        
-        soundButton.setImage(btnImage, for: .normal)
-        MenuViewController.instance?.soundButton.setImage(btnImage, for: .normal)// set audio button in menu
-    }
-    
-    @IBAction func toggleMusic(_ sender: Any) {
-        var btnImage : UIImage?
-        
+    @IBAction func toggleAudio(_ sender: Any) {
         if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)) {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: false)
             Settings.instance.player.pause()
-            btnImage = UIImage(named: "musicMute")
-            
+            audioButton.setTitle("Un-mute Audio", for: .normal)
         } else {
             Settings.instance.setSetting(name: Settings.Names.playMusic.rawValue, value: true)
             Settings.instance.player.play()
-            btnImage = UIImage(named: "musicNotMute")
+            audioButton.setTitle("Mute Audio", for: .normal)
         }
-        
-        musicButton.setImage(btnImage, for: .normal)
-        MenuViewController.instance?.musicButton.setImage(btnImage, for: .normal)// set audio button in menu
     }
+    
     @IBAction func quitGame(_ sender: Any) {
         quit()
     }
@@ -139,23 +94,15 @@ class ViewController: GLKViewController {
             view.drawableDepthFormat = GLKViewDrawableDepthFormat.format24
         }
         
-        // calculate values for fov and game screen width
-        let hAspect = fabsf(Float(view.bounds.size.height) / Float(view.bounds.size.width))
-        let hFov = GLKMathDegreesToRadians(ViewController.fov);
-        let vFov = 2 * atan(tan(hFov / 2) * hAspect)
-        let cameraDist: Float = Level.NODE_WIDTH / (2 * tan(hFov/2))
-        
         // apply perspective transformation
-        let vAspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
-        let projectionMatrix = GLKMatrix4MakePerspective(vFov, vAspect, 1.0, 40.0)
+        let aspect = fabsf(Float(view.bounds.size.width) / Float(view.bounds.size.height))
+        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), aspect, 1.0, 40.0)
+        let width = 30 * tan(GLKMathDegreesToRadians(32.5))
         self.shader = BaseEffect(vertexShader: "SimpleVertexShader.glsl", fragmentShader: "SimpleFragmentShader.glsl")
         
         shader.projectionMatrix = projectionMatrix
         
-        Level.storeAllNodes() // attempt to store nodes in memory from json files, only runs once
-        level = Level(shader: shader)
-        level!.loadUniversalGameObjects(cameraDist: cameraDist)
-        // Level.loadRandomNode(yOffset: 0, width: width, shader: shader)
+        Level.loadLevel(fileName: "Level01", width: width, aspect: aspect, shader: shader)
     }
     
     
@@ -168,8 +115,15 @@ class ViewController: GLKViewController {
         models.removeAll()
     }
     
-    func removeModel(model: Model) {
-        models = models.filter {$0 != model}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        view.addGestureRecognizer(tap)
+        
+        Settings.instance.playMusic(soundFile: "gameplay3")
+        
+        setupGL()
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
@@ -179,7 +133,7 @@ class ViewController: GLKViewController {
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         // clear the scene
-        glClearColor(0.5, 0.5, 0.5, 1.0)
+        glClearColor(0, 0, 0, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT))
         
         glEnable(GLenum(GL_DEPTH_TEST))
@@ -202,7 +156,7 @@ class ViewController: GLKViewController {
     }
     
     private func tearDownLevel(){
-        level!.close()
+        Level.deleteLevel()
         removeModels()
     }
     
@@ -213,7 +167,7 @@ class ViewController: GLKViewController {
 
 extension ViewController: GLKViewControllerDelegate {
     func glkViewControllerUpdate(_ controller: GLKViewController) {
-        
+
         // update entity component system
         GameObject.root.update(deltaTime: ViewController.deltaTime)
         PhysicsWrapper.update(ViewController.deltaTime)

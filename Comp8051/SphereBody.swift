@@ -6,20 +6,24 @@
 //  Copyright © 2019 Paul. All rights reserved.
 //
 
-class SphereBody : Component {
+class SphereBody : Body {
     
-    private var tag: String;
-    
-    init(tag: String) {
+    override init(tag: String) {
         
-        self.tag = tag
+        super.init(tag: tag)
+        CollisionPublisher.subscribe(body: self)
     }
     
     override func onEnable() {
         
         if let transform = gameObject?.worldTransform {
             
-            PhysicsWrapper.addBallBody(tag, posX: transform.position.x, posY: transform.position.y, radius: transform.scale.x / 2)
+            if !initialized {
+                
+                PhysicsWrapper.addBallBody(tag, posX: transform.position.x, posY: transform.position.y, radius: transform.scale.x / 2)
+                
+                initialized = true
+            }
         }
     }
     
@@ -31,5 +35,15 @@ class SphereBody : Component {
             gameObject!.transform.position = Vector3.convertFromCVector(cVector: transform.position)
             gameObject!.transform.rotation.z = transform.rotation / 2
         }
+    }
+    
+    override func onCollisionEnter (tag: String) {
+        super.onCollisionEnter(tag: tag)
+        if tag.contains("Win"){
+            ViewController.instance?.win()
+        } else if tag.contains("Lose"){
+            ViewController.instance?.lose()
+        }
+        //print(tag)
     }
 }
