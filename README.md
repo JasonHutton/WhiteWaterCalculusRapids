@@ -10,7 +10,7 @@ Controls:
 	
 Objective:
 	Survive for as long as possible by travelling down the maze and avoiding the falling lava wall (touching it will cause the game to end).
-	The wall will accelerate over time.
+	The wall will accelerate as you pull away, but will slow down as it gets closer. It will also speed up over time until it reaches a maximum velocity.
 
 Score system:
 	The score starts at 0 and simply increases with time, the longer you survive, the higher your score will be.

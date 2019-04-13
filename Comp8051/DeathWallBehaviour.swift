@@ -39,9 +39,9 @@ class DeathWallBehaviour : Component {
             }
             
             let camPos = GameObject.root.getChild(tag: "Camera")!.worldTransform.position
-   
+            
             gameObject!.transform.position = pos
-            shader.pointLightPosition = pos - camPos
+            shader.pointLightPosition = pos - camPos //set the position of the point light using the death wall position minus the camera position
         }
     }
 }
