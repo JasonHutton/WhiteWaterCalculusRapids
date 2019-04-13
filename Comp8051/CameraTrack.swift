@@ -9,10 +9,12 @@
 class CameraTrack : Component {
     
     private var trackedObj: GameObject
+    private let shader: BaseEffect
     
-    init (trackedObj: GameObject) {
+    init (trackedObj: GameObject, shader: BaseEffect) {
         
         self.trackedObj = trackedObj
+        self.shader = shader
     }
     
     override func lateUpdate(deltaTime: Float) {

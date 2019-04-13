@@ -136,8 +136,6 @@ class Model : Equatable {
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), ebo)
         glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), vertexIndices.count * MemoryLayout<GLuint>.size, vertexIndices, GLenum(GL_STATIC_DRAW))
         
-        
-        // 현재 vao가 바인딩 되어 있어서 아래 함수를 실행하면 정점과 인덱스 데이터가 모두 vao에 저장된다.
         glEnableVertexAttribArray(VertexAttributes.position.rawValue)
         glVertexAttribPointer(
             VertexAttributes.position.rawValue,
@@ -172,7 +170,6 @@ class Model : Equatable {
             GLboolean(GL_FALSE),
             GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET((3+4+2) * MemoryLayout<GLfloat>.size)) // x, y, z | r, g, b, a | u, v | nx, ny, nz :: offset is (3+4+2)*sizeof(GLfloat)
         
-        // 바인딩을 끈다
         glBindVertexArrayOES(0)
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
@@ -223,9 +220,6 @@ class Face {
     public var group: String
     public var object: String
     public var material: String
-    //public var vertexIndices: [GLubyte] = []
-    //public var vertexTextureIndices: [GLubyte] = []
-    //public var vertexNormalIndices: [GLubyte] = []
     
     init(objectName: String, groupName: String, materialName: String) {
         object = objectName

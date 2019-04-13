@@ -13,14 +13,16 @@ class DeathWallBehaviour : Component {
     private var velocity: Float
     private let maxVelocity: Float
     private var maxDist: Float
+    private let shader: BaseEffect
     
-    init(trackedObj: GameObject, acceleration: Float, initialVelocity: Float, maxVelocity: Float, maxDist: Float) {
+    init(trackedObj: GameObject, acceleration: Float, initialVelocity: Float, maxVelocity: Float, maxDist: Float, shader: BaseEffect) {
         
         self.trackedObj = trackedObj
         self.acceleration = acceleration
         velocity = initialVelocity
         self.maxVelocity = maxVelocity
         self.maxDist = maxDist
+        self.shader = shader
     }
     
     override func lateUpdate(deltaTime: Float) {
@@ -36,7 +38,10 @@ class DeathWallBehaviour : Component {
                 pos.y = trackedObj.transform.position.y + maxDist
             }
             
+            let camPos = GameObject.root.getChild(tag: "Camera")!.worldTransform.position
+   
             gameObject!.transform.position = pos
+            shader.pointLightPosition = pos - camPos
         }
     }
 }
