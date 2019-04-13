@@ -51,7 +51,6 @@ void main(void) {
     
     // attenuation
     lowp float dist = length(u_PointLight.Position - frag_Position);
-    lowp float attenuation = 1.0 / (u_PointLight.Constant + u_PointLight.Linear * dist + u_PointLight.Quadratic * (dist * dist));
     
     // Ambient
     lowp vec3 AmbientColorLava = u_PointLight.Color * u_PointLight.AmbientIntensity;
@@ -65,8 +64,10 @@ void main(void) {
     lowp float SpecularFactorLava = pow(max(0.0, -dot(ReflectionLava, Eye)), u_PointLight.Shininess);
     lowp vec3 SpecularColorLava = u_PointLight.Color * u_PointLight.SpecularIntensity * SpecularFactorLava;
     
-    if(dist > 30.0) {
-        gl_FragColor = texture2D(u_Texture, frag_TexCoord) * (vec4((AmbientColor + DiffuseColor + SpecularColor), 1.0));// + vec4(attenuation * (AmbientColorLava + DiffuseColorLava + SpecularColorLava), 1.0));
-    } else {
-         gl_FragColor = texture2D(u_Texture, frag_TexCoord) * (vec4((AmbientColor + DiffuseColor + SpecularColor), 1.0) + vec4(attenuation * (AmbientColorLava + DiffuseColorLava + SpecularColorLava), 1.0));    }
+    // mix the colors
+    lowp vec4 fragColor = texture2D(u_Texture, frag_TexCoord) * vec4(AmbientColor + DiffuseColor + SpecularColor, 1.0);
+    
+    lowp vec4 lightColor = fragColor + vec4(AmbientColorLava + DiffuseColorLava + SpecularColorLava, 1.0);
+    
+    gl_FragColor = mix(lightColor, fragColor, clamp(dist/45.0, 0.0, 1.0));
 }
