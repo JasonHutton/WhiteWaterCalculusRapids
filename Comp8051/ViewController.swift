@@ -52,7 +52,7 @@ class ViewController: GLKViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         view.addGestureRecognizer(tap)
         
-        Settings.instance.playMusic(soundFile: "gameplay3")
+        Settings.instance.playMusic(soundFile: "gameplay3", numberOfLoops: -1)
         
         // Set audio button to be the same image as on menu screen
         soundButton.setImage(MenuViewController.instance?.soundButton.currentImage, for: .normal)
@@ -100,17 +100,17 @@ class ViewController: GLKViewController {
     
     public func win(){
         performSegue(withIdentifier: "winGame", sender: nil)
-        Settings.instance.playMusic(soundFile: "complete")
+        Settings.instance.playMusic(soundFile: "complete", numberOfLoops: 0)
     }
     
     public func lose(){
         performSegue(withIdentifier: "loseGame", sender: nil)
-        Settings.instance.playMusic(soundFile: "gameover")
+        Settings.instance.playMusic(soundFile: "gameover", numberOfLoops: 0)
     }
     
     public func quit(){
         scoreLabel.text = "Score: \(score)"
-        Settings.instance.playMusic(soundFile: "menu")
+        Settings.instance.playMusic(soundFile: "menu", numberOfLoops: -1)
         tearDownGL()
         tearDownLevel()
         dismiss(animated: true, completion: nil)
