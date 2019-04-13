@@ -69,5 +69,5 @@ void main(void) {
     
     lowp vec4 lightColor = fragColor + vec4(AmbientColorLava + DiffuseColorLava + SpecularColorLava, 1.0);
     
-    gl_FragColor = mix(lightColor, fragColor, clamp(dist/30.0, 0.0, 1.0));
+    gl_FragColor = mix(lightColor, fragColor, clamp(dist/45.0, 0.0, 1.0));
 }
