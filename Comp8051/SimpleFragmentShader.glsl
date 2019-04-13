@@ -58,7 +58,7 @@ void main(void) {
     
     // Diffuse
     lowp float DiffuseFactorLava = max(-dot(Normal, lightDir), 0.0);
-    lowp vec3 DiffuseColorLava = u_PointLight.Color * u_PointLight.DiffuseIntensity * DiffuseFactor;
+    lowp vec3 DiffuseColorLava = u_PointLight.Color * u_PointLight.DiffuseIntensity * DiffuseFactorLava;
     
     // Specular
     lowp vec3 ReflectionLava = reflect(lightDir, Normal);
