@@ -18,23 +18,39 @@ class LevelGenerator : Component {
         self.spawnAhead = spawnAhead
         self.level = level
         
-        level.loadEmptyNode(yOffset: Level.NODE_HEIGHT)
-        level.loadEmptyNode(yOffset: 0)
+        super.init()
+        
+        level.loadEmptyNode(yOffset: 3 * Level.NODE_HEIGHT)
+        level.loadEmptyNode(yOffset: 2 * Level.NODE_HEIGHT)
+        level.loadEmptyNode(yOffset: 1 * Level.NODE_HEIGHT)
+        level.loadCeilingNode(yOffset: 0)
     }
     
     override func update(deltaTime: Float) {
+        
+        // attempt to load and delete as many nodes as possible
+        while attemptLoad() {}
+        while attemptDelete() {}
+    }
+    
+    private func attemptLoad() -> Bool {
         
         // spawn a node if the player is far enough
         if let y = gameObject?.transform.position.y {
             
             let spawnedTo = level.nodes.peekBack()?.yOffset ?? 0
             
-            if y - spawnAhead * Level.NODE_HEIGHT < spawnedTo {
+            if y < spawnedTo + spawnAhead * Level.NODE_HEIGHT {
                 
                 level.loadRandomNode(yOffset: spawnedTo - Level.NODE_HEIGHT)
+                return true
             }
-            
         }
+        
+        return false
+    }
+    
+    private func attemptDelete() -> Bool {
         
         // delete nodes that are higher than the deleter
         if let frontPos = level.nodes.peekFront()?.yOffset {
@@ -42,7 +58,10 @@ class LevelGenerator : Component {
             if frontPos > deleteObj.transform.position.y {
                 
                 level.nodes.dequeue()?.destroy()
+                return true
             }
         }
+        
+        return false
     }
 }

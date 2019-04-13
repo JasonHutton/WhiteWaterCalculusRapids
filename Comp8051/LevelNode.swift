@@ -1,12 +1,12 @@
 //
-//  Node.swift
+//  LevelNode.swift
 //  Comp8051
 //
 //  Created by Nathaniel on 2019-04-09.
 //  Copyright © 2019 Paul. All rights reserved.
 //
 
-class Node {
+class LevelNode {
     
     let yOffset: Float
     private var gameObjects = [GameObject]()
