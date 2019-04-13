@@ -125,12 +125,13 @@ class Settings : NSObject {
         self.setSetting(name: name, value: String(value), explicitSave: explicitSave)
     }
     
-    func playMusic(soundFile: String) {
+    func playMusic(soundFile: String, numberOfLoops: Int) {
         let path = Bundle.main.path(forResource: soundFile, ofType: "mp3")!
         let url = URL(fileURLWithPath: path)
         do {
             player = try AVAudioPlayer(contentsOf: url)
             player.prepareToPlay()
+            player.numberOfLoops = numberOfLoops
             
             if(Settings.instance.getSetting(name: Settings.Names.playMusic.rawValue)){
                 player.play()
